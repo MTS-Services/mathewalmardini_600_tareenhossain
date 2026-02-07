@@ -5,7 +5,7 @@ import { Globe } from "lucide-react";
 function Header() {
   return (
     <motion.header
-      className="fixed top-10 left-1/2 -translate-x-1/2 z-50 w-[80%]"
+      className="fixed top-10 left-1/2 -translate-x-1/2 z-500 w-[80%]"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}

@@ -68,7 +68,7 @@ const Banner = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-linear-to-r from-[#f17af3] via-[#f9c5f8] to-white overflow-hidden py-20">
+    <div className="relative min-h-screen bg-gradient-to-r from-[#f17af3]/40 via-[#f9c5f8]/30 to-white/20 overflow-hidden py-20 z-20">
       {/* Grid Section */}
       <div className="relative h-200 mx-auto px-4">
         {/* Background Images Grid */}
