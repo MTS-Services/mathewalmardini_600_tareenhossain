@@ -52,7 +52,6 @@ function Header({ isDesktop }) {
             </div>
           </Link>
 
-          {/* Navigation */}
           <nav className="hidden lg:flex items-center gap-10">
             <a
               href="#home"
