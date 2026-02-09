@@ -9,8 +9,9 @@ const VideoBackground = () => {
   // Transform scroll values to match the center bottom image (w-92 h-64 = 368px × 256px)
   // Scale and position to fit perfectly in the bottom center slot
   const scale = useTransform(scrollY, [0, 800], [1, 0.23]);
-  const borderRadius = useTransform(scrollY, [0, 800], [0, 12]);
   const y = useTransform(scrollY, [0, 800], [0, 320]); // Position to bottom center
+  // Keep same border radius in both states
+  const borderRadius = useTransform(scrollY, [0, 800], [48, 48]); // 48px in both states
 
   return (
     <>
@@ -21,11 +22,11 @@ const VideoBackground = () => {
         transition={{ duration: 1 }}
       >
         <motion.div
-          className="relative w-full h-full"
+          className="relative w-full h-full overflow-hidden"
           style={{
             scale,
-            borderRadius,
             y,
+            borderRadius,
             transformOrigin: "center center",
           }}
         >
@@ -38,9 +39,9 @@ const VideoBackground = () => {
             playsInline
             className="w-full h-full object-cover"
             style={{
-              padding: "15px",
-              borderRadius: "inherit",
+              padding: "20px",
               boxSizing: "border-box",
+              borderRadius: "inherit",
             }}
           >
             <source
@@ -53,7 +54,7 @@ const VideoBackground = () => {
           {/* Overlay for better text readability */}
           <div
             className="absolute inset-0 bg-black/20 pointer-events-none"
-            style={{ borderRadius: "inherit", margin: "15px" }}
+            style={{ margin: "20px", borderRadius: "inherit" }}
           />
         </motion.div>
       </motion.div>
