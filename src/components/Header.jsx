@@ -29,7 +29,7 @@ function Header() {
 
   return (
     <motion.header
-      className="fixed top-10 left-1/2 -translate-x-1/2 z-500 w-[80%]"
+      className="fixed top-10 left-1/2 -translate-x-1/2 z-500 w-[90%]"
       initial={false}
       animate={{
         y: hidden ? -150 : 0,
