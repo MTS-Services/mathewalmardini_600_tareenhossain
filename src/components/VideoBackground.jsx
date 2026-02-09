@@ -11,7 +11,7 @@ const VideoBackground = ({ isDesktop = true }) => {
   const scale = useTransform(scrollY, [0, 800], [1, 0.23]);
   const y = useTransform(scrollY, [0, 800], [0, 320]); // Position to bottom center
   // Keep same border radius in both states
-  const borderRadius = useTransform(scrollY, [0, 800], [48, 48]); // 48px in both states
+  const borderRadius = useTransform(scrollY, [0, 800], [48, 48]);
 
   if (!isDesktop) {
     return (

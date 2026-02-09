@@ -45,7 +45,6 @@ function Header({ isDesktop }) {
         style={{ padding: "10px 20px" }}
       >
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="text-gray-900 text-2xl font-bold">
               <span className=" font-bold text-lg">B Spoke</span>
