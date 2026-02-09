@@ -28,13 +28,10 @@ function Header() {
   });
 
   return (
-    <motion.header
-      className="fixed top-10 left-1/2 -translate-x-1/2 z-500 w-[90%]"
-      initial={false}
-      animate={{
-        y: hidden ? -150 : 0,
-      }}
-      transition={{ type: "tween", duration: 0.25, ease: "easeInOut" }}
+    <header
+      className={`fixed top-10 left-1/2 -translate-x-1/2 z-500 w-[90%] ${
+        hidden ? "hidden" : "block"
+      }`}
     >
       <div
         className="bg-white/95 backdrop-blur-lg border border-gray-200 shadow-lg rounded-2xl"
@@ -97,7 +94,7 @@ function Header() {
           </div>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }
 

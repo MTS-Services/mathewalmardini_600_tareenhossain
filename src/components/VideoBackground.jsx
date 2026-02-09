@@ -56,10 +56,13 @@ const VideoBackground = () => {
             className="absolute inset-0 bg-black/20 pointer-events-none"
             style={{ margin: "20px", borderRadius: "inherit" }}
           />
+
+          <VideoControls
+            className="absolute bottom-12 right-12 z-10"
+            videoRef={videoRef}
+          />
         </motion.div>
       </motion.div>
-
-      <VideoControls videoRef={videoRef} />
     </>
   );
 };
