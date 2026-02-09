@@ -34,6 +34,7 @@ const HeroText = () => {
         </motion.p>
         <motion.button
           className="bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors pointer-events-auto"
+          style={{ padding: "15px 20px",marginTop: "20px" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.8 }}

@@ -20,7 +20,7 @@ const Banner = () => {
       id: 3,
       url: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&h=250&fit=crop",
       position: "top-12 left-1/2 -translate-x-1/2",
-      size: "w-92 h-64",
+      size: "w-108 h-53",
     },
     {
       id: 4,
