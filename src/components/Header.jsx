@@ -47,37 +47,54 @@ function Header({ isDesktop }) {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 bg-pink-600 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform">
-              <span className="text-white font-bold text-lg">E</span>
+            <div className="text-gray-900 text-2xl font-bold">
+              <span className=" font-bold text-lg">B Spoke</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">elementor</span>
           </Link>
 
           {/* Navigation */}
           <nav className="hidden lg:flex items-center gap-10">
             <a
-              href="#products"
+              href="#home"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
-              Products
+              Home
             </a>
             <a
-              href="#agency"
+              href="#services"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
-              Agency
+              SERVICES
             </a>
             <a
-              href="#enterprise"
+              href="#portfolio"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
-              Enterprise
+              PORTFOLIO
             </a>
             <a
-              href="#pricing"
+              href="#about"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
-              Pricing
+              ABOUT
+            </a>
+            <a
+              href="#faqs"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
+            >
+              FAQs
+            </a>
+            <a
+              href="#blogs"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
+            >
+              BLOGS
+            </a>
+            <a
+              href="#contact"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
+            >
+              CONTACT US
             </a>
           </nav>
 
@@ -90,7 +107,7 @@ function Header({ isDesktop }) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get started
+                Book Consultation
               </motion.button>
             ) : (
               <button
@@ -112,38 +129,59 @@ function Header({ isDesktop }) {
           <div className="mt-4 pt-4 border-t border-gray-200">
             <nav className="flex flex-col gap-4">
               <a
-                href="#products"
+                href="#home"
                 className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Products
+                Home
               </a>
               <a
-                href="#agency"
+                href="#services"
                 className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Agency
+                SERVICES
               </a>
               <a
-                href="#enterprise"
+                href="#portfolio"
                 className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Enterprise
+                PORTFOLIO
               </a>
               <a
-                href="#pricing"
+                href="#about"
                 className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Pricing
+                ABOUT
+              </a>
+              <a
+                href="#faqs"
+                className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                FAQs
+              </a>
+              <a
+                href="#blogs"
+                className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                BLOGS
+              </a>
+              <a
+                href="#contact"
+                className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                CONTACT US
               </a>
               <button
                 className="bg-black text-white px-6 py-2.5 rounded-lg font-semibold text-base w-full mt-2"
                 style={{ padding: "15px 20px" }}
               >
-                Get started
+                Book Consultation
               </button>
             </nav>
           </div>

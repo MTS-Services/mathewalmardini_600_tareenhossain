@@ -26,7 +26,7 @@ const HeroText = ({ isDesktop = true }) => {
             className="bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold text-base pointer-events-auto"
             style={{ padding: "10px 15px", marginTop: "20px" }}
           >
-            Get started
+            Book Consultation
           </button>
         </div>
       </div>
@@ -53,7 +53,7 @@ const HeroText = ({ isDesktop = true }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Get started
+          Book Consultation
         </motion.button>
       </div>
     </motion.div>
