@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import VideoControls from "./VideoControls";
 
-const VideoBackground = () => {
+const VideoBackground = ({ isDesktop = true }) => {
   const { scrollY } = useScroll();
   const videoRef = useRef(null);
 
@@ -12,6 +12,39 @@ const VideoBackground = () => {
   const y = useTransform(scrollY, [0, 800], [0, 320]); // Position to bottom center
   // Keep same border radius in both states
   const borderRadius = useTransform(scrollY, [0, 800], [48, 48]); // 48px in both states
+
+  if (!isDesktop) {
+    return (
+      <div className="relative w-full h-screen bg-linear-to-r from-[#f17af3]/80 via-[#f17af3]/40 to-[#fde8ff]/40">
+        <div className="relative w-full h-full" style={{ padding: "10px" }}>
+          <div className="relative w-full h-full overflow-hidden rounded-3xl">
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source
+                src="/banner_video/YTDown.com_YouTube_Corporate-videos-are-boring-We-re-Umault_Media_VCPGMjCW0is_001_1080p.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+
+            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+
+            <VideoControls
+              className="absolute bottom-6 right-6 z-10"
+              videoRef={videoRef}
+              isDesktop={isDesktop}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -51,15 +84,10 @@ const VideoBackground = () => {
             Your browser does not support the video tag.
           </video>
 
-          {/* Overlay for better text readability */}
-          <div
-            className="absolute inset-0 bg-black/20 pointer-events-none"
-            style={{ margin: "20px", borderRadius: "inherit" }}
-          />
-
           <VideoControls
             className="absolute bottom-12 right-12 z-10"
             videoRef={videoRef}
+            isDesktop={isDesktop}
           />
         </motion.div>
       </motion.div>

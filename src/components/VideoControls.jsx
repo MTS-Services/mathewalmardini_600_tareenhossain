@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { motion } from "motion/react";
 import { Pause, Play, Menu } from "lucide-react";
 
-const VideoControls = ({ videoRef, className = "" }) => {
+const VideoControls = ({ videoRef, className = "", isDesktop = true }) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const togglePlayPause = () => {
@@ -19,18 +19,31 @@ const VideoControls = ({ videoRef, className = "" }) => {
   return (
     <div className={`flex gap-3 pointer-events-auto ${className}`}>
       {/* Play/Pause Button */}
-      <motion.button
-        onClick={togglePlayPause}
-        className="w-12 h-12 rounded-full  shadow-lg flex items-center justify-center  transition-colors border-2 border-gray-300"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        {isPlaying ? (
-          <Pause className="w-5 h-5 text-white" />
-        ) : (
-          <Play className="w-5 h-5 text-white ml-0.5" />
-        )}
-      </motion.button>
+      {isDesktop ? (
+        <motion.button
+          onClick={togglePlayPause}
+          className="w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-colors border-2 border-gray-300"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          {isPlaying ? (
+            <Pause className="w-5 h-5 text-white" />
+          ) : (
+            <Play className="w-5 h-5 text-white ml-0.5" />
+          )}
+        </motion.button>
+      ) : (
+        <button
+          onClick={togglePlayPause}
+          className="w-12 h-12 rounded-full shadow-lg flex items-center justify-center border-2 border-gray-300"
+        >
+          {isPlaying ? (
+            <Pause className="w-5 h-5 text-white" />
+          ) : (
+            <Play className="w-5 h-5 text-white ml-0.5" />
+          )}
+        </button>
+      )}
 
       {/* Menu Button */}
       {/* <motion.button
