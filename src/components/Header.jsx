@@ -1,18 +1,44 @@
 import { Link } from "react-router";
-import { motion } from "motion/react";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { Globe } from "lucide-react";
+import { useState } from "react";
 
 function Header() {
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = lastScrollY;
+
+    // If scroll position is less than 50px, always show header
+    if (latest < 50) {
+      setHidden(false);
+    }
+    // If scrolling down, hide header
+    else if (latest > previous && latest > 100) {
+      setHidden(true);
+    }
+    // If scrolling up, show header
+    else if (latest < previous) {
+      setHidden(false);
+    }
+
+    setLastScrollY(latest);
+  });
+
   return (
     <motion.header
       className="fixed top-10 left-1/2 -translate-x-1/2 z-500 w-[80%]"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      initial={false}
+      animate={{
+        y: hidden ? -150 : 0,
+      }}
+      transition={{ type: "tween", duration: 0.25, ease: "easeInOut" }}
     >
       <div
         className="bg-white/95 backdrop-blur-lg border border-gray-200 shadow-lg rounded-2xl"
-        style={{ padding: "15px 20px" }}
+        style={{ padding: "10px 20px" }}
       >
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -27,25 +53,25 @@ function Header() {
           <nav className="hidden md:flex items-center gap-10">
             <a
               href="#products"
-              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-sm"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
               Products
             </a>
             <a
               href="#agency"
-              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-sm"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
               Agency
             </a>
             <a
               href="#enterprise"
-              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-sm"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
               Enterprise
             </a>
             <a
               href="#pricing"
-              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-sm"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
               Pricing
             </a>
@@ -53,15 +79,16 @@ function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-6">
-            <button className="flex items-center gap-1.5 text-gray-700 hover:text-gray-900 transition-colors font-medium text-sm">
+            {/* <button className="flex items-center gap-1.5 text-gray-700 hover:text-gray-900 transition-colors font-medium text-sm">
               <span>En</span>
               <Globe className="w-4 h-4" />
             </button>
             <button className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-sm">
               Log in
-            </button>
+            </button> */}
             <motion.button
-              className="bg-black text-white px-6 py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-semibold text-sm"
+              className="bg-black text-white px-6 py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-semibold text-base"
+              style={{ padding: "15px 20px" }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
