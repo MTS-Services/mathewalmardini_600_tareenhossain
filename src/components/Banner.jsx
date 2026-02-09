@@ -3,12 +3,13 @@ import { motion, useScroll, useTransform } from "motion/react";
 
 const Banner = () => {
   const { scrollY } = useScroll();
-  
+
   // Video scales from 1 to 0.23 over 0-800px scroll
   // At 60% scale (0.6), scroll position is approximately 415px
   // We'll fade in images between scroll 300-500px
   const imagesOpacity = useTransform(scrollY, [300, 500], [0, 1]);
-  
+  const imagesScale = useTransform(scrollY, [300, 500], [0.6, 1]);
+
   const portfolioImages = [
     // Top Row
     {
@@ -72,10 +73,10 @@ const Banner = () => {
   return (
     <div className="relative min-h-[200vh]">
       {/* Initial Gradient Background - Always visible */}
-      <div className="fixed top-0 left-0 w-full h-screen bg-linear-to-r from-[#f17af3]/60 via-[#f9c5f8]/50 to-[#fde8ff]/40 z-5" />
-      
+      <div className="fixed top-0 left-0 w-full h-screen bg-linear-to-r from-[#f17af3]/80 via-[#f17af3]/40  to-[#fde8ff]/40 z-5" />
+
       {/* Grid Section - fixed behind video, fades in when video shrinks */}
-      <motion.div 
+      <motion.div
         className="fixed top-0 left-0 w-full h-screen overflow-hidden z-10"
         style={{ opacity: imagesOpacity }}
       >
@@ -85,7 +86,15 @@ const Banner = () => {
             <motion.div
               key={image.id}
               className={`absolute ${image.position} ${image.size}`}
-              initial={{ opacity: 1, scale: 1 }}
+              style={{
+                scale: imagesScale,
+                opacity: imagesOpacity,
+              }}
+              transition={{
+                delay: index * 0.05,
+                duration: 0.6,
+                ease: "easeOut",
+              }}
               whileHover={{
                 scale: 1.05,
                 zIndex: 10,
