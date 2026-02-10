@@ -28,46 +28,48 @@ const Banner = ({ isDesktop = true }) => {
     // Top Row
     {
       id: 1,
-      url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&h=280&fit=crop",
+      url: "/public/banner_image/IMG_1490.JPG",
       position: "lg:top-22 xl:top-16 2xl:top-20 left-0",
       size: "lg:w-20 lg:h-32 xl:w-28 xl:h-40 2xl:w-32 2xl:h-48",
     },
     {
       id: 2,
-      url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=350&h=250&fit=crop",
+      url: "/public/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov",
+      type: "video",
       position:
         "lg:top-30 xl:top-28 2xl:top-32 lg:left-28 xl:left-50 2xl:left-70",
       size: "lg:w-48 lg:h-32 xl:w-64 xl:h-40 2xl:w-80 2xl:h-52",
     },
     {
       id: 3,
-      url: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&h=250&fit=crop",
+      url: "/public/banner_video/beautiful-modern-bathroom-bathtub-washbasin-sa-2026-01-28-02-42-23-utc (1).mp4",
+      type: "video",
       position: "lg:top-18 xl:top-10 2xl:top-12 left-1/2 -translate-x-1/2",
       size: "lg:w-64 lg:h-36 xl:w-80 xl:h-44 2xl:w-108 2xl:h-53",
     },
     {
       id: 4,
-      url: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=350&h=220&fit=crop",
+      url: "/public/banner_image/IMG_1278.JPG",
       position:
         "lg:top-30 xl:top-28 2xl:top-32 lg:right-28 xl:right-50 2xl:right-72",
       size: "lg:w-48 lg:h-32 xl:w-64 xl:h-40 2xl:w-80 2xl:h-52",
     },
     {
       id: 5,
-      url: "https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=200&h=280&fit=crop",
+      url: "/public/banner_image/IMG_1530.JPG",
       position: "lg:top-22 xl:top-16 2xl:top-20 right-0",
       size: "lg:w-20 lg:h-32 xl:w-28 xl:h-40 2xl:w-32 2xl:h-48",
     },
     // Bottom Row
     {
       id: 6,
-      url: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=180&h=280&fit=crop",
+      url: "/public/banner_image/IMG_4148.JPG",
       position: "lg:bottom-22 xl:bottom-14 2xl:bottom-10 left-0",
       size: "lg:w-20 lg:h-32 xl:w-28 xl:h-40 2xl:w-32 2xl:h-48",
     },
     {
       id: 7,
-      url: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=400&h=280&fit=crop",
+      url: "/public/banner_image/Double_Glass_Window_(After).jpg",
       position:
         "lg:bottom-28 xl:bottom-20 2xl:bottom-22 lg:left-28 xl:left-50 2xl:left-70",
       size: "lg:w-48 lg:h-32 xl:w-64 xl:h-40 2xl:w-80 2xl:h-52",
@@ -75,14 +77,15 @@ const Banner = ({ isDesktop = true }) => {
     // Image 8 removed - video will take this position
     {
       id: 9,
-      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+      url: "/public/banner_video/isometric-bathroom-2026-01-28-03-56-56-ut.mp4",
+      type: "video",
       position:
         "lg:bottom-28 xl:bottom-20 2xl:bottom-22 lg:right-28 xl:right-50 2xl:right-72",
       size: "lg:w-48 lg:h-32 xl:w-64 xl:h-40 2xl:w-80 2xl:h-52",
     },
     {
       id: 10,
-      url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&h=300&fit=crop",
+      url: "/public/banner_image/Keynton 3.jpg",
       position: "lg:bottom-22 xl:bottom-14 2xl:bottom-10 right-0",
       size: "lg:w-20 lg:h-32 xl:w-28 xl:h-40 2xl:w-32 2xl:h-48",
     },
@@ -186,26 +189,43 @@ const Banner = ({ isDesktop = true }) => {
         : mobileImages;
 
     return (
-      <section className="relative  py-16">
-        <div className="absolute inset-0 bg-linear-to-r from-[#f17af3]/80 via-[#f17af3]/40 to-[#fde8ff]/40" />
-        <div className="relative mx-auto px-6">
-          {imagesToUse.map((image) => (
-            <div
-              key={image.id}
-              className={`absolute ${image.position} ${image.size} ${image.radius} overflow-hidden shadow-lg`}
-            >
-              <img
-                src={image.url}
-                alt={`Portfolio ${image.id}`}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          ))}
+      <section className="relative py-8 md:py-16">
+        <div className="absolute inset-0 bg-linear-to-r from-[#2D6B7A]/80 via-[#2D6B7A]/40 to-[#2D6B7A]/20" />
+        <div className="relative mx-auto px-4 md:px-6">
+          {imagesToUse.map((image) => {
+            // Find the corresponding portfolio item to check if it's a video
+            const portfolioItem = portfolioImages.find(
+              (p) => p.url === image.url,
+            );
+            return (
+              <div
+                key={image.id}
+                className={`absolute ${image.position} ${image.size} ${image.radius} overflow-hidden shadow-lg`}
+              >
+                {portfolioItem?.type === "video" ? (
+                  <video
+                    src={image.url}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover object-center"
+                  />
+                ) : (
+                  <img
+                    src={image.url}
+                    alt={`Portfolio ${image.id}`}
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+            );
+          })}
 
-          <div className="relative flex items-center justify-center min-h-[70vh]">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center max-w-3xl">
-              The professional standard for web creation
+          <div className="relative flex items-center justify-center min-h-[60vh] md:min-h-[70vh]">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 text-center max-w-2xl md:max-w-3xl px-2 md:px-0">
+              Perfect Solution For Your Renovation
             </h2>
           </div>
         </div>
@@ -216,14 +236,14 @@ const Banner = ({ isDesktop = true }) => {
   return (
     <div className="relative min-h-[200vh]">
       {/* Initial Gradient Background - Always visible */}
-      <div className="fixed top-0 left-0 w-full h-screen bg-linear-to-r from-[#f17af3]/80 via-[#f17af3]/40  to-[#fde8ff]/40 z-5" />
+      <div className="fixed top-0 left-0 w-full h-screen bg-linear-to-r from-[#2D6B7A]/80 via-[#2D6B7A]/40 to-[#2D6B7A]/20 z-5" />
 
       {/* Grid Section - fixed behind video, fades in when video shrinks */}
       <motion.div
         className="fixed top-0 left-0 w-full h-screen overflow-hidden z-10"
         style={{ opacity: imagesOpacity }}
       >
-        <div className="relative h-full mx-auto px-4 flex items-center">
+        <div className="relative h-full mx-auto px-2 md:px-4 flex items-center">
           {/* Background Images Grid */}
           {portfolioImages.map((image, index) => (
             <motion.div
@@ -245,18 +265,35 @@ const Banner = ({ isDesktop = true }) => {
               }}
             >
               <div className="relative w-full h-full group cursor-pointer">
-                <img
-                  src={image.url}
-                  alt={`Portfolio ${image.id}`}
-                  className={`w-full h-full object-cover shadow-xl ${
-                    image.id === 1 || image.id === 6
-                      ? "rounded-r-lg"
-                      : image.id === 5 || image.id === 10
-                        ? "rounded-l-lg"
-                        : "rounded-lg"
-                  }`}
-                  loading="lazy"
-                />
+                {image.type === "video" ? (
+                  <video
+                    src={image.url}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className={`w-full h-full object-cover object-center shadow-xl ${
+                      image.id === 1 || image.id === 6
+                        ? "rounded-r-lg"
+                        : image.id === 5 || image.id === 10
+                          ? "rounded-l-lg"
+                          : "rounded-lg"
+                    }`}
+                  />
+                ) : (
+                  <img
+                    src={image.url}
+                    alt={`Portfolio ${image.id}`}
+                    className={`w-full h-full object-cover object-center shadow-xl ${
+                      image.id === 1 || image.id === 6
+                        ? "rounded-r-lg"
+                        : image.id === 5 || image.id === 10
+                          ? "rounded-l-lg"
+                          : "rounded-lg"
+                    }`}
+                    loading="lazy"
+                  />
+                )}
                 {/* Hover overlay */}
                 <div
                   className={`absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 ${
@@ -273,9 +310,9 @@ const Banner = ({ isDesktop = true }) => {
 
           {/* Center Text */}
           <div className="absolute inset-0 flex items-center justify-center z-20">
-            <div className="text-center px-4">
-              <h2 className="text-3xl lg:text-4xl xl:text-[56px]  font-bold text-gray-900 max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-6xl mx-auto">
-                The professional standard for web creation
+            <div className="text-center px-2 md:px-4">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-[56px] font-bold text-gray-900 max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-6xl mx-auto">
+                Perfect Solution For Your Renovation
               </h2>
             </div>
           </div>

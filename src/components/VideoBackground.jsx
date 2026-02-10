@@ -15,9 +15,9 @@ const VideoBackground = ({ isDesktop = true }) => {
 
   if (!isDesktop) {
     return (
-      <div className="relative w-full h-screen bg-linear-to-r from-[#f17af3]/80 via-[#f17af3]/40 to-[#fde8ff]/40">
-        <div className="relative w-full h-full" style={{ padding: "10px" }}>
-          <div className="relative w-full h-full overflow-hidden rounded-3xl">
+      <div className="relative w-full min-h-screen bg-linear-to-r from-[#2D6B7A]/80 via-[#2D6B7A]/40 to-[#2D6B7A]/20">
+        <div className="relative w-full h-full" style={{ padding: "8px" }}>
+          <div className="relative w-full min-h-screen overflow-hidden rounded-2xl">
             <video
               ref={videoRef}
               autoPlay
@@ -25,18 +25,16 @@ const VideoBackground = ({ isDesktop = true }) => {
               muted
               playsInline
               className="w-full h-full object-cover"
+              style={{ minHeight: "100vh" }}
             >
-              <source
-                src="/banner_video/YTDown.com_YouTube_Corporate-videos-are-boring-We-re-Umault_Media_VCPGMjCW0is_001_1080p.mp4"
-                type="video/mp4"
-              />
+              <source src="/banner_video/charteris_MP4.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
             <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
             <VideoControls
-              className="absolute bottom-6 right-6 z-10"
+              className="absolute bottom-4 right-4 z-10"
               videoRef={videoRef}
               isDesktop={isDesktop}
             />
@@ -77,10 +75,7 @@ const VideoBackground = ({ isDesktop = true }) => {
               borderRadius: "inherit",
             }}
           >
-            <source
-              src="/banner_video/YTDown.com_YouTube_Corporate-videos-are-boring-We-re-Umault_Media_VCPGMjCW0is_001_1080p.mp4"
-              type="video/mp4"
-            />
+            <source src="/banner_video/charteris_MP4.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
