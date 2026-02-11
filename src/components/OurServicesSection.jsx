@@ -6,6 +6,7 @@ const OurServicesSection = () => {
   const stickyRef = useRef(null);
   const firstCardRef = useRef(null);
 
+  
   const services = [
     {
       id: 1,
