@@ -11,29 +11,31 @@ const OurServicesSection = () => {
       id: 1,
       title: "Bathroom Renovation",
       description:
-        "Transform your bathroom into a luxurious spa-like retreat with modern fixtures, elegant tiles, and expert craftsmanship.",
+        "Transform your bathroom with creative design and functional planning. Our team delivers end-to-end construction services for a beautiful, practical space.",
       video: "/banner_video/isometric-bathroom-2026-01-28-03-56-56-ut.mp4",
     },
     {
       id: 2,
       title: "Kitchen Renovation",
       description:
-        "Create the kitchen of your dreams with custom cabinetry, premium countertops, and smart layouts designed for your lifestyle.",
+        "Complete kitchen renovation from design to construction with warranty on labor and materials. Highest quality, transparent process, and excellent results within your budget.",
       video: "/Home_videos/isometric-kitchen-4k-2026-01-28-02-33-39-utc.mp4",
     },
     {
       id: 3,
       title: "Laundry Renovation",
       description:
-        "Maximize efficiency and style in your laundry space with organized storage, modern appliances, and practical design solutions.",
-      video: "/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov",
+        "Expert laundry room renovation from planning and design to plumbing installation, ensuring everything is done correctly.",
+      video:
+        "/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov",
     },
     {
       id: 4,
       title: "Design Service",
       description:
-        "Comprehensive design consultation bringing your vision to life with 3D renderings, material selection, and complete planning.",
-      video: "/Home_videos/3d-minimalist-modern-house-building-animation-2026-01-28-05-07-41-utc.mp4",
+        "Custom design plans tailored to your priorities and budget. We focus on what matters most to you for maximum enjoyment of your space.",
+      video:
+        "/Home_videos/3d-minimalist-modern-house-building-animation-2026-01-28-05-07-41-utc.mp4",
     },
   ];
 
@@ -43,104 +45,114 @@ const OurServicesSection = () => {
     offset: ["start start", "end end"],
   });
 
-  // Responsive distance so the last card ends exactly at the edge
-  const [layout, setLayout] = useState({ distance: 0, gap: 40 });
+  // Dynamic calculation for horizontal scroll distance
+  const [scrollDistance, setScrollDistance] = useState(0);
 
   useEffect(() => {
-    const calculateDistance = () => {
-      const width = typeof window !== "undefined" ? window.innerWidth : 1440;
+    const calculateScrollDistance = () => {
+      if (!stickyRef.current || !firstCardRef.current) return;
 
-      // Breakpoints: mobile < 640, tablet < 1024, laptop/desktop >= 1024
-      const settings =
-        width < 640
-          ? { itemWidth: 320, gap: 20 }
-          : width < 1024
-            ? { itemWidth: 480, gap: 28 }
-            : { itemWidth: 620, gap: 40 };
+      // Get actual dimensions from DOM
+      const stickyElement = stickyRef.current;
+      const firstCard = firstCardRef.current;
 
-      const cardWidth = firstCardRef.current?.getBoundingClientRect().width || settings.itemWidth;
-      const stickyWidth = stickyRef.current?.getBoundingClientRect().width || width;
-      const stickyStyle = stickyRef.current ? getComputedStyle(stickyRef.current) : null;
-      const paddingLeft = stickyStyle ? parseFloat(stickyStyle.paddingLeft) || 0 : 0;
-      const paddingRight = stickyStyle ? parseFloat(stickyStyle.paddingRight) || 0 : 0;
+      // Get viewport width of sticky container
+      const stickyWidth = stickyElement.offsetWidth;
+      const stickyStyle = getComputedStyle(stickyElement);
+      const paddingLeft = parseFloat(stickyStyle.paddingLeft) || 0;
+      const paddingRight = parseFloat(stickyStyle.paddingRight) || 0;
+
+      // Calculate visible area
       const visibleWidth = stickyWidth - paddingLeft - paddingRight;
 
-      const trackWidth = services.length * cardWidth + (services.length - 1) * settings.gap;
+      // Get actual card width from DOM
+      const cardWidth = firstCard.offsetWidth;
+
+      // Fixed gap of 40px for all screen sizes
+      const gap = 40;
+
+      // Calculate total width of all cards + gaps
+      const totalCardsWidth = services.length * cardWidth;
+      const totalGapsWidth = (services.length - 1) * gap;
+      const trackWidth = totalCardsWidth + totalGapsWidth;
+
+      // Distance to scroll = track width - visible area (but not negative)
       const distance = Math.max(0, trackWidth - visibleWidth);
 
-      setLayout({ distance, gap: settings.gap });
+      setScrollDistance(distance);
     };
 
-    calculateDistance();
-    window.addEventListener("resize", calculateDistance);
-    return () => window.removeEventListener("resize", calculateDistance);
+    // Calculate on mount and when window resizes
+    calculateScrollDistance();
+
+    // Use setTimeout to recalculate after layout is complete
+    const timeoutId = setTimeout(calculateScrollDistance, 100);
+
+    window.addEventListener("resize", calculateScrollDistance);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", calculateScrollDistance);
+    };
   }, [services.length]);
 
-  const x = useTransform(scrollYProgress, [0, 1], [0, -layout.distance]);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
 
   return (
     <div className="relative w-full bg-linear-to-br from-gray-50 via-white to-gray-100">
       {/* Intro Section */}
-      <section
-        className="flex flex-col justify-end items-center text-center"
-      >
+      <section className="flex flex-col justify-end items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary" style={{marginTop: "50px"}}>
+          <h2
+            className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary our-services-title-margin"
+            style={{ marginTop: "50px" }}
+          >
             Our Services
           </h2>
         </motion.div>
       </section>
 
       {/* Scroll Container - Creates vertical scroll space */}
-      <div
-        ref={containerRef}
-        className="relative"
-        style={{ height: "220vh" }}
-      >
+      <div ref={containerRef} className="relative" style={{ height: "220vh" }}>
         {/* Sticky Wrapper - Stays in viewport while scrolling */}
         <div
-          className="sticky top-0 flex items-center overflow-hidden"
+          className="sticky our-services-sticky flex items-center overflow-hidden"
           ref={stickyRef}
-          style={{ height: "100vh", justifyContent: "flex-start", paddingLeft: "clamp(16px, 5vw, 64px)" }}
+          style={{
+            justifyContent: "flex-start",
+            paddingLeft: "16px",
+            paddingRight: "16px",
+          }}
         >
           {/* Horizontal Gallery - Moves based on scroll */}
           <motion.div
             className="flex will-change-transform"
-            style={{ x, gap: `${layout.gap}px` }}
+            style={{ x, gap: "40px" }}
           >
             {services.map((service) => (
               <motion.div
                 key={service.id}
-                className="shrink-0 group"
+                className="shrink-0 group w-[85vw] sm:w-[75vw] md:w-[60vw] lg:w-[45vw] xl:w-170 h-125 sm:h-137.5 md:h-150 lg:h-162.5 xl:h-175"
                 ref={service.id === 1 ? firstCardRef : null}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                style={{
-                  width: "clamp(280px, 90vw, 680px)",
-                  height: "clamp(420px, 72vh, 750px)",
-                }}
               >
-                <div
-                  className="relative bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col h-full border border-gray-200/50 transition-all duration-300 hover:shadow-2xl hover:border-green-500/40"
-                >
+                <div className="relative bg-white  overflow-hidden flex flex-col h-full border border-gray-200/50 transition-all duration-300 hover:shadow-xl">
                   {/* Video Container */}
-                  <div
-                    className="relative overflow-hidden bg-gray-900"
-                    style={{ flex: "1 1 60%", minHeight: "0" }}
-                  >
+                  <div className="relative overflow-hidden bg-gray-900 h-75 sm:h-87.5 md:h-95 lg:h-105 xl:h-112.5">
                     <video
                       autoPlay
                       muted
                       loop
                       playsInline
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 "
                     >
                       <source src={service.video} type="video/mp4" />
                       Your browser does not support the video tag.
@@ -151,37 +163,18 @@ const OurServicesSection = () => {
 
                   {/* Content */}
                   <div
-                    className="relative z-10 bg-white flex flex-col"
+                    className="relative z-10 bg-white flex flex-col h-50 sm:h-50 md:h-55 lg:h-57.5 xl:h-62.5"
                     style={{ padding: "28px 24px" }}
                   >
                     <h3
-                      className="text-2xl md:text-3xl font-bold text-black group-hover:text-green-600 transition-colors duration-300"
+                      className="text-xl md:text-2xl font-bold text-secondary transition-colors duration-300 shrink-0"
                       style={{ marginBottom: "12px" }}
                     >
                       {service.title}
                     </h3>
-                    <p className="text-black/70 text-sm md:text-base leading-relaxed">
+                    <p className="text-black/70 text-sm md:text-base leading-relaxed line-clamp-4 overflow-hidden">
                       {service.description}
                     </p>
-                    <button
-                      className="inline-flex items-center gap-2 text-green-600 font-semibold text-sm md:text-base transition-all duration-300 hover:gap-3 hover:text-green-700"
-                      style={{ marginTop: "16px" }}
-                    >
-                      Learn More
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </button>
                   </div>
                 </div>
               </motion.div>

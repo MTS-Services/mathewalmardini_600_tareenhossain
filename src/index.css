@@ -81,3 +81,36 @@ body {
 #root {
   min-height: 100vh;
 }
+
+/* Our Services sticky heights per breakpoint */
+.our-services-title-margin {
+  margin-bottom: 0px;
+}
+.our-services-sticky {
+  top: 110px;
+  height: calc(100vh - 200px);
+}
+
+@media (min-width: 640px) {
+  .our-services-sticky {
+    top: 150px;
+    height: calc(100vh - 220px);
+  }
+  .our-services-title-margin {
+    margin-bottom: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .our-services-sticky {
+    top: 160px;
+    height: calc(100vh - 240px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .our-services-sticky {
+    top: 180px;
+    height: calc(100vh - 260px);
+  }
+}
