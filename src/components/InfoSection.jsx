@@ -96,9 +96,11 @@ const InfoSection = () => {
     },
   };
 
+
   return (
     <section
-      className="relative w-full bg-[#e8f5ec]"
+      className="relative w-full"
+    //   bg color : bg-[#e8f5ec]
       style={{ padding: "56px 16px" }}
     >
       <div
@@ -113,7 +115,7 @@ const InfoSection = () => {
           className="text-center"
           style={{ display: "grid", rowGap: "14px" }}
         >
-          <p className="text-2xl md:text-3xl uppercase font-bold tracking-[0.2em] text-secondary">
+          <p className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary">
             Our Focus
           </p>
         </motion.div>

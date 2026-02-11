@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import VideoBackground from "../components/VideoBackground";
 import HeroText from "../components/HeroText";
 import InfoSection from "../components/InfoSection";
+import OurServicesSection from "../components/OurServicesSection";
 
 function Home() {
   const { scrollY } = useScroll();
@@ -48,6 +49,7 @@ function Home() {
         </>
       )}
       <InfoSection />
+      <OurServicesSection />
     </>
   );
 }
