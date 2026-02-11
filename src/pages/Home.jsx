@@ -4,6 +4,7 @@ import Banner from "../components/Banner";
 import Header from "../components/Header";
 import VideoBackground from "../components/VideoBackground";
 import HeroText from "../components/HeroText";
+import InfoSection from "../components/InfoSection";
 
 function Home() {
   const { scrollY } = useScroll();
@@ -31,8 +32,6 @@ function Home() {
       <Header isDesktop={isDesktop} />
       {isDesktop ? (
         <>
-          <VideoBackground isDesktop={isDesktop} />
-          <HeroText isDesktop={isDesktop} />
           <Banner isDesktop={isDesktop} />
         </>
       ) : (
@@ -48,6 +47,7 @@ function Home() {
           </motion.div>
         </>
       )}
+      <InfoSection />
     </>
   );
 }

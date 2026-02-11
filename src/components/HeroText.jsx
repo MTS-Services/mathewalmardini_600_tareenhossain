@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 
-const HeroText = ({ isDesktop = true }) => {
+const HeroText = ({ isDesktop = true, position = "fixed" }) => {
   const { scrollY } = useScroll();
   const [isMobile, setIsMobile] = useState(false);
 
@@ -16,7 +16,8 @@ const HeroText = ({ isDesktop = true }) => {
   }, []);
 
   // Only opacity changes, no movement
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  // Fade out earlier to ensure clean transition
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   // Mobile layout (< 768px) - vertical buttons with 80% width
   if (!isDesktop && isMobile) {
@@ -94,9 +95,12 @@ const HeroText = ({ isDesktop = true }) => {
     );
   }
 
+  const containerClassName =
+    position === "absolute" ? "absolute inset-0" : "fixed inset-0";
+
   return (
     <motion.div
-      className="fixed inset-0 z-200 flex items-center justify-center pointer-events-none"
+      className={`${containerClassName} z-200 flex items-center justify-center pointer-events-none`}
       style={{ opacity }}
     >
       <div className="text-center px-4 max-w-5xl">

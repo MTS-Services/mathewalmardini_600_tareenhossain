@@ -2,14 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import VideoControls from "./VideoControls";
 
-const VideoBackground = ({ isDesktop = true }) => {
+const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
   const { scrollY } = useScroll();
   const videoRef = useRef(null);
 
   // Transform scroll values to match the center bottom image (w-92 h-64 = 368px × 256px)
   // Scale and position to fit perfectly in the bottom center slot
   const scale = useTransform(scrollY, [0, 800], [1, 0.23]);
-  const y = useTransform(scrollY, [0, 800], [0, 320]); // Position to bottom center
+  const y = useTransform(scrollY, [0, 800], [0, 290]); // Position to bottom center
+  // Fade out video at the end of scroll section - completes before spacer ends
+  // Fade out later so the banner stays visible under InfoSection
+  const opacity = useTransform(scrollY, [0, 1900, 2400], [1, 1, 0]);
   // Keep same border radius in both states
   const borderRadius = useTransform(scrollY, [0, 800], [48, 48]);
 
@@ -44,13 +47,17 @@ const VideoBackground = ({ isDesktop = true }) => {
     );
   }
 
+  const containerClassName =
+    position === "absolute" ? "absolute inset-0" : "fixed top-0 left-0";
+
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-full h-screen z-100 flex items-center justify-center pointer-events-none"
+        className={`${containerClassName} w-full h-screen z-100 flex items-center justify-center pointer-events-none`}
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
+        style={{ opacity }}
       >
         <motion.div
           className="relative w-full h-full overflow-hidden"
