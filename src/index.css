@@ -114,3 +114,62 @@ body {
     height: calc(100vh - 260px);
   }
 }
+
+/* Info Section responsive spacing */
+.info-section-padding {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 30px;
+}
+
+.info-section-container-gap {
+  gap: 24px;
+}
+
+.info-section-grid-gap {
+  gap: 0px;
+}
+
+.info-section-icon-header-padding {
+  padding: 0px 16px 0;
+}
+
+@media (min-width: 640px) {
+  .info-section-padding {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+  }
+
+  .info-section-container-gap {
+    gap: 32px;
+  }
+
+  .info-section-grid-gap {
+    gap: 20px;
+  }
+
+  .info-section-icon-header-padding {
+    padding: 10px 20px 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .info-section-padding {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 60px;
+  }
+
+  .info-section-container-gap {
+    gap: 48px;
+  }
+
+  .info-section-grid-gap {
+    gap: 24px;
+  }
+
+  .info-section-icon-header-padding {
+    padding: 10px 24px 0;
+  }
+}

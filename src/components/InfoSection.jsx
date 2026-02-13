@@ -96,16 +96,14 @@ const InfoSection = () => {
     },
   };
 
-
   return (
     <section
-      className="relative w-full "
-    //   bg color : bg-[#e8f5ec]
-      style={{ padding: "56px 16px" }}
+      className="relative w-full bg-linear-to-r from-[#2D6B7A]/80 via-[#2D6B7A]/40 to-[#2D6B7A]/20 info-section-padding"
+      //   bg color : bg-[#e8f5ec]
     >
       <div
-        className="max-w-6xl flex flex-col"
-        style={{ margin: "0 auto", gap: "48px" }}
+        className="max-w-6xl flex flex-col info-section-container-gap"
+        style={{ margin: "0 auto" }}
       >
         <motion.div
           initial={{ opacity: 0, y: -16 }}
@@ -115,9 +113,9 @@ const InfoSection = () => {
           className="text-center"
           style={{ display: "grid", rowGap: "14px" }}
         >
-          <p className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary">
+          {/* <p className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary">
             Our Focus
-          </p>
+          </p> */}
         </motion.div>
 
         <motion.div
@@ -125,27 +123,24 @@ const InfoSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3"
-          style={{ gap: "24px", padding: "0" }}
+          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 info-section-grid-gap"
+          style={{ padding: "0" }}
         >
           {features.map((feature) => (
             <motion.div
               key={feature.id}
               variants={itemVariants}
-              className="group rounded-2xl bg-white shadow-md border border-black/5 overflow-hidden flex flex-col h-full"
+              className="group rounded-2xl  overflow-hidden flex flex-col h-full info-section-border"
             >
-              <div
-                className="relative flex items-center gap-4"
-                style={{ padding: "20px 24px 0" }}
-              >
+              <div className="relative flex items-center gap-4 info-section-icon-header-padding">
                 <div
-                  className="flex items-center justify-center bg-green-600/15 text-green-700 rounded-xl"
+                  className="flex items-center justify-center text-primary rounded-xl"
                   style={{ width: "48px", height: "48px" }}
                 >
                   {feature.icon}
                 </div>
                 <div className="text-left">
-                  <p className="text-sm font-semibold text-black/70 uppercase tracking-wide">
+                  <p className="text-sm font-semibold text-black/90 uppercase tracking-wide">
                     {feature.eyebrow}
                   </p>
                 </div>
@@ -154,7 +149,7 @@ const InfoSection = () => {
                 className="flex-1 flex flex-col gap-3"
                 style={{ padding: "24px" }}
               >
-                <h3 className="text-xl md:text-2xl font-semibold text-black">
+                <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-black">
                   {feature.title}
                 </h3>
                 <p className="text-black/70 text-sm md:text-base leading-relaxed">
