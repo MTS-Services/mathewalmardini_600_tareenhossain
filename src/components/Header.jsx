@@ -991,7 +991,7 @@
 
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { Globe, Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Globe, Menu, X, ChevronDown, ChevronUp, Phone } from "lucide-react";
 import { useState } from "react";
 
 function Header({ isDesktop }) {
@@ -1007,12 +1007,12 @@ function Header({ isDesktop }) {
         className="bg-white/95 backdrop-blur-lg border border-gray-200 shadow-lg rounded-2xl"
         style={{ padding: "0px 20px" }}
       >
-        <div className="flex items-center justify-between">
+        <div className="relative flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
             <img src="/logo.png" alt="B Spoke Logo" className="w-32 h-auto" />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2 z-20">
             <a
               href="#home"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
@@ -1095,7 +1095,8 @@ function Header({ isDesktop }) {
               FAQs
             </a>
 
-            {/* Blogs Dropdown */}
+            {/* Blogs dropdown removed — commented out below so it can be re-enabled if needed */}
+            {/*
             <div
               className="relative"
               onMouseEnter={() => setBlogsOpen(true)}
@@ -1237,6 +1238,13 @@ function Header({ isDesktop }) {
                 </motion.div>
               )}
             </div>
+            */}
+            <a
+              href="#blogs"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
+            >
+              BLOGS
+            </a>
 
             <a
               href="#contact"
@@ -1249,14 +1257,22 @@ function Header({ isDesktop }) {
           {/* Actions */}
           <div className="flex items-center gap-6">
             {isDesktop ? (
-              <motion.button
-                className="bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-semibold text-base"
-                style={{ padding: "15px 20px" }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Book Consultation
-              </motion.button>
+              <>
+                <p className="flex gap-3">
+                  <Phone />
+                  <span className="ml-1 text-gray-700 font-medium text-base">
+                    0432661176
+                  </span>
+                </p>
+                <motion.button
+                  className="bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-semibold text-base"
+                  style={{ padding: "15px 20px" }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Book Consultation
+                </motion.button>
+              </>
             ) : (
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -1387,7 +1403,8 @@ function Header({ isDesktop }) {
                 FAQs
               </a>
 
-              {/* Mobile Blogs Dropdown */}
+              {/* Mobile Blogs dropdown removed — commented out below so it can be re-enabled if needed */}
+              {/*
               <div>
                 <button
                   className="flex items-center justify-between w-full text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
@@ -1424,8 +1441,7 @@ function Header({ isDesktop }) {
                       }}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Bathroom renovation in Essendon: 8 tricks to make it
-                      larger
+                      Bathroom renovation in Essendon: 8 tricks to make it larger
                     </a>
                     <a
                       href="#blog-2"
@@ -1538,6 +1554,14 @@ function Header({ isDesktop }) {
                   </motion.div>
                 )}
               </div>
+              */}
+              <a
+                href="#blogs"
+                className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                BLOGS
+              </a>
 
               <a
                 href="#contact"
@@ -1546,6 +1570,17 @@ function Header({ isDesktop }) {
               >
                 CONTACT US
               </a>
+
+              <a
+                href="tel:+61432661176"
+                className="flex items-center justify-center gap-3 bg-white border border-gray-200 text-gray-800 px-4 py-2 rounded-lg font-semibold w-full mt-2 hover:bg-gray-50"
+                style={{ padding: "8px 16px" }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Phone className="w-5 h-5" />
+                <span>0432 661 176</span>
+              </a>
+
               <button
                 className="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-base w-full mt-2"
                 style={{ padding: "15px 20px" }}
