@@ -6,7 +6,6 @@ const OurServicesSection = () => {
   const stickyRef = useRef(null);
   const firstCardRef = useRef(null);
 
-  
   const services = [
     {
       id: 1,
@@ -145,9 +144,12 @@ const OurServicesSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="relative bg-white  overflow-hidden flex flex-col h-full border border-gray-200/50 transition-all duration-300 hover:shadow-xl">
+                <div className="relative  overflow-hidden flex flex-col h-full our-services-margin-top">
                   {/* Video Container */}
-                  <div className="relative overflow-hidden bg-gray-900 h-75 sm:h-87.5 md:h-95 lg:h-105 xl:h-112.5">
+                  <div
+                    className="relative bg-gray-900 h-75 sm:h-87.5 md:h-95 lg:h-105 xl:h-112.5 rounded-3xl overflow-hidden"
+                    style={{ marginTop: "40px" }}
+                  >
                     <video
                       autoPlay
                       muted
@@ -156,15 +158,14 @@ const OurServicesSection = () => {
                       className="w-full h-full object-cover transition-transform duration-500 "
                     >
                       <source src={service.video} type="video/mp4" />
-                      Your browser does not support the video tag.
                     </video>
-                    {/* Gradient overlay */}
+
                     <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                   </div>
 
                   {/* Content */}
                   <div
-                    className="relative z-10 bg-white flex flex-col h-50 sm:h-50 md:h-55 lg:h-57.5 xl:h-62.5"
+                    className="relative z-10flex flex-col h-50 sm:h-50 md:h-55 lg:h-57.5 xl:h-62.5"
                     style={{ padding: "28px 24px" }}
                   >
                     <h3
@@ -186,27 +187,27 @@ const OurServicesSection = () => {
 
       {/* Outro Section */}
       {/* <section
-        className="flex justify-center items-center"
-        style={{ height: "100vh" }}
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center"
+          className="flex justify-center items-center"
+          style={{ height: "100vh" }}
         >
-          <p className="text-5xl md:text-7xl font-bold text-black/80">
-            Ready to Transform Your Space?
-          </p>
-          <button
-            className="bg-green-600 text-white font-bold text-lg rounded-full hover:bg-green-700 transition-colors duration-300"
-            style={{ marginTop: "32px", padding: "16px 48px" }}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="text-center"
           >
-            Book Consultation
-          </button>
-        </motion.div>
-      </section> */}
+            <p className="text-5xl md:text-7xl font-bold text-black/80">
+              Ready to Transform Your Space?
+            </p>
+            <button
+              className="bg-green-600 text-white font-bold text-lg rounded-full hover:bg-green-700 transition-colors duration-300"
+              style={{ marginTop: "32px", padding: "16px 48px" }}
+            >
+              Book Consultation
+            </button>
+          </motion.div>
+        </section> */}
     </div>
   );
 };

@@ -1002,7 +1002,7 @@ function Header({ isDesktop }) {
   const [mobileBlogsOpen, setMobileBlogsOpen] = useState(false);
 
   return (
-    <header className="fixed top-10 left-1/2 -translate-x-1/2 z-500 w-[90%]">
+    <header className="fixed top-10 left-1/2 -translate-x-1/2 z-500 w-[95%]">
       <div
         className="bg-white/95 backdrop-blur-lg border border-gray-200 shadow-lg rounded-2xl"
         style={{ padding: "0px 20px" }}
@@ -1012,7 +1012,7 @@ function Header({ isDesktop }) {
             <img src="/logo.png" alt="B Spoke Logo" className="w-32 h-auto" />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2 z-20">
+          <nav className="hidden xl:flex items-center gap-6 absolute left-1/2 -translate-x-1/2 z-20">
             <a
               href="#home"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
@@ -1255,12 +1255,12 @@ function Header({ isDesktop }) {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
             {isDesktop ? (
               <>
-                <p className="flex gap-3">
-                  <Phone />
-                  <span className="ml-1 text-gray-700 font-medium text-base">
+                <p className="flex items-center gap-2">
+                  <Phone className="w-5 h-5" />
+                  <span className="text-gray-700 font-medium text-base whitespace-nowrap">
                     0432661176
                   </span>
                 </p>
@@ -1276,7 +1276,7 @@ function Header({ isDesktop }) {
             ) : (
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden w-10 h-10 flex items-center justify-center"
+                className="xl:hidden w-10 h-10 flex items-center justify-center"
               >
                 {mobileMenuOpen ? (
                   <X className="w-6 h-6 text-gray-900" />

@@ -173,3 +173,140 @@ body {
     padding: 10px 24px 0;
   }
 }
+
+/* FeatureMediaSection responsive utilities
+   Usage examples:
+   - Add `fm-container-pad` (base) and optionally `fm-container-pad-sm` / `-md` / `-lg` to change padding per breakpoint.
+   - Use `fm-main-height` and the breakpoint variants to control the main video height.
+   - Use `fm-side-square` to force a 1:1 aspect on side media, and `fm-side-size-*` to control their size.
+   These classes are intentionally small and composable so they can be applied alongside Tailwind utilities.
+*/
+.fm-container {
+  padding: 32px 0;
+}
+
+.fm-container-pad {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 16px;
+}
+.fm-container-pad-sm {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.fm-container-pad-md {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.fm-container-pad-lg {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.fm-main-height {
+  height: 360px;
+}
+.fm-main-height-sm {
+  height: 420px;
+}
+.fm-main-height-md {
+  height: 480px;
+}
+.fm-main-height-lg {
+  height: 560px;
+}
+.fm-main-height-xl {
+  height: 640px;
+}
+
+.fm-main-maxw {
+  max-width: 100%;
+}
+.fm-main-maxw-sm {
+  max-width: 420px;
+}
+.fm-main-maxw-md {
+  max-width: 640px;
+}
+.fm-main-maxw-lg {
+  max-width: 900px;
+}
+
+.fm-side-square {
+  aspect-ratio: 1 / 1;
+}
+.fm-side-size-sm {
+  height: 140px;
+}
+.fm-side-size-md {
+  height: 200px;
+}
+.fm-side-size-lg {
+  height: 280px;
+}
+
+/* Video border radius fix - add this at the end of the file */
+.video-rounded {
+  border-radius: 24px !important;
+  -webkit-border-radius: 24px !important;
+  -moz-border-radius: 24px !important;
+  overflow: hidden !important;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
+
+.video-container-rounded {
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .fm-container-pad {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .fm-main-height {
+    height: 420px;
+  }
+  .fm-side-size-sm {
+    height: 180px;
+  }
+  .fm-container {
+    padding: 64px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .fm-container-pad {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .fm-main-height {
+    height: 480px;
+  }
+  .fm-side-size-sm {
+    height: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fm-container-pad {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .fm-main-height {
+    height: 560px;
+  }
+  .fm-side-size-sm {
+    height: 280px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .fm-main-height {
+    height: 640px;
+  }
+}

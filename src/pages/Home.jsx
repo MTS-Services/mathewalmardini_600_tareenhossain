@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import VideoBackground from "../components/VideoBackground";
 import HeroText from "../components/HeroText";
 import InfoSection from "../components/InfoSection";
+import FeatureMediaSection from "../components/FeatureMediaSection";
 import OurServicesSection from "../components/OurServicesSection";
 
 function Home() {
@@ -49,6 +50,7 @@ function Home() {
         </>
       )}
       <InfoSection />
+      <FeatureMediaSection />
       <OurServicesSection />
     </>
   );
