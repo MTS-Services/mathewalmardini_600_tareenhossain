@@ -99,7 +99,7 @@ const InfoSection = () => {
 
   return (
     <section
-      className="relative w-full"
+      className="relative w-full "
     //   bg color : bg-[#e8f5ec]
       style={{ padding: "56px 16px" }}
     >

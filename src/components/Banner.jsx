@@ -32,6 +32,9 @@ const Banner = ({ isDesktop = true }) => {
   );
   const imagesScale = useTransform(scrollY, [300, 500], [0.6, 1]);
 
+  // Gradient fades OUT when images fade IN (inverse)
+  const gradientOverlayOpacity = useTransform(scrollY, [300, 500], [1, 0]);
+
   const portfolioImages = [
     // Top Row
     {
@@ -244,8 +247,11 @@ const Banner = ({ isDesktop = true }) => {
   return (
     <section className="relative min-h-[250vh]">
       <div className="sticky top-0 h-screen overflow-hidden">
-        {/* Intro gradient: solid layer to show before video */}
-        <motion.div className="absolute inset-0 bg-linear-to-r from-[#2D6B7A]/80 via-[#2D6B7A]/40 to-[#2D6B7A]/20 z-30 pointer-events-none" />
+        {/* Gradient overlay - visible initially, fades out when banner shows */}
+        <motion.div
+          className="absolute inset-0 bg-linear-to-r from-[#2D6B7A]/80 via-[#2D6B7A]/40 to-[#2D6B7A]/20 z-30 pointer-events-none"
+          style={{ opacity: gradientOverlayOpacity }}
+        />
 
         {/* Initial Gradient Background - Always visible */}
         <motion.div
