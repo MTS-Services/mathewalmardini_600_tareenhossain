@@ -28,21 +28,31 @@ const FeatureMediaSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="max-w-400 mx-auto px-4 md:px-6 lg:px-8 text-left mb-8 md:mb-12 lg:mb-16 z-10 fm-container-pad"
-        // style={{ marginBottom: "32px" }}
+        className="section-heading-wrapper z-10"
       >
-        <h2 className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary our-services-title-margin">
-          Experience Our Work
-        </h2>{" "}
-        {/* <p className="text-base md:text-lg lg:text-xl text-gray-800/80 max-w-2xl">
-          See how we bring visions to life with precision and craftsmanship
-        </p> */}
+        <div className="max-w-400 mx-auto sm:mx-0 px-4 md:px-6 lg:px-8 text-center sm:text-left our-services-title-margin">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary">
+              Experience Our Work
+            </h2>
+            <button
+              className="hidden lg:inline-flex items-center justify-center whitespace-nowrap rounded-full bg-primary px-6 py-2 text-sm font-semibold uppercase tracking-wide text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
+              style={{ padding: "16px 24px" }}
+              type="button"
+            >
+              Book Consultation
+            </button>
+          </div>
+          {/* <p className="text-base md:text-lg lg:text-xl text-gray-800/80 max-w-2xl">
+            See how we bring visions to life with precision and craftsmanship
+          </p> */}
+        </div>
       </motion.div>
 
       {/* Media Layout Container */}
       <div className="relative w-full max-w-400 mx-auto px-4 md:px-6 lg:px-8">
         {/* Desktop Layout: Centered with positioned side elements */}
-        <div className="hidden lg:flex lg:items-center lg:justify-center lg:relative">
+        <div className="desktop-feature-layout lg:flex lg:items-center lg:justify-center lg:relative">
           {/* Left Video - Positioned on left side */}
           <motion.div
             style={{ x: leftVideoX, opacity: sideOpacity }}
@@ -172,7 +182,10 @@ const FeatureMediaSection = () => {
         </div>
 
         {/* Mobile Layout: Main image on top, left and right images below */}
-        <div className="flex lg:hidden flex-col" style={{ padding: "0 16px" }}>
+        <div
+          className="mobile-feature-layout flex flex-col"
+          style={{ padding: "0 16px" }}
+        >
           {/* Main Video - Featured first on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

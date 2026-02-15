@@ -154,6 +154,23 @@ body {
   }
 }
 
+/* Shared wrapper keeps section headings aligned with the header's margin on larger screens */
+.section-heading-wrapper {
+  width: min(1500px, 95%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .section-heading-wrapper {
+    text-align: left;
+  }
+}
+
+.process-heading-wrapper {
+  text-align: center;
+}
+
 @media (min-width: 1024px) {
   .info-section-padding {
     padding-left: 16px;
@@ -311,7 +328,26 @@ body {
   }
 }
 
+.desktop-feature-layout {
+  display: none;
+}
+
+.mobile-feature-layout {
+  display: flex;
+}
+
+@media (min-width: 1440px) {
+  .desktop-feature-layout {
+    display: flex !important;
+  }
+
+  .mobile-feature-layout {
+    display: none !important;
+  }
+}
+
 /* Process Section styles */
+
 .process-title-wrap {
   padding: 2rem 1rem 0 1rem;
   display: flex;
@@ -320,8 +356,14 @@ body {
 .process-title {
   color: #ffffff;
   font-weight: 800;
-  text-align: center;
   font-size: 28px;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .process-title {
+    font-size: 32px;
+  }
 }
 
 .process-left {
@@ -358,7 +400,6 @@ body {
   border-radius: 0.5rem;
   overflow: hidden;
 }
-
 .mobile-process {
   padding: 1.25rem 1.25rem 1.25rem 2.75rem;
   background: #000;
@@ -392,9 +433,6 @@ body {
 }
 
 @media (min-width: 640px) {
-  .process-title {
-    font-size: 32px;
-  }
   .process-left {
     padding-left: 8rem;
   }
@@ -415,9 +453,17 @@ body {
 @media (min-width: 1024px) {
   .process-title {
     font-size: 44px;
-    padding: 2rem 1rem 0 1rem;
-    display: flex;
-    justify-content: center;
+    margin-top: 48px;
+  }
+  .process-left {
+    padding-left: 10rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .process-title {
+    font-size: 44px;
+    margin-top: 64px;
   }
   .process-left {
     padding-left: 10rem;

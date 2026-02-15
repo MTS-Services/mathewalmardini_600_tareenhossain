@@ -66,8 +66,10 @@ const ProcessSection = () => {
       className="relative bg-black text-2xl md:text-[30px] lg:text-4xl"
     >
       <div>
-        <div className="process-title-wrap">
-          <h2 className="process-title">Our Process</h2>
+        <div className="section-heading-wrapper process-heading-wrapper">
+          <div className="process-title-wrap">
+            <h2 className="process-title">Our Process</h2>
+          </div>
         </div>
       </div>
       {/* Desktop / large screens: sticky storytelling layout */}
