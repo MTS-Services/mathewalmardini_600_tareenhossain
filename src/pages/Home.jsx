@@ -8,6 +8,8 @@ import InfoSection from "../components/InfoSection";
 import FeatureMediaSection from "../components/FeatureMediaSection";
 import OurServicesSection from "../components/OurServicesSection";
 import ProcessSection from "../components/ProcessSection";
+import PhotoGallery from "../components/PhotoGallery";
+import TestimonialSection from "../components/TestimonialSection";
 
 function Home() {
   const { scrollY } = useScroll();
@@ -54,6 +56,8 @@ function Home() {
       <FeatureMediaSection />
       <OurServicesSection />
       <ProcessSection />
+      <PhotoGallery />
+      <TestimonialSection />
     </>
   );
 }

@@ -403,7 +403,6 @@ body {
 .mobile-process {
   padding: 1.25rem 1.25rem 1.25rem 2.75rem;
   background: #000;
-  min-height: 100vh;
 }
 .mobile-process-list {
   display: flex;
@@ -453,7 +452,6 @@ body {
 @media (min-width: 1024px) {
   .process-title {
     font-size: 44px;
-    margin-top: 48px;
   }
   .process-left {
     padding-left: 10rem;
@@ -463,7 +461,6 @@ body {
 @media (min-width: 1024px) {
   .process-title {
     font-size: 44px;
-    margin-top: 64px;
   }
   .process-left {
     padding-left: 10rem;
