@@ -10,6 +10,7 @@ import OurServicesSection from "../components/OurServicesSection";
 import ProcessSection from "../components/ProcessSection";
 import PhotoGallery from "../components/PhotoGallery";
 import TestimonialSection from "../components/TestimonialSection";
+import Footer from "../components/Footer";
 
 function Home() {
   const { scrollY } = useScroll();
@@ -58,6 +59,7 @@ function Home() {
       <ProcessSection />
       <PhotoGallery />
       <TestimonialSection />
+      <Footer />
     </>
   );
 }

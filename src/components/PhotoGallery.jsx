@@ -39,12 +39,12 @@ const PhotoGallery = () => {
 
   return (
     <div
-      className="bg-black"
+      className=""
       style={{ paddingTop: "2rem", paddingBottom: "2rem" }}
     >
       {/* Section Title */}
       <div style={{ marginBottom: "3rem", textAlign: "center" }}>
-        <h2 className="text-white font-bold text-2xl md:text-3xl lg:text-4xl">
+        <h2 className="text-black font-bold text-2xl md:text-3xl lg:text-4xl">
           Gallery of Our Craftsmanship
         </h2>
       </div>

@@ -107,9 +107,8 @@ const TestimonialSection = () => {
       <div
         className="relative"
         style={{
-          maxWidth: "1400px",
+          width: "min(95%, 100%)",
           margin: "0 auto",
-          padding: "0 1rem",
         }}
       >
         {/* Left Arrow - Desktop Only */}

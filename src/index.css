@@ -349,7 +349,7 @@ body {
 /* Process Section styles */
 
 .process-title-wrap {
-  padding: 2rem 1rem 0 1rem;
+  padding: 2rem 1rem 2rem 1rem;
   display: flex;
   justify-content: center;
 }
@@ -401,7 +401,7 @@ body {
   overflow: hidden;
 }
 .mobile-process {
-  padding: 1.25rem 1.25rem 1.25rem 2.75rem;
+  padding: 0 1.25rem 1.25rem 2.75rem;
   background: #000;
 }
 .mobile-process-list {
@@ -452,13 +452,14 @@ body {
 @media (min-width: 1024px) {
   .process-title {
     font-size: 44px;
+    margin-top: 36px;
   }
   .process-left {
     padding-left: 10rem;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
   .process-title {
     font-size: 44px;
   }
