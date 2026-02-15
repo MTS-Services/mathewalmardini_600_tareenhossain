@@ -7,6 +7,7 @@ import HeroText from "../components/HeroText";
 import InfoSection from "../components/InfoSection";
 import FeatureMediaSection from "../components/FeatureMediaSection";
 import OurServicesSection from "../components/OurServicesSection";
+import ProcessSection from "../components/ProcessSection";
 
 function Home() {
   const { scrollY } = useScroll();
@@ -52,6 +53,7 @@ function Home() {
       <InfoSection />
       <FeatureMediaSection />
       <OurServicesSection />
+      <ProcessSection />
     </>
   );
 }
