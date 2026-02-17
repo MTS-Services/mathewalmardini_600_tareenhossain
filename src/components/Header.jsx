@@ -1002,7 +1002,7 @@ function Header({ isDesktop }) {
   const [mobileBlogsOpen, setMobileBlogsOpen] = useState(false);
 
   return (
-    <header className="fixed top-10 left-1/2 -translate-x-1/2 z-500 w-[95%]">
+    <header className="fixed top-8 left-1/2 -translate-x-1/2 z-500 w-[95%]">
       <div
         className="bg-white/95 backdrop-blur-lg border border-gray-200 shadow-lg rounded-2xl"
         style={{ padding: "0px 20px" }}

@@ -31,9 +31,9 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
             Perfect Solution For Your Renovation
           </h1>
           <p className="text-lg text-white/90 mb-6">
-            Your vision deserves tools with precision, freedom,
-            <br />
-            and the power to deliver.
+            Bespoke is an end to end service provider that focuses on delivering
+            mid to high end renovation projects and our vision is to be the top
+            home renovation expert in Melbourne.
           </p>
           <div
             className="flex flex-col gap-4 items-center w-full max-w-sm mx-auto"
@@ -69,9 +69,9 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
             Perfect Solution For Your Renovation
           </h1>
           <p className="text-lg text-white/90 mb-6">
-            Your vision deserves tools with precision, freedom,
-            <br />
-            and the power to deliver.
+            Bespoke is an end to end service provider that focuses on delivering
+            mid to high end renovation projects and our vision is to be the top
+            home renovation expert in Melbourne.
           </p>
           <div
             className="flex gap-4 justify-center"
@@ -108,13 +108,9 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
           Perfect Solution For Your Renovation
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8">
-          Bespoke is an end to end service provider that
-          {/* <br /> */}
-          focuses on delivering mid to high end renovation
-          {/* <br /> */}
-          projects and our vision is to be the top home
-          {/* <br /> */}
-          renovation expert in Melbourne.
+          Bespoke is an end to end service provider that focuses on delivering
+          mid to high end renovation projects and our vision is to be the top
+          home renovation expert in Melbourne.
         </p>
         <div
           className="flex gap-4 justify-center"

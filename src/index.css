@@ -1,6 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
+/* 
+  Responsive Breakpoints:
+  - sm: 640px
+  - md: 768px
+  - lg: 1024px
+  - xl: 1280px
+  - 2xl: 1536px
+  - 3xl: 1920px (Ultra-wide displays)
+  - 4xl: 2560px (QHD+ displays)
+*/
+
 /* Project color variables */
 :root {
   --color-primary: #2d6b7a;
@@ -115,6 +126,20 @@ body {
   }
 }
 
+@media (min-width: 1920px) {
+  .our-services-sticky {
+    top: 200px;
+    height: calc(100vh - 280px);
+  }
+}
+
+@media (min-width: 2560px) {
+  .our-services-sticky {
+    top: 220px;
+    height: calc(100vh - 300px);
+  }
+}
+
 /* Info Section responsive spacing */
 .info-section-padding {
   padding-left: 16px;
@@ -167,6 +192,18 @@ body {
   }
 }
 
+@media (min-width: 1920px) {
+  .section-heading-wrapper {
+    width: min(1800px, 95%);
+  }
+}
+
+@media (min-width: 2560px) {
+  .section-heading-wrapper {
+    width: min(2200px, 95%);
+  }
+}
+
 .process-heading-wrapper {
   text-align: center;
 }
@@ -188,6 +225,34 @@ body {
 
   .info-section-icon-header-padding {
     padding: 10px 24px 0;
+  }
+}
+
+@media (min-width: 1920px) {
+  .info-section-padding {
+    padding-bottom: 80px;
+  }
+
+  .info-section-container-gap {
+    gap: 64px;
+  }
+
+  .info-section-grid-gap {
+    gap: 32px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .info-section-padding {
+    padding-bottom: 100px;
+  }
+
+  .info-section-container-gap {
+    gap: 80px;
+  }
+
+  .info-section-grid-gap {
+    gap: 40px;
   }
 }
 
@@ -328,6 +393,32 @@ body {
   }
 }
 
+@media (min-width: 1920px) {
+  .fm-main-height {
+    height: 720px;
+  }
+  .fm-side-size-sm {
+    height: 320px;
+  }
+  .fm-container-pad {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .fm-main-height {
+    height: 800px;
+  }
+  .fm-side-size-sm {
+    height: 360px;
+  }
+  .fm-container-pad {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
 .desktop-feature-layout {
   display: none;
 }
@@ -465,5 +556,23 @@ body {
   }
   .process-left {
     padding-left: 10rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .process-title {
+    font-size: 52px;
+  }
+  .process-left {
+    padding-left: 12rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .process-title {
+    font-size: 60px;
+  }
+  .process-left {
+    padding-left: 14rem;
   }
 }
