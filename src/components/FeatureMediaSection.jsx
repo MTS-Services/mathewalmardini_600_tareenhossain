@@ -3,8 +3,16 @@ import { motion, useScroll, useTransform } from "motion/react";
 
 const FeatureMediaSection = () => {
   const sectionRef = useRef(null);
+  const mobileImagesRef = useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Mobile/Tablet: Track scroll progress for side images
+  const { scrollYProgress: mobileScrollProgress } = useScroll({
+    target: mobileImagesRef,
     offset: ["start end", "end start"],
   });
 
@@ -17,10 +25,18 @@ const FeatureMediaSection = () => {
   // Opacity for side elements (fade in as they slide)
   const sideOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
+  // Mobile: Y position for left and right images (move up on scroll)
+  const mobileLeftY = useTransform(mobileScrollProgress, [0, 0.8], [100, -180]);
+  const mobileRightY = useTransform(
+    mobileScrollProgress,
+    [0, 0.8],
+    [100, -180],
+  );
+
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-linear-to-r from-[#2D6B7A]/20 via-[#2D6B7A]/40 to-[#2D6B7A]/40 flex flex-col justify-center items-center overflow-hidden fm-container"
+      className="relative w-full bg-white flex flex-col justify-center items-center overflow-hidden fm-container"
     >
       {/* Section Header - aligned to the same container as the media */}
       <motion.div
@@ -32,8 +48,8 @@ const FeatureMediaSection = () => {
       >
         <div className="max-w-400 mx-auto sm:mx-0 px-4 md:px-6 lg:px-8 text-center sm:text-left our-services-title-margin">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary">
-              Experience Our Work
+            <h2 className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary our-work-title-margin">
+              Our Work
             </h2>
             <button
               className="hidden lg:inline-flex items-center justify-center whitespace-nowrap rounded-full bg-primary px-6 py-2 text-sm font-semibold uppercase tracking-wide text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
@@ -59,19 +75,12 @@ const FeatureMediaSection = () => {
             className="absolute left-0 z-30"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
+              <img
+                src="/public/Our_work/Photo4.JPG"
+                alt="Completed project showcase"
                 className="w-full h-full object-cover"
-              >
-                <source
-                  src="/Home_videos/3d-house-sketch-2026-01-28-03-56-15-utc (2).mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+                loading="lazy"
+              />
             </div>
           </motion.div>
 
@@ -92,7 +101,7 @@ const FeatureMediaSection = () => {
                 className="w-full h-full object-cover"
               >
                 <source
-                  src="/Home_videos/Construction_Workers_02.mp4"
+                  src="/public/Our_work/Video _in_center.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
@@ -109,7 +118,7 @@ const FeatureMediaSection = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145">
               <img
-                src="/Home_videos/WhatsApp_Image_2023-04-02_at 4.59.34 PM (1).jpeg"
+                src="/public/Our_work/IMG_1517.JPG"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -133,10 +142,7 @@ const FeatureMediaSection = () => {
                 playsInline
                 className="w-full h-full object-cover"
               >
-                <source
-                  src="/Home_videos/3d-house-sketch-2026-01-28-03-56-15-utc (2).mp4"
-                  type="video/mp4"
-                />
+                <source src="/public/Our_work/Photo4.JPG" type="video/mp4" />
               </video>
             </div>
           </motion.div>
@@ -158,7 +164,7 @@ const FeatureMediaSection = () => {
                 className="w-full h-full object-cover"
               >
                 <source
-                  src="/Home_videos/Construction_Workers_02.mp4"
+                  src="/public/Our_work/Video _in_center.mp4"
                   type="video/mp4"
                 />
               </video>
@@ -172,7 +178,7 @@ const FeatureMediaSection = () => {
           >
             <div className="relative rounded-xl overflow-hidden shadow-xl md:w-70 md:h-85">
               <img
-                src="/Home_videos/WhatsApp_Image_2023-04-02_at 4.59.34 PM (1).jpeg"
+                src="/public/Our_work/IMG_1517.JPG"
                 alt="Completed project"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -206,7 +212,7 @@ const FeatureMediaSection = () => {
                 className="w-full h-full object-cover"
               >
                 <source
-                  src="/Home_videos/Construction_Workers_02.mp4"
+                  src="/public/Our_work/Video _in_center.mp4"
                   type="video/mp4"
                 />
               </video>
@@ -214,31 +220,29 @@ const FeatureMediaSection = () => {
           </motion.div>
 
           {/* Side media in 2-column grid */}
-          <div className="grid grid-cols-2 gap-3" style={{ marginTop: "0" }}>
+          <div
+            ref={mobileImagesRef}
+            className="grid grid-cols-2 gap-3"
+            style={{ marginTop: "0" }}
+          >
             {/* Left Video */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              style={{ padding: "0" }}
+              style={{ padding: "0", y: mobileLeftY }}
             >
               <div
                 className="relative aspect-square rounded-lg overflow-hidden shadow-lg"
                 style={{ width: "100%", height: "auto" }}
               >
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                <img
+                  src="/public/Our_work/Photo4.JPG"
+                  alt="Completed project"
                   className="w-full h-full object-cover"
-                >
-                  <source
-                    src="/Home_videos/3d-house-sketch-2026-01-28-03-56-15-utc (2).mp4"
-                    type="video/mp4"
-                  />
-                </video>
+                  loading="lazy"
+                />
               </div>
             </motion.div>
 
@@ -248,14 +252,14 @@ const FeatureMediaSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              style={{ padding: "0" }}
+              style={{ padding: "0", y: mobileRightY }}
             >
               <div
                 className="relative aspect-square rounded-lg overflow-hidden shadow-lg"
                 style={{ width: "100%", height: "auto" }}
               >
                 <img
-                  src="/Home_videos/WhatsApp_Image_2023-04-02_at 4.59.34 PM (1).jpeg"
+                  src="/public/Our_work/IMG_1517.JPG"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"

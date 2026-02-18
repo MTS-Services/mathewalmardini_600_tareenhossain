@@ -98,7 +98,7 @@ const InfoSection = () => {
 
   return (
     <section
-      className="relative w-full bg-linear-to-r from-[#2D6B7A]/80 via-[#2D6B7A]/40 to-[#2D6B7A]/20 info-section-padding"
+      className="relative w-full bg-white info-section-padding"
       //   bg color : bg-[#e8f5ec]
     >
       <div

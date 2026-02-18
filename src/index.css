@@ -92,7 +92,10 @@ body {
 #root {
   min-height: 100vh;
 }
-
+/* our work  */
+.our-work-title-margin {
+  margin-bottom: 16px;
+}
 /* Our Services sticky heights per breakpoint */
 .our-services-title-margin {
   margin-bottom: 0px;
@@ -103,6 +106,9 @@ body {
 }
 
 @media (min-width: 640px) {
+  .our-work-title-margin {
+  margin-bottom: 0px;
+}
   .our-services-sticky {
     top: 150px;
     height: calc(100vh - 220px);

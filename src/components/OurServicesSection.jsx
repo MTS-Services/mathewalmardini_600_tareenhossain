@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
+import { Link } from "react-router";
 
 const OurServicesSection = () => {
   const containerRef = useRef(null);
@@ -12,30 +13,39 @@ const OurServicesSection = () => {
       title: "Bathroom Renovation",
       description:
         "Transform your bathroom with creative design and functional planning. Our team delivers end-to-end construction services for a beautiful, practical space.",
-      video: "/banner_video/isometric-bathroom-2026-01-28-03-56-56-ut.mp4",
+      video:
+        "/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4",
+      type: "video",
+      path: "/services/bathroom-renovation",
     },
     {
       id: 2,
-      title: "Kitchen Renovation",
-      description:
-        "Complete kitchen renovation from design to construction with warranty on labor and materials. Highest quality, transparent process, and excellent results within your budget.",
-      video: "/Home_videos/isometric-kitchen-4k-2026-01-28-02-33-39-utc.mp4",
-    },
-    {
-      id: 3,
       title: "Laundry Renovation",
       description:
         "Expert laundry room renovation from planning and design to plumbing installation, ensuring everything is done correctly.",
       video:
-        "/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov",
+        "/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.jpg",
+      type: "image",
+      path: "/services/laundry-renovation",
+    },
+    {
+      id: 3,
+      title: "Kitchen Renovation",
+      description:
+        "Complete kitchen renovation from design to construction with warranty on labor and materials. Highest quality, transparent process, and excellent results within your budget.",
+      video:
+        "/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4",
+      type: "video",
+      path: "/services/kitchen-renovation",
     },
     {
       id: 4,
-      title: "Design Service",
+      title: "Shop Fitouts",
       description:
-        "Custom design plans tailored to your priorities and budget. We focus on what matters most to you for maximum enjoyment of your space.",
-      video:
-        "/Home_videos/3d-minimalist-modern-house-building-animation-2026-01-28-05-07-41-utc.mp4",
+        "We build retails spaces that are not only visually stunning but also functional and efficient.",
+      video: "/Our_services/envato-labs-image-edit.png",
+      type: "image",
+      path: "/services/shop-fitouts",
     },
   ];
 
@@ -99,7 +109,7 @@ const OurServicesSection = () => {
   const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
 
   return (
-    <div className="relative w-full bg-linear-to-br from-gray-50 via-white to-gray-100">
+    <div className="relative w-full bg-white">
       {/* Intro Section */}
       <section className="flex flex-col justify-end items-center text-center">
         <motion.div
@@ -137,48 +147,59 @@ const OurServicesSection = () => {
             {services.map((service) => (
               <motion.div
                 key={service.id}
-                className="shrink-0 group w-[85vw] sm:w-[75vw] md:w-[60vw] lg:w-[45vw] xl:w-170 h-125 sm:h-137.5 md:h-150 lg:h-162.5 xl:h-175"
+                className="shrink-0 group w-[90vw] sm:w-[80vw] md:w-[70vw] lg:w-[55vw] xl:w-200 2xl:w-240 h-125 sm:h-137.5 md:h-150 lg:h-162.5 xl:h-175"
                 ref={service.id === 1 ? firstCardRef : null}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="relative  overflow-hidden flex flex-col h-full our-services-margin-top">
-                  {/* Video Container */}
-                  <div
-                    className="relative bg-gray-900 h-75 sm:h-87.5 md:h-95 lg:h-105 xl:h-112.5 rounded-3xl overflow-hidden"
-                    style={{ marginTop: "40px" }}
-                  >
-                    <video
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      className="w-full h-full object-cover transition-transform duration-500 "
+                <Link to={service.path} className="block h-full">
+                  <div className="relative  overflow-hidden flex flex-col h-full our-services-margin-top">
+                    {/* Video/Image Container */}
+                    <div
+                      className="relative bg-gray-900 h-75 sm:h-87.5 md:h-95 lg:h-105 xl:h-140 2xl:h-220 rounded-3xl overflow-hidden"
+                      style={{ marginTop: "40px" }}
                     >
-                      <source src={service.video} type="video/mp4" />
-                    </video>
+                      {service.type === "video" ? (
+                        <video
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          className="w-full h-full object-cover transition-transform duration-500"
+                        >
+                          <source src={service.video} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <img
+                          src={service.video}
+                          alt={service.title}
+                          className="w-full h-full object-cover transition-transform duration-500"
+                          loading="lazy"
+                        />
+                      )}
 
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                  </div>
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    </div>
 
-                  {/* Content */}
-                  <div
-                    className="relative z-10flex flex-col h-50 sm:h-50 md:h-55 lg:h-57.5 xl:h-62.5"
-                    style={{ padding: "28px 24px" }}
-                  >
-                    <h3
-                      className="text-xl md:text-2xl font-bold text-secondary transition-colors duration-300 shrink-0"
-                      style={{ marginBottom: "12px" }}
+                    {/* Content */}
+                    <div
+                      className="relative z-10flex flex-col h-50 sm:h-50 md:h-55 lg:h-57.5 xl:h-62.5"
+                      style={{ padding: "28px 24px" }}
                     >
-                      {service.title}
-                    </h3>
-                    <p className="text-black/70 text-sm md:text-base leading-relaxed line-clamp-4 overflow-hidden">
-                      {service.description}
-                    </p>
+                      <h3
+                        className="text-xl md:text-2xl font-bold text-secondary transition-colors duration-300 shrink-0"
+                        style={{ marginBottom: "12px" }}
+                      >
+                        {service.title}
+                      </h3>
+                      <p className="text-black/70 text-sm md:text-base leading-relaxed line-clamp-4 overflow-hidden">
+                        {service.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>

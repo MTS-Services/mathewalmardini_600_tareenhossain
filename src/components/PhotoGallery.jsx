@@ -45,7 +45,7 @@ const PhotoGallery = () => {
       {/* Section Title */}
       <div style={{ marginBottom: "3rem", textAlign: "center" }}>
         <h2 className="text-black font-bold text-2xl md:text-3xl lg:text-4xl">
-          Gallery of Our Craftsmanship
+          Our Gallery
         </h2>
       </div>
 
