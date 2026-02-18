@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 const images = [
   {
     id: 1,
-    src: "/PhotoGallery/Before and after 1.jpg",
-    title: "Before & After",
+    src: "/PhotoGallery/20240604_153801_(1).jpg",
   },
-  { id: 2, src: "/PhotoGallery/IMG_1490.JPG", title: "Modern Design" },
-  { id: 3, src: "/PhotoGallery/IMG_1528.JPG", title: "Premium Finish" },
-  { id: 4, src: "/PhotoGallery/IMG_4787.PNG", title: "Luxury Space" },
-  { id: 5, src: "/PhotoGallery/IMG_4788.PNG", title: "Crafted Excellence" },
+  { id: 2, src: "/PhotoGallery/20250404_123149.jpg" },
+  { id: 3, src: "/PhotoGallery/Bath.jpg" },
+  { id: 4, src: "/PhotoGallery/Craigieburn 5.jpg" },
+  { id: 5, src: "/PhotoGallery/IMG_9819.JPG" },
 ];
 
 const PhotoGallery = () => {
@@ -18,30 +17,59 @@ const PhotoGallery = () => {
   const [imageCount, setImageCount] = useState(5);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Mobile carousel state
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1); // 1 = from right, -1 = from left
+
   useEffect(() => {
     const updateLayout = () => {
       const width = window.innerWidth;
       setIsMobile(width < 1024);
-
       if (width >= 1024 && width <= 1439) {
         setImageCount(4);
       } else if (width >= 1024) {
         setImageCount(5);
       }
     };
-
     updateLayout();
     window.addEventListener("resize", updateLayout);
     return () => window.removeEventListener("resize", updateLayout);
   }, []);
 
+  // Auto-advance carousel
+  useEffect(() => {
+    if (!isMobile) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => {
+        const next = (prev + 1) % images.length;
+        // Even index (0,2,4...) came from right, odd (1,3...) came from left
+        // Next slide: if next is odd → from right, if next is even → from left
+        setDirection(next % 2 === 1 ? 1 : -1);
+        return next;
+      });
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isMobile]);
+
   const displayedImages = images.slice(0, imageCount);
 
+  const variants = {
+    enter: (dir) => ({
+      x: dir > 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (dir) => ({
+      x: dir > 0 ? "-100%" : "100%",
+      opacity: 0,
+    }),
+  };
+
   return (
-    <div
-      className=""
-      style={{ paddingTop: "2rem", paddingBottom: "2rem" }}
-    >
+    <div style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
       {/* Section Title */}
       <div style={{ marginBottom: "3rem", textAlign: "center" }}>
         <h2 className="text-black font-bold text-2xl md:text-3xl lg:text-4xl">
@@ -49,190 +77,92 @@ const PhotoGallery = () => {
         </h2>
       </div>
 
-      {/* Mobile/Tablet Grid Layout */}
+      {/* Mobile Carousel - Single Image */}
       {isMobile && (
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gridTemplateRows: "auto auto",
-            gap: "0.75rem",
-            padding: "0 1rem",
-            maxWidth: "600px",
+            position: "relative",
+            width: "90%",
+            maxWidth: "500px",
             margin: "0 auto",
+            borderRadius: "16px",
+            overflow: "hidden",
+            aspectRatio: "1/1",
           }}
         >
-          {/* 1st image - Left column, top */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            style={{
-              gridColumn: "1",
-              gridRow: "1",
-              borderRadius: "12px",
-              overflow: "hidden",
-              position: "relative",
-              aspectRatio: "1/1",
-            }}
-          >
-            <img
-              src={images[0].src}
-              alt={images[0].title}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-            <div
+          <AnimatePresence custom={direction} mode="popLayout">
+            <motion.div
+              key={currentIndex}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
               style={{
                 position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                padding: "0.5rem",
-                background:
-                  "linear-gradient(to top, rgba(0,0,0,0.8), transparent)",
-                color: "white",
+                inset: 0,
+                borderRadius: "16px",
+                overflow: "hidden",
               }}
             >
-              <h3 style={{ fontSize: "12px", fontWeight: "bold" }}>
-                {images[0].title}
-              </h3>
-            </div>
-          </motion.div>
+              <img
+                src={images[currentIndex].src}
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+              {/* Text Overlay */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  padding: "1rem",
+                  background:
+                    "linear-gradient(to top, rgba(0,0,0,0.8), transparent)",
+                  color: "white",
+                }}
+              >
+                <h3 style={{ fontSize: "14px", fontWeight: "bold" }}>
+                  {images[currentIndex].title}
+                </h3>
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-          {/* 2nd image - Right column, top */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+          {/* Dot Indicators */}
+          <div
             style={{
-              gridColumn: "2",
-              gridRow: "1",
-              borderRadius: "12px",
-              overflow: "hidden",
-              position: "relative",
-              aspectRatio: "1/1",
+              position: "absolute",
+              bottom: "0.75rem",
+              right: "0.75rem",
+              display: "flex",
+              gap: "6px",
+              zIndex: 10,
             }}
           >
-            <img
-              src={images[1].src}
-              alt={images[1].title}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                padding: "0.5rem",
-                background:
-                  "linear-gradient(to top, rgba(0,0,0,0.8), transparent)",
-                color: "white",
-              }}
-            >
-              <h3 style={{ fontSize: "12px", fontWeight: "bold" }}>
-                {images[1].title}
-              </h3>
-            </div>
-          </motion.div>
-
-          {/* 3rd image - Left column, bottom */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            style={{
-              gridColumn: "1",
-              gridRow: "2",
-              borderRadius: "12px",
-              overflow: "hidden",
-              position: "relative",
-              aspectRatio: "1/1",
-            }}
-          >
-            <img
-              src={images[2].src}
-              alt={images[2].title}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                padding: "0.5rem",
-                background:
-                  "linear-gradient(to top, rgba(0,0,0,0.8), transparent)",
-                color: "white",
-              }}
-            >
-              <h3 style={{ fontSize: "12px", fontWeight: "bold" }}>
-                {images[2].title}
-              </h3>
-            </div>
-          </motion.div>
-
-          {/* 4th image - Right column, bottom */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            style={{
-              gridColumn: "2",
-              gridRow: "2",
-              borderRadius: "12px",
-              overflow: "hidden",
-              position: "relative",
-              aspectRatio: "1/1",
-            }}
-          >
-            <img
-              src={images[3].src}
-              alt={images[3].title}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                padding: "0.5rem",
-                background:
-                  "linear-gradient(to top, rgba(0,0,0,0.8), transparent)",
-                color: "white",
-              }}
-            >
-              <h3 style={{ fontSize: "12px", fontWeight: "bold" }}>
-                {images[3].title}
-              </h3>
-            </div>
-          </motion.div>
+            {images.map((_, i) => (
+              <div
+                key={i}
+                style={{
+                  width: i === currentIndex ? "18px" : "8px",
+                  height: "8px",
+                  borderRadius: "4px",
+                  background:
+                    i === currentIndex
+                      ? "white"
+                      : "rgba(255,255,255,0.5)",
+                  transition: "all 0.3s ease",
+                }}
+              />
+            ))}
+          </div>
         </div>
       )}
 
@@ -261,8 +191,6 @@ const PhotoGallery = () => {
                 alt={image.title}
                 className="absolute inset-0 h-full w-full object-cover"
               />
-
-              {/* Text Overlay (only visible when expanded) */}
               {expandedId === image.id && (
                 <motion.div
                   initial={{ opacity: 0 }}

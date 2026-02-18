@@ -76,7 +76,7 @@ const FeatureMediaSection = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145">
               <img
-                src="/public/Our_work/Photo4.JPG"
+                src="/Our_work/Photo4.JPG"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -101,7 +101,7 @@ const FeatureMediaSection = () => {
                 className="w-full h-full object-cover"
               >
                 <source
-                  src="/public/Our_work/Video _in_center.mp4"
+                  src="/Our_work/Video _in_center.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
@@ -118,7 +118,7 @@ const FeatureMediaSection = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145">
               <img
-                src="/public/Our_work/IMG_1517.JPG"
+                src="/Our_work/IMG_1517.JPG"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -142,7 +142,7 @@ const FeatureMediaSection = () => {
                 playsInline
                 className="w-full h-full object-cover"
               >
-                <source src="/public/Our_work/Photo4.JPG" type="video/mp4" />
+                <source src="/Our_work/Photo4.JPG" type="video/mp4" />
               </video>
             </div>
           </motion.div>
@@ -164,7 +164,7 @@ const FeatureMediaSection = () => {
                 className="w-full h-full object-cover"
               >
                 <source
-                  src="/public/Our_work/Video _in_center.mp4"
+                  src="/Our_work/Video _in_center.mp4"
                   type="video/mp4"
                 />
               </video>
@@ -178,7 +178,7 @@ const FeatureMediaSection = () => {
           >
             <div className="relative rounded-xl overflow-hidden shadow-xl md:w-70 md:h-85">
               <img
-                src="/public/Our_work/IMG_1517.JPG"
+                src="/Our_work/IMG_1517.JPG"
                 alt="Completed project"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -212,7 +212,7 @@ const FeatureMediaSection = () => {
                 className="w-full h-full object-cover"
               >
                 <source
-                  src="/public/Our_work/Video _in_center.mp4"
+                  src="/Our_work/Video _in_center.mp4"
                   type="video/mp4"
                 />
               </video>
@@ -238,7 +238,7 @@ const FeatureMediaSection = () => {
                 style={{ width: "100%", height: "auto" }}
               >
                 <img
-                  src="/public/Our_work/Photo4.JPG"
+                  src="/Our_work/Photo4.JPG"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -259,7 +259,7 @@ const FeatureMediaSection = () => {
                 style={{ width: "100%", height: "auto" }}
               >
                 <img
-                  src="/public/Our_work/IMG_1517.JPG"
+                  src="/Our_work/IMG_1517.JPG"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"
