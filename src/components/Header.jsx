@@ -990,19 +990,21 @@
 // export default Header;
 
 import { Link } from "react-router";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { Globe, Menu, X, ChevronDown, ChevronUp, Phone } from "lucide-react";
 import { useState } from "react";
 
 function Header({ isDesktop }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [blogsOpen, setBlogsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
   const [mobileBlogsOpen, setMobileBlogsOpen] = useState(false);
 
   return (
-    <header className="fixed top-8 left-1/2 -translate-x-1/2 z-500 w-[95%]">
+    <header className="fixed top-8 left-1/2 -translate-x-1/2 z-500 w-[92%] 2xl:w-[70%] 3xl:w-[45%] 4xl:w-[65%]">
       <div
         className="bg-white/95 backdrop-blur-lg border border-gray-200 shadow-lg rounded-2xl"
         style={{ padding: "0px 20px" }}
@@ -1017,7 +1019,7 @@ function Header({ isDesktop }) {
               href="#home"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
-              Home
+              HOME
             </a>
 
             {/* Services Dropdown */}
@@ -1034,54 +1036,100 @@ function Header({ isDesktop }) {
                   <ChevronDown className="w-4 h-4" />
                 )}
               </button>
-
-              {servicesOpen && (
-                <motion.div
-                  className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
-                  style={{ width: "210px", padding: "8px 0" }}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                >
-                  <a
-                    href="#bathroom-renovation"
-                    className="block text-gray-900 hover:bg-gray-100 transition-colors"
-                    style={{ padding: "8px 16px", fontSize: "16px" }}
+              <AnimatePresence>
+                {servicesOpen && (
+                  <motion.div
+                    className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+                    style={{ width: "230px", padding: "8px 0" }}
+                    initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
                   >
-                    Bathroom Renovation
-                  </a>
-                  <a
-                    href="#kitchen-renovation"
-                    className="block text-gray-900 hover:bg-gray-100 transition-colors"
-                    style={{ padding: "8px 16px", fontSize: "16px" }}
-                  >
-                    Kitchen Renovation
-                  </a>
-                  <a
-                    href="#laundry-renovation"
-                    className="block text-gray-900 hover:bg-gray-100 transition-colors"
-                    style={{ padding: "8px 16px", fontSize: "16px" }}
-                  >
-                    Laundry Renovation
-                  </a>
-                  <a
-                    href="#design-service"
-                    className="block text-gray-900 hover:bg-gray-100 transition-colors"
-                    style={{ padding: "8px 16px", fontSize: "16px" }}
-                  >
-                    Design Service
-                  </a>
-                </motion.div>
-              )}
+                    <a
+                      href="#bathroom-renovation"
+                      className="block text-gray-900 hover:bg-gray-100 transition-colors"
+                      style={{ padding: "8px 16px", fontSize: "16px" }}
+                    >
+                      BATHROOM RENOVATION
+                    </a>
+                    <a
+                      href="#kitchen-renovation"
+                      className="block text-gray-900 hover:bg-gray-100 transition-colors"
+                      style={{ padding: "8px 16px", fontSize: "16px" }}
+                    >
+                      kITCHEN RENOVATION
+                    </a>
+                    <a
+                      href="#laundry-renovation"
+                      className="block text-gray-900 hover:bg-gray-100 transition-colors"
+                      style={{ padding: "8px 16px", fontSize: "16px" }}
+                    >
+                      LAUNDRY RENOVATION
+                    </a>
+                    <a
+                      href="#design-service"
+                      className="block text-gray-900 hover:bg-gray-100 transition-colors"
+                      style={{ padding: "8px 16px", fontSize: "16px" }}
+                    >
+                      SHOP FITOUTS
+                    </a>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
-            <a
-              href="#portfolio"
-              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
+            {/* Portfolio Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setPortfolioOpen(true)}
+              onMouseLeave={() => setPortfolioOpen(false)}
             >
-              PORTFOLIO
-            </a>
+              <button className="flex items-center gap-1 text-gray-700 hover:text-gray-900 transition-colors font-medium text-base">
+                PORTFOLIO
+                {portfolioOpen ? (
+                  <ChevronUp className="w-4 h-4" />
+                ) : (
+                  <ChevronDown className="w-4 h-4" />
+                )}
+              </button>
+
+              <AnimatePresence>
+                {portfolioOpen && (
+                  <motion.div
+                    className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+                    style={{ width: "230px", padding: "8px 0" }}
+                    initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                  >
+                    <a
+                      href="#bathroom-renovation"
+                      className="block text-gray-900 hover:bg-gray-100 transition-colors"
+                      style={{ padding: "8px 16px", fontSize: "16px" }}
+                    >
+                      BATHROOM RENOVATION
+                    </a>
+                    <a
+                      href="#kitchen-renovation"
+                      className="block text-gray-900 hover:bg-gray-100 transition-colors"
+                      style={{ padding: "8px 16px", fontSize: "16px" }}
+                    >
+                      KITCHEN RENOVATION
+                    </a>
+                    <a
+                      href="#laundry-renovation"
+                      className="block text-gray-900 hover:bg-gray-100 transition-colors"
+                      style={{ padding: "8px 16px", fontSize: "16px" }}
+                    >
+                      LAUNDRY RENOVATION
+                    </a>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <a
               href="#about"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
@@ -1331,63 +1379,115 @@ function Header({ isDesktop }) {
                     <ChevronDown className="w-4 h-4" />
                   )}
                 </button>
-                {mobileServicesOpen && (
-                  <motion.div
-                    style={{
-                      paddingLeft: "16px",
-                      marginTop: "8px",
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "4px",
-                    }}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <a
-                      href="#bathroom-renovation"
-                      className="text-gray-800 hover:text-gray-900 transition-colors"
-                      style={{ fontSize: "14px", padding: "4px 0" }}
-                      onClick={() => setMobileMenuOpen(false)}
+                <AnimatePresence>
+                  {mobileServicesOpen && (
+                    <motion.div
+                      style={{
+                        paddingLeft: "16px",
+                        marginTop: "8px",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "4px",
+                      }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
                     >
-                      Bathroom Renovation
-                    </a>
-                    <a
-                      href="#kitchen-renovation"
-                      className="text-gray-800 hover:text-gray-900 transition-colors"
-                      style={{ fontSize: "14px", padding: "4px 0" }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Kitchen Renovation
-                    </a>
-                    <a
-                      href="#laundry-renovation"
-                      className="text-gray-800 hover:text-gray-900 transition-colors"
-                      style={{ fontSize: "14px", padding: "4px 0" }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Laundry Renovation
-                    </a>
-                    <a
-                      href="#design-service"
-                      className="text-gray-800 hover:text-gray-900 transition-colors"
-                      style={{ fontSize: "14px", padding: "4px 0" }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Design Service
-                    </a>
-                  </motion.div>
-                )}
+                      <a
+                        href="#bathroom-renovation"
+                        className="text-gray-800 hover:text-gray-900 transition-colors"
+                        style={{ fontSize: "14px", padding: "4px 0" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Bathroom Renovation
+                      </a>
+                      <a
+                        href="#kitchen-renovation"
+                        className="text-gray-800 hover:text-gray-900 transition-colors"
+                        style={{ fontSize: "14px", padding: "4px 0" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Kitchen Renovation
+                      </a>
+                      <a
+                        href="#laundry-renovation"
+                        className="text-gray-800 hover:text-gray-900 transition-colors"
+                        style={{ fontSize: "14px", padding: "4px 0" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Laundry Renovation
+                      </a>
+                      <a
+                        href="#design-service"
+                        className="text-gray-800 hover:text-gray-900 transition-colors"
+                        style={{ fontSize: "14px", padding: "4px 0" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Design Service
+                      </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
-              <a
-                href="#portfolio"
-                className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                PORTFOLIO
-              </a>
+              {/* Mobile Portfolio Dropdown */}
+              <div>
+                <button
+                  className="flex items-center justify-between w-full text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                  onClick={() => setMobilePortfolioOpen(!mobilePortfolioOpen)}
+                >
+                  PORTFOLIO
+                  {mobilePortfolioOpen ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </button>
+                <AnimatePresence>
+                  {mobilePortfolioOpen && (
+                    <motion.div
+                      style={{
+                        paddingLeft: "16px",
+                        marginTop: "8px",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "4px",
+                      }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                    >
+                      <a
+                        href="#bathroom-renovation"
+                        className="text-gray-800 hover:text-gray-900 transition-colors"
+                        style={{ fontSize: "14px", padding: "4px 0" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Bathroom Renovation
+                      </a>
+                      <a
+                        href="#kitchen-renovation"
+                        className="text-gray-800 hover:text-gray-900 transition-colors"
+                        style={{ fontSize: "14px", padding: "4px 0" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Kitchen Renovation
+                      </a>
+                      <a
+                        href="#laundry-renovation"
+                        className="text-gray-800 hover:text-gray-900 transition-colors"
+                        style={{ fontSize: "14px", padding: "4px 0" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Laundry Renovation
+                      </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               <a
                 href="#about"
                 className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
