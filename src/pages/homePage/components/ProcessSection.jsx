@@ -73,8 +73,8 @@ const blendStops = (
 const BackgroundImages = ({ scrollProgress }) => (
   <div className="absolute inset-0 overflow-hidden">
     {processSteps.map((step, index) => {
-      const stepProgress = index / (processSteps.length - 1);
-      const nextStepProgress = (index + 1) / (processSteps.length - 1);
+      const stepProgress = index / processSteps.length;
+      const nextStepProgress = (index + 1) / processSteps.length;
       const opacity = useTransform(
         scrollProgress,
         [
@@ -119,8 +119,8 @@ const MobileStepCard = ({ scrollProgress }) => {
       }}
     >
       {processSteps.map((step, index) => {
-        const stepProgress = index / (processSteps.length - 1);
-        const nextStepProgress = (index + 1) / (processSteps.length - 1);
+        const stepProgress = index / processSteps.length;
+        const nextStepProgress = (index + 1) / processSteps.length;
 
         const opacity = useTransform(
           scrollProgress,
@@ -240,8 +240,8 @@ const MobileProgressDots = ({ scrollProgress }) => {
       }}
     >
       {processSteps.map((_, index) => {
-        const stepProgress = index / (processSteps.length - 1);
-        const nextStepProgress = (index + 1) / (processSteps.length - 1);
+        const stepProgress = index / processSteps.length;
+        const nextStepProgress = (index + 1) / processSteps.length;
 
         const scale = useTransform(
           scrollProgress,
@@ -333,7 +333,7 @@ const ProcessSection = () => {
   return (
     <div className="relative" style={{ background: "#000" }}>
       <div ref={containerRef} className="hidden lg:block">
-        <div className="h-[700vh]">
+        <div className="h-[850vh]">
           <div className="sticky top-0 h-screen overflow-hidden">
             <BackgroundImages scrollProgress={smoothProgress} />
 
@@ -372,9 +372,8 @@ const ProcessSection = () => {
               >
                 <div className="process-list">
                   {processSteps.map((step, index) => {
-                    const stepProgress = index / (processSteps.length - 1);
-                    const nextStepProgress =
-                      (index + 1) / (processSteps.length - 1);
+                    const stepProgress = index / processSteps.length;
+                    const nextStepProgress = (index + 1) / processSteps.length;
                     const stops = blendStops(stepProgress, nextStepProgress);
                     const opacity = useTransform(
                       smoothProgress,
@@ -432,9 +431,9 @@ const ProcessSection = () => {
                     }}
                   >
                     {processSteps.map((step, index) => {
-                      const stepProgress = index / (processSteps.length - 1);
+                      const stepProgress = index / processSteps.length;
                       const nextStepProgress =
-                        (index + 1) / (processSteps.length - 1);
+                        (index + 1) / processSteps.length;
                       const stops = blendStops(stepProgress, nextStepProgress);
                       const opacity = useTransform(
                         smoothProgress,
@@ -469,9 +468,9 @@ const ProcessSection = () => {
 
                   <div className="relative h-48">
                     {processSteps.map((step, index) => {
-                      const stepProgress = index / (processSteps.length - 1);
+                      const stepProgress = index / processSteps.length;
                       const nextStepProgress =
-                        (index + 1) / (processSteps.length - 1);
+                        (index + 1) / processSteps.length;
                       const stops = blendStops(stepProgress, nextStepProgress);
                       const opacity = useTransform(
                         smoothProgress,

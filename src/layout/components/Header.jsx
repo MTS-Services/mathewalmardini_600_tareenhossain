@@ -1052,12 +1052,12 @@ function Header({ isDesktop }) {
           </Link>
 
           <nav className="hidden xl:flex items-center gap-6 absolute left-1/2 -translate-x-1/2 z-20">
-            <a
-              href="#home"
+            <Link
+              to="/"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
               HOME
-            </a>
+            </Link>
 
             {/* Services Dropdown */}
             <div
@@ -1167,18 +1167,18 @@ function Header({ isDesktop }) {
               </AnimatePresence>
             </div>
 
-            <a
-              href="#about"
+            <Link
+              to="/about"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
               ABOUT
-            </a>
-            <a
-              href="#faqs"
+            </Link>
+            <Link
+              to="/faqs"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
               FAQs
-            </a>
+            </Link>
 
             {/* Blogs dropdown removed — commented out below so it can be re-enabled if needed */}
             {/*
@@ -1331,12 +1331,12 @@ function Header({ isDesktop }) {
               BLOGS
             </a>
 
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
               CONTACT US
-            </a>
+            </Link>
           </nav>
 
           {/* Actions */}
@@ -1525,20 +1525,20 @@ function Header({ isDesktop }) {
                 </AnimatePresence>
               </div>
 
-              <a
-                href="#about"
+              <Link
+                to="/about"
                 className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 ABOUT
-              </a>
-              <a
-                href="#faqs"
+              </Link>
+              <Link
+                to="/faqs"
                 className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 FAQs
-              </a>
+              </Link>
 
               {/* Mobile Blogs dropdown removed — commented out below so it can be re-enabled if needed */}
               {/*
@@ -1700,13 +1700,13 @@ function Header({ isDesktop }) {
                 BLOGS
               </a>
 
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 CONTACT US
-              </a>
+              </Link>
 
               <a
                 href="tel:+61432661176"
