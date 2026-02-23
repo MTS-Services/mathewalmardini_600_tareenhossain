@@ -6,18 +6,17 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
   const { scrollY } = useScroll();
   const videoRef = useRef(null);
 
-  // ✅ Only scale is applied — no y pixel movement
-  // transformOrigin: "center bottom" means video will shrink from bottom-center anchor
-  // This will work automatically on all screen sizes
-  const scale = useTransform(scrollY, [0, 800], [1, 0.23]);
+  // ✅ Scale adjusted to match banner id-3 dimensions when fully scaled down
+  // Final scale of 0.20 makes video match the center banner image size
+  const scale = useTransform(scrollY, [0, 800], [1, 0.22]);
 
   // Video position - moves up slightly to stop higher
   const y = useTransform(scrollY, [0, 3000], [0, -80]);
 
   // Video fade out — before banner ends
-  // ✅ FIX: Previously [0, 1900, 2400] ended at 2400px, but section continues to 2810px
-  // Now [0, 2300, 2750] → matches with section end, no white screen
-  const opacity = useTransform(scrollY, [0, 2300, 2750], [1, 1, 0]);
+  // ✅ FIX: Increased fade-out values for larger screens (3xl, 4xl)
+  // Now [0, 3100, 3500] → accommodates all screen sizes
+  const opacity = useTransform(scrollY, [0, 3100, 3500], [1, 1, 0]);
 
   // Border radius stays constant
   const borderRadius = useTransform(scrollY, [0, 800], [48, 48]);

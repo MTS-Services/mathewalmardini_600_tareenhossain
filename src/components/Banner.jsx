@@ -24,13 +24,12 @@ const Banner = ({ isDesktop = true }) => {
   // ✅ VideoBackground now uses transformOrigin: "center bottom"
   // So here we only manage images opacity/scale
   //
-  // ✅ FIX: White screen issue resolution
-  // Banner section = min-h-[250vh] → if viewport ~1124px then total ≈ 2810px scroll
-  // Before: fade-out ended at 2400px → 2400–2810px = 410px blank/white showing
-  // Now: fade-out ends at 2700–2800px → matches with section end
+  // ✅ FIX: Increased fade-out values for larger screens (3xl, 4xl)
+  // Banner section = min-h-[250vh] → on larger screens this is taller
+  // Fade-out now extends to 3500px to accommodate all screen sizes
   const imagesOpacity = useTransform(
     scrollY,
-    [300, 500, 2500, 2750],
+    [300, 500, 3200, 3500],
     [0, 1, 1, 0],
   );
   const imagesScale = useTransform(scrollY, [300, 500], [0.8, 1]);
@@ -43,66 +42,66 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 1,
       url: "/banner_image/Photo5.JPG",
-      position: "lg:top-22 xl:top-34 2xl:top-34 3xl:top-28 4xl:top-24 left-0",
-      size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-20 3xl:h-56 4xl:w-120 4xl:h-64",
+      position: "lg:top-22 xl:top-34 2xl:top-34 3xl:top-20 4xl:top-24 left-0",
+      size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-52 3xl:h-55 4xl:w-58 4xl:h-55 5xl:w-65 5xl:h-64",
     },
     {
       id: 2,
       url: "/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov",
       type: "video",
       position:
-        "lg:top-30 xl:top-38 2xl:top-42 3xl:top-36 4xl:top-32 lg:left-28 xl:left-44 2xl:left-80 3xl:left-80 4xl:left-96",
-      size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-64 4xl:w-112 4xl:h-72",
+        "lg:top-30 xl:top-38 2xl:top-42 3xl:top-28 4xl:top-32 5xl:top-35 lg:left-28 xl:left-44 2xl:left-80 3xl:left-70 4xl:left-75 5xl:left-90",
+      size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",
     },
     {
       id: 3,
       url: "/banner_image/Photo4.JPG",
       position:
-        "lg:top-18 xl:top-34 2xl:top-35 3xl:top-28 4xl:top-24 left-1/2 -translate-x-1/2",
-      size: "lg:w-64 lg:h-36 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-128 3xl:h-64 4xl:w-144 4xl:h-72",
+        "lg:top-18 xl:top-34 2xl:top-35 3xl:top-20 4xl:top-24 left-1/2 -translate-x-1/2",
+      size: "lg:w-64 lg:h-36 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",
     },
     {
       id: 4,
       url: "/banner_video/beautiful-modern-bathroom-bathtub-washbasin-sa-2026-01-28-02-42-23-utc_(1).mp4",
       type: "video",
       position:
-        "lg:top-30 xl:top-38 2xl:top-42 3xl:top-36 4xl:top-32 lg:right-28 xl:right-44 2xl:right-72 3xl:right-80 4xl:right-96",
-      size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-64 4xl:w-112 4xl:h-72",
+        "lg:top-30 xl:top-38 2xl:top-42 3xl:top-28 4xl:top-32 5xl:top-35 lg:right-28 xl:right-44 2xl:right-72 3xl:right-70 4xl:right-75 5xl:right-90",
+      size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",
     },
     {
       id: 5,
       url: "/banner_image/Photo1.png",
-      position: "lg:top-22 xl:top-34 2xl:top-30 3xl:top-28 4xl:top-24 right-0",
-      size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-40 3xl:h-56 4xl:w-48 4xl:h-64",
+      position: "lg:top-22 xl:top-34 2xl:top-30 3xl:top-20 4xl:top-24 right-0",
+      size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-52 3xl:h-55 4xl:w-58 4xl:h-55 5xl:w-65 5xl:h-64",
     },
     // Bottom Row
     {
       id: 6,
       url: "/banner_image/Photo7.png",
       position:
-        "lg:bottom-22 xl:bottom-18 2xl:bottom-10 3xl:bottom-8 4xl:bottom-6 left-0",
-      size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-40 3xl:h-56 4xl:w-48 4xl:h-64",
+        "lg:bottom-22 xl:bottom-18 2xl:bottom-10 3xl:bottom-8 4xl:bottom-20 left-0",
+      size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-52 3xl:h-55 4xl:w-58 4xl:h-55 5xl:w-65 5xl:h-64",
     },
     {
       id: 7,
       url: "/banner_image/Photo6.jpg",
       position:
-        "lg:bottom-28 xl:bottom-24 2xl:bottom-22 3xl:bottom-18 4xl:bottom-14 lg:left-28 xl:left-50 2xl:left-70 3xl:left-80 4xl:left-96",
-      size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-64 4xl:w-112 4xl:h-72",
+        "lg:bottom-28 xl:bottom-24 2xl:bottom-22 3xl:bottom-18 4xl:bottom-32 lg:left-28 xl:left-44 2xl:left-70 3xl:left-70 4xl:left-75 5xl:left-90",
+      size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",
     },
     {
       id: 9,
       url: "/banner_image/Photo3.JPG",
       position:
-        "lg:bottom-28 xl:bottom-24 2xl:bottom-22 3xl:bottom-18 4xl:bottom-14 lg:right-28 xl:right-50 2xl:right-72 3xl:right-80 4xl:right-96",
-      size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-64 4xl:w-112 4xl:h-72",
+        "lg:bottom-28 xl:bottom-24 2xl:bottom-22 3xl:bottom-18 4xl:bottom-32 lg:right-28 xl:right-44 2xl:right-72 3xl:right-70 4xl:right-75 5xl:right-90",
+      size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",
     },
     {
       id: 10,
       url: "/banner_image/Photo2.png",
       position:
-        "lg:bottom-22 xl:bottom-18 2xl:bottom-10 3xl:bottom-8 4xl:bottom-6 right-0",
-      size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-40 3xl:h-56 4xl:w-48 4xl:h-64",
+        "lg:bottom-22 xl:bottom-18 2xl:bottom-10 3xl:bottom-8 4xl:bottom-20 right-0",
+      size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-52 3xl:h-55 4xl:w-58 4xl:h-55 5xl:w-65 5xl:h-64",
     },
   ];
 
@@ -256,10 +255,10 @@ const Banner = ({ isDesktop = true }) => {
         So this sticky div is the reference point — not the viewport
         This will work the same way on all screen sizes
       */}
-      <div className="sticky top-0 h-screen overflow-hidden bg-linear-to-r from-[#2D6B7A]/80 via-[#2D6B7A]/40 to-[#2D6B7A]/20">
+      <div className="sticky top-0 h-screen overflow-hidden bg-gradient-to-r from-[#2D6B7A]/80 via-white/60 to-white/80">
         {/* Background overlay when images show - only behind video (z-5), no overlay on top of video */}
         <motion.div
-          className="absolute inset-0 bg-linear-to-r from-[#2D6B7A]/80 via-[#2D6B7A]/40 to-[#2D6B7A]/20 z-5"
+          className="absolute inset-0 bg-gradient-to-r from-[#2D6B7A]/80 via-white/60 to-white/80 z-5"
           style={{ opacity: imagesOpacity }}
         />
 

@@ -1038,7 +1038,7 @@ function Header({ isDesktop }) {
 
   return (
     <header
-      className={`fixed top-8 left-1/2 -translate-x-1/2 z-500 w-[92%] 2xl:w-[70%] 3xl:w-[45%] 4xl:w-[65%] ${
+      className={`fixed top-8 left-1/2 -translate-x-1/2 z-500 w-[92%] 2xl:w-[70%] 3xl:w-[75%] 4xl:w-[65%] ${
         hidden ? "hidden" : "block"
       }`}
     >

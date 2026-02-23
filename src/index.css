@@ -1,6 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
+/* Tailwind v4 Custom Configuration */
+@theme {
+  /* Custom Breakpoints (in rem: 1920px = 120rem, 2560px = 160rem) */
+  --breakpoint-3xl: 120rem;
+  --breakpoint-4xl: 133.125rem;
+  --breakpoint-5xl: 145rem;
+
+
+  /* Custom Spacing */
+  --spacing-112: 28rem;
+  --spacing-120: 30rem;
+  --spacing-128: 32rem;
+  --spacing-144: 36rem;
+}
+
 /* 
   Responsive Breakpoints:
   - sm: 640px
@@ -266,7 +281,6 @@ body {
     gap: 40px;
   }
 }
-
 
 .fm-container {
   padding: 32px 0;
