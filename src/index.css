@@ -955,11 +955,14 @@ body {
 }
 /* Our Services sticky heights per breakpoint */
 .our-services-title-margin {
-  margin-bottom: 0px;
+  margin-bottom: 20px;
 }
 .our-services-sticky {
-  top: 110px;
-  height: calc(100vh - 200px);
+  top: 180px;
+  height: calc(100vh - 240px);
+}
+.our-services-margin- {
+  padding-bottom: 0px;
 }
 .our-services-padding-bottom {
   padding-bottom: 0px;

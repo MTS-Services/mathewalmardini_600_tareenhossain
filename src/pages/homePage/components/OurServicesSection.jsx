@@ -128,7 +128,11 @@ const OurServicesSection = () => {
       </section>
 
       {/* Scroll Container - Creates vertical scroll space */}
-      <div ref={containerRef} className="relative" style={{ height: "220vh" }}>
+      <div
+        ref={containerRef}
+        className="relative"
+        style={{ height: "220vh", marginTop: "40px" }}
+      >
         {/* Sticky Wrapper - Stays in viewport while scrolling */}
         <div
           className="sticky our-services-sticky flex items-center overflow-hidden"
@@ -147,7 +151,7 @@ const OurServicesSection = () => {
             {services.map((service) => (
               <motion.div
                 key={service.id}
-                className="shrink-0 group w-[90vw] sm:w-[80vw] md:w-[70vw] lg:w-[55vw] xl:w-200 2xl:w-280 h-225 sm:h-137.5 md:h-150 lg:h-162.5 xl:h-195"
+                className="shrink-0 group w-[90vw] sm:w-[80vw] md:w-[70vw] lg:w-[55vw] xl:w-200 2xl:w-280 h-125 sm:h-137.5 md:h-150 lg:h-162.5 xl:h-195"
                 ref={service.id === 1 ? firstCardRef : null}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -158,8 +162,8 @@ const OurServicesSection = () => {
                   <div className="relative  overflow-hidden flex flex-col h-full our-services-margin-top">
                     {/* Video/Image Container */}
                     <div
-                      className="relative bg-gray-900 h-75 sm:h-87.5 md:h-95 lg:h-105 xl:h-140 2xl:h-420 rounded-3xl overflow-hidden"
-                      style={{ marginTop: "40px" }}
+                      className="relative bg-gray-900 h-62.5 sm:h-87.5 md:h-95 lg:h-105 xl:h-140 2xl:h-420 rounded-3xl overflow-hidden"
+                      style={{ marginTop: "0px" }}
                     >
                       {service.type === "video" ? (
                         <video

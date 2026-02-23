@@ -46,14 +46,13 @@ const FeatureMediaSection = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="section-heading-wrapper z-10"
       >
-        <div className="max-w-400 mx-auto sm:mx-0 px-4 md:px-6 lg:px-8 text-center sm:text-left our-services-title-margin">
-          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <h2
-              className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary our-work-title-margin"
-              style={{ marginLeft: "180px" }}
-            >
-              Our Work
-            </h2>
+        <div className="max-w-400 mx-auto sm:mx-0 px-4 md:px-6 lg:px-8 text-center lg:text-left our-services-title-margin">
+          <div className="flex flex-col items-center gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <div className="lg:ml-[160px]">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary our-work-title-margin">
+                Our Work
+              </h2>
+            </div>
             <button
               className="hidden lg:inline-flex items-center justify-center whitespace-nowrap rounded-full bg-primary px-6 py-2 text-sm font-semibold uppercase tracking-wide text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
               style={{ padding: "16px 24px" }}
