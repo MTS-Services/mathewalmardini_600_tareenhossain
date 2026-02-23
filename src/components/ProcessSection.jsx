@@ -397,10 +397,10 @@ const ProcessSection = () => {
                       >
                         <div
                           className="flex items-center gap-4"
-                          style={{ minHeight: "3.5rem" }}
+                          style={{ minHeight: "5rem" }}
                         >
                           <motion.h3
-                            className="text-2xl lg:text-4xl font-bold"
+                            className="text-3xl lg:text-5xl font-bold"
                             style={{ color, transformOrigin: "left center" }}
                           >
                             {step.title}
@@ -415,18 +415,20 @@ const ProcessSection = () => {
               {/* Right: image + description */}
               <div
                 className="relative flex items-center justify-center"
-                style={{ padding: "4rem" }}
+                style={{ padding: "3rem 4rem" }}
               >
                 <motion.div
-                  className="w-full max-w-4xl"
+                  className="w-full max-w-5xl"
                   style={{ opacity: rightOpacity, y: rightPanelY }}
                 >
                   <div
-                    className="relative aspect-video overflow-hidden bg-neutral-900"
+                    className="relative overflow-hidden bg-neutral-900"
                     style={{
-                      marginTop: "6rem",
-                      marginBottom: "2rem",
-                      borderRadius: "0.5rem",
+                      marginTop: "4rem",
+                      marginBottom: "1.5rem",
+                      borderRadius: "0.75rem",
+                      aspectRatio: "16/10",
+                      height: "auto",
                     }}
                   >
                     {processSteps.map((step, index) => {
