@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import Banner from "../components/Banner";
-import Header from "../components/Header";
-import VideoBackground from "../components/VideoBackground";
-import HeroText from "../components/HeroText";
-import InfoSection from "../components/InfoSection";
-import FeatureMediaSection from "../components/FeatureMediaSection";
-import OurServicesSection from "../components/OurServicesSection";
-import ProcessSection from "../components/ProcessSection";
-import PhotoGallery from "../components/PhotoGallery";
-import TestimonialSection from "../components/TestimonialSection";
-import Footer from "../components/Footer";
+import Banner from "./components/Banner";
+import VideoBackground from "./components/VideoBackground";
+import HeroText from "./components/HeroText";
+import InfoSection from "./components/InfoSection";
+import FeatureMediaSection from "./components/FeatureMediaSection";
+import OurServicesSection from "./components/OurServicesSection";
+import ProcessSection from "./components/ProcessSection";
+import PhotoGallery from "./components/PhotoGallery";
+import TestimonialSection from "./components/TestimonialSection";
 
 function Home() {
   const { scrollY } = useScroll();
@@ -35,7 +33,6 @@ function Home() {
 
   return (
     <>
-      <Header isDesktop={isDesktop} />
       {isDesktop ? (
         <>
           <Banner isDesktop={isDesktop} />
@@ -59,7 +56,6 @@ function Home() {
       <ProcessSection />
       <PhotoGallery />
       <TestimonialSection />
-      <Footer />
     </>
   );
 }

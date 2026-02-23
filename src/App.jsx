@@ -1,7 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter } from "react-router";
 import { useEffect } from "react";
 import Lenis from "lenis";
-import Home from "./pages/Home";
+import AppRouter from "./routes/router";
 
 function App() {
   // Initialize Lenis on component mount
@@ -37,9 +37,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen">
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
+        <AppRouter />
       </div>
     </BrowserRouter>
   );
