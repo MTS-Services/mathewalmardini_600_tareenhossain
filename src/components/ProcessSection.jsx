@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 
 const processSteps = [
   {
@@ -53,6 +53,22 @@ const processSteps = [
   },
 ];
 
+// Helper to create wider, held transition windows for smoother crossfades
+const blendStops = (
+  stepProgress,
+  nextStepProgress,
+  pad = 0.035,
+  soft = 0.02,
+) => {
+  const i1 = Math.max(0, stepProgress - pad);
+  const i2 = Math.max(0, stepProgress - soft);
+  const i3 = Math.min(1, stepProgress + pad);
+  const i4 = Math.max(0, nextStepProgress - pad);
+  const i5 = Math.min(1, nextStepProgress + soft);
+  const i6 = Math.min(1, nextStepProgress + pad);
+  return [i1, i2, i3, i4, i5, i6];
+};
+
 /* ─── Full-bleed per-step background (shared) ─── */
 const BackgroundImages = ({ scrollProgress }) => (
   <div className="absolute inset-0 overflow-hidden">
@@ -61,11 +77,20 @@ const BackgroundImages = ({ scrollProgress }) => (
       const nextStepProgress = (index + 1) / (processSteps.length - 1);
       const opacity = useTransform(
         scrollProgress,
-        [Math.max(0, stepProgress - 0.01), stepProgress, nextStepProgress, Math.min(1, nextStepProgress + 0.01)],
+        [
+          Math.max(0, stepProgress - 0.01),
+          stepProgress,
+          nextStepProgress,
+          Math.min(1, nextStepProgress + 0.01),
+        ],
         [0, 1, 1, 0],
       );
       return (
-        <motion.div key={step.id} style={{ opacity }} className="absolute inset-0">
+        <motion.div
+          key={step.id}
+          style={{ opacity }}
+          className="absolute inset-0"
+        >
           <img
             src={step.image}
             alt=""
@@ -73,7 +98,10 @@ const BackgroundImages = ({ scrollProgress }) => (
             className="w-full h-full object-cover"
             style={{ filter: "blur(2px)", transform: "scale(1.05)" }}
           />
-          <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.65)" }} />
+          <div
+            className="absolute inset-0"
+            style={{ background: "rgba(0,0,0,0.65)" }}
+          />
         </motion.div>
       );
     })}
@@ -139,7 +167,8 @@ const MobileStepCard = ({ scrollProgress }) => {
                   textTransform: "uppercase",
                 }}
               >
-                Step {String(index + 1).padStart(2, "0")} / {String(processSteps.length).padStart(2, "0")}
+                Step {String(index + 1).padStart(2, "0")} /{" "}
+                {String(processSteps.length).padStart(2, "0")}
               </span>
             </div>
 
@@ -156,7 +185,12 @@ const MobileStepCard = ({ scrollProgress }) => {
               <img
                 src={step.image}
                 alt={step.title}
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
               />
             </div>
 
@@ -228,7 +262,12 @@ const MobileProgressDots = ({ scrollProgress }) => {
             nextStepProgress,
             Math.min(1, nextStepProgress + 0.005),
           ],
-          ["rgba(255,255,255,0.35)", "rgba(255,255,255,1)", "rgba(255,255,255,1)", "rgba(255,255,255,0.35)"],
+          [
+            "rgba(255,255,255,0.35)",
+            "rgba(255,255,255,1)",
+            "rgba(255,255,255,1)",
+            "rgba(255,255,255,0.35)",
+          ],
         );
 
         return (
@@ -263,27 +302,40 @@ const ProcessSection = () => {
     offset: ["start start", "end end"],
   });
 
+  // Smooth progress values so step changes ease in/out
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 85,
+    damping: 24,
+    mass: 0.55,
+  });
+  const smoothMobileProgress = useSpring(mobileScrollYProgress, {
+    stiffness: 85,
+    damping: 24,
+    mass: 0.55,
+  });
+
   // Desktop: "Our Process" title fades out on scroll
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
-  const titleY = useTransform(scrollYProgress, [0, 0.08], [0, -40]);
+  const titleOpacity = useTransform(smoothProgress, [0, 0.08], [1, 0]);
+  const titleY = useTransform(smoothProgress, [0, 0.08], [0, -40]);
 
   // Desktop: right panel appears on scroll
-  const rightOpacity = useTransform(scrollYProgress, [0, 0.06], [0, 1]);
-  const rightPanelY = useTransform(scrollYProgress, [0, 0.06], [50, 0]);
+  const rightOpacity = useTransform(smoothProgress, [0, 0.06], [0, 1]);
+  const rightPanelY = useTransform(smoothProgress, [0, 0.06], [50, 0]);
 
   // Mobile: "Our Process" title fades out on scroll
-  const mobileTitleOpacity = useTransform(mobileScrollYProgress, [0, 0.06], [1, 0]);
-  const mobileTitleY = useTransform(mobileScrollYProgress, [0, 0.06], [0, -30]);
+  const mobileTitleOpacity = useTransform(
+    smoothMobileProgress,
+    [0, 0.06],
+    [1, 0],
+  );
+  const mobileTitleY = useTransform(smoothMobileProgress, [0, 0.06], [0, -30]);
 
   return (
     <div className="relative" style={{ background: "#000" }}>
-
-
       <div ref={containerRef} className="hidden lg:block">
         <div className="h-[700vh]">
           <div className="sticky top-0 h-screen overflow-hidden">
-
-            <BackgroundImages scrollProgress={scrollYProgress} />
+            <BackgroundImages scrollProgress={smoothProgress} />
 
             {/* Centered "Our Process" title */}
             <motion.div
@@ -302,9 +354,13 @@ const ProcessSection = () => {
             >
               <h2
                 className="font-bold text-white"
-                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, textAlign: "center" }}
+                style={{
+                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                  lineHeight: 1.1,
+                  textAlign: "center",
+                }}
               >
-                Our Process
+                OUR PROCESS
               </h2>
             </motion.div>
 
@@ -317,19 +373,36 @@ const ProcessSection = () => {
                 <div className="process-list">
                   {processSteps.map((step, index) => {
                     const stepProgress = index / (processSteps.length - 1);
-                    const nextStepProgress = (index + 1) / (processSteps.length - 1);
-                    const opacity = useTransform(scrollYProgress,
-                      [Math.max(0, stepProgress - 0.006), stepProgress, nextStepProgress, Math.min(1, nextStepProgress + 0.006)],
-                      [0.3, 1, 1, 0.3]
+                    const nextStepProgress =
+                      (index + 1) / (processSteps.length - 1);
+                    const stops = blendStops(stepProgress, nextStepProgress);
+                    const opacity = useTransform(
+                      smoothProgress,
+                      stops,
+                      [0.45, 1, 1, 1, 1, 0.45],
                     );
-                    const color = useTransform(scrollYProgress,
-                      [Math.max(0, stepProgress - 0.006), stepProgress, nextStepProgress, Math.min(1, nextStepProgress + 0.006)],
-                      ["#9CA3AF", "#FFFFFF", "#FFFFFF", "#9CA3AF"]
-                    );
+                    const color = useTransform(smoothProgress, stops, [
+                      "#9CA3AF",
+                      "#FFFFFF",
+                      "#FFFFFF",
+                      "#FFFFFF",
+                      "#FFFFFF",
+                      "#9CA3AF",
+                    ]);
                     return (
-                      <motion.div key={step.id} style={{ opacity }} className="text-left">
-                        <div className="flex items-center gap-4" style={{ minHeight: "3.5rem" }}>
-                          <motion.h3 className="text-2xl lg:text-4xl font-bold" style={{ color, transformOrigin: "left center" }}>
+                      <motion.div
+                        key={step.id}
+                        style={{ opacity }}
+                        className="text-left"
+                      >
+                        <div
+                          className="flex items-center gap-4"
+                          style={{ minHeight: "3.5rem" }}
+                        >
+                          <motion.h3
+                            className="text-2xl lg:text-4xl font-bold"
+                            style={{ color, transformOrigin: "left center" }}
+                          >
                             {step.title}
                           </motion.h3>
                         </div>
@@ -340,30 +413,53 @@ const ProcessSection = () => {
               </div>
 
               {/* Right: image + description */}
-              <div className="relative flex items-center justify-center" style={{ padding: "4rem" }}>
-                <motion.div className="w-full max-w-4xl" style={{ opacity: rightOpacity, y: rightPanelY }}>
+              <div
+                className="relative flex items-center justify-center"
+                style={{ padding: "4rem" }}
+              >
+                <motion.div
+                  className="w-full max-w-4xl"
+                  style={{ opacity: rightOpacity, y: rightPanelY }}
+                >
                   <div
                     className="relative aspect-video overflow-hidden bg-neutral-900"
-                    style={{ marginTop: "6rem", marginBottom: "2rem", borderRadius: "0.5rem" }}
+                    style={{
+                      marginTop: "6rem",
+                      marginBottom: "2rem",
+                      borderRadius: "0.5rem",
+                    }}
                   >
                     {processSteps.map((step, index) => {
                       const stepProgress = index / (processSteps.length - 1);
-                      const nextStepProgress = (index + 1) / (processSteps.length - 1);
-                      const opacity = useTransform(scrollYProgress,
-                        [Math.max(0, stepProgress - 0.005), stepProgress, nextStepProgress, Math.min(1, nextStepProgress + 0.005)],
-                        [0, 1, 1, 0]
+                      const nextStepProgress =
+                        (index + 1) / (processSteps.length - 1);
+                      const stops = blendStops(stepProgress, nextStepProgress);
+                      const opacity = useTransform(
+                        smoothProgress,
+                        stops,
+                        [0, 1, 1, 1, 1, 0],
                       );
-                      const scale = useTransform(scrollYProgress,
-                        [Math.max(0, stepProgress - 0.005), stepProgress, nextStepProgress, Math.min(1, nextStepProgress + 0.005)],
-                        [0.8, 1, 1, 0.8]
+                      const scale = useTransform(
+                        smoothProgress,
+                        stops,
+                        [0.9, 1, 1, 1, 1, 0.9],
                       );
-                      const y = useTransform(scrollYProgress,
-                        [Math.max(0, stepProgress - 0.005), stepProgress, nextStepProgress, Math.min(1, nextStepProgress + 0.005)],
-                        [50, 0, 0, -50]
+                      const y = useTransform(
+                        smoothProgress,
+                        stops,
+                        [60, 0, 0, 0, 0, -60],
                       );
                       return (
-                        <motion.div key={step.id} style={{ opacity, scale, y }} className="absolute inset-0">
-                          <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
+                        <motion.div
+                          key={step.id}
+                          style={{ opacity, scale, y }}
+                          className="absolute inset-0"
+                        >
+                          <img
+                            src={step.image}
+                            alt={step.title}
+                            className="w-full h-full object-cover"
+                          />
                         </motion.div>
                       );
                     })}
@@ -372,18 +468,29 @@ const ProcessSection = () => {
                   <div className="relative h-48">
                     {processSteps.map((step, index) => {
                       const stepProgress = index / (processSteps.length - 1);
-                      const nextStepProgress = (index + 1) / (processSteps.length - 1);
-                      const opacity = useTransform(scrollYProgress,
-                        [Math.max(0, stepProgress - 0.005), stepProgress, nextStepProgress, Math.min(1, nextStepProgress + 0.005)],
-                        [0, 1, 1, 0]
+                      const nextStepProgress =
+                        (index + 1) / (processSteps.length - 1);
+                      const stops = blendStops(stepProgress, nextStepProgress);
+                      const opacity = useTransform(
+                        smoothProgress,
+                        stops,
+                        [0, 1, 1, 1, 1, 0],
                       );
-                      const y = useTransform(scrollYProgress,
-                        [Math.max(0, stepProgress - 0.005), stepProgress, nextStepProgress, Math.min(1, nextStepProgress + 0.005)],
-                        [20, 0, 0, -20]
+                      const y = useTransform(
+                        smoothProgress,
+                        stops,
+                        [26, 0, 0, 0, 0, -26],
                       );
                       return (
-                        <motion.div key={step.id} style={{ opacity, y }} className="absolute inset-0">
-                          <h2 className="text-3xl lg:text-4xl font-bold text-white" style={{ marginBottom: "1rem" }}>
+                        <motion.div
+                          key={step.id}
+                          style={{ opacity, y }}
+                          className="absolute inset-0"
+                        >
+                          <h2
+                            className="text-3xl lg:text-4xl font-bold text-white"
+                            style={{ marginBottom: "1rem" }}
+                          >
                             {step.title}
                           </h2>
                           <p className="text-gray-300 text-base lg:text-lg leading-relaxed">
@@ -396,7 +503,6 @@ const ProcessSection = () => {
                 </motion.div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -405,9 +511,8 @@ const ProcessSection = () => {
         {/* Scroll distance: 1 extra viewport per step */}
         <div style={{ height: `${(processSteps.length + 1) * 100}vh` }}>
           <div className="sticky top-0 h-screen overflow-hidden">
-
             {/* Shared background */}
-            <BackgroundImages scrollProgress={mobileScrollYProgress} />
+            <BackgroundImages scrollProgress={smoothMobileProgress} />
 
             {/* "Our Process" centered title — fades out on first scroll */}
             <motion.div
@@ -432,20 +537,18 @@ const ProcessSection = () => {
                   textAlign: "center",
                 }}
               >
-                Our Process
+                OUR PROCESS
               </h2>
             </motion.div>
 
             {/* Full-screen step cards */}
-            <MobileStepCard scrollProgress={mobileScrollYProgress} />
+            <MobileStepCard scrollProgress={smoothMobileProgress} />
 
             {/* Progress dots */}
-            <MobileProgressDots scrollProgress={mobileScrollYProgress} />
-
+            <MobileProgressDots scrollProgress={smoothMobileProgress} />
           </div>
         </div>
       </div>
-
     </div>
   );
 };
