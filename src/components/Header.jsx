@@ -990,11 +990,19 @@
 // export default Header;
 
 import { Link } from "react-router";
-import { motion, AnimatePresence } from "motion/react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "motion/react";
 import { Globe, Menu, X, ChevronDown, ChevronUp, Phone } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Header({ isDesktop }) {
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
@@ -1003,8 +1011,37 @@ function Header({ isDesktop }) {
   const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
   const [mobileBlogsOpen, setMobileBlogsOpen] = useState(false);
 
+  useEffect(() => {
+    if (!isDesktop) {
+      setHidden(false);
+    }
+  }, [isDesktop]);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = lastScrollY;
+
+    // If scroll position is less than 50px, always show header
+    if (latest < 50) {
+      setHidden(false);
+    }
+    // If scrolling down, hide header (only on desktop)
+    else if (latest > previous && latest > 100 && isDesktop) {
+      setHidden(true);
+    }
+    // If scrolling up, show header
+    else if (latest < previous) {
+      setHidden(false);
+    }
+
+    setLastScrollY(latest);
+  });
+
   return (
-    <header className="fixed top-8 left-1/2 -translate-x-1/2 z-500 w-[92%] 2xl:w-[70%] 3xl:w-[45%] 4xl:w-[65%]">
+    <header
+      className={`fixed top-8 left-1/2 -translate-x-1/2 z-500 w-[92%] 2xl:w-[70%] 3xl:w-[45%] 4xl:w-[65%] ${
+        hidden ? "hidden" : "block"
+      }`}
+    >
       <div
         className="bg-white/95 backdrop-blur-lg border border-gray-200 shadow-lg rounded-2xl"
         style={{ padding: "0px 20px" }}
