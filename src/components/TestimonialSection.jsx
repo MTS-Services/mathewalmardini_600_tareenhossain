@@ -818,7 +818,12 @@ const TestimonialSection = () => {
   const renderStars = (rating) => (
     <div style={{ display: "flex", gap: "0.25rem" }}>
       {[...Array(rating)].map((_, i) => (
-        <Star key={i} className="text-yellow-400" size={18} fill="currentColor" />
+        <Star
+          key={i}
+          className="text-yellow-400"
+          size={18}
+          fill="currentColor"
+        />
       ))}
     </div>
   );
@@ -831,7 +836,7 @@ const TestimonialSection = () => {
         background: "linear-gradient(to bottom, #000000, #111827)",
         paddingTop: "4rem",
         paddingBottom: "4rem",
-        fontFamily: "'Georgia', serif",
+        fontFamily: "'Poppins', sans-serif",
       }}
     >
       {/* Section Title */}
@@ -845,9 +850,11 @@ const TestimonialSection = () => {
             margin: 0,
           }}
         >
-          What Our Clients Say
+          WHAT OUR CLIENTS SAY
         </h2>
-        <p style={{ color: "#9ca3af", marginTop: "0.5rem", fontSize: "0.95rem" }}>
+        <p
+          style={{ color: "#9ca3af", marginTop: "0.5rem", fontSize: "0.95rem" }}
+        >
           Trusted by homeowners for exceptional renovations
         </p>
       </div>
@@ -921,7 +928,7 @@ const TestimonialSection = () => {
                   fontSize: "6rem",
                   lineHeight: 1,
                   color: "rgba(96,165,250,0.12)",
-                  fontFamily: "Georgia, serif",
+                  fontFamily: "'Poppins', sans-serif",
                   userSelect: "none",
                   pointerEvents: "none",
                 }}
@@ -930,7 +937,9 @@ const TestimonialSection = () => {
               </div>
 
               {/* Stars */}
-              <div style={{ marginBottom: "1rem" }}>{renderStars(testimonial.rating)}</div>
+              <div style={{ marginBottom: "1rem" }}>
+                {renderStars(testimonial.rating)}
+              </div>
 
               {/* Content */}
               <p
@@ -939,7 +948,7 @@ const TestimonialSection = () => {
                   fontSize: "1rem",
                   lineHeight: "1.75",
                   marginBottom: "1.5rem",
-                  fontStyle: "italic",
+                  fontStyle: "",
                   position: "relative",
                   zIndex: 1,
                 }}
@@ -948,7 +957,13 @@ const TestimonialSection = () => {
               </p>
 
               {/* Author */}
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.75rem",
+                }}
+              >
                 <div
                   style={{
                     width: "48px",
@@ -977,7 +992,9 @@ const TestimonialSection = () => {
                   >
                     {testimonial.name}
                   </h4>
-                  <p style={{ color: "#6b7280", fontSize: "0.8rem", margin: 0 }}>
+                  <p
+                    style={{ color: "#6b7280", fontSize: "0.8rem", margin: 0 }}
+                  >
                     Verified Client
                   </p>
                 </div>

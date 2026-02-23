@@ -69,11 +69,11 @@ const PhotoGallery = () => {
   };
 
   return (
-    <div style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
+    <div className="bg-white" style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
       {/* Section Title */}
       <div style={{ marginBottom: "3rem", textAlign: "center" }}>
         <h2 className="text-black font-bold text-2xl md:text-3xl lg:text-4xl">
-          Our Gallery
+          OUR GALLERY
         </h2>
       </div>
 
