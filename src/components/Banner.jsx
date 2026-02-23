@@ -78,14 +78,14 @@ const Banner = ({ isDesktop = true }) => {
     // Bottom Row
     {
       id: 6,
-      url: "/banner_image/Photo7.JPG",
+      url: "/banner_image/Photo7.png",
       position:
         "lg:bottom-22 xl:bottom-18 2xl:bottom-10 3xl:bottom-8 4xl:bottom-6 left-0",
       size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-40 3xl:h-56 4xl:w-48 4xl:h-64",
     },
     {
       id: 7,
-      url: "/banner_image/Photo6.jpeg",
+      url: "/banner_image/Photo6.jpg",
       position:
         "lg:bottom-28 xl:bottom-24 2xl:bottom-22 3xl:bottom-18 4xl:bottom-14 lg:left-28 xl:left-50 2xl:left-70 3xl:left-80 4xl:left-96",
       size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-64 4xl:w-112 4xl:h-72",

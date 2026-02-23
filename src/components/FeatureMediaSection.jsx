@@ -48,7 +48,10 @@ const FeatureMediaSection = () => {
       >
         <div className="max-w-400 mx-auto sm:mx-0 px-4 md:px-6 lg:px-8 text-center sm:text-left our-services-title-margin">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary our-work-title-margin">
+            <h2
+              className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary our-work-title-margin"
+              style={{ marginLeft: "180px" }}
+            >
               Our Work
             </h2>
             <button
@@ -100,10 +103,7 @@ const FeatureMediaSection = () => {
                 playsInline
                 className="w-full h-full object-cover"
               >
-                <source
-                  src="/Our_work/Video _in_center.mp4"
-                  type="video/mp4"
-                />
+                <source src="/Our_work/Video _in_center.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               {/* Subtle overlay for depth */}
@@ -163,10 +163,7 @@ const FeatureMediaSection = () => {
                 playsInline
                 className="w-full h-full object-cover"
               >
-                <source
-                  src="/Our_work/Video _in_center.mp4"
-                  type="video/mp4"
-                />
+                <source src="/Our_work/Video _in_center.mp4" type="video/mp4" />
               </video>
             </div>
           </motion.div>
@@ -211,10 +208,7 @@ const FeatureMediaSection = () => {
                 playsInline
                 className="w-full h-full object-cover"
               >
-                <source
-                  src="/Our_work/Video _in_center.mp4"
-                  type="video/mp4"
-                />
+                <source src="/Our_work/Video _in_center.mp4" type="video/mp4" />
               </video>
             </div>
           </motion.div>
