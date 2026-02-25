@@ -1324,12 +1324,12 @@ function Header({ isDesktop }) {
               )}
             </div>
             */}
-            <a
-              href="#blogs"
+            <Link
+              to="/blog"
               className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
             >
               BLOGS
-            </a>
+            </Link>
 
             <Link
               to="/contact"
@@ -1692,13 +1692,13 @@ function Header({ isDesktop }) {
                 )}
               </div>
               */}
-              <a
-                href="#blogs"
+              <Link
+                to="/blog"
                 className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 BLOGS
-              </a>
+              </Link>
 
               <Link
                 to="/contact"

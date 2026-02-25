@@ -1440,3 +1440,98 @@ body {
     padding-left: 14rem;
   }
 }
+
+/* ============================================
+   BLOG CONTENT STYLES
+   ============================================ */
+
+.blog-content {
+  @apply text-gray-800;
+}
+
+.blog-content h1 {
+  @apply text-4xl font-bold text-gray-900 mt-12 mb-6;
+}
+
+.blog-content h2 {
+  @apply text-3xl font-bold text-gray-900 mt-12 mb-6;
+}
+
+.blog-content h3 {
+  @apply text-2xl font-bold text-gray-900 mt-8 mb-4;
+}
+
+.blog-content h4 {
+  @apply text-xl font-bold text-gray-900 mt-6 mb-3;
+}
+
+.blog-content p {
+  @apply mb-6 leading-relaxed text-lg;
+}
+
+.blog-content ul {
+  @apply mb-6 space-y-2;
+}
+
+.blog-content ol {
+  @apply mb-6 space-y-2 list-decimal;
+}
+
+.blog-content li {
+  @apply leading-relaxed;
+}
+
+.blog-content a {
+  @apply text-[#2D6B7A] hover:underline;
+}
+
+.blog-content strong {
+  @apply font-semibold text-gray-900;
+}
+
+.blog-content blockquote {
+  @apply border-l-4 border-[#2D6B7A] pl-6 py-2 my-6 italic text-gray-700;
+}
+
+.blog-content img {
+  @apply rounded-lg shadow-md my-8;
+}
+
+.blog-content code {
+  @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono;
+}
+
+.blog-content pre {
+  @apply bg-gray-900 text-white p-6 rounded-lg overflow-x-auto my-6;
+}
+
+.blog-content table {
+  @apply w-full my-8 border-collapse;
+}
+
+.blog-content th {
+  @apply bg-gray-100 border border-gray-300 px-4 py-3 text-left font-semibold;
+}
+
+.blog-content td {
+  @apply border border-gray-300 px-4 py-3;
+}
+
+.blog-content hr {
+  @apply my-12 border-gray-300;
+}
+
+/* Line clamping utilities for blog cards */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
