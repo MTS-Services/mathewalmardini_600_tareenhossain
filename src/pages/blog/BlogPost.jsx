@@ -34,65 +34,42 @@ const BlogPost = () => {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-[#2D6B7A] to-[#1e5562] py-16 md:py-24">
+      {/* Banner Image Section */}
+      <section className="relative">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden"
+        >
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        </motion.div>
+      </section>
+
+      {/* Title and Meta Section */}
+      <section className="py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
           >
-            <motion.button
-              onClick={() => navigate("/blog")}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              whileHover={{ x: -5 }}
-              className="text-white/90 hover:text-white flex items-center gap-2 mb-6"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              Back to Blog
-            </motion.button>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white font-semibold mb-4"
-            >
-              {post.category}
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6"
-            >
+            {/* Title */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               {post.title}
-            </motion.h1>
+            </h1>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="flex items-center gap-6 text-white/90"
-            >
+            {/* Meta Information */}
+            <div className="flex flex-wrap items-center gap-4 text-gray-600">
+              {/* Read Time */}
               <span className="flex items-center gap-2">
                 <svg
-                  className="w-5 h-5"
+                  className="w-5 h-5 text-[#2D6B7A]"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -104,26 +81,62 @@ const BlogPost = () => {
                 </svg>
                 {post.readTime}
               </span>
-              <span>•</span>
-              <span>
+
+              <span className="text-gray-400">•</span>
+
+              {/* Category */}
+              <span className="inline-flex items-center gap-2 bg-[#2D6B7A]/10 text-[#2D6B7A] px-4 py-1.5 rounded-full font-semibold">
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                  />
+                </svg>
+                {post.category}
+              </span>
+
+              <span className="text-gray-400">•</span>
+
+              {/* Date */}
+              <span className="flex items-center gap-2">
+                <svg
+                  className="w-5 h-5 text-[#2D6B7A]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
                 {new Date(post.date).toLocaleDateString("en-AU", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                 })}
               </span>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Article Content */}
-      <article className="py-16 md:py-24">
+      <article className="pb-16 md:pb-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
             className="prose prose-lg max-w-none"
           >
             {content}
@@ -183,10 +196,15 @@ const BlogPost = () => {
                     to={`/blog/${relatedPost.slug}`}
                     className="group block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all h-full"
                   >
-                    <div className="relative h-48 bg-[#2D6B7A]/10 flex items-center justify-center">
-                      <span className="text-[#2D6B7A] font-semibold">
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={relatedPost.image}
+                        alt={relatedPost.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute top-3 right-3 bg-[#2D6B7A] text-white px-3 py-1 rounded-full text-xs font-semibold">
                         {relatedPost.category}
-                      </span>
+                      </div>
                     </div>
                     <div className="p-6">
                       <h3 className="font-bold text-lg mb-2 group-hover:text-[#2D6B7A] transition-colors line-clamp-2">

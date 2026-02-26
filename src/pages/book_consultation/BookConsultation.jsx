@@ -61,7 +61,7 @@ export default function BookConsultation() {
 
   return (
     <div
-      className="bg-gray-50"
+      className=""
       style={{ paddingTop: 48, paddingBottom: 48, marginTop: 120 }}
     >
       <div
@@ -69,9 +69,6 @@ export default function BookConsultation() {
         style={{ margin: "0 auto", padding: "0 20px" }}
       >
         <div style={{ marginBottom: 32 }}>
-          <p className="text-sm uppercase tracking-wide text-amber-600 font-semibold">
-            Book consultation
-          </p>
           <h1
             className="text-3xl sm:text-4xl font-bold text-gray-900"
             style={{ marginTop: 8 }}

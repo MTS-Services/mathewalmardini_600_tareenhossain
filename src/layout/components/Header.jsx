@@ -1083,34 +1083,34 @@ function Header({ isDesktop }) {
                     exit={{ opacity: 0, y: -6, scale: 0.98 }}
                     transition={{ duration: 0.18, ease: "easeOut" }}
                   >
-                    <a
-                      href="#bathroom-renovation"
+                    <Link
+                      to="/#bathroom-renovation"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       BATHROOM RENOVATION
-                    </a>
-                    <a
-                      href="#kitchen-renovation"
+                    </Link>
+                    <Link
+                      to="/#kitchen-renovation"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
-                      kITCHEN RENOVATION
-                    </a>
-                    <a
-                      href="#laundry-renovation"
+                      KITCHEN RENOVATION
+                    </Link>
+                    <Link
+                      to="/#laundry-renovation"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       LAUNDRY RENOVATION
-                    </a>
-                    <a
-                      href="#design-service"
+                    </Link>
+                    <Link
+                      to="/#design-service"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       SHOP FITOUTS
-                    </a>
+                    </Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -1141,27 +1141,27 @@ function Header({ isDesktop }) {
                     exit={{ opacity: 0, y: -6, scale: 0.98 }}
                     transition={{ duration: 0.18, ease: "easeOut" }}
                   >
-                    <a
-                      href="#bathroom-renovation"
+                    <Link
+                      to="/#bathroom-renovation"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       BATHROOM RENOVATION
-                    </a>
-                    <a
-                      href="#kitchen-renovation"
+                    </Link>
+                    <Link
+                      to="/#kitchen-renovation"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       KITCHEN RENOVATION
-                    </a>
-                    <a
-                      href="#laundry-renovation"
+                    </Link>
+                    <Link
+                      to="/#laundry-renovation"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       LAUNDRY RENOVATION
-                    </a>
+                    </Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -1349,14 +1349,16 @@ function Header({ isDesktop }) {
                     0432661176
                   </span>
                 </p>
-                <motion.button
-                  className="bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-semibold text-base"
-                  style={{ padding: "15px 20px" }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Book Consultation
-                </motion.button>
+                <Link to="/book-consultation">
+                  <motion.button
+                    className="bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-semibold text-base"
+                    style={{ padding: "15px 20px" }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Book Consultation
+                  </motion.button>
+                </Link>
               </>
             ) : (
               <button
@@ -1395,13 +1397,13 @@ function Header({ isDesktop }) {
               `}
             </style>
             <nav className="flex flex-col gap-4">
-              <a
-                href="#home"
+              <Link
+                to="/"
                 className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Home
-              </a>
+                HOME
+              </Link>
 
               {/* Mobile Services Dropdown */}
               <div>
@@ -1431,38 +1433,38 @@ function Header({ isDesktop }) {
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.22, ease: "easeOut" }}
                     >
-                      <a
-                        href="#bathroom-renovation"
+                      <Link
+                        to="/#bathroom-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Bathroom Renovation
-                      </a>
-                      <a
-                        href="#kitchen-renovation"
+                      </Link>
+                      <Link
+                        to="/#kitchen-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Kitchen Renovation
-                      </a>
-                      <a
-                        href="#laundry-renovation"
+                      </Link>
+                      <Link
+                        to="/#laundry-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Laundry Renovation
-                      </a>
-                      <a
-                        href="#design-service"
+                      </Link>
+                      <Link
+                        to="/#design-service"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Design Service
-                      </a>
+                      </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -1496,30 +1498,30 @@ function Header({ isDesktop }) {
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.22, ease: "easeOut" }}
                     >
-                      <a
-                        href="#bathroom-renovation"
+                      <Link
+                        to="/#bathroom-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Bathroom Renovation
-                      </a>
-                      <a
-                        href="#kitchen-renovation"
+                      </Link>
+                      <Link
+                        to="/#kitchen-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Kitchen Renovation
-                      </a>
-                      <a
-                        href="#laundry-renovation"
+                      </Link>
+                      <Link
+                        to="/#laundry-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Laundry Renovation
-                      </a>
+                      </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -1718,12 +1720,14 @@ function Header({ isDesktop }) {
                 <span>0432 661 176</span>
               </a>
 
-              <button
-                className="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-base w-full mt-2"
+              <Link
+                to="/book-consultation"
+                className="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-base w-full mt-2 block text-center"
                 style={{ padding: "15px 20px" }}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 Book Consultation
-              </button>
+              </Link>
             </nav>
           </div>
         )}

@@ -102,6 +102,7 @@ const FeatureMediaSection = () => {
                 playsInline
                 className="w-full h-full object-cover"
               >
+                {/* <source src="/Our_work/Video _in_center.mp4" type="video/mp4" /> */}
                 <source src="/Our_work/Video _in_center.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
@@ -117,6 +118,7 @@ const FeatureMediaSection = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145">
               <img
+                // src="/Our_work/IMG_1517.JPG"
                 src="/Our_work/IMG_1517.JPG"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
@@ -162,6 +164,7 @@ const FeatureMediaSection = () => {
                 playsInline
                 className="w-full h-full object-cover"
               >
+                {/* <source src="/Our_work/Video _in_center.mp4" type="video/mp4" /> */}
                 <source src="/Our_work/Video _in_center.mp4" type="video/mp4" />
               </video>
             </div>

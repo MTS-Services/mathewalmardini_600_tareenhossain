@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { motion } from "motion/react";
 import { blogPosts, categories } from "./blogData";
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 9;
 
   const filteredPosts = blogPosts.filter((post) => {
     const matchesCategory =
@@ -16,47 +17,44 @@ const Blog = () => {
     return matchesCategory && matchesSearch;
   });
 
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, searchQuery]);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-[#2D6B7A] to-[#1e5562] py-20 md:py-28">
+      <section className="relative bg-gradient-to-r from-[#2D6B7A] to-[#1e5562] py-32 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Renovation & Building Insights
-            </motion.h1>
-            <motion.p
-              className="text-xl text-white/90 max-w-3xl mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
+            </h1>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Expert guidance from Melbourne's trusted builders. Discover
               everything you need to know about renovations, design trends, and
               creating your dream space.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Search and Filter Section */}
       <section className="py-12 bg-gray-50 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             {/* Search Bar */}
             <div className="mb-8">
               <input
@@ -70,26 +68,21 @@ const Blog = () => {
 
             {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-3">
-              {categories.map((category, index) => (
-                <motion.button
+              {categories.map((category) => (
+                <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.05, duration: 0.3 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+                  className={`px-6 py-2 rounded-full font-semibold transition-colors duration-200 cursor-pointer ${
                     selectedCategory === category
                       ? "bg-[#2D6B7A] text-white shadow-lg"
-                      : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-300"
+                      : "bg-white text-gray-700 border border-gray-300"
                   }`}
                 >
                   {category}
-                </motion.button>
+                </button>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -97,99 +90,139 @@ const Blog = () => {
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filteredPosts.length === 0 ? (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-20"
-            >
+            <div className="text-center py-20">
               <p className="text-gray-600 text-xl">
                 No articles found. Try adjusting your search or filters.
               </p>
-            </motion.div>
+            </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map((post, index) => (
-                <motion.div
-                  key={post.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                >
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="group block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 h-full"
-                  >
-                    {/* Image */}
-                    <div className="relative h-56 bg-gray-200 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <motion.div
-                        className="w-full h-full bg-[#2D6B7A]/10 flex items-center justify-center"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.4 }}
-                      >
-                        <span className="text-[#2D6B7A] font-semibold text-lg">
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {currentPosts.map((post) => (
+                  <div key={post.id}>
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="block bg-white rounded-xl overflow-hidden shadow-md h-full cursor-pointer"
+                    >
+                      {/* Image */}
+                      <div className="relative h-56 bg-gray-200 overflow-hidden">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute top-4 right-4 bg-[#2D6B7A] text-white px-3 py-1 rounded-full text-sm font-semibold z-20">
                           {post.category}
-                        </span>
-                      </motion.div>
-                    </div>
+                        </div>
+                      </div>
 
-                    {/* Content */}
-                    <div className="p-6">
-                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                        <span className="flex items-center gap-1">
+                      {/* Content */}
+                      <div className="p-6">
+                        <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                          <span className="flex items-center gap-1">
+                            <svg
+                              className="w-4 h-4"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            {post.readTime}
+                          </span>
+                          <span>•</span>
+                          <span>
+                            {new Date(post.date).toLocaleDateString("en-AU", {
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                            })}
+                          </span>
+                        </div>
+
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                          {post.title}
+                        </h3>
+
+                        <p className="text-gray-600 line-clamp-3 mb-4">
+                          {post.excerpt}
+                        </p>
+
+                        <div className="flex items-center text-[#2D6B7A] font-semibold">
+                          Read More
                           <svg
-                            className="w-4 h-4"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
+                            className="w-5 h-5 ml-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
                           >
                             <path
-                              fillRule="evenodd"
-                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                              clipRule="evenodd"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"
                             />
                           </svg>
-                          {post.readTime}
-                        </span>
-                        <span>•</span>
-                        <span>
-                          {new Date(post.date).toLocaleDateString("en-AU", {
-                            year: "numeric",
-                            month: "short",
-                            day: "numeric",
-                          })}
-                        </span>
+                        </div>
                       </div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
 
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#2D6B7A] transition-colors line-clamp-2">
-                        {post.title}
-                      </h3>
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="flex justify-center items-center gap-2 mt-12">
+                  {/* Previous Button */}
+                  <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className={`px-4 py-2 rounded-lg font-semibold ${
+                      currentPage === 1
+                        ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                        : "bg-white text-gray-700 border border-gray-300 cursor-pointer"
+                    }`}
+                  >
+                    Previous
+                  </button>
 
-                      <p className="text-gray-600 line-clamp-3 mb-4">
-                        {post.excerpt}
-                      </p>
-
-                      <div className="flex items-center text-[#2D6B7A] font-semibold group-hover:gap-2 transition-all">
-                        Read More
-                        <svg
-                          className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
+                  {/* Page Numbers */}
+                  <div className="flex gap-2">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                      (page) => (
+                        <button
+                          key={page}
+                          onClick={() => handlePageChange(page)}
+                          className={`w-10 h-10 rounded-lg font-semibold cursor-pointer ${
+                            currentPage === page
+                              ? "bg-[#2D6B7A] text-white"
+                              : "bg-white text-gray-700 border border-gray-300"
+                          }`}
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+                          {page}
+                        </button>
+                      ),
+                    )}
+                  </div>
+
+                  {/* Next Button */}
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className={`px-4 py-2 rounded-lg font-semibold ${
+                      currentPage === totalPages
+                        ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                        : "bg-white text-gray-700 border border-gray-300 cursor-pointer"
+                    }`}
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
@@ -197,12 +230,7 @@ const Blog = () => {
       {/* CTA Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Ready to Start Your Renovation?
             </h2>
@@ -210,18 +238,11 @@ const Blog = () => {
               Get expert guidance and a detailed consultation for your project.
             </p>
             <Link to="/contact">
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(45, 107, 122, 0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-[#2D6B7A] text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-[#1e5562] transition-colors duration-300 shadow-lg"
-              >
+              <button className="bg-[#2D6B7A] text-white px-10 py-4 rounded-lg font-semibold text-lg shadow-lg cursor-pointer">
                 Book A Consultation
-              </motion.button>
+              </button>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>
