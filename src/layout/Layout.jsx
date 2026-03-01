@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Layout = () => {
   const [isDesktop, setIsDesktop] = useState(() => {
@@ -23,6 +24,7 @@ const Layout = () => {
 
   return (
     <>
+      <ScrollToTop />
       <Header isDesktop={isDesktop} />
       <main>
         <Outlet />

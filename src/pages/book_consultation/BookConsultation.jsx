@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const initialState = {
   name: "",
@@ -38,6 +39,11 @@ const contactOptions = [
 
 export default function BookConsultation() {
   const [formData, setFormData] = useState(initialState);
+  const [submitStatus, setSubmitStatus] = useState({
+    loading: false,
+    success: false,
+    error: null,
+  });
 
   const handleChange = (field) => (e) => {
     setFormData((prev) => ({ ...prev, [field]: e.target.value }));
@@ -53,10 +59,60 @@ export default function BookConsultation() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Placeholder submit handler; integrate with backend or form service
-    console.log("Consultation form submitted", formData);
+    setSubmitStatus({ loading: true, success: false, error: null });
+
+    try {
+      // EmailJS Configuration
+      // Get your credentials from https://www.emailjs.com/
+      const serviceId = "YOUR_SERVICE_ID"; // Replace with your EmailJS Service ID
+      const templateId = "YOUR_TEMPLATE_ID"; // Replace with your EmailJS Template ID
+      const publicKey = "YOUR_PUBLIC_KEY"; // Replace with your EmailJS Public Key
+
+      // Prepare template parameters
+      const templateParams = {
+        to_email: "your-business-email@example.com", // Replace with your business email
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        postcode: formData.postcode,
+        property_type:
+          formData.propertyType === "free-standing"
+            ? "Free standing house"
+            : "Town house/Unit",
+        services: formData.services.join(", ") || "None selected",
+        bathrooms: formData.bathrooms || "Not specified",
+        timeline:
+          timelineOptions.find((opt) => opt.value === formData.timeline)
+            ?.label || formData.timeline,
+        contact_time:
+          contactOptions.find((opt) => opt.value === formData.contactTime)
+            ?.label || formData.contactTime,
+        details: formData.details || "No additional details provided",
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      // Success
+      setSubmitStatus({ loading: false, success: true, error: null });
+      setFormData(initialState); // Reset form
+
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus((prev) => ({ ...prev, success: false }));
+      }, 5000);
+    } catch (error) {
+      console.error("Email send error:", error);
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error:
+          "Failed to send consultation request. Please try again or call us directly at 0432661176.",
+      });
+    }
   };
 
   return (
@@ -80,6 +136,77 @@ export default function BookConsultation() {
             organise your consultation.
           </p>
         </div>
+
+        {/* Success Message */}
+        {submitStatus.success && (
+          <div
+            className="rounded-lg border border-green-200 bg-green-50 shadow-sm"
+            style={{ padding: "16px 20px", marginBottom: 24 }}
+          >
+            <div style={{ display: "flex", alignItems: "start", gap: 12 }}>
+              <svg
+                className="text-green-600"
+                style={{ width: 20, height: 20, flexShrink: 0, marginTop: 2 }}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <div>
+                <h3
+                  className="text-sm font-semibold text-green-900"
+                  style={{ marginBottom: 4 }}
+                >
+                  Consultation request sent successfully!
+                </h3>
+                <p className="text-sm text-green-700">
+                  Thank you for your interest. We'll contact you soon to
+                  schedule your consultation.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Error Message */}
+        {submitStatus.error && (
+          <div
+            className="rounded-lg border border-red-200 bg-red-50 shadow-sm"
+            style={{ padding: "16px 20px", marginBottom: 24 }}
+          >
+            <div style={{ display: "flex", alignItems: "start", gap: 12 }}>
+              <svg
+                className="text-red-600"
+                style={{ width: 20, height: 20, flexShrink: 0, marginTop: 2 }}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+              <div>
+                <h3
+                  className="text-sm font-semibold text-red-900"
+                  style={{ marginBottom: 4 }}
+                >
+                  Error sending request
+                </h3>
+                <p className="text-sm text-red-700">{submitStatus.error}</p>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="rounded-xl bg-white shadow-sm ring-1 ring-gray-100">
           <form
@@ -238,13 +365,40 @@ export default function BookConsultation() {
             <div style={{ paddingTop: 8 }}>
               <button
                 type="submit"
-                className="inline-flex items-center justify-center rounded-md text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+                disabled={submitStatus.loading}
+                className="inline-flex items-center justify-center rounded-md text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   padding: "12px 20px",
                   backgroundColor: "var(--color-primary)",
                 }}
               >
-                Submit consultation request
+                {submitStatus.loading ? (
+                  <>
+                    <svg
+                      className="animate-spin"
+                      style={{ width: 16, height: 16, marginRight: 8 }}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  "Submit consultation request"
+                )}
               </button>
             </div>
           </form>

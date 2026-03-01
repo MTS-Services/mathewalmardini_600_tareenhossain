@@ -1038,7 +1038,7 @@ function Header({ isDesktop }) {
 
   return (
     <header
-      className={`fixed top-8 left-1/2 -translate-x-1/2 z-500 w-[92%] 2xl:w-[70%] 3xl:w-[75%] 4xl:w-[65%] ${
+      className={`fixed top-8 left-1/2 -translate-x-1/2 z-500 w-[92%] 2xl:w-[90%] 3xl:w-[75%] 4xl:w-[65%] ${
         hidden ? "hidden" : "block"
       }`}
     >
@@ -1084,28 +1084,28 @@ function Header({ isDesktop }) {
                     transition={{ duration: 0.18, ease: "easeOut" }}
                   >
                     <Link
-                      to="/#bathroom-renovation"
+                      to="/bathroom-renovation"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       BATHROOM RENOVATION
                     </Link>
                     <Link
-                      to="/#kitchen-renovation"
+                      to="/kitchen-renovation"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       KITCHEN RENOVATION
                     </Link>
                     <Link
-                      to="/#laundry-renovation"
+                      to="/laundry-renovation"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       LAUNDRY RENOVATION
                     </Link>
                     <Link
-                      to="/#design-service"
+                      to="/shop-fitouts"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
@@ -1142,25 +1142,25 @@ function Header({ isDesktop }) {
                     transition={{ duration: 0.18, ease: "easeOut" }}
                   >
                     <Link
-                      to="/#bathroom-renovation"
+                      to="/bathroom-portfolio"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
-                      BATHROOM RENOVATION
+                      BATHROOM PORTFOLIO
                     </Link>
                     <Link
-                      to="/#kitchen-renovation"
+                      to="/kitchen-portfolio"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
-                      KITCHEN RENOVATION
+                      KITCHEN PORTFOLIO
                     </Link>
                     <Link
-                      to="/#laundry-renovation"
+                      to="/laundry-portfolio"
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
-                      LAUNDRY RENOVATION
+                      LAUNDRY PORTFOLIO
                     </Link>
                   </motion.div>
                 )}
@@ -1434,36 +1434,36 @@ function Header({ isDesktop }) {
                       transition={{ duration: 0.22, ease: "easeOut" }}
                     >
                       <Link
-                        to="/#bathroom-renovation"
+                        to="/bathroom-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        Bathroom Renovation
+                        BATHROOM RENOVATION
                       </Link>
                       <Link
-                        to="/#kitchen-renovation"
+                        to="/kitchen-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        Kitchen Renovation
+                        KITCHEN RENOVATION
                       </Link>
                       <Link
-                        to="/#laundry-renovation"
+                        to="/laundry-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        Laundry Renovation
+                        LAUNDRY RENOVATION
                       </Link>
                       <Link
-                        to="/#design-service"
+                        to="/shop-fitouts"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        Design Service
+                        SHOP FITOUTS
                       </Link>
                     </motion.div>
                   )}
@@ -1499,28 +1499,28 @@ function Header({ isDesktop }) {
                       transition={{ duration: 0.22, ease: "easeOut" }}
                     >
                       <Link
-                        to="/#bathroom-renovation"
+                        to="/bathroom-portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        Bathroom Renovation
+                        BATHROOM PORTFOLIO
                       </Link>
                       <Link
-                        to="/#kitchen-renovation"
+                        to="/kitchen-portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        Kitchen Renovation
+                        KITCHEN PORTFOLIO
                       </Link>
                       <Link
-                        to="/#laundry-renovation"
+                        to="/laundry-portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        Laundry Renovation
+                        LAUNDRY PORTFOLIO
                       </Link>
                     </motion.div>
                   )}

@@ -16,7 +16,7 @@ const OurServicesSection = () => {
       video:
         "/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4",
       type: "video",
-      path: "/services/bathroom-renovation",
+      path: "/bathroom-renovation",
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ const OurServicesSection = () => {
       video:
         "/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.jpg",
       type: "image",
-      path: "/services/laundry-renovation",
+      path: "/laundry-renovation",
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ const OurServicesSection = () => {
       video:
         "/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4",
       type: "video",
-      path: "/services/kitchen-renovation",
+      path: "/kitchen-renovation",
     },
     {
       id: 4,
@@ -45,7 +45,7 @@ const OurServicesSection = () => {
         "We build retails spaces that are not only visually stunning but also functional and efficient.",
       video: "/Our_services/envato-labs-image-edit.png",
       type: "image",
-      path: "/services/shop-fitouts",
+      path: "/shop-fitouts",
     },
   ];
 
@@ -119,7 +119,7 @@ const OurServicesSection = () => {
           transition={{ duration: 0.7 }}
         >
           <h2
-            className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary our-services-title-margin"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase font-bold tracking-[0.2em] text-secondary our-services-title-margin"
             style={{ marginTop: "50px" }}
           >
             Our Services
@@ -193,12 +193,12 @@ const OurServicesSection = () => {
                       style={{ padding: "28px 24px" }}
                     >
                       <h3
-                        className="text-xl md:text-2xl font-bold text-secondary transition-colors duration-300 shrink-0"
+                        className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-secondary transition-colors duration-300 shrink-0"
                         style={{ marginBottom: "12px" }}
                       >
                         {service.title}
                       </h3>
-                      <p className="text-black/70 text-sm md:text-base leading-relaxed line-clamp-4 overflow-hidden">
+                      <p className="text-black text-sm md:text-base lg:text-lg xl:text-xl font-semibold leading-relaxed line-clamp-4 overflow-hidden">
                         {service.description}
                       </p>
                     </div>
