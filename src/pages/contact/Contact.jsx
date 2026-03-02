@@ -5,7 +5,7 @@ const Contact = () => {
   return (
     <div className="bg-white">
       {/* Banner Section */}
-      <div className="relative h-[50vh] min-h-[400px] w-full overflow-hidden">
+      <div className="relative h-[50vh] min-h-[600px] w-full overflow-hidden">
         <img
           src="/contact_us/Contact_us.jpg"
           alt="Contact Us"

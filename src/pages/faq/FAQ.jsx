@@ -42,7 +42,7 @@ const faqData = [
         </p>
 
         <div className="overflow-x-auto mb-4">
-          <table className="w-full border-collapse border border-gray-300">
+          <table className="w-full min-w-[600px] border-collapse border border-gray-300">
             <thead>
               <tr className="bg-gray-100">
                 <th className="border border-gray-300 px-4 py-2 text-left font-semibold">
@@ -148,7 +148,7 @@ const faqData = [
         </p>
 
         <div className="overflow-x-auto mb-4">
-          <table className="w-full border-collapse border border-gray-300">
+          <table className="w-full min-w-[600px] border-collapse border border-gray-300">
             <thead>
               <tr className="bg-gray-100">
                 <th className="border border-gray-300 px-4 py-2 text-left font-semibold">

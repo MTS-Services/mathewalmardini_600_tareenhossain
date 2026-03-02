@@ -10,6 +10,8 @@ A modern React project built with cutting-edge technologies for building high-pe
 - **React Router 7** - Client-side routing
 - **Motion** (Framer Motion) - Production-ready animation library
 - **Vite** - Lightning-fast build tool
+- **Express** - Backend server
+- **Nodemailer** - Email sending with Gmail
 
 ## 📦 Installation
 
@@ -21,11 +23,45 @@ npm install
 
 ## 🏃 Development
 
+### Frontend + Backend Development:
+
+**Terminal 1 - Backend Server:**
+
+```bash
+npm run server
+```
+
+**Terminal 2 - Frontend Development:**
+
 ```bash
 npm run dev
 ```
 
+Frontend opens on `http://localhost:5173`, backend runs on `http://localhost:3000`
+
+### Production:
+
+```bash
+npm start
+```
+
 Opens on `http://localhost:3000`
+
+## 📧 Email Configuration
+
+This project uses **Nodemailer with Gmail** for the consultation form.
+
+**Quick Setup:**
+
+1. Configure Gmail App Password (see `NODEMAILER_SETUP.md` for detailed steps)
+2. Update `.env` file with your Gmail credentials:
+   ```env
+   EMAIL_USER=your-gmail@gmail.com
+   EMAIL_PASS=your-app-password
+   EMAIL_RECIPIENT=your-business-email@gmail.com
+   ```
+
+For complete setup instructions, see [NODEMAILER_SETUP.md](NODEMAILER_SETUP.md)
 
 ## 🏗️ Build
 

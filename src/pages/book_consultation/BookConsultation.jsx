@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
 
 const initialState = {
   name: "",
@@ -64,46 +63,48 @@ export default function BookConsultation() {
     setSubmitStatus({ loading: true, success: false, error: null });
 
     try {
-      // EmailJS Configuration
-      // Get your credentials from https://www.emailjs.com/
-      const serviceId = "YOUR_SERVICE_ID"; // Replace with your EmailJS Service ID
-      const templateId = "YOUR_TEMPLATE_ID"; // Replace with your EmailJS Template ID
-      const publicKey = "YOUR_PUBLIC_KEY"; // Replace with your EmailJS Public Key
+      // Send form data to backend API
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          postcode: formData.postcode,
+          propertyType:
+            formData.propertyType === "free-standing"
+              ? "Free standing house"
+              : "Town house/Unit",
+          services: formData.services,
+          bathrooms: formData.bathrooms || "Not specified",
+          timeline:
+            timelineOptions.find((opt) => opt.value === formData.timeline)
+              ?.label || formData.timeline,
+          contactTime:
+            contactOptions.find((opt) => opt.value === formData.contactTime)
+              ?.label || formData.contactTime,
+          details: formData.details || "No additional details provided",
+        }),
+      });
 
-      // Prepare template parameters
-      const templateParams = {
-        to_email: "your-business-email@example.com", // Replace with your business email
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone,
-        address: formData.address,
-        postcode: formData.postcode,
-        property_type:
-          formData.propertyType === "free-standing"
-            ? "Free standing house"
-            : "Town house/Unit",
-        services: formData.services.join(", ") || "None selected",
-        bathrooms: formData.bathrooms || "Not specified",
-        timeline:
-          timelineOptions.find((opt) => opt.value === formData.timeline)
-            ?.label || formData.timeline,
-        contact_time:
-          contactOptions.find((opt) => opt.value === formData.contactTime)
-            ?.label || formData.contactTime,
-        details: formData.details || "No additional details provided",
-      };
+      const data = await response.json();
 
-      // Send email using EmailJS
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Failed to send email");
+      }
 
       // Success
       setSubmitStatus({ loading: false, success: true, error: null });
       setFormData(initialState); // Reset form
 
-      // Auto-hide success message after 5 seconds
+      // Auto-hide success modal after 10 seconds
       setTimeout(() => {
         setSubmitStatus((prev) => ({ ...prev, success: false }));
-      }, 5000);
+      }, 10000);
     } catch (error) {
       console.error("Email send error:", error);
       setSubmitStatus({
@@ -257,6 +258,7 @@ export default function BookConsultation() {
               <LabeledInput
                 label="Postcode"
                 id="postcode"
+                type="number"
                 value={formData.postcode}
                 onChange={handleChange("postcode")}
                 placeholder="3000"
@@ -357,7 +359,7 @@ export default function BookConsultation() {
                 value={formData.details}
                 onChange={handleChange("details")}
                 placeholder="Tell us about your project, inspiration, or any must-haves"
-                className="w-full rounded-md border border-gray-200 bg-gray-50 focus:bg-white text-gray-900 placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                className="w-full rounded-md border border-gray-200 bg-gray-50 focus:bg-white text-gray-900 placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2D6B7A] focus:border-[#2D6B7A]"
                 style={{ padding: "12px 14px", minHeight: 140, marginTop: 4 }}
               />
             </div>
@@ -366,7 +368,7 @@ export default function BookConsultation() {
               <button
                 type="submit"
                 disabled={submitStatus.loading}
-                className="inline-flex items-center justify-center rounded-md text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto flex items-center justify-center rounded-md text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-2 focus:ring-[#2D6B7A] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   padding: "12px 20px",
                   backgroundColor: "var(--color-primary)",
@@ -404,6 +406,162 @@ export default function BookConsultation() {
           </form>
         </div>
       </div>
+
+      {/* Success Modal */}
+      {submitStatus.success && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 50,
+            padding: "20px",
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "#ffffff",
+              borderRadius: "16px",
+              padding: "40px",
+              maxWidth: "500px",
+              width: "100%",
+              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.15)",
+              animation: "slideUp 0.3s ease-out",
+            }}
+          >
+            {/* Success Icon */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: "24px",
+              }}
+            >
+              <div
+                style={{
+                  width: "80px",
+                  height: "80px",
+                  borderRadius: "50%",
+                  backgroundColor: "#dcfce7",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <svg
+                  style={{ width: "48px", height: "48px" }}
+                  className="text-green-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            {/* Heading */}
+            <h2
+              style={{
+                fontSize: "24px",
+                fontWeight: "700",
+                color: "#1e293b",
+                marginBottom: "12px",
+                textAlign: "center",
+              }}
+            >
+              Consultation Request Sent! 🎉
+            </h2>
+
+            {/* Message */}
+            <p
+              style={{
+                fontSize: "15px",
+                color: "#64748b",
+                marginBottom: "28px",
+                textAlign: "center",
+                lineHeight: "1.6",
+              }}
+            >
+              Thank you for your interest! We've received your consultation
+              request and will contact you soon at the number you provided.
+              Check your email for confirmation.
+            </p>
+
+            {/* Buttons */}
+            <div
+              style={{
+                display: "flex",
+                gap: "12px",
+                justifyContent: "center",
+              }}
+            >
+              <button
+                onClick={() =>
+                  setSubmitStatus((prev) => ({ ...prev, success: false }))
+                }
+                style={{
+                  padding: "12px 32px",
+                  backgroundColor: "#2e7d6f",
+                  color: "#ffffff",
+                  border: "none",
+                  borderRadius: "8px",
+                  fontSize: "15px",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#1f5549";
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow =
+                    "0 8px 20px rgba(46, 125, 111, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = "#2e7d6f";
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "none";
+                }}
+              >
+                Got it!
+              </button>
+            </div>
+
+            {/* Footer Message */}
+            <p
+              style={{
+                fontSize: "12px",
+                color: "#94a3b8",
+                marginTop: "16px",
+                textAlign: "center",
+              }}
+            >
+              This modal will close automatically in 10 seconds
+            </p>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 }
@@ -434,7 +592,7 @@ function LabeledInput({ label, id, type = "text", ...props }) {
       <input
         id={id}
         type={type}
-        className="w-full rounded-md border border-gray-200 bg-gray-50 focus:bg-white text-gray-900 placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+        className="w-full rounded-md border border-gray-200 bg-gray-50 focus:bg-white text-gray-900 placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2D6B7A] focus:border-[#2D6B7A]"
         style={{ padding: "12px 14px" }}
         {...props}
       />
@@ -446,8 +604,10 @@ function RadioCard({ label, name, value, checked, onChange }) {
   return (
     <label
       className={`flex items-center justify-between rounded-lg border ${
-        checked ? "border-amber-500 bg-amber-50" : "border-gray-200 bg-gray-50"
-      } cursor-pointer shadow-sm transition hover:border-amber-300`}
+        checked
+          ? "border-[#2D6B7A] bg-[#2D6B7A]/10"
+          : "border-gray-200 bg-gray-50"
+      } cursor-pointer shadow-sm transition hover:border-[#2D6B7A]/50`}
       style={{ padding: "12px 14px" }}
     >
       <span className="text-sm font-semibold text-gray-900">{label}</span>
@@ -457,7 +617,7 @@ function RadioCard({ label, name, value, checked, onChange }) {
         value={value}
         checked={checked}
         onChange={onChange}
-        className="h-4 w-4 text-amber-600 border-gray-300 focus:ring-amber-500"
+        className="h-4 w-4 text-[#2D6B7A] border-gray-300 focus:ring-[#2D6B7A]"
       />
     </label>
   );
@@ -467,8 +627,10 @@ function CheckboxCard({ label, checked, onChange }) {
   return (
     <label
       className={`flex items-center justify-between rounded-lg border ${
-        checked ? "border-amber-500 bg-amber-50" : "border-gray-200 bg-gray-50"
-      } cursor-pointer shadow-sm transition hover:border-amber-300`}
+        checked
+          ? "border-[#2D6B7A] bg-[#2D6B7A]/10"
+          : "border-gray-200 bg-gray-50"
+      } cursor-pointer shadow-sm transition hover:border-[#2D6B7A]/50`}
       style={{ padding: "12px 14px" }}
     >
       <span className="text-sm font-semibold text-gray-900">{label}</span>
@@ -476,7 +638,7 @@ function CheckboxCard({ label, checked, onChange }) {
         type="checkbox"
         checked={checked}
         onChange={onChange}
-        className="h-4 w-4 text-amber-600 border-gray-300 focus:ring-amber-500"
+        className="h-4 w-4 text-[#2D6B7A] border-gray-300 focus:ring-[#2D6B7A]"
       />
     </label>
   );
@@ -494,7 +656,7 @@ function RadioInline({ label, name, value, checked, onChange }) {
         value={value}
         checked={checked}
         onChange={onChange}
-        className="h-4 w-4 text-amber-600 border-gray-300 focus:ring-amber-500"
+        className="h-4 w-4 text-[#2D6B7A] border-gray-300 focus:ring-[#2D6B7A]"
       />
       <span>{label}</span>
     </label>

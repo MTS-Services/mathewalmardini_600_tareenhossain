@@ -989,7 +989,7 @@
 
 // export default Header;
 
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import {
   motion,
   AnimatePresence,
@@ -1001,6 +1001,7 @@ import { useState, useEffect } from "react";
 
 function Header({ isDesktop }) {
   const { scrollY } = useScroll();
+  const location = useLocation();
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -1010,6 +1011,12 @@ function Header({ isDesktop }) {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
   const [mobileBlogsOpen, setMobileBlogsOpen] = useState(false);
+
+  const isActive = (path) => {
+    return location.pathname === path
+      ? "text-primary font-bold"
+      : "text-gray-700";
+  };
 
   useEffect(() => {
     if (!isDesktop) {
@@ -1054,7 +1061,7 @@ function Header({ isDesktop }) {
           <nav className="hidden xl:flex items-center gap-6 absolute left-1/2 -translate-x-1/2 z-20">
             <Link
               to="/"
-              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
+              className={`${isActive("/")} hover:text-gray-900 transition-colors font-medium text-base`}
             >
               HOME
             </Link>
@@ -1065,7 +1072,9 @@ function Header({ isDesktop }) {
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
             >
-              <button className="flex items-center gap-1 text-gray-700 hover:text-gray-900 transition-colors font-medium text-base">
+              <button
+                className={`flex items-center gap-1 ${["bathroom-renovation", "kitchen-renovation", "laundry-renovation", "shop-fitouts"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base`}
+              >
                 SERVICES
                 {servicesOpen ? (
                   <ChevronUp className="w-4 h-4" />
@@ -1085,6 +1094,7 @@ function Header({ isDesktop }) {
                   >
                     <Link
                       to="/bathroom-renovation"
+                      onClick={() => setServicesOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
@@ -1092,6 +1102,7 @@ function Header({ isDesktop }) {
                     </Link>
                     <Link
                       to="/kitchen-renovation"
+                      onClick={() => setServicesOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
@@ -1099,6 +1110,7 @@ function Header({ isDesktop }) {
                     </Link>
                     <Link
                       to="/laundry-renovation"
+                      onClick={() => setServicesOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
@@ -1106,6 +1118,7 @@ function Header({ isDesktop }) {
                     </Link>
                     <Link
                       to="/shop-fitouts"
+                      onClick={() => setServicesOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
@@ -1122,7 +1135,9 @@ function Header({ isDesktop }) {
               onMouseEnter={() => setPortfolioOpen(true)}
               onMouseLeave={() => setPortfolioOpen(false)}
             >
-              <button className="flex items-center gap-1 text-gray-700 hover:text-gray-900 transition-colors font-medium text-base">
+              <button
+                className={`flex items-center gap-1 ${["bathroom-portfolio", "kitchen-portfolio", "laundry-portfolio"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base`}
+              >
                 PORTFOLIO
                 {portfolioOpen ? (
                   <ChevronUp className="w-4 h-4" />
@@ -1143,6 +1158,7 @@ function Header({ isDesktop }) {
                   >
                     <Link
                       to="/bathroom-portfolio"
+                      onClick={() => setPortfolioOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
@@ -1150,6 +1166,7 @@ function Header({ isDesktop }) {
                     </Link>
                     <Link
                       to="/kitchen-portfolio"
+                      onClick={() => setPortfolioOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
@@ -1157,6 +1174,7 @@ function Header({ isDesktop }) {
                     </Link>
                     <Link
                       to="/laundry-portfolio"
+                      onClick={() => setPortfolioOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
@@ -1169,13 +1187,13 @@ function Header({ isDesktop }) {
 
             <Link
               to="/about"
-              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
+              className={`${isActive("/about")} hover:text-gray-900 transition-colors font-medium text-base`}
             >
               ABOUT
             </Link>
             <Link
               to="/faqs"
-              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
+              className={`${isActive("/faqs")} hover:text-gray-900 transition-colors font-medium text-base`}
             >
               FAQs
             </Link>
@@ -1326,14 +1344,14 @@ function Header({ isDesktop }) {
             */}
             <Link
               to="/blog"
-              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
+              className={`${isActive("/blog")} hover:text-gray-900 transition-colors font-medium text-base`}
             >
               BLOGS
             </Link>
 
             <Link
               to="/contact"
-              className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base"
+              className={`${isActive("/contact")} hover:text-gray-900 transition-colors font-medium text-base`}
             >
               CONTACT US
             </Link>
@@ -1399,7 +1417,7 @@ function Header({ isDesktop }) {
             <nav className="flex flex-col gap-4">
               <Link
                 to="/"
-                className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                className={`${isActive("/")} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 HOME
@@ -1408,7 +1426,7 @@ function Header({ isDesktop }) {
               {/* Mobile Services Dropdown */}
               <div>
                 <button
-                  className="flex items-center justify-between w-full text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                  className={`flex items-center justify-between w-full ${["bathroom-renovation", "kitchen-renovation", "laundry-renovation", "shop-fitouts"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                 >
                   SERVICES
@@ -1437,7 +1455,10 @@ function Header({ isDesktop }) {
                         to="/bathroom-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                          setMobileServicesOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
                       >
                         BATHROOM RENOVATION
                       </Link>
@@ -1445,7 +1466,10 @@ function Header({ isDesktop }) {
                         to="/kitchen-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                          setMobileServicesOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
                       >
                         KITCHEN RENOVATION
                       </Link>
@@ -1453,7 +1477,10 @@ function Header({ isDesktop }) {
                         to="/laundry-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                          setMobileServicesOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
                       >
                         LAUNDRY RENOVATION
                       </Link>
@@ -1461,7 +1488,10 @@ function Header({ isDesktop }) {
                         to="/shop-fitouts"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                          setMobileServicesOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
                       >
                         SHOP FITOUTS
                       </Link>
@@ -1473,7 +1503,7 @@ function Header({ isDesktop }) {
               {/* Mobile Portfolio Dropdown */}
               <div>
                 <button
-                  className="flex items-center justify-between w-full text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                  className={`flex items-center justify-between w-full ${["bathroom-portfolio", "kitchen-portfolio", "laundry-portfolio"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                   onClick={() => setMobilePortfolioOpen(!mobilePortfolioOpen)}
                 >
                   PORTFOLIO
@@ -1502,7 +1532,10 @@ function Header({ isDesktop }) {
                         to="/bathroom-portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                          setMobilePortfolioOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
                       >
                         BATHROOM PORTFOLIO
                       </Link>
@@ -1510,7 +1543,10 @@ function Header({ isDesktop }) {
                         to="/kitchen-portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                          setMobilePortfolioOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
                       >
                         KITCHEN PORTFOLIO
                       </Link>
@@ -1518,7 +1554,10 @@ function Header({ isDesktop }) {
                         to="/laundry-portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                          setMobilePortfolioOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
                       >
                         LAUNDRY PORTFOLIO
                       </Link>
@@ -1529,14 +1568,14 @@ function Header({ isDesktop }) {
 
               <Link
                 to="/about"
-                className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                className={`${isActive("/about")} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 ABOUT
               </Link>
               <Link
                 to="/faqs"
-                className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                className={`${isActive("/faqs")} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 FAQs
@@ -1696,7 +1735,7 @@ function Header({ isDesktop }) {
               */}
               <Link
                 to="/blog"
-                className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                className={`${isActive("/blog")} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 BLOGS
@@ -1704,7 +1743,7 @@ function Header({ isDesktop }) {
 
               <Link
                 to="/contact"
-                className="text-gray-700 hover:text-gray-900 transition-colors font-medium text-base py-2"
+                className={`${isActive("/contact")} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 CONTACT US

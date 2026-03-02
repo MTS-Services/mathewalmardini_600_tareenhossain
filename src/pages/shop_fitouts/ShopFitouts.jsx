@@ -1,12 +1,46 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
 import { Phone, CheckCircle } from "lucide-react";
+import FeaturesGrid from "../homePage/components/FeaturesGrid";
+import CTASection from "../homePage/components/CTASection";
 
 function ShopFitouts() {
+  const features = [
+    {
+      title: "Custom Joinery",
+      description:
+        "Tailored cabinetry and fixtures designed specifically for your space and operational needs.",
+    },
+    {
+      title: "Lighting Design",
+      description:
+        "Strategic lighting solutions that enhance atmosphere, functionality, and brand presentation.",
+    },
+    {
+      title: "Signage & Branding",
+      description:
+        "Professional installation of signage and brand elements that make your business stand out.",
+    },
+    {
+      title: "Quality Finishes",
+      description:
+        "Premium materials and finishes selected for durability, aesthetics, and long-term performance.",
+    },
+    {
+      title: "Layout Planning",
+      description:
+        "Intuitive space planning that optimises flow, efficiency, and customer experience.",
+    },
+    {
+      title: "Project Management",
+      description:
+        "End-to-end coordination from design through completion, ensuring on-time delivery.",
+    },
+  ];
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-[#2D6B7A] to-[#1e5562] min-h-[60vh] flex items-center justify-center py-16 md:py-24 lg:py-32 overflow-hidden">
+      <section className="relative bg-gradient-to-r from-[#2D6B7A] to-[#1e5562] h-[50vh] min-h-[600px] flex items-center justify-center py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
@@ -153,7 +187,7 @@ function ShopFitouts() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="space-y-8"
+            className="space-y-6"
           >
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -202,85 +236,7 @@ function ShopFitouts() {
       </section>
 
       {/* Key Features Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-center mb-16"
-          >
-            <motion.h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              What We Deliver
-            </motion.h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Custom Joinery",
-                description:
-                  "Tailored cabinetry and fixtures designed specifically for your space and operational needs.",
-              },
-              {
-                title: "Lighting Design",
-                description:
-                  "Strategic lighting solutions that enhance atmosphere, functionality, and brand presentation.",
-              },
-              {
-                title: "Signage & Branding",
-                description:
-                  "Professional installation of signage and brand elements that make your business stand out.",
-              },
-              {
-                title: "Quality Finishes",
-                description:
-                  "Premium materials and finishes selected for durability, aesthetics, and long-term performance.",
-              },
-              {
-                title: "Layout Planning",
-                description:
-                  "Intuitive space planning that optimises flow, efficiency, and customer experience.",
-              },
-              {
-                title: "Project Management",
-                description:
-                  "End-to-end coordination from design through completion, ensuring on-time delivery.",
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{
-                  y: -10,
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
-                }}
-                className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <CheckCircle className="w-6 h-6 text-[#2D6B7A] shrink-0 mt-1" />
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-                    {feature.title}
-                  </h3>
-                </div>
-                <p className="text-gray-600 text-base leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeaturesGrid features={features} title="What We Deliver" />
 
       {/* Industries We Serve Section */}
       <section className="py-16 md:py-24 lg:py-32 bg-white">
@@ -390,70 +346,10 @@ function ShopFitouts() {
         </div>
       </section>
 
-      {/* Bottom CTA Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-r from-[#2D6B7A] to-[#1e5562]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-center"
-          >
-            <motion.h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              Ready to Transform Your Commercial Space?
-            </motion.h2>
-            <motion.p
-              className="text-white/90 text-lg md:text-xl mb-10 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              Let's discuss your project and create a space that elevates your
-              business and delights your customers.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            >
-              <motion.a
-                href="tel:+61432661176"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 bg-white text-[#2D6B7A] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg"
-              >
-                <Phone className="w-5 h-5" />
-                CALL US: 0432661176
-              </motion.a>
-              <Link to="/book-consultation">
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#2D6B7A] transition-colors duration-300"
-                >
-                  Book A Consultation
-                </motion.button>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <CTASection
+        heading="Ready to Transform Your Commercial Space?"
+        description="Let's discuss your project and create a space that elevates your business and delights your customers."
+      />
     </div>
   );
 }

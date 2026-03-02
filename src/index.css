@@ -866,6 +866,76 @@
   margin-right: -2rem;
 }
 
+/* Space Y utilities (vertical spacing between child elements) */
+.space-y-1 > * + * {
+  margin-top: 0.25rem;
+}
+
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+.space-y-3 > * + * {
+  margin-top: 0.75rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.space-y-5 > * + * {
+  margin-top: 1.25rem;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+.space-y-7 > * + * {
+  margin-top: 1.75rem;
+}
+
+.space-y-8 > * + * {
+  margin-top: 2rem;
+}
+
+.space-y-10 > * + * {
+  margin-top: 2.5rem;
+}
+
+.space-y-12 > * + * {
+  margin-top: 3rem;
+}
+
+.space-y-16 > * + * {
+  margin-top: 4rem;
+}
+
+/* Space X utilities (horizontal spacing between child elements) */
+.space-x-1 > * + * {
+  margin-left: 0.25rem;
+}
+
+.space-x-2 > * + * {
+  margin-left: 0.5rem;
+}
+
+.space-x-3 > * + * {
+  margin-left: 0.75rem;
+}
+
+.space-x-4 > * + * {
+  margin-left: 1rem;
+}
+
+.space-x-6 > * + * {
+  margin-left: 1.5rem;
+}
+
+.space-x-8 > * + * {
+  margin-left: 2rem;
+}
+
 /* ============================================ */
 
 /* 
