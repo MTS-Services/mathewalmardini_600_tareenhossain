@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import PhotoGallery from "../homePage/components/PhotoGallery";
 
 const faqData = [
   {
@@ -464,6 +465,9 @@ const FAQ = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Photo Gallery Section - Full Width */}
+      <PhotoGallery />
     </div>
   );
 };
