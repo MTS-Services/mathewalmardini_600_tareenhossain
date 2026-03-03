@@ -1,9 +1,12 @@
 import { BrowserRouter } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import AppRouter from "./routes/router";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
+  const lenisRef = useRef(null);
+
   // Initialize Lenis on component mount
   useEffect(() => {
     // Initialize Lenis
@@ -18,6 +21,8 @@ function App() {
       touchMultiplier: 2,
       infinite: false,
     });
+
+    lenisRef.current = lenis;
 
     // Sync Lenis with requestAnimationFrame
     function raf(time) {
@@ -36,6 +41,7 @@ function App() {
   // Render the app with routing
   return (
     <BrowserRouter>
+      <ScrollToTop lenisInstance={lenisRef} />
       <div className="min-h-screen">
         <AppRouter />
       </div>

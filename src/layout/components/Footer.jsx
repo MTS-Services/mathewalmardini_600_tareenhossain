@@ -725,7 +725,7 @@ const Footer = () => {
                 style={{
                   padding: "1rem 1.5rem",
                   gap: "0.75rem",
-                  backgroundColor: "#3d3d3d",
+                  backgroundColor: "#d62976",
                   fontSize: "1.1rem",
                   fontWeight: "600",
                   width: "100%",

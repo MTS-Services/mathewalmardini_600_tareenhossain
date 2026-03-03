@@ -1,4 +1,6 @@
 // Blog Content Components
+import { Link } from "react-router";
+
 export const blogContent = {
   "true-cost-renovating-melbourne": (
     <div className="blog-content">
@@ -6,8 +8,21 @@ export const blogContent = {
         Renovating in Melbourne has never been more popular — or more complex.
         With rising material costs, evolving design trends, and a competitive
         trades market, homeowners are seeking clarity on what a renovation truly
-        costs. Whether you're updating a kitchen, transforming a bathroom, or
-        planning a full-scale home renovation, understanding the financial
+        costs. Whether you're updating a{" "}
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:underline font-semibold"
+        >
+          kitchen
+        </Link>
+        , transforming a{" "}
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:underline font-semibold"
+        >
+          bathroom
+        </Link>
+        , or planning a full-scale home renovation, understanding the financial
         landscape is the first step toward a smooth, well-managed project.
       </p>
       <p className="mb-8">
@@ -71,7 +86,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Kitchen Renovation Costs in Melbourne
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Kitchen Renovation
+        </Link>{" "}
+        Costs in Melbourne
       </h2>
       <p className="mb-6">
         A kitchen is one of the most significant investments you'll make in your
@@ -127,7 +148,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Bathroom Renovation Costs in Melbourne
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Bathroom Renovation
+        </Link>{" "}
+        Costs in Melbourne
       </h2>
       <p className="mb-6">
         Bathrooms require waterproofing, plumbing, tiling, and specialist trades
@@ -1606,9 +1633,15 @@ export const blogContent = {
         transform your kitchen into a space that's both beautiful and practical.
       </p>
       <p className="mb-6">
-        If you're planning a kitchen renovation, we can help you design and
-        build a space that reflects your vision and enhances your home for years
-        to come.
+        If you're planning a{" "}
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:underline font-semibold"
+        >
+          kitchen renovation
+        </Link>
+        , we can help you design and build a space that reflects your vision and
+        enhances your home for years to come.
       </p>
     </div>
   ),
@@ -1878,9 +1911,15 @@ export const blogContent = {
         value and your everyday experience.
       </p>
       <p className="mb-6">
-        If you're planning a bathroom renovation, we can help you design and
-        build a space that feels refined, practical, and tailored to the way you
-        live.
+        If you're planning a{" "}
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:underline font-semibold"
+        >
+          bathroom renovation
+        </Link>
+        , we can help you design and build a space that feels refined,
+        practical, and tailored to the way you live.
       </p>
     </div>
   ),
@@ -3087,7 +3126,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Kitchen Renovations in Essendon
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Kitchen Renovations
+        </Link>{" "}
+        in Essendon
       </h2>
       <p className="mb-6">
         Kitchens are one of the most popular renovation projects in the area,
@@ -3109,7 +3154,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Bathroom Renovations in Essendon
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Bathroom Renovations
+        </Link>{" "}
+        in Essendon
       </h2>
       <p className="mb-6">
         Older homes often have small, poorly laid-out bathrooms. Renovating
@@ -3205,8 +3256,24 @@ export const blogContent = {
         While every project is unique, here's a general guide:
       </p>
       <ul className="list-disc pl-6 mb-6 space-y-2">
-        <li>Kitchen renovations: $25,000–$50,000+</li>
-        <li>Bathroom renovations: $20,000–$35,000+</li>
+        <li>
+          <Link
+            to="/kitchen-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Kitchen renovations
+          </Link>
+          : $25,000–$50,000+
+        </li>
+        <li>
+          <Link
+            to="/bathroom-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Bathroom renovations
+          </Link>
+          : $20,000–$35,000+
+        </li>
         <li>Full-home renovations: $80,000–$200,000+</li>
         <li>Extensions: $150,000–$400,000+</li>
         <li>Second storeys: $250,000–$500,000+</li>
@@ -3327,7 +3394,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Kitchen Renovations in Keilor
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Kitchen Renovations
+        </Link>{" "}
+        in Keilor
       </h2>
       <p className="mb-6">
         Kitchens are one of the most impactful upgrades in Keilor homes,
@@ -3350,7 +3423,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Bathroom Renovations in Keilor
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Bathroom Renovations
+        </Link>{" "}
+        in Keilor
       </h2>
       <p className="mb-6">
         Many Keilor homes have original bathrooms that are small, dark, or
@@ -3443,8 +3522,24 @@ export const blogContent = {
         While every project is unique, here's a general guide:
       </p>
       <ul className="list-disc pl-6 mb-6 space-y-2">
-        <li>Kitchen renovations: $25,000–$50,000+</li>
-        <li>Bathroom renovations: $20,000–$35,000+</li>
+        <li>
+          <Link
+            to="/kitchen-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Kitchen renovations
+          </Link>
+          : $25,000–$50,000+
+        </li>
+        <li>
+          <Link
+            to="/bathroom-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Bathroom renovations
+          </Link>
+          : $20,000–$35,000+
+        </li>
         <li>Full-home renovations: $80,000–$200,000+</li>
         <li>Extensions: $150,000–$400,000+</li>
         <li>Second storeys: $250,000–$500,000+</li>
@@ -3573,7 +3668,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Kitchen Renovations in Gisborne
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Kitchen Renovations
+        </Link>{" "}
+        in Gisborne
       </h2>
       <p className="mb-6">
         The kitchen is the heart of the home — especially in Gisborne, where
@@ -3594,7 +3695,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Bathroom Renovations in Gisborne
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Bathroom Renovations
+        </Link>{" "}
+        in Gisborne
       </h2>
       <p className="mb-6">
         Many older Gisborne homes have original bathrooms that feel dated or
@@ -3692,8 +3799,24 @@ export const blogContent = {
         While every project is unique, here's a general guide:
       </p>
       <ul className="list-disc pl-6 mb-6 space-y-2">
-        <li>Kitchen renovations: $25,000–$55,000+</li>
-        <li>Bathroom renovations: $20,000–$40,000+</li>
+        <li>
+          <Link
+            to="/kitchen-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Kitchen renovations
+          </Link>
+          : $25,000–$55,000+
+        </li>
+        <li>
+          <Link
+            to="/bathroom-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Bathroom renovations
+          </Link>
+          : $20,000–$40,000+
+        </li>
         <li>Full-home renovations: $90,000–$250,000+</li>
         <li>Extensions: $180,000–$450,000+</li>
         <li>Acreage upgrades: Highly variable depending on scope</li>
@@ -3824,7 +3947,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Kitchen Renovations in Sunbury
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Kitchen Renovations
+        </Link>{" "}
+        in Sunbury
       </h2>
       <p className="mb-6">
         Kitchens are one of the most impactful upgrades in Sunbury homes,
@@ -3847,7 +3976,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Bathroom Renovations in Sunbury
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Bathroom Renovations
+        </Link>{" "}
+        in Sunbury
       </h2>
       <p className="mb-6">
         Many Sunbury homes have original bathrooms that feel dated or cramped.
@@ -3943,8 +4078,24 @@ export const blogContent = {
         While every project is unique, here's a general guide:
       </p>
       <ul className="list-disc pl-6 mb-6 space-y-2">
-        <li>Kitchen renovations: $25,000–$50,000+</li>
-        <li>Bathroom renovations: $20,000–$35,000+</li>
+        <li>
+          <Link
+            to="/kitchen-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Kitchen renovations
+          </Link>
+          : $25,000–$50,000+
+        </li>
+        <li>
+          <Link
+            to="/bathroom-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Bathroom renovations
+          </Link>
+          : $20,000–$35,000+
+        </li>
         <li>Full-home renovations: $80,000–$200,000+</li>
         <li>Extensions: $150,000–$400,000+</li>
         <li>Second storeys: $250,000–$500,000+</li>
@@ -4076,7 +4227,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Kitchen Renovations in Airport West
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Kitchen Renovations
+        </Link>{" "}
+        in Airport West
       </h2>
       <p className="mb-6">
         Kitchens are one of the most impactful upgrades in Airport West homes,
@@ -4099,7 +4256,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Bathroom Renovations in Airport West
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Bathroom Renovations
+        </Link>{" "}
+        in Airport West
       </h2>
       <p className="mb-6">
         Many Airport West homes have original bathrooms that feel dated or
@@ -4195,8 +4358,24 @@ export const blogContent = {
         While every project is unique, here's a general guide:
       </p>
       <ul className="list-disc pl-6 mb-6 space-y-2">
-        <li>Kitchen renovations: $25,000–$50,000+</li>
-        <li>Bathroom renovations: $20,000–$35,000+</li>
+        <li>
+          <Link
+            to="/kitchen-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Kitchen renovations
+          </Link>
+          : $25,000–$50,000+
+        </li>
+        <li>
+          <Link
+            to="/bathroom-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Bathroom renovations
+          </Link>
+          : $20,000–$35,000+
+        </li>
         <li>Full-home renovations: $80,000–$200,000+</li>
         <li>Extensions: $150,000–$400,000+</li>
         <li>Second storeys: $250,000–$500,000+</li>
@@ -4333,7 +4512,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Kitchen Renovations in Caroline Springs
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Kitchen Renovations
+        </Link>{" "}
+        in Caroline Springs
       </h2>
       <p className="mb-6">
         Kitchens are one of the most popular renovation projects in the suburb,
@@ -4355,7 +4540,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Bathroom Renovations in Caroline Springs
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Bathroom Renovations
+        </Link>{" "}
+        in Caroline Springs
       </h2>
       <p className="mb-6">
         Bathrooms in early-2000s homes often feature outdated tiles, small
@@ -4457,8 +4648,24 @@ export const blogContent = {
         While every project is unique, here's a general guide:
       </p>
       <ul className="list-disc pl-6 mb-6 space-y-2">
-        <li>Kitchen renovations: $25,000–$55,000+</li>
-        <li>Bathroom renovations: $20,000–$40,000+</li>
+        <li>
+          <Link
+            to="/kitchen-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Kitchen renovations
+          </Link>
+          : $25,000–$55,000+
+        </li>
+        <li>
+          <Link
+            to="/bathroom-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Bathroom renovations
+          </Link>
+          : $20,000–$40,000+
+        </li>
         <li>Full-home renovations: $90,000–$250,000+</li>
         <li>Extensions: $180,000–$450,000+</li>
         <li>Outdoor upgrades: $15,000–$80,000+</li>
@@ -4588,7 +4795,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Kitchen Renovations in Hillside
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Kitchen Renovations
+        </Link>{" "}
+        in Hillside
       </h2>
       <p className="mb-6">
         Kitchens are one of the most popular renovation projects in the suburb,
@@ -4610,7 +4823,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Bathroom Renovations in Hillside
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Bathroom Renovations
+        </Link>{" "}
+        in Hillside
       </h2>
       <p className="mb-6">
         Bathrooms in early-2000s homes often feature outdated tiles, small
@@ -4705,8 +4924,24 @@ export const blogContent = {
         While every project is unique, here's a general guide:
       </p>
       <ul className="list-disc pl-6 mb-6 space-y-2">
-        <li>Kitchen renovations: $25,000–$55,000+</li>
-        <li>Bathroom renovations: $20,000–$40,000+</li>
+        <li>
+          <Link
+            to="/kitchen-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Kitchen renovations
+          </Link>
+          : $25,000–$55,000+
+        </li>
+        <li>
+          <Link
+            to="/bathroom-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Bathroom renovations
+          </Link>
+          : $20,000–$40,000+
+        </li>
         <li>Full-home renovations: $90,000–$250,000+</li>
         <li>Extensions: $180,000–$450,000+</li>
         <li>Outdoor upgrades: $15,000–$80,000+</li>
@@ -4838,7 +5073,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Kitchen Renovations in Point Cook
+        <Link
+          to="/kitchen-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Kitchen Renovations
+        </Link>{" "}
+        in Point Cook
       </h2>
       <p className="mb-6">
         Kitchens are one of the most popular renovation projects in the suburb,
@@ -4860,7 +5101,13 @@ export const blogContent = {
       </p>
 
       <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        Bathroom Renovations in Point Cook
+        <Link
+          to="/bathroom-renovation"
+          className="text-[#2D6B7A] hover:text-[#1e5562]"
+        >
+          Bathroom Renovations
+        </Link>{" "}
+        in Point Cook
       </h2>
       <p className="mb-6">
         Bathrooms in early-2000s homes often feature outdated tiles, small
@@ -4955,8 +5202,24 @@ export const blogContent = {
         While every project is unique, here's a general guide:
       </p>
       <ul className="list-disc pl-6 mb-6 space-y-2">
-        <li>Kitchen renovations: $25,000–$55,000+</li>
-        <li>Bathroom renovations: $20,000–$40,000+</li>
+        <li>
+          <Link
+            to="/kitchen-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Kitchen renovations
+          </Link>
+          : $25,000–$55,000+
+        </li>
+        <li>
+          <Link
+            to="/bathroom-renovation"
+            className="text-[#2D6B7A] hover:underline font-semibold"
+          >
+            Bathroom renovations
+          </Link>
+          : $20,000–$40,000+
+        </li>
         <li>Full-home renovations: $90,000–$250,000+</li>
         <li>Extensions: $180,000–$450,000+</li>
         <li>Outdoor upgrades: $15,000–$80,000+</li>

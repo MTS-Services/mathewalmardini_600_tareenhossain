@@ -170,6 +170,88 @@ const BlogPost = () => {
         </div>
       </article>
 
+      {/* Our Services Section */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-center mb-4"
+          >
+            Our Services
+          </motion.h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Explore our comprehensive renovation and construction services
+            designed to transform your space.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "Bathroom Renovation",
+                path: "/bathroom-renovation",
+                icon: "🚿",
+                desc: "Modern bathroom design and renovation",
+              },
+              {
+                title: "Kitchen Renovation",
+                path: "/kitchen-renovation",
+                icon: "🍳",
+                desc: "Premium kitchen design and installation",
+              },
+              {
+                title: "Laundry Renovation",
+                path: "/laundry-renovation",
+                icon: "🧺",
+                desc: "Functional and stylish laundry spaces",
+              },
+              {
+                title: "Shop Fitouts",
+                path: "/shop-fitouts",
+                icon: "🏪",
+                desc: "Commercial space transformation",
+              },
+            ].map((service, index) => (
+              <motion.div
+                key={service.path}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link
+                  to={service.path}
+                  className="group h-full block bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all hover:-translate-y-2"
+                >
+                  <div className="text-5xl mb-4">{service.icon}</div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#2D6B7A] transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">{service.desc}</p>
+                  <div className="mt-4 inline-flex items-center text-[#2D6B7A] font-semibold text-sm group-hover:gap-2 transition-all gap-1">
+                    Learn More
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Related Articles */}
       {relatedPosts.length > 0 && (
         <section className="py-16 bg-gray-50">
