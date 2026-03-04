@@ -777,7 +777,7 @@ const cardVariants = {
   }),
 };
 
-const AUTO_PLAY_INTERVAL = 4000; // 4 seconds
+const AUTO_PLAY_INTERVAL = 15000; // 15 seconds
 
 const TestimonialSection = () => {
   const [[currentIndex, direction], setPage] = useState([0, 0]);

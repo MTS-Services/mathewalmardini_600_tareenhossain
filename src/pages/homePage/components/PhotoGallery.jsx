@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
   {
@@ -13,6 +15,7 @@ const images = [
 ];
 
 const PhotoGallery = () => {
+  const navigate = useNavigate();
   const [expandedId, setExpandedId] = useState(1);
   const [imageCount, setImageCount] = useState(5);
   const [isMobile, setIsMobile] = useState(false);
@@ -20,6 +23,10 @@ const PhotoGallery = () => {
   // Mobile carousel state
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1); // 1 = from right, -1 = from left
+
+  const handleNavigateToPortfolio = () => {
+    navigate("/portfolio");
+  };
 
   useEffect(() => {
     const updateLayout = () => {
@@ -36,20 +43,15 @@ const PhotoGallery = () => {
     return () => window.removeEventListener("resize", updateLayout);
   }, []);
 
-  // Auto-advance carousel
-  useEffect(() => {
-    if (!isMobile) return;
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => {
-        const next = (prev + 1) % images.length;
-        // Even index (0,2,4...) came from right, odd (1,3...) came from left
-        // Next slide: if next is odd → from right, if next is even → from left
-        setDirection(next % 2 === 1 ? 1 : -1);
-        return next;
-      });
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [isMobile]);
+  const handlePrevious = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
 
   const displayedImages = images.slice(0, imageCount);
 
@@ -69,7 +71,10 @@ const PhotoGallery = () => {
   };
 
   return (
-    <div className="bg-white" style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
+    <div
+      className="bg-white"
+      style={{ paddingTop: "4rem", paddingBottom: "4rem" }}
+    >
       {/* Section Title */}
       <div style={{ marginBottom: "3rem", textAlign: "center" }}>
         <h2 className="text-black font-bold text-2xl md:text-3xl lg:text-4xl">
@@ -104,7 +109,9 @@ const PhotoGallery = () => {
                 inset: 0,
                 borderRadius: "16px",
                 overflow: "hidden",
+                cursor: "pointer",
               }}
+              onClick={handleNavigateToPortfolio}
             >
               <img
                 src={images[currentIndex].src}
@@ -136,12 +143,87 @@ const PhotoGallery = () => {
             </motion.div>
           </AnimatePresence>
 
+          {/* Left Arrow Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePrevious();
+            }}
+            style={{
+              position: "absolute",
+              left: "0.5rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "40px",
+              height: "40px",
+              borderRadius: "50%",
+              background: "rgba(255,255,255,0.9)",
+              border: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              zIndex: 10,
+              boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+              transition: "all 0.2s ease",
+            }}
+            onMouseDown={(e) => {
+              e.currentTarget.style.transform = "translateY(-50%) scale(0.95)";
+            }}
+            onMouseUp={(e) => {
+              e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+            }}
+          >
+            <ChevronLeft className="w-6 h-6 text-gray-800" />
+          </button>
+
+          {/* Right Arrow Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNext();
+            }}
+            style={{
+              position: "absolute",
+              right: "0.5rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "40px",
+              height: "40px",
+              borderRadius: "50%",
+              background: "rgba(255,255,255,0.9)",
+              border: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              zIndex: 10,
+              boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+              transition: "all 0.2s ease",
+            }}
+            onMouseDown={(e) => {
+              e.currentTarget.style.transform = "translateY(-50%) scale(0.95)";
+            }}
+            onMouseUp={(e) => {
+              e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+            }}
+          >
+            <ChevronRight className="w-6 h-6 text-gray-800" />
+          </button>
+
           {/* Dot Indicators */}
           <div
             style={{
               position: "absolute",
               bottom: "0.75rem",
-              right: "0.75rem",
+              left: "50%",
+              transform: "translateX(-50%)",
               display: "flex",
               gap: "6px",
               zIndex: 10,
@@ -155,9 +237,7 @@ const PhotoGallery = () => {
                   height: "8px",
                   borderRadius: "4px",
                   background:
-                    i === currentIndex
-                      ? "white"
-                      : "rgba(255,255,255,0.5)",
+                    i === currentIndex ? "white" : "rgba(255,255,255,0.5)",
                   transition: "all 0.3s ease",
                 }}
               />
@@ -169,7 +249,7 @@ const PhotoGallery = () => {
       {/* Desktop Horizontal Expanding Gallery */}
       {!isMobile && (
         <div
-          className="flex items-center justify-center h-[400px] md:h-[500px] overflow-hidden"
+          className="flex items-center justify-center h-100 md:h-125 overflow-hidden"
           style={{ gap: "1rem", width: "90%", margin: "0 auto" }}
         >
           {displayedImages.map((image) => (
@@ -183,7 +263,8 @@ const PhotoGallery = () => {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               onHoverStart={() => setExpandedId(image.id)}
               onHoverEnd={() => setExpandedId(1)}
-              className="relative h-full cursor-pointer overflow-hidden shadow-xl"
+              onClick={handleNavigateToPortfolio}
+              className="relative h-full cursor-pointer overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
               style={{ borderRadius: "20px" }}
             >
               <img
@@ -196,7 +277,7 @@ const PhotoGallery = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white"
+                  className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent text-white"
                   style={{ padding: "1.5rem" }}
                 >
                   <h3 className="text-lg md:text-xl font-bold">

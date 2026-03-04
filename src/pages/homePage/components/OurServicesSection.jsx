@@ -162,7 +162,7 @@ const OurServicesSection = () => {
                   <div className="relative  overflow-hidden flex flex-col h-full our-services-margin-top">
                     {/* Video/Image Container */}
                     <div
-                      className="relative bg-gray-900 h-62.5 sm:h-87.5 md:h-95 lg:h-105 xl:h-140 2xl:h-420 rounded-3xl overflow-hidden"
+                      className="relative bg-gray-900 h-62.5 sm:h-87.5 md:h-95 lg:h-105 xl:h-140 2xl:h-150 rounded-3xl overflow-hidden"
                       style={{ marginTop: "0px" }}
                     >
                       {service.type === "video" ? (
@@ -189,7 +189,7 @@ const OurServicesSection = () => {
 
                     {/* Content */}
                     <div
-                      className="relative z-10flex flex-col h-50 sm:h-50 md:h-55 lg:h-57.5 xl:h-62.5"
+                      className="relative z-10 flex flex-col h-50 sm:h-50 md:h-55 lg:h-57.5 xl:h-62.5"
                       style={{ padding: "28px 24px" }}
                     >
                       <h3

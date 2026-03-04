@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { Phone, CheckCircle } from "lucide-react";
 import FeaturesGrid from "../homePage/components/FeaturesGrid";
 import CTASection from "../homePage/components/CTASection";
+import ProcessSection from "../homePage/components/ProcessSection";
 
 function ShopFitouts() {
   const features = [
@@ -40,8 +41,12 @@ function ShopFitouts() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-[#2D6B7A] to-[#1e5562] h-[50vh] min-h-[600px] flex items-center justify-center py-16 md:py-24 lg:py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        className="relative min-h-[100dvh] md:h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
+        style={{ backgroundImage: "url('/banner_image/Photo6.jpg')" }}
+      >
+        <div className="absolute inset-0"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -119,6 +124,9 @@ function ShopFitouts() {
           </motion.div>
         </div>
       </section>
+
+      {/* Process Section */}
+      <ProcessSection />
 
       {/* Our Approach Section */}
       <section className="py-16 md:py-24 lg:py-32 bg-gray-50">

@@ -1,22 +1,26 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router";
 import { Phone } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import CTASection from "../homePage/components/CTASection";
+import MasonryGallery from "../../components/MasonryGallery";
+import Lightbox from "../../components/Lightbox";
+import { getImagesByCategory } from "../../data/portfolioData";
 
 function KitchenPortfolio() {
   const videoRef = useRef(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const kitchenImages = getImagesByCategory("kitchen");
 
-  const projects = [
-    {
-      name: "Project 1",
-      images: [
-        "/kitchen_portfolio/kitchen.jpg",
-        "/kitchen_portfolio/Kitchen_Sunbury_1.jpg",
-        "/kitchen_portfolio/Kitchen_Sunbury_2.jpg",
-      ],
-    },
-  ];
+  const handleImageClick = (index) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const handleCloseLightbox = () => {
+    setLightboxOpen(false);
+  };
 
   return (
     <div className="bg-white">
@@ -71,54 +75,27 @@ function KitchenPortfolio() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {projects.map((project, projectIndex) => (
-            <motion.div
-              key={projectIndex}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className={projectIndex > 0 ? "mt-20 md:mt-32" : ""}
-            >
-              {/* Project Title */}
-              <motion.h2
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 md:mb-12 text-center"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-              >
-                {project.name}
-              </motion.h2>
+      <section className="py-12 md:py-16">
+        <div className="max-w-[1800px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-center mb-8 px-4"
+          >
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Kitchen Renovation Projects
+            </h2>
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+              Explore our stunning kitchen transformations. Click on any image
+              to view it in full size.
+            </p>
+          </motion.div>
 
-              {/* Project Images Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                {project.images.map((image, imageIndex) => (
-                  <motion.div
-                    key={imageIndex}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: imageIndex * 0.1, duration: 0.6 }}
-                    whileHover={{
-                      scale: 1.02,
-                      boxShadow: "0 20px 40px rgba(0, 0, 0, 0.15)",
-                    }}
-                    className="relative overflow-hidden rounded-xl shadow-lg aspect-4/3 group cursor-pointer"
-                  >
-                    <img
-                      src={image}
-                      alt={`${project.name} - Image ${imageIndex + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-[#2D6B7A]/0 group-hover:bg-[#2D6B7A]/10 transition-all duration-300"></div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+          <MasonryGallery
+            images={kitchenImages}
+            onImageClick={handleImageClick}
+          />
 
           {/* Call Us Button */}
           <motion.div
@@ -126,7 +103,7 @@ function KitchenPortfolio() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.8, duration: 0.5 }}
-            className="mt-16 md:mt-20 flex justify-center"
+            className="mt-12 md:mt-16 flex justify-center px-4"
           >
             <motion.a
               href="tel:+61432661176"
@@ -143,6 +120,17 @@ function KitchenPortfolio() {
           </motion.div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <Lightbox
+            images={kitchenImages}
+            currentIndex={currentImageIndex}
+            onClose={handleCloseLightbox}
+          />
+        )}
+      </AnimatePresence>
 
       <CTASection
         heading="Ready to Start Your Project?"

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 const initialState = {
   name: "",
@@ -6,11 +7,11 @@ const initialState = {
   phone: "",
   address: "",
   postcode: "",
-  propertyType: "free-standing",
+  propertyType: "",
   services: [],
   bathrooms: "",
-  timeline: "2-3-months",
-  contactTime: "morning",
+  timeline: "",
+  contactTime: "",
   details: "",
 };
 
@@ -19,6 +20,7 @@ const serviceOptions = [
   "Kitchen Renovation",
   "Laundry Renovation",
   "Shop Fit-out",
+  "Full Home Renovation",
 ];
 
 const timelineOptions = [
@@ -37,6 +39,7 @@ const contactOptions = [
 ];
 
 export default function BookConsultation() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState(initialState);
   const [submitStatus, setSubmitStatus] = useState({
     loading: false,
@@ -46,6 +49,12 @@ export default function BookConsultation() {
 
   const handleChange = (field) => (e) => {
     setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+  };
+
+  // Postcode: allow only digits and limit to 4 characters
+  const handlePostcodeChange = (e) => {
+    const digits = e.target.value.replace(/\D/g, "").slice(0, 4);
+    setFormData((prev) => ({ ...prev, postcode: digits }));
   };
 
   const handleCheckbox = (service) => (e) => {
@@ -60,6 +69,108 @@ export default function BookConsultation() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validation
+    if (!formData.name.trim()) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please enter your name",
+      });
+      return;
+    }
+    if (!formData.email.trim()) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please enter your email",
+      });
+      return;
+    }
+    if (!formData.phone.trim()) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please enter your phone number",
+      });
+      return;
+    }
+    if (!formData.address.trim()) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please enter your address",
+      });
+      return;
+    }
+    if (!formData.postcode.trim()) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please enter your postcode",
+      });
+      return;
+    }
+    if (
+      formData.postcode.trim().length !== 4 ||
+      !/^\d{4}$/.test(formData.postcode)
+    ) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Postcode must be exactly 4 digits",
+      });
+      return;
+    }
+    if (!formData.propertyType) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please select a property type",
+      });
+      return;
+    }
+    if (formData.services.length === 0) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please select at least one service",
+      });
+      return;
+    }
+    if (!formData.timeline) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please select a timeline",
+      });
+      return;
+    }
+    if (!formData.contactTime) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please select a preferred contact time",
+      });
+      return;
+    }
+    if (!formData.bathrooms.trim()) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please enter the number of bathrooms",
+      });
+      return;
+    }
+    if (!formData.details.trim()) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please provide other details about your project",
+      });
+      return;
+    }
+
     setSubmitStatus({ loading: true, success: false, error: null });
 
     try {
@@ -80,14 +191,14 @@ export default function BookConsultation() {
               ? "Free standing house"
               : "Town house/Unit",
           services: formData.services,
-          bathrooms: formData.bathrooms || "Not specified",
+          bathrooms: formData.bathrooms,
           timeline:
             timelineOptions.find((opt) => opt.value === formData.timeline)
               ?.label || formData.timeline,
           contactTime:
             contactOptions.find((opt) => opt.value === formData.contactTime)
               ?.label || formData.contactTime,
-          details: formData.details || "No additional details provided",
+          details: formData.details,
         }),
       });
 
@@ -97,14 +208,9 @@ export default function BookConsultation() {
         throw new Error(data.message || "Failed to send email");
       }
 
-      // Success
-      setSubmitStatus({ loading: false, success: true, error: null });
+      // Success - Navigate to thank you page
       setFormData(initialState); // Reset form
-
-      // Auto-hide success modal after 10 seconds
-      setTimeout(() => {
-        setSubmitStatus((prev) => ({ ...prev, success: false }));
-      }, 10000);
+      navigate("/thank-you");
     } catch (error) {
       console.error("Email send error:", error);
       setSubmitStatus({
@@ -137,43 +243,6 @@ export default function BookConsultation() {
             organise your consultation.
           </p>
         </div>
-
-        {/* Success Message */}
-        {submitStatus.success && (
-          <div
-            className="rounded-lg border border-green-200 bg-green-50 shadow-sm"
-            style={{ padding: "16px 20px", marginBottom: 24 }}
-          >
-            <div style={{ display: "flex", alignItems: "start", gap: 12 }}>
-              <svg
-                className="text-green-600"
-                style={{ width: 20, height: 20, flexShrink: 0, marginTop: 2 }}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              <div>
-                <h3
-                  className="text-sm font-semibold text-green-900"
-                  style={{ marginBottom: 4 }}
-                >
-                  Consultation request sent successfully!
-                </h3>
-                <p className="text-sm text-green-700">
-                  Thank you for your interest. We'll contact you soon to
-                  schedule your consultation.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Error Message */}
         {submitStatus.error && (
@@ -254,14 +323,18 @@ export default function BookConsultation() {
                 value={formData.address}
                 onChange={handleChange("address")}
                 placeholder="Street, suburb"
+                required
               />
               <LabeledInput
                 label="Postcode"
                 id="postcode"
-                type="number"
+                type="text"
+                inputMode="numeric"
                 value={formData.postcode}
-                onChange={handleChange("postcode")}
-                placeholder="3000"
+                onChange={handlePostcodeChange}
+                placeholder="4000"
+                maxLength="4"
+                required
               />
             </div>
 
@@ -314,6 +387,7 @@ export default function BookConsultation() {
               value={formData.bathrooms}
               onChange={handleChange("bathrooms")}
               placeholder="e.g. 1, 2, 3"
+              required
             />
 
             <Divider title="I am" />
@@ -361,6 +435,7 @@ export default function BookConsultation() {
                 placeholder="Tell us about your project, inspiration, or any must-haves"
                 className="w-full rounded-md border border-gray-200 bg-gray-50 focus:bg-white text-gray-900 placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2D6B7A] focus:border-[#2D6B7A]"
                 style={{ padding: "12px 14px", minHeight: 140, marginTop: 4 }}
+                required
               />
             </div>
 
@@ -406,162 +481,6 @@ export default function BookConsultation() {
           </form>
         </div>
       </div>
-
-      {/* Success Modal */}
-      {submitStatus.success && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 50,
-            padding: "20px",
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "#ffffff",
-              borderRadius: "16px",
-              padding: "40px",
-              maxWidth: "500px",
-              width: "100%",
-              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.15)",
-              animation: "slideUp 0.3s ease-out",
-            }}
-          >
-            {/* Success Icon */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginBottom: "24px",
-              }}
-            >
-              <div
-                style={{
-                  width: "80px",
-                  height: "80px",
-                  borderRadius: "50%",
-                  backgroundColor: "#dcfce7",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <svg
-                  style={{ width: "48px", height: "48px" }}
-                  className="text-green-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            {/* Heading */}
-            <h2
-              style={{
-                fontSize: "24px",
-                fontWeight: "700",
-                color: "#1e293b",
-                marginBottom: "12px",
-                textAlign: "center",
-              }}
-            >
-              Consultation Request Sent! 🎉
-            </h2>
-
-            {/* Message */}
-            <p
-              style={{
-                fontSize: "15px",
-                color: "#64748b",
-                marginBottom: "28px",
-                textAlign: "center",
-                lineHeight: "1.6",
-              }}
-            >
-              Thank you for your interest! We've received your consultation
-              request and will contact you soon at the number you provided.
-              Check your email for confirmation.
-            </p>
-
-            {/* Buttons */}
-            <div
-              style={{
-                display: "flex",
-                gap: "12px",
-                justifyContent: "center",
-              }}
-            >
-              <button
-                onClick={() =>
-                  setSubmitStatus((prev) => ({ ...prev, success: false }))
-                }
-                style={{
-                  padding: "12px 32px",
-                  backgroundColor: "#2e7d6f",
-                  color: "#ffffff",
-                  border: "none",
-                  borderRadius: "8px",
-                  fontSize: "15px",
-                  fontWeight: "600",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = "#1f5549";
-                  e.target.style.transform = "translateY(-2px)";
-                  e.target.style.boxShadow =
-                    "0 8px 20px rgba(46, 125, 111, 0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = "#2e7d6f";
-                  e.target.style.transform = "translateY(0)";
-                  e.target.style.boxShadow = "none";
-                }}
-              >
-                Got it!
-              </button>
-            </div>
-
-            {/* Footer Message */}
-            <p
-              style={{
-                fontSize: "12px",
-                color: "#94a3b8",
-                marginTop: "16px",
-                textAlign: "center",
-              }}
-            >
-              This modal will close automatically in 10 seconds
-            </p>
-          </div>
-        </div>
-      )}
-
-      <style>{`
-        @keyframes slideUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </div>
   );
 }

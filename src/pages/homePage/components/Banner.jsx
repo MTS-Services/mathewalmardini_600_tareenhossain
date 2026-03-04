@@ -255,10 +255,10 @@ const Banner = ({ isDesktop = true }) => {
         So this sticky div is the reference point — not the viewport
         This will work the same way on all screen sizes
       */}
-      <div className="sticky top-0 h-screen overflow-hidden bg-gradient-to-r from-[#2D6B7A]/80 via-white/60 to-white/80">
+      <div className="sticky top-0 h-screen overflow-hidden bg-gradient-to-r from-[#73A1A1] via-white/60 to-white/80">
         {/* Background overlay when images show - only behind video (z-5), no overlay on top of video */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-[#2D6B7A]/80 via-white/60 to-white/80 z-5"
+          className="absolute inset-0 bg-gradient-to-r from-[#73A1A1] via-white/60 to-white/80 z-5"
           style={{ opacity: imagesOpacity }}
         />
 
@@ -333,7 +333,7 @@ const Banner = ({ isDesktop = true }) => {
             {/* Center Text */}
             <div className="absolute inset-0 flex items-center justify-center z-20">
               <div className="text-center px-2 md:px-4">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-[56px] 2xl:text-[64px] 3xl:text-[72px] 4xl:text-[84px] font-bold text-gray-900 max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-6xl 3xl:max-w-7xl 4xl:max-w-[100rem] mx-auto">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-[56px] font-semibold text-gray-900 max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-6xl 3xl:max-w-7xl 4xl:max-w-[100rem] mx-auto">
                   Perfect Solution For Your Renovation
                 </h2>
               </div>

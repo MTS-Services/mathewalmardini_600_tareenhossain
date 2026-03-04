@@ -1,9 +1,15 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 
 const FeatureMediaSection = () => {
+  const navigate = useNavigate();
   const sectionRef = useRef(null);
   const mobileImagesRef = useRef(null);
+
+  const handleNavigateToPortfolio = () => {
+    navigate("/portfolio");
+  };
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -74,9 +80,10 @@ const FeatureMediaSection = () => {
           {/* Left Video - Positioned on left side */}
           <motion.div
             style={{ x: leftVideoX, opacity: sideOpacity }}
-            className="absolute left-0 z-30"
+            className="absolute left-0 z-30 cursor-pointer"
+            onClick={handleNavigateToPortfolio}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
                 src="/Our_work/Photo4.JPG"
                 alt="Completed project showcase"
@@ -88,13 +95,14 @@ const FeatureMediaSection = () => {
 
           {/* Center Video - Main focus, centered */}
           <motion.div
-            className="z-20"
+            className="z-20 cursor-pointer"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8 }}
+            onClick={handleNavigateToPortfolio}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-175 xl:w-300 lg:h-137.5 xl:h-170">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-175 xl:w-300 lg:h-137.5 xl:h-170 hover:shadow-3xl transition-shadow duration-300">
               <video
                 autoPlay
                 loop
@@ -114,9 +122,10 @@ const FeatureMediaSection = () => {
           {/* Right Image - Positioned on right side */}
           <motion.div
             style={{ x: rightImageX, opacity: sideOpacity }}
-            className="absolute right-0 z-30"
+            className="absolute right-0 z-30 cursor-pointer"
+            onClick={handleNavigateToPortfolio}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
                 // src="/Our_work/IMG_1517.JPG"
                 src="/Our_work/IMG_1517.JPG"
@@ -198,9 +207,11 @@ const FeatureMediaSection = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
             style={{ marginBottom: "20px" }}
+            className="cursor-pointer"
+            onClick={handleNavigateToPortfolio}
           >
             <div
-              className="relative rounded-xl overflow-hidden shadow-xl"
+              className="relative rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
               style={{ width: "100%", height: "360px" }}
             >
               <video
@@ -228,9 +239,11 @@ const FeatureMediaSection = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               style={{ padding: "0", y: mobileLeftY }}
+              className="cursor-pointer"
+              onClick={handleNavigateToPortfolio}
             >
               <div
-                className="relative aspect-square rounded-lg overflow-hidden shadow-lg"
+                className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
                 style={{ width: "100%", height: "auto" }}
               >
                 <img
@@ -249,9 +262,11 @@ const FeatureMediaSection = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               style={{ padding: "0", y: mobileRightY }}
+              className="cursor-pointer"
+              onClick={handleNavigateToPortfolio}
             >
               <div
-                className="relative aspect-square rounded-lg overflow-hidden shadow-lg"
+                className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
                 style={{ width: "100%", height: "auto" }}
               >
                 <img

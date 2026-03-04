@@ -5,6 +5,8 @@ import ProcessSection from "../homePage/components/ProcessSection";
 import FeaturesGrid from "../homePage/components/FeaturesGrid";
 import CTASection from "../homePage/components/CTASection";
 import { useRef } from "react";
+import PhotoGallery from "../homePage/components/PhotoGallery";
+import FeatureMediaSection from "../homePage/components/FeatureMediaSection";
 
 function KitchenRenovation() {
   const videoRef = useRef(null);
@@ -139,10 +141,10 @@ function KitchenRenovation() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.7 }}
-              className="relative overflow-hidden rounded-xl shadow-xl aspect-[4/3] group cursor-pointer"
+              className="relative overflow-hidden rounded-xl shadow-xl aspect-4/3 group cursor-pointer"
             >
               <img
-                src="/kitchen_renovation/image_1.jpg"
+                src="/public/protfollio/kitchen/Kitchen_Sunbury_2.jpg"
                 alt="Kitchen Design"
                 className="w-full h-full object-cover"
               />
@@ -180,7 +182,7 @@ function KitchenRenovation() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.7 }}
-              className="relative overflow-hidden rounded-xl shadow-xl aspect-[4/3] group cursor-pointer order-2 lg:order-1"
+              className="relative overflow-hidden rounded-xl shadow-xl aspect-4/3 group cursor-pointer order-2 lg:order-1"
             >
               <img
                 src="/kitchen_renovation/image_2.JPG"
@@ -226,6 +228,9 @@ function KitchenRenovation() {
           </div>
         </div>
       </section>
+
+      {/* Photo Gallery Section */}
+      <PhotoGallery />
 
       {/* Design & Planning Section */}
       <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
@@ -316,6 +321,9 @@ function KitchenRenovation() {
           </motion.div>
         </div>
       </section>
+
+      {/* Feature Media Section */}
+      <FeatureMediaSection />
 
       {/* Bottom CTA Section */}
       <CTASection

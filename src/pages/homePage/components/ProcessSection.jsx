@@ -194,7 +194,7 @@ const MobileStepCard = ({ scrollProgress }) => {
             }}
           >
             {/* Step number */}
-            <div style={{ marginBottom: "0.6rem" }}>
+            {/* <div style={{ marginBottom: "0.6rem" }}>
               <span
                 style={{
                   fontSize: 12,
@@ -207,7 +207,7 @@ const MobileStepCard = ({ scrollProgress }) => {
                 Step {String(index + 1).padStart(2, "0")} /{" "}
                 {String(processSteps.length).padStart(2, "0")}
               </span>
-            </div>
+            </div> */}
 
             {/* Image */}
             <div

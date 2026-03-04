@@ -3,7 +3,9 @@ import { Link } from "react-router";
 import { Phone, Image } from "lucide-react";
 import FeaturesGrid from "../homePage/components/FeaturesGrid";
 import CTASection from "../homePage/components/CTASection";
+import PhotoGallery from "../homePage/components/PhotoGallery";
 import { useRef } from "react";
+import FeatureMediaSection from "../homePage/components/FeatureMediaSection";
 
 function BathroomRenovation() {
   const videoRef = useRef(null);
@@ -217,6 +219,9 @@ function BathroomRenovation() {
         </div>
       </section>
 
+      {/* Add Photo Gallery Section */}
+      <PhotoGallery />
+
       {/* Bringing Your Project to Life Section */}
       <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -310,6 +315,9 @@ function BathroomRenovation() {
       </section>
 
       <FeaturesGrid features={features} />
+
+      {/* add Featured Media Section */}
+      <FeatureMediaSection/>
 
       <CTASection
         heading="Ready to Transform Your Bathroom?"

@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import ProcessSection from "../homePage/components/ProcessSection";
+import PhotoGallery from "../homePage/components/PhotoGallery";
 
 function About() {
   return (
@@ -103,6 +104,11 @@ function About() {
             </motion.button>
           </motion.div>
         </div>
+      </section>
+
+      {/* Photo Gallery (full container width) */}
+      <section className="w-full">
+        <PhotoGallery />
       </section>
 
       {/* Our Vision Section */}

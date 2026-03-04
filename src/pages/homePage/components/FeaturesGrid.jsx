@@ -36,9 +36,9 @@ function FeaturesGrid({
               transition={{ delay: index * 0.1, duration: 0.6 }}
               whileHover={{
                 y: -10,
-                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
+                borderColor: "#2D6B7A",
               }}
-              className="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+              className="bg-gray-50 p-8 rounded-xl border border-[#2D6B7A] transition-all duration-300"
             >
               <div className="flex items-start gap-4 mb-4">
                 <CheckCircle className="w-6 h-6 text-[#2D6B7A] shrink-0 mt-1" />

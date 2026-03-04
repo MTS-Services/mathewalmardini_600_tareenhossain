@@ -11,13 +11,18 @@ import BathroomRenovation from "../pages/bathroom_renovation/BathroomRenovation"
 import KitchenRenovation from "../pages/kitchen_renovation/KitchenRenovation";
 import LaundryRenovation from "../pages/laundry_renovation/LaundryRenovation";
 import ShopFitouts from "../pages/shop_fitouts/ShopFitouts";
+import Portfolio from "../pages/portfolio/Portfolio";
 import BathroomPortfolio from "../pages/bathroom_portfolio/BathroomPortfolio";
 import KitchenPortfolio from "../pages/kitchen_portfolio/KitchenPortfolio";
 import LaundryPortfolio from "../pages/laundry_portfolio/LaundryPortfolio";
+import ThankYou from "../pages/thank_you/ThankYou";
 
 const AppRouter = () => {
   return (
     <Routes>
+      {/* Thank You page without header/footer */}
+      <Route path="/thank-you" element={<ThankYou />} />
+
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -30,6 +35,7 @@ const AppRouter = () => {
         <Route path="/kitchen-renovation" element={<KitchenRenovation />} />
         <Route path="/laundry-renovation" element={<LaundryRenovation />} />
         <Route path="/shop-fitouts" element={<ShopFitouts />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/bathroom-portfolio" element={<BathroomPortfolio />} />
         <Route path="/kitchen-portfolio" element={<KitchenPortfolio />} />
         <Route path="/laundry-portfolio" element={<LaundryPortfolio />} />

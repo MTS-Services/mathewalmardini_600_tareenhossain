@@ -1045,17 +1045,21 @@ function Header({ isDesktop }) {
 
   return (
     <header
-      className={`fixed top-8 left-1/2 -translate-x-1/2 z-500 w-[92%] 2xl:w-[90%] 3xl:w-[75%] 4xl:w-[65%] ${
+      className={`fixed ${isDesktop ? "top-8" : "top-4"} left-1/2 -translate-x-1/2 z-500 w-[92%] 2xl:w-[90%] 3xl:w-[75%] 4xl:w-[65%] ${
         hidden ? "hidden" : "block"
       }`}
     >
       <div
         className="bg-white/95 backdrop-blur-lg border border-gray-200 shadow-lg rounded-2xl"
-        style={{ padding: "0px 20px" }}
+        style={{ padding: isDesktop ? "0px 20px" : "0px 12px" }}
       >
         <div className="relative flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
-            <img src="/logo.png" alt="B Spoke Logo" className="w-32 h-auto" />
+            <img
+              src="/logo.png"
+              alt="B Spoke Logo"
+              className={`${isDesktop ? "w-32" : "w-24"} h-auto`}
+            />
           </Link>
 
           <nav className="hidden xl:flex items-center gap-6 absolute left-1/2 -translate-x-1/2 z-20">
@@ -1135,8 +1139,9 @@ function Header({ isDesktop }) {
               onMouseEnter={() => setPortfolioOpen(true)}
               onMouseLeave={() => setPortfolioOpen(false)}
             >
-              <button
-                className={`flex items-center gap-1 ${["bathroom-portfolio", "kitchen-portfolio", "laundry-portfolio"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base`}
+              <Link
+                to="/portfolio"
+                className={`flex items-center gap-1 ${["portfolio"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base`}
               >
                 PORTFOLIO
                 {portfolioOpen ? (
@@ -1144,7 +1149,7 @@ function Header({ isDesktop }) {
                 ) : (
                   <ChevronDown className="w-4 h-4" />
                 )}
-              </button>
+              </Link>
 
               <AnimatePresence>
                 {portfolioOpen && (
@@ -1381,12 +1386,12 @@ function Header({ isDesktop }) {
             ) : (
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="xl:hidden w-10 h-10 flex items-center justify-center"
+                className="xl:hidden w-8 h-8 flex items-center justify-center"
               >
                 {mobileMenuOpen ? (
-                  <X className="w-6 h-6 text-gray-900" />
+                  <X className="w-5 h-5 text-gray-900" />
                 ) : (
-                  <Menu className="w-6 h-6 text-gray-900" />
+                  <Menu className="w-5 h-5 text-gray-900" />
                 )}
               </button>
             )}
@@ -1503,7 +1508,7 @@ function Header({ isDesktop }) {
               {/* Mobile Portfolio Dropdown */}
               <div>
                 <button
-                  className={`flex items-center justify-between w-full ${["bathroom-portfolio", "kitchen-portfolio", "laundry-portfolio"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base py-2`}
+                  className={`flex items-center justify-between w-full ${["portfolio"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                   onClick={() => setMobilePortfolioOpen(!mobilePortfolioOpen)}
                 >
                   PORTFOLIO
@@ -1528,6 +1533,17 @@ function Header({ isDesktop }) {
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.22, ease: "easeOut" }}
                     >
+                      <Link
+                        to="/portfolio"
+                        className="text-gray-800 hover:text-gray-900 transition-colors font-semibold"
+                        style={{ fontSize: "14px", padding: "4px 0" }}
+                        onClick={() => {
+                          setMobilePortfolioOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
+                      >
+                        VIEW ALL
+                      </Link>
                       <Link
                         to="/bathroom-portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
