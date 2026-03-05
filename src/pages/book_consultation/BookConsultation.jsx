@@ -11,6 +11,7 @@ const initialState = {
   services: [],
   bathrooms: "",
   timeline: "",
+  timelineDetails: "",
   contactTime: "",
   details: "",
 };
@@ -37,6 +38,30 @@ const contactOptions = [
   { value: "afternoon", label: "Afternoon 12pm-3pm" },
   { value: "evening", label: "Evening 3pm-6pm" },
 ];
+
+function transformToAPI(data) {
+  const contactTimeMap = {
+    morning: "9:00 AM",
+    afternoon: "12:00 PM",
+    evening: "3:00 PM",
+  };
+
+  return {
+    name: data.name,
+    email: data.email,
+    phone: data.phone,
+    company: data.address,
+    postcode: data.postcode || "",
+    propertyType: data.propertyType || "",
+    service: data.services.join(", "),
+    budget: data.bathrooms || "",
+    message: data.details,
+    timeline: data.timeline || "",
+    timelineDetails: data.timelineDetails || "",
+    preferredDate: "",
+    preferredTime: contactTimeMap[data.contactTime] || "Not specified",
+  };
+}
 
 export default function BookConsultation() {
   const navigate = useNavigate();
@@ -146,6 +171,14 @@ export default function BookConsultation() {
       });
       return;
     }
+    if (formData.timeline === "other" && !formData.timelineDetails.trim()) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Please enter your project timeline",
+      });
+      return;
+    }
     if (!formData.contactTime) {
       setSubmitStatus({
         loading: false,
@@ -162,62 +195,40 @@ export default function BookConsultation() {
       });
       return;
     }
-    if (!formData.details.trim()) {
-      setSubmitStatus({
-        loading: false,
-        success: false,
-        error: "Please provide other details about your project",
-      });
-      return;
-    }
 
     setSubmitStatus({ loading: true, success: false, error: null });
 
     try {
-      // Send form data to backend API
-      const response = await fetch("/api/send-email", {
+      const apiUrl = import.meta.env.VITE_API_BASE_URL;
+      const apiPayload = transformToAPI(formData);
+
+      console.log("Sending to API:", apiPayload);
+
+      const response = await fetch(`${apiUrl}/book-consultation`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          address: formData.address,
-          postcode: formData.postcode,
-          propertyType:
-            formData.propertyType === "free-standing"
-              ? "Free standing house"
-              : "Town house/Unit",
-          services: formData.services,
-          bathrooms: formData.bathrooms,
-          timeline:
-            timelineOptions.find((opt) => opt.value === formData.timeline)
-              ?.label || formData.timeline,
-          contactTime:
-            contactOptions.find((opt) => opt.value === formData.contactTime)
-              ?.label || formData.contactTime,
-          details: formData.details,
-        }),
+        body: JSON.stringify(apiPayload),
       });
 
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.message || "Failed to send email");
+        throw new Error(data.message || "Failed to submit consultation request");
       }
 
       // Success - Navigate to thank you page
+      console.log("Success! Confirmation email sent to:", data.data.userEmail);
+      console.log("Confirmation link:", data.data.confirmLink);
       setFormData(initialState); // Reset form
       navigate("/thank-you");
     } catch (error) {
-      console.error("Email send error:", error);
+      console.error("Submission error:", error);
       setSubmitStatus({
         loading: false,
         success: false,
-        error:
-          "Failed to send consultation request. Please try again or call us directly at 0432661176.",
+        error: error.message || "Failed to submit consultation request. Please try again or call us directly at 0432661176.",
       });
     }
   };
@@ -380,7 +391,7 @@ export default function BookConsultation() {
               ))}
             </div>
 
-            <Divider title="Number of bathrooms (only if bathroom renovation)" />
+            
             <LabeledInput
               label="Number of bathrooms"
               id="bathrooms"
@@ -404,6 +415,29 @@ export default function BookConsultation() {
               ))}
             </div>
 
+            {/* Conditional input for "Other" timeline */}
+            {formData.timeline === "other" && (
+              <div>
+                <label
+                  htmlFor="timelineDetails"
+                  className="block text-sm font-semibold text-gray-800"
+                  style={{ marginBottom: 8 }}
+                >
+                  Please tell us your project timeline
+                </label>
+                <input
+                  id="timelineDetails"
+                  type="text"
+                  value={formData.timelineDetails}
+                  onChange={handleChange("timelineDetails")}
+                  placeholder="e.g., 6 months, after summer, etc."
+                  className="w-full rounded-md border border-gray-200 bg-gray-50 focus:bg-white text-gray-900 placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2D6B7A] focus:border-[#2D6B7A]"
+                  style={{ padding: "12px 14px" }}
+                  required
+                />
+              </div>
+            )}
+
             <Divider title="Best time to contact" />
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {contactOptions.map((option) => (
@@ -418,7 +452,6 @@ export default function BookConsultation() {
               ))}
             </div>
 
-            <Divider title="Other details" />
             <div>
               <label
                 htmlFor="details"
@@ -435,7 +468,6 @@ export default function BookConsultation() {
                 placeholder="Tell us about your project, inspiration, or any must-haves"
                 className="w-full rounded-md border border-gray-200 bg-gray-50 focus:bg-white text-gray-900 placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2D6B7A] focus:border-[#2D6B7A]"
                 style={{ padding: "12px 14px", minHeight: 140, marginTop: 4 }}
-                required
               />
             </div>
 

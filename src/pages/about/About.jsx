@@ -88,6 +88,31 @@ function About() {
                 work.
               </motion.p>
             </div>
+
+            {/* Team Images Grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src="/about/20240508_165231.jpg"
+                  alt="Quality craftsmanship"
+                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src="/about/20240508_165327.jpg"
+                  alt="Professional construction work"
+                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </motion.div>
+
             <motion.button
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -129,6 +154,21 @@ function About() {
             >
               Our Vision
             </motion.h2>
+
+            {/* Vision Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mb-8 rounded-lg overflow-hidden shadow-xl"
+            >
+              <img
+                src="/about/20240625_102239.jpg"
+                alt="Our vision for quality construction"
+                className="w-full h-96 object-cover"
+              />
+            </motion.div>
             <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
@@ -210,6 +250,30 @@ function About() {
             >
               Our Mission
             </motion.h2>
+
+            {/* Mission Images Grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src="/about/20240716_171144.jpg"
+                  alt="Expert construction execution"
+                  className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src="/about/20240808_181735.jpg"
+                  alt="Quality building standards"
+                  className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </motion.div>
             <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
               <motion.p
                 initial={{ opacity: 0, x: 30 }}
@@ -428,6 +492,30 @@ function About() {
             >
               Why Choose Us
             </motion.h2>
+
+            {/* Featured Project Images */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src="/about/20240829_154458.jpg"
+                  alt="Completed project showcase"
+                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src="/about/20250917_171419.jpg"
+                  alt="Professional renovation work"
+                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </motion.div>
             <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
