@@ -38,7 +38,7 @@ function BathroomPortfolio() {
           >
             <source
               // src="/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
-              src="/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
+              src="https://res.cloudinary.com/dv18awr10/video/upload/v1772779373/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4_sijhou.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.
