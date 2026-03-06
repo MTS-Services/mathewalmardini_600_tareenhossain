@@ -25,8 +25,8 @@ const OurServicesSection = () => {
       title: "Laundry Renovation",
       description:
         "Expert laundry room renovation from planning and design to plumbing installation, ensuring everything is done correctly.",
-      video:
-        "/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.jpg",
+      // video:
+      //   "/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.jpg",
       video:
         "https://res.cloudinary.com/dv18awr10/image/upload/v1772779455/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc_htu37j.jpg",
       type: "image",
