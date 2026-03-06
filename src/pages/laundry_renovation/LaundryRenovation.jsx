@@ -56,7 +56,8 @@ function LaundryRenovation() {
             className="w-full h-full object-cover"
           >
             <source
-              src="/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov"
+              // src="/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov"
+              src="https://res.cloudinary.com/dv18awr10/video/upload/v1772777948/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc_k7rn6d.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.
@@ -139,7 +140,8 @@ function LaundryRenovation() {
               className="relative overflow-hidden rounded-xl shadow-xl aspect-[4/3] group cursor-pointer"
             >
               <img
-                src="/laundry_renovation/laundry_1.jpg"
+                // src="/laundry_renovation/laundry_1.jpg"
+                src="https://res.cloudinary.com/dv18awr10/image/upload/v1772786386/laundry_1_u7nqno.jpg"
                 alt="Laundry Design"
                 className="w-full h-full object-cover"
               />
@@ -180,7 +182,8 @@ function LaundryRenovation() {
               className="relative overflow-hidden rounded-xl shadow-xl aspect-[4/3] group cursor-pointer order-2 lg:order-1"
             >
               <img
-                src="/laundry_renovation/laundry_2.jpg"
+                // src="/laundry_renovation/laundry_2.jpg"
+                src="https://res.cloudinary.com/dv18awr10/image/upload/v1772786387/laundry_2_mdryxn.jpg"
                 alt="Laundry Example"
                 className="w-full h-full object-cover"
               />

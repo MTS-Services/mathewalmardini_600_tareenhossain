@@ -3,15 +3,25 @@ import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// const images = [
+//   {
+//     id: 1,
+//     src: "/PhotoGallery/20240604_153801_(1).jpg",
+//   },
+//   { id: 2, src: "/PhotoGallery/20250404_123149.jpg" },
+//   { id: 3, src: "/PhotoGallery/Bath.jpg" },
+//   { id: 4, src: "/PhotoGallery/Craigieburn 5.jpg" },
+//   { id: 5, src: "/PhotoGallery/IMG_9819.JPG" },
+// ];
 const images = [
   {
     id: 1,
-    src: "/PhotoGallery/20240604_153801_(1).jpg",
+    src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780153/20240604_153801__1_qq1mmm.jpg",
   },
-  { id: 2, src: "/PhotoGallery/20250404_123149.jpg" },
-  { id: 3, src: "/PhotoGallery/Bath.jpg" },
-  { id: 4, src: "/PhotoGallery/Craigieburn 5.jpg" },
-  { id: 5, src: "/PhotoGallery/IMG_9819.JPG" },
+  { id: 2, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780182/20250404_123149_buvhoa.jpg" },
+  { id: 3, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780203/Bath_af1efv.jpg" },
+  { id: 4, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780223/Craigieburn_5_eye36g.jpg" },
+  { id: 5, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780242/IMG_9819_zsrcjx.jpg" },
 ];
 
 const PhotoGallery = () => {

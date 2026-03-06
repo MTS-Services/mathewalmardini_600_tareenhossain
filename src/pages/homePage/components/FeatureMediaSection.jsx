@@ -85,7 +85,8 @@ const FeatureMediaSection = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
-                src="/Our_work/Photo4.JPG"
+                // src="/Our_work/Photo4.JPG"
+                src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778181/Photo4_bvkgru.jpg"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -111,7 +112,10 @@ const FeatureMediaSection = () => {
                 className="w-full h-full object-cover"
               >
                 {/* <source src="/Our_work/Video _in_center.mp4" type="video/mp4" /> */}
-                <source src="/Our_work/Video _in_center.mp4" type="video/mp4" />
+                <source
+                  src="https://res.cloudinary.com/dv18awr10/video/upload/v1772778283/Video__in_center_j5pbqj.mp4"
+                  type="video/mp4"
+                />
                 Your browser does not support the video tag.
               </video>
               {/* Subtle overlay for depth */}
@@ -128,7 +132,7 @@ const FeatureMediaSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
                 // src="/Our_work/IMG_1517.JPG"
-                src="/Our_work/IMG_1517.JPG"
+                src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778423/IMG_1517_z1dvo2.jpg"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -152,7 +156,11 @@ const FeatureMediaSection = () => {
                 playsInline
                 className="w-full h-full object-cover"
               >
-                <source src="/Our_work/Photo4.JPG" type="video/mp4" />
+                {/* <source src="/Our_work/Photo4.JPG" type="video/mp4" /> */}
+                <source
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778181/Photo4_bvkgru.jpg"
+                  type="video/mp4"
+                />
               </video>
             </div>
           </motion.div>
@@ -174,7 +182,10 @@ const FeatureMediaSection = () => {
                 className="w-full h-full object-cover"
               >
                 {/* <source src="/Our_work/Video _in_center.mp4" type="video/mp4" /> */}
-                <source src="/Our_work/Video _in_center.mp4" type="video/mp4" />
+                <source
+                  src="https://res.cloudinary.com/dv18awr10/video/upload/v1772778283/Video__in_center_j5pbqj.mp4"
+                  type="video/mp4"
+                />
               </video>
             </div>
           </motion.div>
@@ -186,7 +197,8 @@ const FeatureMediaSection = () => {
           >
             <div className="relative rounded-xl overflow-hidden shadow-xl md:w-70 md:h-85">
               <img
-                src="/Our_work/IMG_1517.JPG"
+                // src="/Our_work/IMG_1517.JPG"
+                src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778423/IMG_1517_z1dvo2.jpg"
                 alt="Completed project"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -221,7 +233,12 @@ const FeatureMediaSection = () => {
                 playsInline
                 className="w-full h-full object-cover"
               >
-                <source src="/Our_work/Video _in_center.mp4" type="video/mp4" />
+                {/* <source src="/Our_work/Video _in_center.mp4" type="video/mp4" />
+                 */}
+                <source
+                  src="https://res.cloudinary.com/dv18awr10/video/upload/v1772778283/Video__in_center_j5pbqj.mp4"
+                  type="video/mp4"
+                />
               </video>
             </div>
           </motion.div>
@@ -247,7 +264,8 @@ const FeatureMediaSection = () => {
                 style={{ width: "100%", height: "auto" }}
               >
                 <img
-                  src="/Our_work/Photo4.JPG"
+                  // src="/Our_work/Photo4.JPG"
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778181/Photo4_bvkgru.jpg"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -270,7 +288,8 @@ const FeatureMediaSection = () => {
                 style={{ width: "100%", height: "auto" }}
               >
                 <img
-                  src="/Our_work/IMG_1517.JPG"
+                  // src="/Our_work/IMG_1517.JPG"
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778423/IMG_1517_z1dvo2.jpg"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"

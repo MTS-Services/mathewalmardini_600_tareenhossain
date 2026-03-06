@@ -99,14 +99,16 @@ function About() {
             >
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="/about/20240508_165231.jpg"
+                  // src="/about/20240508_165231.jpg"
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1772788709/20240508_165231_z5lnjh.jpg"
                   alt="Quality craftsmanship"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="/about/20240508_165327.jpg"
+                  // src="/about/20240508_165327.jpg"
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1772788710/20240508_165327_ewyacf.jpg"
                   alt="Professional construction work"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
                 />
@@ -164,7 +166,8 @@ function About() {
               className="mb-8 rounded-lg overflow-hidden shadow-xl"
             >
               <img
-                src="/about/20240625_102239.jpg"
+                // src="/about/20240625_102239.jpg"
+                src="https://res.cloudinary.com/dv18awr10/image/upload/v1772788815/20240625_102239_likhg6.jpg"
                 alt="Our vision for quality construction"
                 className="w-full h-96 object-cover"
               />
@@ -261,14 +264,15 @@ function About() {
             >
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="/about/20240716_171144.jpg"
+                  // src="/about/20240716_171144.jpg"
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1772788857/20240716_171144_k1gy45.jpg"
                   alt="Expert construction execution"
                   className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="/about/20240808_181735.jpg"
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1772788859/20240808_181735_p1oajm.jpg"
                   alt="Quality building standards"
                   className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
                 />
@@ -503,14 +507,16 @@ function About() {
             >
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="/about/20240829_154458.jpg"
+                  // src="/about/20240829_154458.jpg"
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1772788953/20240829_154458_ssrjlx.jpg"
                   alt="Completed project showcase"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="/about/20250917_171419.jpg"
+                  // src="/about/20250917_171419.jpg"
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1772788956/20250917_171419_egeb8g.jpg"
                   alt="Professional renovation work"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
                 />

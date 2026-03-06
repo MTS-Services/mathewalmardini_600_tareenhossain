@@ -43,7 +43,7 @@ function ShopFitouts() {
       {/* Hero Section */}
       <section
         className="relative min-h-[100dvh] md:h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
-        style={{ backgroundImage: "url('/banner_image/Photo6.jpg')" }}
+        style={{ backgroundImage: "url('https://res.cloudinary.com/dv18awr10/image/upload/v1772779550/envato-labs-image-edit_oosbcv.png')" }}
       >
         <div className="absolute inset-0"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
