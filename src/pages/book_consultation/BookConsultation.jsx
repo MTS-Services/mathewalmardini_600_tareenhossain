@@ -50,11 +50,11 @@ function transformToAPI(data) {
     name: data.name,
     email: data.email,
     phone: data.phone,
-    company: data.address,
+    address: data.address,
     postcode: data.postcode || "",
     propertyType: data.propertyType || "",
     service: data.services.join(", "),
-    budget: data.bathrooms || "",
+    bathroom: String(data.bathrooms || ""),
     message: data.details,
     timeline: data.timeline || "",
     timelineDetails: data.timelineDetails || "",
@@ -80,6 +80,12 @@ export default function BookConsultation() {
   const handlePostcodeChange = (e) => {
     const digits = e.target.value.replace(/\D/g, "").slice(0, 4);
     setFormData((prev) => ({ ...prev, postcode: digits }));
+  };
+
+  // Bathrooms: allow only digits
+  const handleBathroomsChange = (e) => {
+    const digits = e.target.value.replace(/\D/g, "");
+    setFormData((prev) => ({ ...prev, bathrooms: digits }));
   };
 
   const handleCheckbox = (service) => (e) => {
@@ -395,8 +401,10 @@ export default function BookConsultation() {
             <LabeledInput
               label="Number of bathrooms"
               id="bathrooms"
+              type="text"
+              inputMode="numeric"
               value={formData.bathrooms}
-              onChange={handleChange("bathrooms")}
+              onChange={handleBathroomsChange}
               placeholder="e.g. 1, 2, 3"
               required
             />
