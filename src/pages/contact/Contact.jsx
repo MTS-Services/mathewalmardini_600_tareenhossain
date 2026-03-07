@@ -102,14 +102,14 @@ const Contact = () => {
             className="w-full h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.044728708738!2d151.17556553!3d-33.72584480!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b7292ab0a0a0a0d%3A0x8d8d8d8d8d8d8d8d!2sSettlers%20Way%2C%20Westleigh%20NSW%202120!5e0!3m2!1sen!2s!4v1709510400000!5m2!1sen!2s"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.8908547!2d144.39!3d-37.43!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6fd8d3b3b3b3b3b3%3A0x0!2s80%20Settlers%20Way%2C%20Sunbury%20VIC%203429!5e0!3m2!1sen!2s!4v1709510400000!5m2!1sen!2s"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Settlers Way Westleigh Location Map"
+              title="80 Settlers Way Sunbury Location Map"
             ></iframe>
           </motion.div>
         </div>
