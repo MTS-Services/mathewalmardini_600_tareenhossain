@@ -8,6 +8,14 @@ const MasonryGallery = ({ images, onImageClick }) => {
     setLoadedImages((prev) => ({ ...prev, [id]: true }));
   };
 
+  // Helper function to get column class based on number of images
+  const getColumnsClass = () => {
+    const count = images.length;
+    if (count <= 6) return "columns-2";
+    if (count <= 12) return "columns-3";
+    return "columns-4";
+  };
+
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
       {/* Mobile Masonry (2 columns - fills gaps automatically) */}
