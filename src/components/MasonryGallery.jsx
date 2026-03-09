@@ -19,12 +19,28 @@ const MasonryGallery = ({ images, onImageClick }) => {
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
-      {/* Mobile Grid (2 columns) */}
-      <div className="grid grid-cols-2 gap-3 lg:hidden">
+      {/* Mobile Masonry (2 columns - fills gaps automatically) */}
+      <style>{`
+        .mobile-masonry {
+          column-count: 2;
+          column-gap: 12px;
+        }
+        .mobile-masonry-item {
+          break-inside: avoid;
+          margin-bottom: 12px;
+        }
+        @media (min-width: 768px) {
+          .mobile-masonry {
+            display: none;
+          }
+        }
+      `}</style>
+      
+      <div className="mobile-masonry lg:hidden">
         {images.map((image, index) => (
           <motion.div
             key={image.id}
-            className="cursor-pointer group"
+            className="mobile-masonry-item cursor-pointer group"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: loadedImages[image.id] ? 1 : 0, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
