@@ -911,6 +911,22 @@
   margin-top: 4rem;
 }
 
+.space-y-24 > * + * {
+  margin-top: 6rem;
+}
+
+.space-y-32 > * + * {
+  margin-top: 8rem;
+}
+
+.space-y-40 > * + * {
+  margin-top: 10rem;
+}
+
+.space-y-48 > * + * {
+  margin-top: 12rem;
+}
+
 /* Space X utilities (horizontal spacing between child elements) */
 .space-x-1 > * + * {
   margin-left: 0.25rem;
@@ -1320,6 +1336,18 @@ body {
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
+  .md\:pl-20 {
+    padding-left: 5rem;
+  }
+  .md\:space-y-40 > * + * {
+    margin-top: 10rem;
+  }
+  .md\:timeline-line {
+    left: 4rem !important;
+  }
+  .md\:timeline-circle {
+    left: 2rem !important;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1336,6 +1364,9 @@ body {
   .lg\:py-40 {
     padding-top: 10rem;
     padding-bottom: 10rem;
+  }
+  .lg\:space-y-48 > * + * {
+    margin-top: 12rem;
   }
 }
 
@@ -1622,4 +1653,13 @@ body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Timeline Process Section */
+.timeline-line {
+  left: 2rem;
+}
+
+.timeline-circle {
+  left: 0rem;
 }

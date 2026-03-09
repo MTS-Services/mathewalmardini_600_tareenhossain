@@ -8,15 +8,6 @@ const MasonryGallery = ({ images, onImageClick }) => {
     setLoadedImages((prev) => ({ ...prev, [id]: true }));
   };
 
-  // Adjust columns based on image count for better layout
-  const getColumnsClass = () => {
-    const count = images.length;
-    if (count <= 3) return "lg:columns-2 xl:columns-2";
-    if (count <= 6) return "lg:columns-2 xl:columns-3";
-    if (count <= 12) return "lg:columns-3 xl:columns-3";
-    return "lg:columns-3 xl:columns-4";
-  };
-
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
       {/* Mobile Masonry (2 columns - fills gaps automatically) */}
@@ -50,7 +41,14 @@ const MasonryGallery = ({ images, onImageClick }) => {
               <img
                 src={image.src}
                 alt={`Portfolio ${image.category} ${image.id}`}
-                className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  minHeight: index === images.length - 1 ? "400px" : "auto",
+                  display: "block",
+                  objectFit: "cover",
+                }}
+                className="transform group-hover:scale-105 transition-transform duration-500"
                 onLoad={() => handleImageLoad(image.id)}
                 loading="lazy"
               />
