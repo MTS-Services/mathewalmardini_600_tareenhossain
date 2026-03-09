@@ -1,15 +1,74 @@
+// import { BrowserRouter } from "react-router";
+// import { useEffect, useRef } from "react";
+// import Lenis from "lenis";
+// import AppRouter from "./routes/router";
+// import ScrollToTop from "./components/ScrollToTop";
+
+// function App() {
+//   const lenisRef = useRef(null);
+
+//   // Initialize Lenis on component mount
+//   useEffect(() => {
+//     // Initialize Lenis
+//     const lenis = new Lenis({
+//       duration: 1.2,
+//       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+//       orientation: "vertical",
+//       gestureOrientation: "vertical",
+//       smoothWheel: true,
+//       wheelMultiplier: 1,
+//       smoothTouch: false,
+//       touchMultiplier: 2,
+//       infinite: false,
+//     });
+
+//     lenisRef.current = lenis;
+
+//     // Sync Lenis with requestAnimationFrame
+//     function raf(time) {
+//       lenis.raf(time);
+//       requestAnimationFrame(raf);
+//     }
+
+//     requestAnimationFrame(raf);
+
+//     // Cleanup
+//     return () => {
+//       lenis.destroy();
+//     };
+//   }, []);
+
+//   // Render the app with routing
+//   return (
+//     <BrowserRouter>
+//       <ScrollToTop lenisInstance={lenisRef} />
+//       <div className="min-h-screen">
+//         <AppRouter />
+//       </div>
+//     </BrowserRouter>
+//   );
+// }
+
+// export default App;
+
+
 import { BrowserRouter } from "react-router";
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
+import { useMotionValue } from "motion/react";
 import AppRouter from "./routes/router";
 import ScrollToTop from "./components/ScrollToTop";
+import { LenisContext } from "./context/LenisContext";
 
 function App() {
   const lenisRef = useRef(null);
 
-  // Initialize Lenis on component mount
+  // Single shared scrollY motion value — driven by Lenis scroll events
+  // All components must use this instead of window.scrollY or useScroll()
+  // This ensures animation is always in sync with Lenis virtual scroll position
+  const scrollY = useMotionValue(0);
+
   useEffect(() => {
-    // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -24,7 +83,12 @@ function App() {
 
     lenisRef.current = lenis;
 
-    // Sync Lenis with requestAnimationFrame
+    // Update shared scrollY from Lenis — not from window.scrollY
+    // This is the key fix: Lenis virtual scroll → motion value → all animations
+    lenis.on("scroll", ({ scroll }) => {
+      scrollY.set(scroll);
+    });
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -32,20 +96,20 @@ function App() {
 
     requestAnimationFrame(raf);
 
-    // Cleanup
     return () => {
       lenis.destroy();
     };
-  }, []);
+  }, [scrollY]);
 
-  // Render the app with routing
   return (
-    <BrowserRouter>
-      <ScrollToTop lenisInstance={lenisRef} />
-      <div className="min-h-screen">
-        <AppRouter />
-      </div>
-    </BrowserRouter>
+    <LenisContext.Provider value={{ scrollY, lenisRef }}>
+      <BrowserRouter>
+        <ScrollToTop lenisInstance={lenisRef} />
+        <div className="min-h-screen">
+          <AppRouter />
+        </div>
+      </BrowserRouter>
+    </LenisContext.Provider>
   );
 }
 

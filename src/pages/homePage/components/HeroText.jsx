@@ -28,14 +28,15 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
           className="text-center w-full max-w-5xl"
           style={{ padding: "0 15px" }}
         >
-          <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+          {/* <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
             Perfect Solution For Your Renovation
           </h1>
           <p className="text-lg text-white/90 mb-6">
             Bespoke is an end to end service provider that focuses on delivering
             mid to high end renovation projects and our vision is to be the top
             home renovation expert in Melbourne.
-          </p>
+          </p> */}
+          <img src="/logo.png" alt="B-spoke" style={{ height: "180px", margin: "0 auto" }} />
           <div
             className="flex flex-col gap-4 items-center w-full max-w-sm mx-auto"
             style={{ marginTop: "20px" }}
@@ -72,14 +73,15 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
           className="text-center w-full max-w-5xl"
           style={{ padding: "0 15px" }}
         >
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+          {/* <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
             Perfect Solution For Your Renovation
           </h1>
           <p className="text-lg text-white/90 mb-6">
             Bespoke is an end to end service provider that focuses on delivering
             mid to high end renovation projects and our vision is to be the top
             home renovation expert in Melbourne.
-          </p>
+          </p> */}
+          <img src="/logo.png" alt="B-spoke" style={{ height: "300px", margin: "0 auto" }} />
           <div
             className="flex gap-4 justify-center"
             style={{ marginTop: "20px" }}
@@ -114,22 +116,23 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
       style={{ opacity }}
     >
       <div className="text-center px-4 max-w-5xl">
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+        {/* <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
           Perfect Solution For Your Renovation
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8">
           Bespoke is an end to end service provider that focuses on delivering
           mid to high end renovation projects and our vision is to be the top
           home renovation expert in Melbourne.
-        </p>
+        </p> */}
+        <img src="/logo.png" alt="B-spoke" style={{ height: "400px" }} />
         <div
           className="flex gap-4 justify-center"
-          style={{ marginTop: "20px" }}
+          style={{ marginTop: "0px" }}
         >
           <motion.a
             href="tel:+61432661176"
             className="bg-[#2D6B7A] text-white rounded-lg font-semibold text-lg hover:bg-[#2D6B7A]/90 transition-colors pointer-events-auto cursor-pointer flex items-center justify-center"
-            style={{ padding: "15px 30px" }}
+            style={{ padding: "10px 30px" }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

@@ -20,22 +20,8 @@ const Banner = ({ isDesktop = true }) => {
   }, []);
 
   const { scrollY } = useScroll();
-
-  // ✅ VideoBackground now uses transformOrigin: "center bottom"
-  // So here we only manage images opacity/scale
-  //
-  // ✅ FIX: Increased fade-out values for larger screens (3xl, 4xl)
-  // Banner section = min-h-[250vh] → on larger screens this is taller
-  // Fade-out now extends to 3500px to accommodate all screen sizes
-  const imagesOpacity = useTransform(
-    scrollY,
-    [300, 500, 3200, 3500],
-    [0, 1, 1, 0],
-  );
-  const imagesScale = useTransform(scrollY, [300, 500], [0.8, 1]);
-
-  // Gradient fades OUT when images fade IN (inverse)
-  const gradientOverlayOpacity = useTransform(scrollY, [300, 500], [1, 0]);
+  // White overlay fades out as video shrinks — hides images while video is large
+  const whiteOverlayOpacity = useTransform(scrollY, [400, 750], [1, 0]);
 
   const portfolioImages = [
     // Top Row
@@ -245,10 +231,17 @@ const Banner = ({ isDesktop = true }) => {
             );
           })}
 
-          <div className="relative flex items-center justify-center min-h-[60vh] md:min-h-[70vh]">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center max-w-2xl md:max-w-3xl px-2 md:px-0">
-              Perfect Solution For Your Renovation
-            </h2>
+          <div className="relative flex items-center justify-center min-h-[78vh] md:min-h-[70vh]">
+            <div className="text-center px-2">
+              <h2 className="text-2xl font-bold text-gray-900 text-center px-2 md:px-0">
+                Perfect Solution For Your Renovation
+              </h2>
+              <p className="text-lg text-gray-900 mb-6 mx-auto max-w-2xl">
+                Bespoke is an end to end service provider that focuses on
+                delivering mid to high end renovation projects and our vision
+                is to be the top home renovation expert in Melbourne.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -264,37 +257,20 @@ const Banner = ({ isDesktop = true }) => {
         So this sticky div is the reference point — not the viewport
         This will work the same way on all screen sizes
       */}
-      <div className="sticky top-0 h-screen overflow-hidden bg-gradient-to-r from-[#73A1A1] via-white/60 to-white/80">
-        {/* Background overlay when images show - only behind video (z-5), no overlay on top of video */}
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {/* White overlay — hides background images while video is large */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-[#73A1A1] via-white/60 to-white/80 z-5"
-          style={{ opacity: imagesOpacity }}
+          className="absolute inset-0 bg-white z-15 pointer-events-none"
+          style={{ opacity: whiteOverlayOpacity }}
         />
 
         {/* Portfolio Images Grid */}
-        <motion.div
-          className="absolute inset-0 overflow-hidden z-10"
-          style={{ opacity: imagesOpacity }}
-        >
+        <div className="absolute inset-0 overflow-hidden z-10">
           <div className="relative h-full mx-auto px-2 md:px-4 flex items-center">
-            {portfolioImages.map((image, index) => (
-              <motion.div
+            {portfolioImages.map((image) => (
+              <div
                 key={image.id}
                 className={`absolute ${image.position} ${image.size}`}
-                style={{
-                  scale: imagesScale,
-                  opacity: imagesOpacity,
-                }}
-                transition={{
-                  delay: index * 0.05,
-                  duration: 0.6,
-                  ease: "easeOut",
-                }}
-                whileHover={{
-                  scale: 1.05,
-                  zIndex: 10,
-                  transition: { duration: 0.3 },
-                }}
               >
                 <div className="relative w-full h-full group cursor-pointer">
                   {image.type === "video" ? (
@@ -336,19 +312,24 @@ const Banner = ({ isDesktop = true }) => {
                     }`}
                   />
                 </div>
-              </motion.div>
+              </div>
             ))}
 
             {/* Center Text */}
             <div className="absolute inset-0 flex items-center justify-center z-20">
               <div className="text-center px-2 md:px-4">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-[56px] font-semibold text-gray-900 max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-6xl 3xl:max-w-7xl 4xl:max-w-[100rem] mx-auto">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-[56px] font-semibold text-gray-900 max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-6xl 3xl:max-w-7xl 4xl:max-w-400 mx-auto">
                   Perfect Solution For Your Renovation
                 </h2>
+                <p className="max-w-5xl text-[20px] text-black/90 mb-6 mx-auto">
+                  Bespoke is an end to end service provider that focuses on
+                  delivering mid to high end renovation projects and our vision
+                  is to be the top home renovation expert in Melbourne.
+                </p>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* ✅ position="absolute" is passed — VideoBackground won't use fixed internally */}
         <VideoBackground isDesktop={isDesktop} position="absolute" />

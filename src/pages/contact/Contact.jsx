@@ -88,7 +88,7 @@ const Contact = () => {
                   <h3 className="font-semibold text-lg text-gray-900 mb-1">
                     Location
                   </h3>
-                  <p className="text-[#2D6B7A] text-base">Settlers Way</p>
+                  <p className="text-[#2D6B7A] text-base">Settlers Way, Sunbury</p>
                 </div>
               </div>
             </div>
