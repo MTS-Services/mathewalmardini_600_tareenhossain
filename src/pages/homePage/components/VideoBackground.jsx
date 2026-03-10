@@ -127,7 +127,7 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
   // ✅ Mobile / non-desktop version — no scroll animation
   if (!isDesktop) {
     return (
-      <div className="relative w-full min-h-screen bg-linear-to-r from-[#2D6B7A]/80 via-[#2D6B7A]/40 to-[#2D6B7A]/20">
+      <div className="relative w-full min-h-screen ">
         <div className="relative w-full h-full" style={{ padding: "8px" }}>
           <div className="relative w-full min-h-screen overflow-hidden rounded-2xl">
             <video
