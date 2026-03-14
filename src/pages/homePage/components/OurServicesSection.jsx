@@ -7,6 +7,16 @@ const OurServicesSection = () => {
   const stickyRef = useRef(null);
   const firstCardRef = useRef(null);
 
+  const getVideoPosterUrl = (url) => {
+    if (!url.includes("/video/upload/")) {
+      return url;
+    }
+
+    return url
+      .replace("/video/upload/", "/video/upload/so_0/")
+      .replace(/\.mp4($|\?)/, ".jpg$1");
+  };
+
   const services = [
     {
       id: 1,
@@ -178,6 +188,8 @@ const OurServicesSection = () => {
                           muted
                           loop
                           playsInline
+                          preload="metadata"
+                          poster={getVideoPosterUrl(service.video)}
                           className="w-full h-full object-cover transition-transform duration-500"
                         >
                           <source src={service.video} type="video/mp4" />

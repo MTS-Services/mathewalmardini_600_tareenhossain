@@ -23,6 +23,16 @@ const Banner = ({ isDesktop = true }) => {
   // White overlay fades out as video shrinks — hides images while video is large
   const whiteOverlayOpacity = useTransform(scrollY, [400, 750], [1, 0]);
 
+  const getVideoPosterUrl = (url) => {
+    if (!url.includes("/video/upload/")) {
+      return url;
+    }
+
+    return url
+      .replace("/video/upload/", "/video/upload/so_0/")
+      .replace(/\.mp4($|\?)/, ".jpg$1");
+  };
+
   const portfolioImages = [
     // Top Row
     {
@@ -211,13 +221,12 @@ const Banner = ({ isDesktop = true }) => {
                 className={`absolute ${image.position} ${image.size} ${image.radius} overflow-hidden shadow-lg`}
               >
                 {portfolioItem?.type === "video" ? (
-                  <video
-                    src={image.url}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
+                  <img
+                    src={getVideoPosterUrl(image.url)}
+                    alt={`Portfolio ${image.id}`}
                     className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                    decoding="async"
                   />
                 ) : (
                   <img
@@ -225,6 +234,7 @@ const Banner = ({ isDesktop = true }) => {
                     alt={`Portfolio ${image.id}`}
                     className="w-full h-full object-cover object-center"
                     loading="lazy"
+                    decoding="async"
                   />
                 )}
               </div>
@@ -280,6 +290,7 @@ const Banner = ({ isDesktop = true }) => {
                       muted
                       loop
                       playsInline
+                      preload="metadata"
                       className={`w-full h-full object-cover object-center shadow-xl ${
                         image.id === 1 || image.id === 6
                           ? "rounded-r-lg"
@@ -300,6 +311,7 @@ const Banner = ({ isDesktop = true }) => {
                             : "rounded-lg"
                       }`}
                       loading="lazy"
+                      decoding="async"
                     />
                   )}
                   <div

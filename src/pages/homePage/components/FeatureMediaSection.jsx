@@ -6,6 +6,10 @@ const FeatureMediaSection = () => {
   const navigate = useNavigate();
   const sectionRef = useRef(null);
   const mobileImagesRef = useRef(null);
+  const centerVideoUrl =
+    "https://res.cloudinary.com/dv18awr10/video/upload/v1772778283/Video__in_center_j5pbqj.mp4";
+  const centerVideoPoster =
+    "https://res.cloudinary.com/dv18awr10/video/upload/so_0/Video__in_center_j5pbqj.jpg";
 
   const handleNavigateToPortfolio = () => {
     navigate("/portfolio");
@@ -54,7 +58,7 @@ const FeatureMediaSection = () => {
       >
         <div className="max-w-400 mx-auto sm:mx-0 px-4 md:px-6 lg:px-8 text-center lg:text-left our-services-title-margin">
           <div className="flex flex-col items-center gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <div className="lg:ml-[160px]">
+            <div className="lg:ml-40">
               <h2 className="text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-[0.2em] text-secondary our-work-title-margin">
                 Our Work
               </h2>
@@ -109,13 +113,11 @@ const FeatureMediaSection = () => {
                 loop
                 muted
                 playsInline
+                preload="metadata"
+                poster={centerVideoPoster}
                 className="w-full h-full object-cover"
               >
-                {/* <source src="/Our_work/Video _in_center.mp4" type="video/mp4" /> */}
-                <source
-                  src="https://res.cloudinary.com/dv18awr10/video/upload/v1772778283/Video__in_center_j5pbqj.mp4"
-                  type="video/mp4"
-                />
+                <source src={centerVideoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               {/* Subtle overlay for depth */}
@@ -134,72 +136,6 @@ const FeatureMediaSection = () => {
                 // src="/Our_work/IMG_1517.JPG"
                 src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778423/IMG_1517_z1dvo2.jpg"
                 alt="Completed project showcase"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Tablet Layout: Centered with positioned side elements */}
-        <div className="hidden">
-          {/* Left Video */}
-          <motion.div
-            style={{ x: leftVideoX, opacity: sideOpacity }}
-            className="absolute left-0 z-30"
-          >
-            <div className="relative rounded-xl overflow-hidden shadow-xl md:w-70 md:h-85">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-              >
-                {/* <source src="/Our_work/Photo4.JPG" type="video/mp4" /> */}
-                <source
-                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778181/Photo4_bvkgru.jpg"
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-          </motion.div>
-
-          {/* Center Video */}
-          <motion.div
-            className="z-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="relative rounded-xl overflow-hidden shadow-xl md:w-125 md:h-100">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-              >
-                {/* <source src="/Our_work/Video _in_center.mp4" type="video/mp4" /> */}
-                <source
-                  src="https://res.cloudinary.com/dv18awr10/video/upload/v1772778283/Video__in_center_j5pbqj.mp4"
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-          </motion.div>
-
-          {/* Right Image */}
-          <motion.div
-            style={{ x: rightImageX, opacity: sideOpacity }}
-            className="absolute right-0 z-30"
-          >
-            <div className="relative rounded-xl overflow-hidden shadow-xl md:w-70 md:h-85">
-              <img
-                // src="/Our_work/IMG_1517.JPG"
-                src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778423/IMG_1517_z1dvo2.jpg"
-                alt="Completed project"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -231,14 +167,11 @@ const FeatureMediaSection = () => {
                 loop
                 muted
                 playsInline
+                preload="none"
+                poster={centerVideoPoster}
                 className="w-full h-full object-cover"
               >
-                {/* <source src="/Our_work/Video _in_center.mp4" type="video/mp4" />
-                 */}
-                <source
-                  src="https://res.cloudinary.com/dv18awr10/video/upload/v1772778283/Video__in_center_j5pbqj.mp4"
-                  type="video/mp4"
-                />
+                <source src={centerVideoUrl} type="video/mp4" />
               </video>
             </div>
           </motion.div>

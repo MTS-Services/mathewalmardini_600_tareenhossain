@@ -1,15 +1,47 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import Banner from "./components/Banner";
 import VideoBackground from "./components/VideoBackground";
 import HeroText from "./components/HeroText";
-import InfoSection from "./components/InfoSection";
-import FeatureMediaSection from "./components/FeatureMediaSection";
-import OurServicesSection from "./components/OurServicesSection";
-import ProcessSection from "./components/ProcessSection";
-import PhotoGallery from "./components/PhotoGallery";
-import TestimonialSection from "./components/TestimonialSection";
-import CTAReviewSection from "./components/CTAReviewSection";
+
+const InfoSection = lazy(() => import("./components/InfoSection"));
+const FeatureMediaSection = lazy(() => import("./components/FeatureMediaSection"));
+const OurServicesSection = lazy(() => import("./components/OurServicesSection"));
+const ProcessSection = lazy(() => import("./components/ProcessSection"));
+const PhotoGallery = lazy(() => import("./components/PhotoGallery"));
+const TestimonialSection = lazy(() => import("./components/TestimonialSection"));
+const CTAReviewSection = lazy(() => import("./components/CTAReviewSection"));
+
+function DeferredSection({ children, minHeight = "min-h-[35vh]", rootMargin = "300px" }) {
+  const placeholderRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const node = placeholderRef.current;
+    if (!node || isVisible) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [isVisible, rootMargin]);
+
+  return (
+    <div ref={placeholderRef} className={isVisible ? "" : minHeight}>
+      {isVisible ? children : null}
+    </div>
+  );
+}
 
 function Home() {
   const { scrollY } = useScroll();
@@ -51,13 +83,29 @@ function Home() {
           </motion.div>
         </>
       )}
-      <InfoSection />
-      <FeatureMediaSection />
-      <OurServicesSection />
-      <ProcessSection />
-      <PhotoGallery />
-      <TestimonialSection />
-      <CTAReviewSection />
+      <Suspense fallback={<div className="min-h-[40vh]" />}>
+        <DeferredSection minHeight="min-h-[35vh]">
+          <InfoSection />
+        </DeferredSection>
+        <DeferredSection minHeight="min-h-[60vh]">
+          <FeatureMediaSection />
+        </DeferredSection>
+        <DeferredSection minHeight="min-h-[60vh]">
+          <OurServicesSection />
+        </DeferredSection>
+        <DeferredSection minHeight="min-h-[45vh]">
+          <ProcessSection />
+        </DeferredSection>
+        <DeferredSection minHeight="min-h-[60vh]">
+          <PhotoGallery />
+        </DeferredSection>
+        <DeferredSection minHeight="min-h-[45vh]">
+          <TestimonialSection />
+        </DeferredSection>
+        <DeferredSection minHeight="min-h-[30vh]">
+          <CTAReviewSection />
+        </DeferredSection>
+      </Suspense>
     </>
   );
 }

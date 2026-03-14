@@ -136,6 +136,8 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
               loop
               muted
               playsInline
+              preload="metadata"
+              poster="https://res.cloudinary.com/dv18awr10/video/upload/so_0/charteris_MP4_bhsdk1.jpg"
               className="w-full h-full object-cover"
               style={{ minHeight: "100vh" }}
             >
@@ -176,6 +178,8 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
           loop
           muted
           playsInline
+          preload="metadata"
+          poster="https://res.cloudinary.com/dv18awr10/video/upload/so_0/charteris_MP4_bhsdk1.jpg"
           className="w-full h-full object-cover"
           style={{
             padding: "20px",

@@ -69,6 +69,27 @@ function App() {
   const scrollY = useMotionValue(0);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const isTouchDevice =
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(hover: none)").matches;
+
+    // On touch devices/reduced-motion, skip Lenis RAF loop and use native scroll.
+    if (prefersReducedMotion || isTouchDevice) {
+      const handleNativeScroll = () => {
+        scrollY.set(window.scrollY || window.pageYOffset || 0);
+      };
+
+      handleNativeScroll();
+      window.addEventListener("scroll", handleNativeScroll, { passive: true });
+
+      return () => {
+        window.removeEventListener("scroll", handleNativeScroll);
+      };
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -98,6 +119,7 @@ function App() {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, [scrollY]);
 
