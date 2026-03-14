@@ -332,6 +332,7 @@ const images = [
   { id: 3, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780203/Bath_af1efv.jpg" },
   { id: 4, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780223/Craigieburn_5_eye36g.jpg" },
   { id: 5, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780242/IMG_9819_zsrcjx.jpg" },
+  { id: 6, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772787323/WhatsApp_Image_2023-04-02_at_4.59.34_PM_1_nsfpzw.jpg" },
 ];
 
 const PhotoGallery = () => {

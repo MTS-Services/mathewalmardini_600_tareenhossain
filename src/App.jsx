@@ -72,12 +72,10 @@ function App() {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const isTouchDevice =
-      window.matchMedia("(pointer: coarse)").matches ||
-      window.matchMedia("(hover: none)").matches;
+    const isMobileViewport = window.matchMedia("(max-width: 767px)").matches;
 
-    // On touch devices/reduced-motion, skip Lenis RAF loop and use native scroll.
-    if (prefersReducedMotion || isTouchDevice) {
+    // On smaller screens/reduced-motion, skip Lenis RAF loop and use native scroll.
+    if (prefersReducedMotion || isMobileViewport) {
       const handleNativeScroll = () => {
         scrollY.set(window.scrollY || window.pageYOffset || 0);
       };

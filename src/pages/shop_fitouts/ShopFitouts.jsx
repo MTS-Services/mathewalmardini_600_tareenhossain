@@ -42,7 +42,7 @@ function ShopFitouts() {
     <div className="bg-white">
       {/* Hero Section */}
       <section
-        className="relative min-h-[100dvh] md:h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
+        className="relative min-h-dvh md:h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
         style={{ backgroundImage: "url('https://res.cloudinary.com/dv18awr10/image/upload/v1772779550/envato-labs-image-edit_oosbcv.png')" }}
       >
         <div className="absolute inset-0"></div>
@@ -126,7 +126,26 @@ function ShopFitouts() {
       </section>
 
       {/* Process Section */}
-      <ProcessSection />
+      {/* <ProcessSection /> */}
+
+      {/* Video Showcase Section */}
+      <section className="py-16 md:py-24 lg:py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="rounded-2xl overflow-hidden shadow-lg"
+          >
+            <video
+              src="https://res.cloudinary.com/dv18awr10/video/upload/v1773471322/20251216_234734_wbywrq.mov"
+              controls
+              className="w-full h-auto"
+            />
+          </motion.div>
+        </div>
+      </section>
 
       {/* Our Approach Section */}
       <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
@@ -187,8 +206,27 @@ function ShopFitouts() {
         </div>
       </section>
 
+      {/* Image Section After Our Approach */}
+      <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="rounded-2xl overflow-hidden shadow-lg h-[400px] md:h-[500px] lg:h-[600px]"
+          >
+            <img
+              src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471566/IMG_1542_qbnlss.jpg"
+              alt="Professional Shop Fitout Work"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Detailed Services Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-white">
+      {/* <section className="py-16 md:py-24 lg:py-32 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -241,10 +279,68 @@ function ShopFitouts() {
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Key Features Section */}
       <FeaturesGrid features={features} title="What We Deliver" />
+
+      {/* Image Section After What We Deliver */}
+      <section className="py-16 md:py-24 lg:py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="rounded-2xl overflow-hidden shadow-lg h-[400px] md:h-[500px] lg:h-[600px]"
+          >
+            <img
+              src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471567/IMG_1543_a3rqzt.jpg"
+              alt="Quality Shop Fitout Installation"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Mid CTA Buttons */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <motion.a
+              href="tel:+61432661176"
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 20px 40px rgba(45, 107, 122, 0.3)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 bg-[#2D6B7A] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1e5562] transition-colors duration-300 shadow-lg"
+            >
+              <Phone className="w-5 h-5" />
+              CALL US: 0432661176
+            </motion.a>
+
+            <Link to="/book-consultation">
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 20px 40px rgba(45, 107, 122, 0.3)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-transparent border-2 border-[#2D6B7A] text-[#2D6B7A] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#2D6B7A] hover:text-white transition-colors duration-300"
+              >
+                Book A Consultation
+              </motion.button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Industries We Serve Section */}
       <section className="py-16 md:py-24 lg:py-32 bg-white">
@@ -296,8 +392,27 @@ function ShopFitouts() {
         </div>
       </section>
 
-      {/* Final CTA Section */}
+      {/* Image Section After Industries We Serve */}
       <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="rounded-2xl overflow-hidden shadow-lg h-[400px] md:h-[500px] lg:h-[600px]"
+          >
+            <img
+              src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471567/IMG_1543_a3rqzt.jpg"
+              alt="Completed Shop Fitout Project"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      {/* <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -352,7 +467,7 @@ function ShopFitouts() {
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <CTASection
         heading="Ready to Transform Your Commercial Space?"
