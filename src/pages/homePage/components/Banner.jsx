@@ -290,7 +290,8 @@ const Banner = ({ isDesktop = true }) => {
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
+                      poster={getVideoPosterUrl(image.url)}
                       className={`w-full h-full object-cover object-center shadow-xl ${
                         image.id === 1 || image.id === 6
                           ? "rounded-r-lg"

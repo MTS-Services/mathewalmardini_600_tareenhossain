@@ -9,4 +9,15 @@ export default defineConfig({
     port: 5173,
     open: true,
   },
+  build: {
+    target: "es2020",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          reactVendor: ["react", "react-dom", "react-router"],
+          motionVendor: ["motion", "lenis"],
+        },
+      },
+    },
+  },
 });

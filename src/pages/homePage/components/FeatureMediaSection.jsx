@@ -113,7 +113,7 @@ const FeatureMediaSection = () => {
                 loop
                 muted
                 playsInline
-                preload="metadata"
+                preload="none"
                 poster={centerVideoPoster}
                 className="w-full h-full object-cover"
               >

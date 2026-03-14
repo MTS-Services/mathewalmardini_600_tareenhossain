@@ -188,7 +188,7 @@ const OurServicesSection = () => {
                           muted
                           loop
                           playsInline
-                          preload="metadata"
+                          preload="none"
                           poster={getVideoPosterUrl(service.video)}
                           className="w-full h-full object-cover transition-transform duration-500"
                         >
