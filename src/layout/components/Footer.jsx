@@ -503,6 +503,17 @@
 
 // export default Footer;
 
+import { Link } from "react-router";
+
+const quickLinks = [
+  { label: "Home", to: "/" },
+  { label: "Portfolio", to: "/portfolio" },
+  { label: "About", to: "/about" },
+  { label: "FAQ", to: "/faqs" },
+  { label: "Blog", to: "/blog" },
+  { label: "Contact", to: "/contact" },
+];
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -663,22 +674,14 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="flex flex-col" style={{ gap: "0.5rem" }}>
-              {[
-                "Home",
-                "Services",
-                "Portfolio",
-                "About",
-                "FAQS",
-                "Blog",
-                "Contact",
-              ].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`/${link.toLowerCase()}`}
+              {quickLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
                     className="text-gray-200 hover:text-white transition-colors duration-300"
                   >
-                    {link}
-                  </a>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

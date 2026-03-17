@@ -833,7 +833,7 @@ const TestimonialSection = () => {
   return (
     <div
       style={{
-        background: "linear-gradient(to bottom, #000000, #111827)",
+        // background: "linear-gradient(to bottom, #000000, #111827)",
         paddingTop: "4rem",
         paddingBottom: "4rem",
         fontFamily: "'Poppins', sans-serif",
@@ -843,7 +843,7 @@ const TestimonialSection = () => {
       <div style={{ marginBottom: "3rem", textAlign: "center" }}>
         <h2
           style={{
-            color: "#ffffff",
+            color: "#0f172a",
             fontWeight: "700",
             fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
             letterSpacing: "-0.02em",
@@ -853,7 +853,7 @@ const TestimonialSection = () => {
           WHAT OUR CLIENTS SAY
         </h2>
         <p
-          style={{ color: "#9ca3af", marginTop: "0.5rem", fontSize: "0.95rem" }}
+          style={{ color: "#475569", marginTop: "0.5rem", fontSize: "0.95rem" }}
         >
           Trusted by homeowners for exceptional renovations
         </p>
@@ -872,7 +872,7 @@ const TestimonialSection = () => {
         <div
           style={{
             height: "2px",
-            background: "rgba(255,255,255,0.1)",
+            background: " rgba(255,255,255,0.1)",
             borderRadius: "9999px",
             marginBottom: "2rem",
             overflow: "hidden",

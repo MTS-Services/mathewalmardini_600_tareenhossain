@@ -74,54 +74,88 @@ function ShopFitouts() {
         </div>
       </section>
 
-      {/* Introduction Section */}
+      {/* Introduction Section - split layout */}
       <section className="py-16 md:py-24 lg:py-32 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="space-y-6 text-gray-600 text-base md:text-lg leading-relaxed"
-          >
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="space-y-5 text-gray-600 text-base md:text-lg leading-relaxed"
             >
-              From supermarkets to offices and retail spaces of every scale and
-              budget, we manage the entire process from feasibility and design
-              through to construction, ensuring every project is executed with
-              precision and efficiency. Whether you're refreshing a single space
-              or undertaking a full commercial transformation, we tailor our
-              approach to suit your operational needs, brand standards, and
-              project goals, delivering results that elevate your business and
-              enhance the customer experience.
-            </motion.p>
-          </motion.div>
+              <motion.h2
+                className="text-3xl md:text-4xl font-bold text-gray-900"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+              >
+                End-to-End Fit-outs, Tailored to You
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
+                From supermarkets to offices and retail spaces of every scale and
+                budget, we manage the entire process from feasibility and design
+                through to construction, ensuring every project is executed with
+                precision and efficiency.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
+                Whether you're refreshing a single space or undertaking a full
+                commercial transformation, we tailor our approach to suit your
+                operational needs, brand standards, and project goals, delivering
+                results that elevate your business and enhance the customer
+                experience.
+              </motion.p>
 
-          {/* Call Us Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            className="mt-12 flex justify-center"
-          >
-            <motion.a
-              href="tel:+61432661176"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(45, 107, 122, 0.3)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 bg-[#2D6B7A] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1e5562] transition-colors duration-300 shadow-lg"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="pt-2"
+              >
+                <motion.a
+                  href="tel:+61432661176"
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(45, 107, 122, 0.3)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-3 bg-[#2D6B7A] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1e5562] transition-colors duration-300 shadow-lg"
+                >
+                  <Phone className="w-5 h-5" />
+                  CALL US: 0432661176
+                </motion.a>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="relative"
             >
-              <Phone className="w-5 h-5" />
-              CALL US: 0432661176
-            </motion.a>
-          </motion.div>
+              <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100">
+                <img
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471565/IMG_1541_tfwida.jpg"
+                  alt="Commercial fitout interior"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -150,78 +184,85 @@ function ShopFitouts() {
       {/* Our Approach Section */}
       <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-center mb-12"
-          >
-            <motion.h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="relative order-1 lg:order-none"
             >
-              Our Approach
-            </motion.h2>
-            <motion.p
-              className="text-gray-600 text-base md:text-lg leading-relaxed max-w-4xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              What sets us apart is the way our team works, hands-on,
-              detail-driven, and deeply invested in the outcome of every
-              project. Our staff bring a blend of technical expertise and
-              practical insight, ensuring each fit-out is thoughtfully planned
-              and executed with care. With a streamlined process and direct
-              communication at every stage, we make complex commercial
-              renovations feel organised, transparent, and confidently managed.
-            </motion.p>
-          </motion.div>
+              <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100 h-full">
+                <img
+                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471566/IMG_1542_qbnlss.jpg"
+                  alt="Professional Shop Fitout Work"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex justify-center"
-          >
-            <Link to="/book-consultation">
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(45, 107, 122, 0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-[#2D6B7A] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1e5562] transition-colors duration-300 shadow-lg"
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="space-y-5 order-2 lg:order-none"
+            >
+              <motion.h2
+                className="text-3xl md:text-4xl lg:5xl font-bold text-gray-900"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.5 }}
               >
-                Book A Consultation
-              </motion.button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+                Our Approach
+              </motion.h2>
+              <motion.p
+                className="text-gray-600 text-base md:text-lg leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
+                What sets us apart is the way our team works, hands-on,
+                detail-driven, and deeply invested in the outcome of every
+                project. Our staff bring a blend of technical expertise and
+                practical insight, ensuring each fit-out is thoughtfully planned
+                and executed with care.
+              </motion.p>
+              <motion.p
+                className="text-gray-600 text-base md:text-lg leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
+                With a streamlined process and direct communication at every
+                stage, we make complex commercial renovations feel organised,
+                transparent, and confidently managed.
+              </motion.p>
 
-      {/* Image Section After Our Approach */}
-      <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="rounded-2xl overflow-hidden shadow-lg h-[400px] md:h-[500px] lg:h-[600px]"
-          >
-            <img
-              src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471566/IMG_1542_qbnlss.jpg"
-              alt="Professional Shop Fitout Work"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+              >
+                <Link to="/book-consultation">
+                  <motion.button
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 20px 40px rgba(45, 107, 122, 0.3)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-[#2D6B7A] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1e5562] transition-colors duration-300 shadow-lg"
+                  >
+                    Book A Consultation
+                  </motion.button>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -393,7 +434,7 @@ function ShopFitouts() {
       </section>
 
       {/* Image Section After Industries We Serve */}
-      <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
+      {/* <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -403,13 +444,13 @@ function ShopFitouts() {
             className="rounded-2xl overflow-hidden shadow-lg h-[400px] md:h-[500px] lg:h-[600px]"
           >
             <img
-              src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471567/IMG_1543_a3rqzt.jpg"
+              src=""
               alt="Completed Shop Fitout Project"
               className="w-full h-full object-cover"
             />
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Final CTA Section */}
       {/* <section className="py-16 md:py-24 lg:py-32 bg-gray-50">

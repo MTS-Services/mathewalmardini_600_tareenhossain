@@ -151,6 +151,13 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { getImagesByCategory } from "../../data/portfolioData";
 
+// Pick a cover image that uses a browser-friendly format.
+const pickCoverImage = (category) => {
+  const images = getImagesByCategory(category);
+  const safeFormats = /(\.jpe?g|\.png|\.webp)$/i;
+  return images.find((img) => safeFormats.test(img.src))?.src || images[0]?.src || "";
+};
+
 function Portfolio() {
   const portfolioCategories = [
     {
@@ -159,7 +166,7 @@ function Portfolio() {
       category: "bathroom",
       description: "Explore our stunning bathroom renovation projects",
       link: "/bathroom-portfolio",
-      image: getImagesByCategory("bathroom")[0]?.src,
+      image: pickCoverImage("bathroom"),
     },
     {
       id: 2,
@@ -167,7 +174,7 @@ function Portfolio() {
       category: "kitchen",
       description: "Discover our modern kitchen renovation designs",
       link: "/kitchen-portfolio",
-      image: getImagesByCategory("kitchen")[0]?.src,
+      image: pickCoverImage("kitchen"),
     },
     {
       id: 3,
@@ -175,14 +182,14 @@ function Portfolio() {
       category: "laundry",
       description: "See our laundry space transformation projects",
       link: "/laundry-portfolio",
-      image: getImagesByCategory("laundry")[0]?.src,
+      image: pickCoverImage("laundry"),
     },
   ];
 
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-[#2D6B7A] to-[#1e5562] h-[50vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative bg-linear-to-r from-[#2D6B7A] to-[#1e5562] h-[50vh] min-h-150 flex items-center justify-center overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
