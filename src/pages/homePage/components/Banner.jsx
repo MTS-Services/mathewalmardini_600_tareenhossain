@@ -249,7 +249,7 @@ const Banner = ({ isDesktop = true }) => {
               <p className="text-lg text-gray-900 mb-6 mx-auto max-w-2xl">
                 Bespoke is an end to end service provider that focuses on
                 delivering mid to high end renovation projects and our vision
-                is to be the top home renovation expert in Melbourne.
+                is to be the top home renovation experts in Melbourne.
               </p>
             </div>
           </div>
@@ -337,7 +337,7 @@ const Banner = ({ isDesktop = true }) => {
                 <p className="max-w-5xl text-[20px] text-black/90 mb-6 mx-auto">
                   Bespoke is an end to end service provider that focuses on
                   delivering mid to high end renovation projects and our vision
-                  is to be the top home renovation expert in Melbourne.
+                  is to be the top home renovation experts in Melbourne.
                 </p>
               </div>
             </div>
