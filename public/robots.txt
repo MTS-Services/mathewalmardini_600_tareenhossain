@@ -1,0 +1,7 @@
+# robots.txt for b-spoke.com.au
+User-agent: *
+Allow: /
+Disallow: /thank-you
+
+# Sitemaps
+Sitemap: https://www.b-spoke.com.au/sitemap.xml
