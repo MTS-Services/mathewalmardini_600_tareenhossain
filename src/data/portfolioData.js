@@ -464,20 +464,38 @@ const kitchenPortfolio = [
   category: "kitchen",
 }));
 
+// const laundrySourceUrls = [
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469517/Laundry_kymizq.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469517/E0767E31-4B95-4F5C-886F-8BBCB1368F06_rnuqua.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469517/Our_Laundry_4_hyx7ly.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469517/Our_Laundry_1_qsjoco.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469518/Our_Laundry_3_v0dtlc.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469518/Our_Laundry_2_narpte.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469523/Our_Laundry_5_kzjg6p.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469525/PhotoL_aq9qzv.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469525/Taylors_Hill_Laundry_2_iirfmk.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469526/Taylors_Hill_Laundry_yqvhd3.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469526/WhatsApp_Image_2024-01-24_at_10.49.31_e14710e2_mnqf8b.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469530/WhatsApp_Image_2024-02-18_at_22.38.00_8ca58002_ip6s27.jpg",
+//   "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469530/WhatsApp_Image_2024-03-26_at_20.10.50_ae9f7eb8_agoavi.jpg",
+// ];
+
 const laundrySourceUrls = [
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469517/Laundry_kymizq.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469517/E0767E31-4B95-4F5C-886F-8BBCB1368F06_rnuqua.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469517/Our_Laundry_4_hyx7ly.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469517/Our_Laundry_1_qsjoco.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469518/Our_Laundry_3_v0dtlc.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469518/Our_Laundry_2_narpte.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469523/Our_Laundry_5_kzjg6p.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469525/PhotoL_aq9qzv.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469525/Taylors_Hill_Laundry_2_iirfmk.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469526/Taylors_Hill_Laundry_yqvhd3.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469526/WhatsApp_Image_2024-01-24_at_10.49.31_e14710e2_mnqf8b.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469530/WhatsApp_Image_2024-02-18_at_22.38.00_8ca58002_ip6s27.jpg",
-  "=https://res.cloudinary.com/dv18awr10/image/upload/v1773469530/WhatsApp_Image_2024-03-26_at_20.10.50_ae9f7eb8_agoavi.jpg",
+  "=/laundry_gallery/E0767E31-4B95-4F5C-886F-8BBCB1368F06.jpg",
+  "=/laundry_gallery/IMG_9818.jpg",
+  "=/laundry_gallery/Laundry.jpeg",
+  "=/laundry_gallery/Our Laundry 1.jpg",
+  "=/laundry_gallery/Our Laundry 2.jpg",
+  "=/laundry_gallery/Our Laundry 3.jpg",
+  "=/laundry_gallery/Our Laundry 4.jpg",
+  "=/laundry_gallery/Our Laundry 5.jpg",
+  "=/laundry_gallery/Photo6.jpg",
+  "=/laundry_gallery/PhotoL.jpg",
+  "=/laundry_gallery/Taylors Hill Laundry 2 .jpg",
+  "=/laundry_gallery/Taylors Hill Laundry.jpg",
+  "=/laundry_gallery/WhatsApp Image 2024-01-24 at 10.49.31_e14710e2.jpg",
+  "=/laundry_gallery/WhatsApp Image 2024-02-18 at 22.38.00_8ca58002.jpg",
+  "=/laundry_gallery/WhatsApp Image 2024-03-26 at 20.10.50_ae9f7eb8.jpg",
 ];
 
 const laundryPortfolio = [
