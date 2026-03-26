@@ -556,56 +556,70 @@ const processSteps = [
     title: "Idea",
     description:
       "If you're reading this, then chances are you've already made a decision and have an idea about your renovation. Bespoke will turn that idea into a reality.",
-    image:
-      "https://res.cloudinary.com/dv18awr10/image/upload/v1772779691/1_Idea_r5ll2w.jpg",
+    // image:
+    //   "https://res.cloudinary.com/dv18awr10/image/upload/v1772779691/1_Idea_r5ll2w.jpg",
+        image:
+      "/Our_process/1_Idea.jpg",
   },
   {
     id: 2,
     title: "Talk to us",
     description:
       "Tell us everything - from what you want your remodel to look like to why you've chosen to do it.",
-    image:
-      "https://res.cloudinary.com/dv18awr10/image/upload/v1772779715/2_Talk_to_us_mtuzfw.png",
+    // image:
+    //   "https://res.cloudinary.com/dv18awr10/image/upload/v1772779715/2_Talk_to_us_mtuzfw.png",
+        image:
+      "/Our_process/2_Talk_to_us.png",
   },
   {
     id: 3,
     title: "Get a quote",
     description:
       "You may be thinking about your project. Cost, details, timeliness and accuracy are the keys to successful project. Bespoke takes estimates as serious as you do.",
-    image:
-      "https://res.cloudinary.com/dv18awr10/image/upload/v1772780047/3_Get_a_quote_izblui.jpg",
+    // image:
+    //   "https://res.cloudinary.com/dv18awr10/image/upload/v1772780047/3_Get_a_quote_izblui.jpg",
+        image:
+      "/Our_process/3_Get_a_quote.jpg",
   },
   {
     id: 4,
     title: "Design",
     description:
       "Once you give us the green light. Together, we'll help you plan and design your dream project, and set a timeline that you feel good about.",
-    image:
-      "https://res.cloudinary.com/dv18awr10/image/upload/v1772779863/4_Design_wauygh.jpg",
+    // image:
+    //   "https://res.cloudinary.com/dv18awr10/image/upload/v1772779863/4_Design_wauygh.jpg",
+        image:
+      "/Our_process/4_Design.jpg",
   },
   {
     id: 5,
     title: "The fun part",
     description:
       "Once the final game plan is in place, then it's time for the magic to begin. Relax and enjoy the process while we take care of all the work.",
-    image:
-      "https://res.cloudinary.com/dv18awr10/image/upload/v1772779884/5_The_fun_part_awdjao.png",
+    // image:
+    //   "https://res.cloudinary.com/dv18awr10/image/upload/v1772779884/5_The_fun_part_awdjao.png",
+        image:
+      "/Our_process/5_The_fun_part.png",
   },
   {
     id: 6,
     title: "Stay informed",
     description:
       "If we weren't named Bespoke, we might be called transparency. Our team will provide you with updates throughout the entire project to keep you informed. (And excited!)",
-    image:
-      "https://res.cloudinary.com/dv18awr10/image/upload/v1772779906/6_Stay_informed_tqlxtx.png",
+    // image:
+    //   "https://res.cloudinary.com/dv18awr10/image/upload/v1772779906/6_Stay_informed_tqlxtx.png",
+        image:
+      "/Our_process/6_Stay_informed.png",
   },
   {
     id: 7,
     title: "Celebrate",
     description:
       "It's the moment you've been waiting for: your project is complete! Invite your family and friends and get the stake on the barbecue.",
-    image:
-      "https://res.cloudinary.com/dv18awr10/image/upload/v1772779926/7_Celebrate_cijwoz.png",
+    // image:
+    //   "https://res.cloudinary.com/dv18awr10/image/upload/v1772779926/7_Celebrate_cijwoz.png",
+        image:
+      "/Our_process/7_Celebrate.png",
   },
 ];
 

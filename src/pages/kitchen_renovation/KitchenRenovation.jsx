@@ -59,9 +59,9 @@ function KitchenRenovation() {
             className="w-full h-full object-cover"
           >
             <source
-              // src="/public/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
-              src="https://res.cloudinary.com/dv18awr10/video/upload/v1772779483/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc_esyvna.mp4"
-              type="video/mp4"
+              src="/public/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
+              // src="https://res.cloudinary.com/dv18awr10/video/upload/v1772779483/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc_esyvna.mp4"
+              // type="video/mp4"
             />
             Your browser does not support the video tag.
           </video>
@@ -145,9 +145,9 @@ function KitchenRenovation() {
               className="relative overflow-hidden rounded-xl shadow-xl aspect-4/3 group cursor-pointer"
             >
               <img
-                // src="/public/protfollio/kitchen/Kitchen_Sunbury_2.jpg"
-                src="https://res.cloudinary.com/dv18awr10/image/upload/v1772786235/Kitchen_Sunbury_2_arssds.jpg"
-                alt="Kitchen Design"
+                src="/public/protfollio/kitchen/Kitchen_Sunbury_2.jpg"
+                // src="https://res.cloudinary.com/dv18awr10/image/upload/v1772786235/Kitchen_Sunbury_2_arssds.jpg"
+                // alt="Kitchen Design"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-[#2D6B7A]/0 group-hover:bg-[#2D6B7A]/10 transition-all duration-300"></div>
@@ -187,8 +187,8 @@ function KitchenRenovation() {
               className="relative overflow-hidden rounded-xl shadow-xl aspect-4/3 group cursor-pointer order-2 lg:order-1"
             >
               <img
-                // src="/kitchen_renovation/image_2.JPG"
-                src="https://res.cloudinary.com/dv18awr10/image/upload/v1772786096/image_2_evrvx0.jpg"
+                src="/kitchen_renovation/image_2.JPG"
+                // src="https://res.cloudinary.com/dv18awr10/image/upload/v1772786096/image_2_evrvx0.jpg"
                 alt="Kitchen Example"
                 className="w-full h-full object-cover"
               />

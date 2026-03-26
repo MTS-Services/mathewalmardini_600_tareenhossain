@@ -43,7 +43,8 @@ function ShopFitouts() {
       {/* Hero Section */}
       <section
         className="relative min-h-dvh md:h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
-        style={{ backgroundImage: "url('https://res.cloudinary.com/dv18awr10/image/upload/v1772779550/envato-labs-image-edit_oosbcv.png')" }}
+        // style={{ backgroundImage: "url('https://res.cloudinary.com/dv18awr10/image/upload/v1772779550/envato-labs-image-edit_oosbcv.png')" }}
+        style={{ backgroundImage: "url('/public/Our_services/envato-labs-image-edit.png')" }}
       >
         <div className="absolute inset-0"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -149,7 +150,8 @@ function ShopFitouts() {
             >
               <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100">
                 <img
-                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471565/IMG_1541_tfwida.jpg"
+                  // src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471565/IMG_1541_tfwida.jpg"
+                  src="/shop_fitouts/IMG_1541.JPG"
                   alt="Commercial fitout interior"
                   className="w-full h-full object-cover"
                 />
@@ -173,7 +175,8 @@ function ShopFitouts() {
             className="rounded-2xl overflow-hidden shadow-lg"
           >
             <video
-              src="https://res.cloudinary.com/dv18awr10/video/upload/v1773471322/20251216_234734_wbywrq.mov"
+              // src="https://res.cloudinary.com/dv18awr10/video/upload/v1773471322/20251216_234734_wbywrq.mov"
+              src="/shop_fitouts/20251216_234734.MP4"
               controls
               className="w-full h-auto"
             />
@@ -194,7 +197,8 @@ function ShopFitouts() {
             >
               <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100 h-full">
                 <img
-                  src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471566/IMG_1542_qbnlss.jpg"
+                  // src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471566/IMG_1542_qbnlss.jpg"
+                  src="/shop_fitouts/IMG_1542.JPG"
                   alt="Professional Shop Fitout Work"
                   className="w-full h-full object-cover"
                 />
@@ -336,7 +340,8 @@ function ShopFitouts() {
             className="rounded-2xl overflow-hidden shadow-lg h-[400px] md:h-[500px] lg:h-[600px]"
           >
             <img
-              src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471567/IMG_1543_a3rqzt.jpg"
+              // src="https://res.cloudinary.com/dv18awr10/image/upload/v1773471567/IMG_1543_a3rqzt.jpg"
+              src="/shop_fitouts/IMG_1543.JPG"
               alt="Quality Shop Fitout Installation"
               className="w-full h-full object-cover"
             />

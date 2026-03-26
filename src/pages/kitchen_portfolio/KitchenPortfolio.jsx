@@ -37,8 +37,8 @@ function KitchenPortfolio() {
             className="w-full h-full object-cover"
           >
             <source
-              // src="/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
-              src="https://res.cloudinary.com/dv18awr10/video/upload/v1772779483/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc_esyvna.mp4"
+              src="/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
+              // src="https://res.cloudinary.com/dv18awr10/video/upload/v1772779483/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc_esyvna.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.

@@ -323,8 +323,8 @@ const FAQ = () => {
         transition={{ duration: 0.8 }}
       >
         <motion.img
-          // src="/faq/FAQ.jpg"
-          src="https://res.cloudinary.com/dv18awr10/image/upload/v1772789385/FAQ_oiiob2.jpg"
+          src="/faq/FAQ.jpg"
+          // src="https://res.cloudinary.com/dv18awr10/image/upload/v1772789385/FAQ_oiiob2.jpg"
           alt="Frequently Asked Questions"
           className="absolute inset-0 w-full h-full object-cover"
           initial={{ scale: 1.1 }}
