@@ -46,15 +46,20 @@ function transformToAPI(data) {
     evening: "3:00 PM",
   };
 
+  const address = String(data.address || "").trim();
+  const bathroom = String(data.bathrooms || "").trim();
+
   return {
     name: data.name,
     email: data.email,
     phone: data.phone,
-    address: data.address,
+    address,
     postcode: data.postcode || "",
     propertyType: data.propertyType || "",
     service: data.services.join(", "),
-    bathroom: String(data.bathrooms || ""),
+    // Send both singular and plural keys for backend/template compatibility.
+    bathroom,
+    bathrooms: bathroom,
     message: data.details,
     timeline: data.timeline || "",
     timelineDetails: data.timelineDetails || "",
