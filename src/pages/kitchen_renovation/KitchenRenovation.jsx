@@ -61,7 +61,7 @@ function KitchenRenovation() {
             <source
               // src="/public/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
               src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
-              // type="video/mp4"
+              type="video/mp4"
             />
             Your browser does not support the video tag.
           </video>
