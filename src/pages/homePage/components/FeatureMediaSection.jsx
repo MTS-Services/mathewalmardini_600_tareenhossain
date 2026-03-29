@@ -6,14 +6,14 @@ const FeatureMediaSection = () => {
   const navigate = useNavigate();
   const sectionRef = useRef(null);
   const mobileImagesRef = useRef(null);
-  // const centerVideoUrl =
-  //   "https://res.cloudinary.com/dv18awr10/video/upload/v1772778283/Video__in_center_j5pbqj.mp4";
-  // const centerVideoPoster =
-  //   "https://res.cloudinary.com/dv18awr10/video/upload/so_0/Video__in_center_j5pbqj.jpg";
-    const centerVideoUrl =
-    "/Our_work/Video _in_center.mp4";
+  const centerVideoUrl =
+    "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/Video+_in_center.mp4";
   const centerVideoPoster =
-    "/Our_work/Video _in_center.mp4";
+    "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/Video+_in_center.mp4";
+  //   const centerVideoUrl =
+  //   "/Our_work/Video _in_center.mp4";
+  // const centerVideoPoster =
+  //   "/Our_work/Video _in_center.mp4";
 
   const handleNavigateToPortfolio = () => {
     navigate("/portfolio");
@@ -93,8 +93,8 @@ const FeatureMediaSection = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
-                src="/Our_work/Photo4.JPG"
-                // src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778181/Photo4_bvkgru.jpg"
+                // src="/Our_work/Photo4.JPG"
+                src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/Photo4.JPG"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -137,8 +137,8 @@ const FeatureMediaSection = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
-                src="/Our_work/IMG_1517.JPG"
-                // src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778423/IMG_1517_z1dvo2.jpg"
+                // src="/Our_work/IMG_1517.JPG"
+                src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/IMG_1517.JPG"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -201,8 +201,8 @@ const FeatureMediaSection = () => {
                 style={{ width: "100%", height: "auto" }}
               >
                 <img
-                  src="/Our_work/Photo4.JPG"
-                  // src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778181/Photo4_bvkgru.jpg"
+                  // src="/Our_work/Photo4.JPG"
+                  src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/Photo4.JPG"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -225,8 +225,8 @@ const FeatureMediaSection = () => {
                 style={{ width: "100%", height: "auto" }}
               >
                 <img
-                  src="/Our_work/IMG_1517.JPG"
-                  // src="https://res.cloudinary.com/dv18awr10/image/upload/v1772778423/IMG_1517_z1dvo2.jpg"
+                  // src="/Our_work/IMG_1517.JPG"
+                  src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/IMG_1517.JPG"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"

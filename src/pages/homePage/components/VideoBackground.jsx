@@ -138,12 +138,12 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
               playsInline
               preload="metadata"
               // poster="https://res.cloudinary.com/dv18awr10/video/upload/so_0/charteris_MP4_bhsdk1.jpg"
-              poster="/banner_video/charteris_MP4.mp4"
+              // poster="/banner_video/charteris_MP4.mp4"
               className="w-full h-full object-cover"
               style={{ minHeight: "100vh" }}
             >
-              <source src="/banner_video/charteris_MP4.mp4" type="video/mp4" />
-              {/* <source src="https://res.cloudinary.com/dv18awr10/video/upload/v1772773913/charteris_MP4_bhsdk1.mp4" type="video/mp4" /> */}
+              {/* <source src="/banner_video/charteris_MP4.mp4" type="video/mp4" /> */}
+              <source src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/banner_video/charteris_MP4.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
@@ -181,7 +181,7 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
           playsInline
           preload="metadata"
           // poster="https://res.cloudinary.com/dv18awr10/video/upload/so_0/charteris_MP4_bhsdk1.jpg"
-          poster="/banner_video/charteris_MP4.mp4"
+          // poster="/banner_video/charteris_MP4.mp4"
           className="w-full h-full object-cover"
           style={{
             padding: "20px",
@@ -189,8 +189,8 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
             borderRadius: "inherit",
           }}
         >
-          <source src="/banner_video/charteris_MP4.mp4" type="video/mp4" />
-          {/* <source src="https://res.cloudinary.com/dv18awr10/video/upload/v1772773913/charteris_MP4_bhsdk1.mp4" type="video/mp4" /> */}
+          {/* <source src="/banner_video/charteris_MP4.mp4" type="video/mp4" /> */}
+          <source src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/banner_video/charteris_MP4.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 

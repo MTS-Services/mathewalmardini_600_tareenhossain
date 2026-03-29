@@ -36,7 +36,12 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
             mid to high end renovation projects and our vision is to be the top
             home renovation expert in Melbourne.
           </p> */}
-          <img src="/logo.png" alt="B-spoke" style={{ height: "180px", margin: "0 auto" }} />
+          <img
+            // src="/logo.png"
+            src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/logo.png"
+            alt="B-spoke"
+            style={{ height: "180px", margin: "0 auto" }}
+          />
           {/* <div
             className="flex flex-col gap-4 items-center w-full max-w-sm mx-auto"
             style={{ marginTop: "20px" }}
@@ -81,7 +86,12 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
             mid to high end renovation projects and our vision is to be the top
             home renovation expert in Melbourne.
           </p> */}
-          <img src="/logo.png" alt="B-spoke" style={{ height: "300px", margin: "0 auto" }} />
+          <img
+            // src="/logo.png"
+            src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/logo.png"
+            alt="B-spoke"
+            style={{ height: "300px", margin: "0 auto" }}
+          />
           {/* <div
             className="flex gap-4 justify-center"
             style={{ marginTop: "20px" }}
@@ -124,7 +134,12 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
           mid to high end renovation projects and our vision is to be the top
           home renovation expert in Melbourne.
         </p> */}
-        <img src="/logo.png" alt="B-spoke" style={{ height: "400px" }} />
+        <img
+          // src="/logo.png"
+          src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/logo.png"
+          alt="B-spoke"
+          style={{ height: "400px" }}
+        />
         {/* <div
           className="flex gap-4 justify-center"
           style={{ marginTop: "0px" }}

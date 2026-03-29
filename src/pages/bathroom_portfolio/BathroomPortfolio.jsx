@@ -37,8 +37,8 @@ function BathroomPortfolio() {
             className="w-full h-full object-cover"
           >
             <source
-              src="/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
-              // src="https://res.cloudinary.com/dv18awr10/video/upload/v1772779373/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4_sijhou.mp4"
+              // src="/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
+              src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
               // type="video/mp4"
             />
             Your browser does not support the video tag.
@@ -46,7 +46,6 @@ function BathroomPortfolio() {
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
-
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

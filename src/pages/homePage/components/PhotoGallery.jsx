@@ -323,28 +323,28 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 //   { id: 4, src: "/PhotoGallery/Craigieburn 5.jpg" },
 //   { id: 5, src: "/PhotoGallery/IMG_9819.JPG" },
 // ];
-// const images = [
-//   {
-//     id: 1,
-//     src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780153/20240604_153801__1_qq1mmm.jpg",
-//   },
-//   { id: 2, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780182/20250404_123149_buvhoa.jpg" },
-//   { id: 3, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780203/Bath_af1efv.jpg" },
-//   { id: 4, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780223/Craigieburn_5_eye36g.jpg" },
-//   { id: 5, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772780242/IMG_9819_zsrcjx.jpg" },
-//   { id: 6, src: "https://res.cloudinary.com/dv18awr10/image/upload/v1772787323/WhatsApp_Image_2023-04-02_at_4.59.34_PM_1_nsfpzw.jpg" },
-// ];
 const images = [
   {
     id: 1,
-    src: "/PhotoGallery/20240604_153801_(1).jpg",
+    src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/20240604_153801_(1).jpg",
   },
-  { id: 2, src: "/PhotoGallery/20250404_123149.jpg" },
-  { id: 3, src: "/PhotoGallery/Bath.jpg" },
-  { id: 4, src: "/PhotoGallery/Craigieburn 5.jpg" },
-  { id: 5, src: "/PhotoGallery/IMG_9819.JPG" },
-  { id: 6, src: "/PhotoGallery/WhatsApp Image 2023-03-29 at 1.22.25 PM (1).jpeg" },
+  { id: 2, src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/20250404_123149.jpg" },
+  { id: 3, src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/Bath.jpg" },
+  { id: 4, src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/Craigieburn+5.jpg" },
+  { id: 5, src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/IMG_9819.JPG" },
+  { id: 6, src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/WhatsApp+Image+2023-03-29+at+1.22.25+PM+(1).jpeg" },
 ];
+// const images = [
+//   {
+//     id: 1,
+//     src: "/PhotoGallery/20240604_153801_(1).jpg",
+//   },
+//   { id: 2, src: "/PhotoGallery/20250404_123149.jpg" },
+//   { id: 3, src: "/PhotoGallery/Bath.jpg" },
+//   { id: 4, src: "/PhotoGallery/Craigieburn 5.jpg" },
+//   { id: 5, src: "/PhotoGallery/IMG_9819.JPG" },
+//   { id: 6, src: "/PhotoGallery/WhatsApp Image 2023-03-29 at 1.22.25 PM (1).jpeg" },
+// ];
 
 const PhotoGallery = () => {
   const navigate = useNavigate();

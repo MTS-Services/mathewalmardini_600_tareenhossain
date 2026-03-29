@@ -65,7 +65,8 @@ function Header({ isDesktop }) {
         <div className="relative flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
             <img
-              src="/logo.png"
+              // src="/logo.png"
+              src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/logo.png"
               alt="B Spoke Logo"
               className={`${isDesktop ? "w-32" : "w-24"} h-auto`}
             />
