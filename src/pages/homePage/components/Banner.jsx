@@ -241,15 +241,17 @@ const Banner = ({ isDesktop = true }) => {
             );
           })}
 
-          <div className="relative flex items-center justify-center min-h-[78vh] md:min-h-[70vh]">
+          <div className="relative flex items-center justify-center min-h-[95vh] md:min-h-[70vh]">
             <div className="text-center px-2">
               <h2 className="text-2xl font-bold text-gray-900 text-center px-2 md:px-0">
                 Perfect Solution For Your Renovation
               </h2>
               <p className="text-lg text-gray-900 mb-6 mx-auto max-w-2xl">
-                Bespoke is an end to end service provider that focuses on
-                delivering mid to high end renovation projects and our vision
-                is to be the top home renovation experts in Melbourne.
+                Bespoke delivers an end to end renovation experience for mid to
+                high end projects. Your renovation will be overseen and
+                completed by a registered builder, providing you with confidence
+                in the quality of workmanship and adherence to the highest
+                professional Australian standards from start to finish.
               </p>
             </div>
           </div>
@@ -335,9 +337,12 @@ const Banner = ({ isDesktop = true }) => {
                   Perfect Solution For Your Renovation
                 </h2>
                 <p className="max-w-5xl text-[20px] text-black/90 mb-6 mx-auto">
-                  Bespoke is an end to end service provider that focuses on
-                  delivering mid to high end renovation projects and our vision
-                  is to be the top home renovation experts in Melbourne.
+                  Bespoke delivers an end to end renovation experience for mid
+                  to high end projects. Your renovation will be overseen and
+                  completed by a registered builder, providing you with
+                  confidence in the quality of workmanship and adherence to the
+                  highest professional Australian standards from start to
+                  finish.
                 </p>
               </div>
             </div>
