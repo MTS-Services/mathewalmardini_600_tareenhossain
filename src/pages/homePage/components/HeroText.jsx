@@ -40,7 +40,9 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
             // src="/logo.png"
             src="https://dc3v08iv2c2ou.cloudfront.net/logo.png"
             alt="B-spoke"
-            style={{ height: "180px", margin: "0 auto" }}
+            width="256"
+            height="180"
+            style={{ height: "180px", width: "auto", margin: "0 auto" }}
           />
           {/* <div
             className="flex flex-col gap-4 items-center w-full max-w-sm mx-auto"
@@ -90,7 +92,9 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
             // src="/logo.png"
             src="https://dc3v08iv2c2ou.cloudfront.net/logo.png"
             alt="B-spoke"
-            style={{ height: "300px", margin: "0 auto" }}
+            width="426"
+            height="300"
+            style={{ height: "300px", width: "auto", margin: "0 auto" }}
           />
           {/* <div
             className="flex gap-4 justify-center"
@@ -138,7 +142,9 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
           // src="/logo.png"
           src="https://dc3v08iv2c2ou.cloudfront.net/logo.png"
           alt="B-spoke"
-          style={{ height: "400px" }}
+          width="568"
+          height="400"
+          style={{ height: "400px", width: "auto", margin: "0 auto" }}
         />
         {/* <div
           className="flex gap-4 justify-center"

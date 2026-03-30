@@ -25,6 +25,7 @@ const VideoControls = ({ videoRef, className = "", isDesktop = true }) => {
           className="w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-colors border-2 border-gray-300"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
+          aria-label={isPlaying ? "Pause video" : "Play video"}
         >
           {isPlaying ? (
             <Pause className="w-5 h-5 text-white" />
@@ -36,6 +37,7 @@ const VideoControls = ({ videoRef, className = "", isDesktop = true }) => {
         <button
           onClick={togglePlayPause}
           className="w-12 h-12 rounded-full shadow-lg flex items-center justify-center border-2 border-gray-300"
+          aria-label={isPlaying ? "Pause video" : "Play video"}
         >
           {isPlaying ? (
             <Pause className="w-5 h-5 text-white" />
