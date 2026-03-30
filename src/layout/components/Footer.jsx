@@ -532,7 +532,7 @@ const Footer = () => {
           {/* Logo and Company Description */}
           <div>
             <div style={{ marginBottom: "1.25rem" }}>
-              <img src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/logo.png" alt="B-spoke" style={{ height: "6rem" }} />
+              <img src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/logo.png" alt="B-spoke" width="150" height="96" loading="lazy" style={{ height: "6rem", width: "auto" }} />
             </div>
             <p
               className="text-gray-200 text-sm leading-relaxed"

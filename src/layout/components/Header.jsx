@@ -68,6 +68,8 @@ function Header({ isDesktop }) {
               // src="/logo.png"
               src="https://dc3v08iv2c2ou.cloudfront.net/logo.png"
               alt="B Spoke Logo"
+              width="128"
+              height="90"
               className={`${isDesktop ? "w-32" : "w-24"} h-auto`}
             />
           </Link>
@@ -397,6 +399,7 @@ function Header({ isDesktop }) {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="xl:hidden w-8 h-8 flex items-center justify-center"
+                aria-label="Open primary menu"
               >
                 {mobileMenuOpen ? (
                   <X className="w-5 h-5 text-gray-900" />
