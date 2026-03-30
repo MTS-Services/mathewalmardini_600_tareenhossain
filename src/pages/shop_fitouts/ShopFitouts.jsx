@@ -45,7 +45,7 @@ function ShopFitouts() {
         className="relative min-h-dvh md:h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
         style={{
           backgroundImage:
-            "url('https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_services/envato-labs-image-edit.png')",
+            "url('https://dc3v08iv2c2ou.cloudfront.net/Our_services/envato-labs-image-edit.png')",
         }}
         // style={{ backgroundImage: "url('/public/Our_services/envato-labs-image-edit.png')" }}
       >
@@ -153,7 +153,7 @@ function ShopFitouts() {
             >
               <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100">
                 <img
-                  src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/shop_fitouts/IMG_1541.JPG"
+                  src="https://dc3v08iv2c2ou.cloudfront.net/shop_fitouts/IMG_1541.JPG"
                   // src="/shop_fitouts/IMG_1541.JPG"
                   alt="Commercial fitout interior"
                   className="w-full h-full object-cover"
@@ -178,7 +178,7 @@ function ShopFitouts() {
             className="rounded-2xl overflow-hidden shadow-lg"
           >
             <video
-              src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/shop_fitouts/20251216_234734.MP4"
+              src="https://dc3v08iv2c2ou.cloudfront.net/shop_fitouts/20251216_234734.MP4"
               // src="/shop_fitouts/20251216_234734.MP4"
               controls
               className="w-full h-auto"
@@ -200,7 +200,7 @@ function ShopFitouts() {
             >
               <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100 h-full">
                 <img
-                  src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/shop_fitouts/IMG_1542.JPG"
+                  src="https://dc3v08iv2c2ou.cloudfront.net/shop_fitouts/IMG_1542.JPG"
                   // src="/shop_fitouts/IMG_1542.JPG"
                   alt="Professional Shop Fitout Work"
                   className="w-full h-full object-cover"
@@ -343,7 +343,7 @@ function ShopFitouts() {
             className="rounded-2xl overflow-hidden shadow-lg h-[400px] md:h-[500px] lg:h-[600px]"
           >
             <img
-              src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/shop_fitouts/IMG_1543.JPG"
+              src="https://dc3v08iv2c2ou.cloudfront.net/shop_fitouts/IMG_1543.JPG"
               // src="/shop_fitouts/IMG_1543.JPG"
               alt="Quality Shop Fitout Installation"
               className="w-full h-full object-cover"

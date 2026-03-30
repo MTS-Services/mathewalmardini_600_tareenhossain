@@ -143,7 +143,7 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
               style={{ minHeight: "100vh" }}
             >
               {/* <source src="/banner_video/charteris_MP4.mp4" type="video/mp4" /> */}
-              <source src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/banner_video/charteris_MP4.mp4" type="video/mp4" />
+              <source src="https://dc3v08iv2c2ou.cloudfront.net/banner_video/charteris_MP4.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
@@ -190,7 +190,7 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
           }}
         >
           {/* <source src="/banner_video/charteris_MP4.mp4" type="video/mp4" /> */}
-          <source src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/banner_video/charteris_MP4.mp4" type="video/mp4" />
+          <source src="https://dc3v08iv2c2ou.cloudfront.net/banner_video/charteris_MP4.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 

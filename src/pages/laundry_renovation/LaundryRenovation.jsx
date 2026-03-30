@@ -57,7 +57,7 @@ function LaundryRenovation() {
           >
             <source
               // src="/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov"
-              src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov"
+              src="https://dc3v08iv2c2ou.cloudfront.net/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov"
               // type="video/mp4"
             />
             Your browser does not support the video tag.
@@ -141,7 +141,7 @@ function LaundryRenovation() {
             >
               <img
                 // src="/laundry_renovation/laundry_1.jpg"
-                src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/laundry_renovation/laundry_1.jpg"
+                src="https://dc3v08iv2c2ou.cloudfront.net/laundry_renovation/laundry_1.jpg"
                 alt="Laundry Design"
                 className="w-full h-full object-cover"
               />
@@ -183,7 +183,7 @@ function LaundryRenovation() {
             >
               <img
                 // src="/laundry_renovation/laundry_2.jpg"
-                src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/laundry_renovation/laundry_2.jpg"
+                src="https://dc3v08iv2c2ou.cloudfront.net/laundry_renovation/laundry_2.jpg"
                 alt="Laundry Example"
                 className="w-full h-full object-cover"
               />

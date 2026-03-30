@@ -11,7 +11,7 @@ export const blogPosts = [
     readTime: "10 min read",
     // image: "/blogs/IMG_4249.JPG",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/IMG_4249.JPG",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/IMG_4249.JPG",
     date: "2026-02-15",
   },
   {
@@ -25,7 +25,7 @@ export const blogPosts = [
     readTime: "8 min read",
     // image: "/blogs/20251015_163557.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/20251015_163557.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/20251015_163557.jpg",
     date: "2026-02-12",
   },
   {
@@ -39,7 +39,7 @@ export const blogPosts = [
     readTime: "12 min read",
     // image: "/blogs/E0767E31-4B95-4F5C-886F-8BBCB1368F06.JPG",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/E0767E31-4B95-4F5C-886F-8BBCB1368F06.JPG",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/E0767E31-4B95-4F5C-886F-8BBCB1368F06.JPG",
     date: "2026-02-10",
   },
   {
@@ -52,7 +52,7 @@ export const blogPosts = [
     readTime: "11 min read",
     // image: "/blogs/two-glasses-of-red-wine-on-the-counter-in-a-stylis-2026-01-07-02-27-31-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/two-glasses-of-red-wine-on-the-counter-in-a-stylis-2026-01-07-02-27-31-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/two-glasses-of-red-wine-on-the-counter-in-a-stylis-2026-01-07-02-27-31-utc.jpg",
     date: "2026-02-08",
   },
   {
@@ -66,7 +66,7 @@ export const blogPosts = [
     readTime: "9 min read",
     // image: "/blogs/stylish-modern-kitchen-2026-01-05-00-26-56-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/stylish-modern-kitchen-2026-01-05-00-26-56-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/stylish-modern-kitchen-2026-01-05-00-26-56-utc.jpg",
     date: "2026-02-05",
   },
   {
@@ -79,7 +79,7 @@ export const blogPosts = [
     readTime: "9 min read",
     // image: "/blogs/modern-bathroom-interior-design-on-dark-color-wall-2026-01-09-00-40-19-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/modern-bathroom-interior-design-on-dark-color-wall-2026-01-09-00-40-19-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/modern-bathroom-interior-design-on-dark-color-wall-2026-01-09-00-40-19-utc.jpg",
     date: "2026-02-03",
   },
   {
@@ -92,7 +92,7 @@ export const blogPosts = [
     readTime: "10 min read",
     // image: "/blogs/1CEC14E7-6D81-4781-B9F0-99B6F833218E.JPG",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/1CEC14E7-6D81-4781-B9F0-99B6F833218E.JPG",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/1CEC14E7-6D81-4781-B9F0-99B6F833218E.JPG",
     date: "2026-02-01",
   },
   {
@@ -105,7 +105,7 @@ export const blogPosts = [
     readTime: "11 min read",
     // image: "/blogs/modern-laundry-2026-01-05-00-59-16-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/modern-laundry-2026-01-05-00-59-16-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/modern-laundry-2026-01-05-00-59-16-utc.jpg",
     date: "2026-01-28",
   },
   {
@@ -119,7 +119,7 @@ export const blogPosts = [
     readTime: "8 min read",
     // image: "/blogs/20251216_233205.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/20251216_233205.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/20251216_233205.jpg",
     date: "2026-01-25",
   },
   {
@@ -133,7 +133,7 @@ export const blogPosts = [
     readTime: "7 min read",
     // image: "/blogs/WhatsApp Image 2026-02-23 at 11.58.58 PM.jpeg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/WhatsApp+Image+2026-02-23+at+11.58.58+PM.jpeg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/WhatsApp+Image+2026-02-23+at+11.58.58+PM.jpeg",
     date: "2026-01-22",
   },
   {
@@ -147,7 +147,7 @@ export const blogPosts = [
     readTime: "9 min read",
     // image: "/blogs/modern-kitchen-2026-01-05-01-14-28-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/modern-kitchen-2026-01-05-01-14-28-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/modern-kitchen-2026-01-05-01-14-28-utc.jpg",
     date: "2026-01-20",
   },
   {
@@ -161,7 +161,7 @@ export const blogPosts = [
     readTime: "10 min read",
     // image: "/blogs/modern-kitchen-2026-01-05-00-26-47-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/modern-kitchen-2026-01-05-00-26-47-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/modern-kitchen-2026-01-05-00-26-47-utc.jpg",
     date: "2026-01-18",
   },
   {
@@ -175,7 +175,7 @@ export const blogPosts = [
     readTime: "10 min read",
     // image: "/blogs/kitchen-2026-01-05-00-26-54-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/kitchen-2026-01-05-00-26-54-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/kitchen-2026-01-05-00-26-54-utc.jpg",
     date: "2026-01-15",
   },
   {
@@ -189,7 +189,7 @@ export const blogPosts = [
     readTime: "11 min read",
     // image: "/blogs/stylish-modern-kitchen-2026-01-05-00-26-56-utc (1).jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/stylish-modern-kitchen-2026-01-05-00-26-56-utc+(1).jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/stylish-modern-kitchen-2026-01-05-00-26-56-utc+(1).jpg",
     date: "2026-01-12",
   },
   {
@@ -203,7 +203,7 @@ export const blogPosts = [
     readTime: "10 min read",
     // image: "/blogs/basin-2026-01-05-00-26-55-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/basin-2026-01-05-00-26-55-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/basin-2026-01-05-00-26-55-utc.jpg",
     date: "2026-01-10",
   },
   {
@@ -217,7 +217,7 @@ export const blogPosts = [
     readTime: "10 min read",
     // image: "/blogs/3d-rendering-luxury-modern-design-bathroom-and-toi-2026-01-06-10-45-06-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/3d-rendering-luxury-modern-design-bathroom-and-toi-2026-01-06-10-45-06-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/3d-rendering-luxury-modern-design-bathroom-and-toi-2026-01-06-10-45-06-utc.jpg",
     date: "2026-01-08",
   },
   {
@@ -231,7 +231,7 @@ export const blogPosts = [
     readTime: "10 min read",
     // image: "/blogs/basin-2026-01-05-00-45-37-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/basin-2026-01-05-00-45-37-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/basin-2026-01-05-00-45-37-utc.jpg",
     date: "2026-01-05",
   },
   {
@@ -245,7 +245,7 @@ export const blogPosts = [
     readTime: "10 min read",
     // image: "/blogs/kitchen-2026-01-05-01-13-08-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/kitchen-2026-01-05-01-13-08-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/kitchen-2026-01-05-01-13-08-utc.jpg",
     date: "2026-01-03",
   },
   {
@@ -259,7 +259,7 @@ export const blogPosts = [
     readTime: "10 min read",
     // image: "/blogs/modern-bathroom-interior-mockup-3d-rendering-2026-01-18-11-17-00-utc.jpg",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/blogs/modern-bathroom-interior-mockup-3d-rendering-2026-01-18-11-17-00-utc.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/blogs/modern-bathroom-interior-mockup-3d-rendering-2026-01-18-11-17-00-utc.jpg",
     date: "2026-01-01",
   },
 ];

@@ -326,13 +326,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const images = [
   {
     id: 1,
-    src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/20240604_153801_(1).jpg",
+    src: "https://dc3v08iv2c2ou.cloudfront.net/PhotoGallery/20240604_153801_(1).jpg",
   },
-  { id: 2, src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/20250404_123149.jpg" },
-  { id: 3, src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/Bath.jpg" },
-  { id: 4, src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/Craigieburn+5.jpg" },
-  { id: 5, src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/IMG_9819.JPG" },
-  { id: 6, src: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/PhotoGallery/WhatsApp+Image+2023-03-29+at+1.22.25+PM+(1).jpeg" },
+  { id: 2, src: "https://dc3v08iv2c2ou.cloudfront.net/PhotoGallery/20250404_123149.jpg" },
+  { id: 3, src: "https://dc3v08iv2c2ou.cloudfront.net/PhotoGallery/Bath.jpg" },
+  { id: 4, src: "https://dc3v08iv2c2ou.cloudfront.net/PhotoGallery/Craigieburn+5.jpg" },
+  { id: 5, src: "https://dc3v08iv2c2ou.cloudfront.net/PhotoGallery/IMG_9819.JPG" },
+  { id: 6, src: "https://dc3v08iv2c2ou.cloudfront.net/PhotoGallery/WhatsApp+Image+2023-03-29+at+1.22.25+PM+(1).jpeg" },
 ];
 // const images = [
 //   {

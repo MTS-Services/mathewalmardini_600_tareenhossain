@@ -26,7 +26,7 @@ const OurServicesSection = () => {
       // video:
       //   "/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4",
       video:
-        "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4",
+        "https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4",
       type: "video",
       path: "/bathroom-renovation",
     },
@@ -38,7 +38,7 @@ const OurServicesSection = () => {
       // video:
       // "/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.jpg",
       video:
-        "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.jpg",
+        "https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.jpg",
       type: "image",
       path: "/laundry-renovation",
     },
@@ -50,7 +50,7 @@ const OurServicesSection = () => {
       // video:
       // "/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4",
       video:
-        "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4",
+        "https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4",
       type: "video",
       path: "/kitchen-renovation",
     },
@@ -61,7 +61,7 @@ const OurServicesSection = () => {
         "We build retails spaces that are not only visually stunning but also functional and efficient.",
       // video: "/Our_services/envato-labs-image-edit.png",
       video:
-        "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_services/envato-labs-image-edit.png",
+        "https://dc3v08iv2c2ou.cloudfront.net/Our_services/envato-labs-image-edit.png",
       type: "image",
       path: "/shop-fitouts",
     },

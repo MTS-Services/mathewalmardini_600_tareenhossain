@@ -38,7 +38,7 @@ function LaundryPortfolio() {
           >
             <source
               // src="/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov"
-              src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov"
+              src="https://dc3v08iv2c2ou.cloudfront.net/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov"
               type="video/mp4"
             />
             Your browser does not support the video tag.

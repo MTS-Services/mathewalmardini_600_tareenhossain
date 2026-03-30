@@ -557,7 +557,7 @@ const processSteps = [
     description:
       "If you're reading this, then chances are you've already made a decision and have an idea about your renovation. Bespoke will turn that idea into a reality.",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_process/1_Idea.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/Our_process/1_Idea.jpg",
       //   image:
       // "/Our_process/1_Idea.jpg",
   },
@@ -567,7 +567,7 @@ const processSteps = [
     description:
       "Tell us everything - from what you want your remodel to look like to why you've chosen to do it.",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_process/2_Talk_to_us.png",
+      "https://dc3v08iv2c2ou.cloudfront.net/Our_process/2_Talk_to_us.png",
       //   image:
       // "/Our_process/2_Talk_to_us.png",
   },
@@ -577,7 +577,7 @@ const processSteps = [
     description:
       "You may be thinking about your project. Cost, details, timeliness and accuracy are the keys to successful project. Bespoke takes estimates as serious as you do.",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_process/3_Get_a_quote.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/Our_process/3_Get_a_quote.jpg",
       //   image:
       // "/Our_process/3_Get_a_quote.jpg",
   },
@@ -587,7 +587,7 @@ const processSteps = [
     description:
       "Once you give us the green light. Together, we'll help you plan and design your dream project, and set a timeline that you feel good about.",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_process/4_Design.jpg",
+      "https://dc3v08iv2c2ou.cloudfront.net/Our_process/4_Design.jpg",
       //   image:
       // "/Our_process/4_Design.jpg",
   },
@@ -597,7 +597,7 @@ const processSteps = [
     description:
       "Once the final game plan is in place, then it's time for the magic to begin. Relax and enjoy the process while we take care of all the work.",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_process/5_The_fun_part.png",
+      "https://dc3v08iv2c2ou.cloudfront.net/Our_process/5_The_fun_part.png",
       //   image:
       // "/Our_process/5_The_fun_part.png",
   },
@@ -607,7 +607,7 @@ const processSteps = [
     description:
       "If we weren't named Bespoke, we might be called transparency. Our team will provide you with updates throughout the entire project to keep you informed. (And excited!)",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_process/6_Stay_informed.png",
+      "https://dc3v08iv2c2ou.cloudfront.net/Our_process/6_Stay_informed.png",
       //   image:
       // "/Our_process/6_Stay_informed.png",
   },
@@ -617,7 +617,7 @@ const processSteps = [
     description:
       "It's the moment you've been waiting for: your project is complete! Invite your family and friends and get the stake on the barbecue.",
     image:
-      "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_process/7_Celebrate.png",
+      "https://dc3v08iv2c2ou.cloudfront.net/Our_process/7_Celebrate.png",
       //   image:
       // "/Our_process/7_Celebrate.png",
   },

@@ -38,7 +38,7 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
           </p> */}
           <img
             // src="/logo.png"
-            src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/logo.png"
+            src="https://dc3v08iv2c2ou.cloudfront.net/logo.png"
             alt="B-spoke"
             style={{ height: "180px", margin: "0 auto" }}
           />
@@ -88,7 +88,7 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
           </p> */}
           <img
             // src="/logo.png"
-            src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/logo.png"
+            src="https://dc3v08iv2c2ou.cloudfront.net/logo.png"
             alt="B-spoke"
             style={{ height: "300px", margin: "0 auto" }}
           />
@@ -136,7 +136,7 @@ const HeroText = ({ isDesktop = true, position = "fixed" }) => {
         </p> */}
         <img
           // src="/logo.png"
-          src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/logo.png"
+          src="https://dc3v08iv2c2ou.cloudfront.net/logo.png"
           alt="B-spoke"
           style={{ height: "400px" }}
         />

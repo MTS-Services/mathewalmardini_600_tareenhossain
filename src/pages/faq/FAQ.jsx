@@ -324,7 +324,7 @@ const FAQ = () => {
       >
         <motion.img
           // src="/faq/FAQ.jpg"
-          src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/faq/FAQ.jpg"
+          src="https://dc3v08iv2c2ou.cloudfront.net/faq/FAQ.jpg"
           alt="Frequently Asked Questions"
           className="absolute inset-0 w-full h-full object-cover"
           initial={{ scale: 1.1 }}

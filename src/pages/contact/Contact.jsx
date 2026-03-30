@@ -8,7 +8,7 @@ const Contact = () => {
       <div className="relative h-[50vh] min-h-[600px] w-full overflow-hidden">
         <img
           // src="/contact_us/Contact_us.jpg"
-          src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/contact_us/Contact_us.jpg"
+          src="https://dc3v08iv2c2ou.cloudfront.net/contact_us/Contact_us.jpg"
           alt="Contact Us"
           className="absolute inset-0 w-full h-full object-cover"
         />

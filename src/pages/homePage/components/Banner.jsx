@@ -38,14 +38,14 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 1,
       // url: "/banner_image/Photo5.JPG",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/about/banner_image/Photo5.JPG",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo5.JPG",
       position: "lg:top-22 xl:top-34 2xl:top-34 3xl:top-20 4xl:top-24 left-0",
       size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-52 3xl:h-55 4xl:w-58 4xl:h-55 5xl:w-65 5xl:h-64",
     },
     {
       id: 2,
       // url: "/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov",
       type: "video",
       position:
         "lg:top-30 xl:top-38 2xl:top-42 3xl:top-28 4xl:top-32 5xl:top-35 lg:left-28 xl:left-44 2xl:left-80 3xl:left-70 4xl:left-75 5xl:left-90",
@@ -54,7 +54,7 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 3,
       // url: "/banner_image/Photo4.JPG",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/about/banner_image/Photo4.JPG",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo4.JPG",
       position:
         "lg:top-18 xl:top-34 2xl:top-35 3xl:top-20 4xl:top-24 left-1/2 -translate-x-1/2",
       size: "lg:w-64 lg:h-36 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",
@@ -62,7 +62,7 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 4,
       // url: "/banner_video/beautiful-modern-bathroom-bathtub-washbasin-sa-2026-01-28-02-42-23-utc_(1).mp4",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/banner_video/beautiful-modern-bathroom-bathtub-washbasin-sa-2026-01-28-02-42-23-utc_(1).mp4",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/banner_video/beautiful-modern-bathroom-bathtub-washbasin-sa-2026-01-28-02-42-23-utc_(1).mp4",
       type: "video",
       position:
         "lg:top-30 xl:top-38 2xl:top-42 3xl:top-28 4xl:top-32 5xl:top-35 lg:right-28 xl:right-44 2xl:right-72 3xl:right-70 4xl:right-75 5xl:right-90",
@@ -71,7 +71,7 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 5,
       // url: "/banner_image/Photo1.png",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/about/banner_image/Photo1.png",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo1.png",
       position: "lg:top-22 xl:top-34 2xl:top-30 3xl:top-20 4xl:top-24 right-0",
       size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-52 3xl:h-55 4xl:w-58 4xl:h-55 5xl:w-65 5xl:h-64",
     },
@@ -79,7 +79,7 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 6,
       // url: "/banner_image/Photo7.png",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/about/banner_image/Photo7.png",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo7.png",
       position:
         "lg:bottom-22 xl:bottom-18 2xl:bottom-10 3xl:bottom-8 4xl:bottom-20 left-0",
       size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-52 3xl:h-55 4xl:w-58 4xl:h-55 5xl:w-65 5xl:h-64",
@@ -87,7 +87,7 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 7,
       // url: "/banner_image/Photo6.jpg",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/about/banner_image/Photo6.jpg",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo6.jpg",
       position:
         "lg:bottom-28 xl:bottom-24 2xl:bottom-22 3xl:bottom-18 4xl:bottom-32 lg:left-28 xl:left-44 2xl:left-70 3xl:left-70 4xl:left-75 5xl:left-90",
       size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",
@@ -95,7 +95,7 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 9,
       // url: "/banner_image/Photo3.JPG",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/about/banner_image/Photo3.JPG",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo3.JPG",
       position:
         "lg:bottom-28 xl:bottom-24 2xl:bottom-22 3xl:bottom-18 4xl:bottom-32 lg:right-28 xl:right-44 2xl:right-72 3xl:right-70 4xl:right-75 5xl:right-90",
       size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",
@@ -103,7 +103,7 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 10,
       // url: "/banner_image/Photo2.png",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/about/banner_image/Photo2.png",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo2.png",
       position:
         "lg:bottom-22 xl:bottom-18 2xl:bottom-10 3xl:bottom-8 4xl:bottom-20 right-0",
       size: "lg:w-20 lg:h-32 xl:w-32 xl:h-44 2xl:w-52 2xl:h-48 3xl:w-52 3xl:h-55 4xl:w-58 4xl:h-55 5xl:w-65 5xl:h-64",
@@ -121,7 +121,7 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 2,
       // url: "/banner_image/Photo2.png",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/about/banner_image/Photo2.png",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo2.png",
       position: "top-8 left-1/2 -translate-x-1/2",
       size: "w-46 h-28 md:w-20 md:h-32 lg:w-68 lg:h-40",
       radius: "rounded-lg",
@@ -143,7 +143,7 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 5,
       // url: "/banner_image/Photo3.JPG",
-      url: "https://b-spoke-media.s3.eu-north-1.amazonaws.com/about/banner_image/Photo3.JPG",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo3.JPG",
       position: "bottom-8 right-1/2 translate-x-1/2",
       size: "w-46 h-28 md:w-20 md:h-32 lg:w-68 lg:h-40",
       radius: "rounded-lg",

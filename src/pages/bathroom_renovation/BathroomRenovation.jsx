@@ -59,7 +59,7 @@ function BathroomRenovation() {
           >
             <source
               // src="/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
-              src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
+              src="https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
               // type="video/mp4"
             />
             Your browser does not support the video tag.
@@ -148,7 +148,7 @@ function BathroomRenovation() {
             >
               <img
                 // src="/bathroom_renovation/Bathroom_1.jpg"
-                src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/bathroom_renovation/Bathroom_1.jpg"
+                src="https://dc3v08iv2c2ou.cloudfront.net/bathroom_renovation/Bathroom_1.jpg"
                 alt="Bathroom Design"
                 className="w-full h-full object-cover"
               />
@@ -168,7 +168,7 @@ function BathroomRenovation() {
             >
               <img
                 // src="/bathroom_renovation/Before_and_after 1.jpg"
-                src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/bathroom_renovation/Before_and_after+1.jpg"
+                src="https://dc3v08iv2c2ou.cloudfront.net/bathroom_renovation/Before_and_after+1.jpg"
                 alt="Before and After Bathroom Renovation"
                 className="w-full h-full object-cover"
               />

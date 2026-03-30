@@ -7,9 +7,9 @@ const FeatureMediaSection = () => {
   const sectionRef = useRef(null);
   const mobileImagesRef = useRef(null);
   const centerVideoUrl =
-    "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/Video+_in_center.mp4";
+    "https://dc3v08iv2c2ou.cloudfront.net/Our_work/Video+_in_center.mp4";
   const centerVideoPoster =
-    "https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/Video+_in_center.mp4";
+    "https://dc3v08iv2c2ou.cloudfront.net/Our_work/Video+_in_center.mp4";
   //   const centerVideoUrl =
   //   "/Our_work/Video _in_center.mp4";
   // const centerVideoPoster =
@@ -94,7 +94,7 @@ const FeatureMediaSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
                 // src="/Our_work/Photo4.JPG"
-                src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/Photo4.JPG"
+                src="https://dc3v08iv2c2ou.cloudfront.net/Our_work/Photo4.JPG"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -138,7 +138,7 @@ const FeatureMediaSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
                 // src="/Our_work/IMG_1517.JPG"
-                src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/IMG_1517.JPG"
+                src="https://dc3v08iv2c2ou.cloudfront.net/Our_work/IMG_1517.JPG"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -202,7 +202,7 @@ const FeatureMediaSection = () => {
               >
                 <img
                   // src="/Our_work/Photo4.JPG"
-                  src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/Photo4.JPG"
+                  src="https://dc3v08iv2c2ou.cloudfront.net/Our_work/Photo4.JPG"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -226,7 +226,7 @@ const FeatureMediaSection = () => {
               >
                 <img
                   // src="/Our_work/IMG_1517.JPG"
-                  src="https://b-spoke-media.s3.eu-north-1.amazonaws.com/Our_work/IMG_1517.JPG"
+                  src="https://dc3v08iv2c2ou.cloudfront.net/Our_work/IMG_1517.JPG"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"
