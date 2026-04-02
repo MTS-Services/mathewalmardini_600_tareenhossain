@@ -1,6 +1,14 @@
 # robots.txt for b-spoke.com.au
 User-agent: *
 Allow: /
+
+# Block Spam/Auto-generated Directories
+Disallow: /prize/
+Disallow: /products/
+Disallow: /shop/
+Disallow: /information/
+
+# Block Specific Pages
 Disallow: /thank-you
 
 # Sitemaps
