@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useTransform } from "motion/react";
 import VideoBackground from "./VideoBackground";
 import HeroText from "./HeroText";
+import { useLenisScroll } from "../../../context/LenisContext";
 
 const Banner = ({ isDesktop = true }) => {
   const [isTablet, setIsTablet] = useState(false);
@@ -19,7 +20,7 @@ const Banner = ({ isDesktop = true }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const { scrollY } = useScroll();
+  const { scrollY } = useLenisScroll();
   // White overlay fades out as video shrinks — hides images while video is large
   const whiteOverlayOpacity = useTransform(scrollY, [400, 750], [1, 0]);
 

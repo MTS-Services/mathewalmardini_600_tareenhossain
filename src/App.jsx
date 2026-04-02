@@ -59,6 +59,7 @@ import { useMotionValue } from "motion/react";
 import AppRouter from "./routes/router";
 import ScrollToTop from "./components/ScrollToTop";
 import { LenisContext } from "./context/LenisContext";
+import { startBackgroundPreload } from "./utils/imagePreloader";
 
 function App() {
   const lenisRef = useRef(null);
@@ -67,6 +68,11 @@ function App() {
   // All components must use this instead of window.scrollY or useScroll()
   // This ensures animation is always in sync with Lenis virtual scroll position
   const scrollY = useMotionValue(0);
+
+  // Preload all portfolio/page images in background after first render
+  useEffect(() => {
+    startBackgroundPreload();
+  }, []);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
@@ -103,10 +109,19 @@ function App() {
     lenisRef.current = lenis;
 
     // Update shared scrollY from Lenis — not from window.scrollY
-    // This is the key fix: Lenis virtual scroll → motion value → all animations
     lenis.on("scroll", ({ scroll }) => {
       scrollY.set(scroll);
     });
+
+    // When lazy images load they change the page height — Lenis must
+    // recalculate its scroll limits, otherwise scroll gets out of sync.
+    // Debounce via RAF to prevent thrashing during rapid layout changes.
+    let resizeRafId;
+    const resizeObserver = new ResizeObserver(() => {
+      if (resizeRafId) cancelAnimationFrame(resizeRafId);
+      resizeRafId = requestAnimationFrame(() => lenis.resize());
+    });
+    resizeObserver.observe(document.body);
 
     let rafId;
 
@@ -119,6 +134,8 @@ function App() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      if (resizeRafId) cancelAnimationFrame(resizeRafId);
+      resizeObserver.disconnect();
       lenis.destroy();
       lenisRef.current = null;
     };
