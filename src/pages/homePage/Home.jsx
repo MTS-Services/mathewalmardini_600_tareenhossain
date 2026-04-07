@@ -1,9 +1,8 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
-import { motion, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import Banner from "./components/Banner";
 import VideoBackground from "./components/VideoBackground";
 import HeroText from "./components/HeroText";
-import { useLenisScroll } from "../../context/LenisContext";
 
 const InfoSection = lazy(() => import("./components/InfoSection"));
 const FeatureMediaSection = lazy(() => import("./components/FeatureMediaSection"));
@@ -13,7 +12,7 @@ const PhotoGallery = lazy(() => import("./components/PhotoGallery"));
 const TestimonialSection = lazy(() => import("./components/TestimonialSection"));
 const CTAReviewSection = lazy(() => import("./components/CTAReviewSection"));
 
-function DeferredSection({ children, minHeight = "min-h-[35vh]", rootMargin = "800px" }) {
+function DeferredSection({ children, minHeight = "min-h-[35vh]", rootMargin = "300px" }) {
   const placeholderRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -45,7 +44,7 @@ function DeferredSection({ children, minHeight = "min-h-[35vh]", rootMargin = "8
 }
 
 function Home() {
-  const { scrollY } = useLenisScroll();
+  const { scrollY } = useScroll();
   const videoSlideX = useTransform(scrollY, [0, 300], [0, "100%"]);
   const bannerSlideX = useTransform(scrollY, [0, 300], ["-100%", "0%"]);
   const [isDesktop, setIsDesktop] = useState(() => {
