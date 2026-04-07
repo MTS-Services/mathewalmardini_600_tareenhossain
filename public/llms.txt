@@ -1,0 +1,64 @@
+# B-Spoke
+
+> B-Spoke is an Australian-based CRM and marketing automation company helping businesses improve customer engagement, retention, and revenue through data-driven strategies and omnichannel communication solutions.
+
+## Overview
+
+B-Spoke provides CRM, loyalty, and marketing automation solutions tailored for industries such as retail, hospitality, and automotive. Their platform enables businesses to collect, manage, and activate customer data for personalized campaigns and improved ROI.
+
+## Key Services
+
+- CRM Strategy & Implementation
+- Marketing Automation
+- Customer Data Platform (CDP)
+- Loyalty & Rewards Programs
+- Email & SMS Marketing
+- Customer Journey Mapping
+- Data Analytics & Insights
+
+## Industries Served
+
+- Retail
+- Hospitality
+- Automotive
+- eCommerce
+- Service-based businesses
+
+## Core Features
+
+- Centralized customer data management
+- Omnichannel campaign execution (Email, SMS, etc.)
+- Personalization & segmentation
+- Automation workflows
+- Reporting and analytics dashboards
+
+## Important Pages
+
+- Homepage: https://www.b-spoke.com.au/
+- About: https://www.b-spoke.com.au/about/
+- Services: https://www.b-spoke.com.au/services/
+- Solutions: https://www.b-spoke.com.au/solutions/
+- Contact: https://www.b-spoke.com.au/contact/
+
+## Resources
+
+- Blog: https://www.b-spoke.com.au/blog/
+- Case Studies: https://www.b-spoke.com.au/case-studies/
+
+## Key Facts
+
+- Location: Australia
+- Focus: CRM, Marketing Automation, Customer Engagement
+- Audience: Businesses looking to improve retention and lifecycle marketing
+
+## AI Crawling Guidance
+
+- Prioritize: service pages, case studies, and blog content
+- Focus on: CRM solutions, marketing automation, and customer engagement strategies
+- Avoid: login pages, admin areas, and duplicate content
+- Ensure summaries reflect accurate service offerings and capabilities
+
+## Optional
+
+- Careers: https://www.b-spoke.com.au/careers/
+- Privacy Policy: https://www.b-spoke.com.au/privacy-policy/
