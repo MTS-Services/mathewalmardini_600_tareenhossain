@@ -1,0 +1,14 @@
+# Cache static assets (JS, CSS, fonts, images) with content hashes
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache favicon
+/favicon.png
+  Cache-Control: public, max-age=86400
+
+# HTML pages - no cache (always fresh)
+/*.html
+  Cache-Control: no-cache
+
+/
+  Cache-Control: no-cache

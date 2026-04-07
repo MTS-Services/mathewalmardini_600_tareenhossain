@@ -11,11 +11,14 @@ export default defineConfig({
   },
   build: {
     target: "es2020",
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: {
           reactVendor: ["react", "react-dom", "react-router"],
-          motionVendor: ["motion", "lenis"],
+          motionVendor: ["motion"],
+          lenis: ["lenis"],
+          icons: ["lucide-react"],
         },
       },
     },
