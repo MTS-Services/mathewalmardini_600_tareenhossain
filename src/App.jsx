@@ -58,6 +58,7 @@ import Lenis from "lenis";
 import { useMotionValue } from "motion/react";
 import AppRouter from "./routes/router";
 import ScrollToTop from "./components/ScrollToTop";
+import CanonicalTag from "./components/CanonicalTag";
 import { LenisContext } from "./context/LenisContext";
 
 function App() {
@@ -115,7 +116,7 @@ function App() {
       rafId = requestAnimationFrame(raf);
     }
 
-    
+
     rafId = requestAnimationFrame(raf);
 
     return () => {
@@ -128,6 +129,7 @@ function App() {
   return (
     <LenisContext.Provider value={{ scrollY, lenisRef }}>
       <BrowserRouter>
+        <CanonicalTag />
         <ScrollToTop lenisInstance={lenisRef} />
         <div className="min-h-screen">
           <AppRouter />
