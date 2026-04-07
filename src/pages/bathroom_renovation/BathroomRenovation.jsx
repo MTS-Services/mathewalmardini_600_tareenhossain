@@ -6,8 +6,13 @@ import CTASection from "../homePage/components/CTASection";
 import PhotoGallery from "../homePage/components/PhotoGallery";
 import { useRef } from "react";
 import FeatureMediaSection from "../homePage/components/FeatureMediaSection";
+import usePageMeta from "../../hooks/usePageMeta";
 
 function BathroomRenovation() {
+  usePageMeta(
+    "Bathroom Renovation Melbourne | Modern Bathrooms",
+    "Bathroom renovation Melbourne with modern design, tiling, fixtures and complete upgrades. Trusted bathroom builders in Melbourne."
+  );
   const videoRef = useRef(null);
 
   const features = [

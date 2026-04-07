@@ -1,7 +1,12 @@
 import { motion } from "motion/react";
 import { Phone, Mail, MapPin } from "lucide-react";
+import usePageMeta from "../../hooks/usePageMeta";
 
 const Contact = () => {
+  usePageMeta(
+    "Contact B-Spoke | Melbourne Renovation Experts",
+    "Contact B-Spoke for kitchen, bathroom, laundry or home renovations in Melbourne. Get a quote or speak with renovation specialists."
+  );
   return (
     <div className="bg-white">
       {/* Banner Section */}

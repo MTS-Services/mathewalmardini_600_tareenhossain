@@ -1,0 +1,1 @@
+import{r as o}from"./reactVendor-B1TV2w2s.js";const m=(e,t)=>{o.useEffect(()=>{if(e&&(document.title=e),t){let a=document.querySelector("meta[name='description']");a&&a.setAttribute("content",t)}},[e,t])};export{m as u};

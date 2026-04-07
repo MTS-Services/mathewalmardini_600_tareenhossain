@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import PhotoGallery from "../homePage/components/PhotoGallery";
+import usePageMeta from "../../hooks/usePageMeta";
 
 const faqData = [
   {
@@ -307,6 +308,10 @@ const faqData = [
 ];
 
 const FAQ = () => {
+  usePageMeta(
+    "Renovation FAQs Melbourne | B-Spoke Builders",
+    "Answers to common renovation questions on cost, timeline and process for kitchen, bathroom and home renovations in Melbourne."
+  );
   const [openId, setOpenId] = useState(null);
 
   const toggleFAQ = (id) => {

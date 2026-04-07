@@ -6,8 +6,13 @@ import CTASection from "../homePage/components/CTASection";
 import MasonryGallery from "../../components/MasonryGallery";
 import Lightbox from "../../components/Lightbox";
 import { getImagesByCategory } from "../../data/portfolioData";
+import usePageMeta from "../../hooks/usePageMeta";
 
 function KitchenPortfolio() {
+  usePageMeta(
+    "Kitchen Renovation Portfolio Melbourne",
+    "Kitchen renovation portfolio Melbourne featuring custom kitchen designs, modern upgrades and completed projects by B-Spoke."
+  );
   const videoRef = useRef(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

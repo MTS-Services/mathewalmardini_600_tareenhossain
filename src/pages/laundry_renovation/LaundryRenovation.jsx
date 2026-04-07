@@ -4,8 +4,13 @@ import { Phone, Image } from "lucide-react";
 import { useRef } from "react";
 import FeaturesGrid from "../homePage/components/FeaturesGrid";
 import CTASection from "../homePage/components/CTASection";
+import usePageMeta from "../../hooks/usePageMeta";
 
 function LaundryRenovation() {
+  usePageMeta(
+    "Laundry Renovation Melbourne | Smart Laundry Design",
+    "Laundry renovation Melbourne with space-saving layouts, cabinetry and modern finishes. Functional laundry upgrades by experts."
+  );
   const videoRef = useRef(null);
 
   const features = [

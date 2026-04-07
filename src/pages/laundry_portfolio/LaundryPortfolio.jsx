@@ -6,8 +6,13 @@ import CTASection from "../homePage/components/CTASection";
 import MasonryGallery from "../../components/MasonryGallery";
 import Lightbox from "../../components/Lightbox";
 import { getImagesByCategory } from "../../data/portfolioData";
+import usePageMeta from "../../hooks/usePageMeta";
 
 function LaundryPortfolio() {
+  usePageMeta(
+    "Laundry Renovation Portfolio Melbourne",
+    "Laundry renovation portfolio Melbourne with smart layouts, storage solutions and completed laundry upgrade projects."
+  );
   const videoRef = useRef(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

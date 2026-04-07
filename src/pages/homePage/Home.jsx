@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import Banner from "./components/Banner";
 import VideoBackground from "./components/VideoBackground";
 import HeroText from "./components/HeroText";
+import usePageMeta from "../../hooks/usePageMeta";
 
 const InfoSection = lazy(() => import("./components/InfoSection"));
 const FeatureMediaSection = lazy(() => import("./components/FeatureMediaSection"));
@@ -44,6 +45,10 @@ function DeferredSection({ children, minHeight = "min-h-[35vh]", rootMargin = "3
 }
 
 function Home() {
+  usePageMeta(
+    "Home Renovations Melbourne | B-Spoke Builders",
+    "Melbourne home renovation experts for kitchens, bathrooms, laundry & shop fitouts. Quality craftsmanship and tailored building solutions."
+  );
   const { scrollY } = useScroll();
   const videoSlideX = useTransform(scrollY, [0, 300], [0, "100%"]);
   const bannerSlideX = useTransform(scrollY, [0, 300], ["-100%", "0%"]);

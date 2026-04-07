@@ -7,8 +7,13 @@ import CTASection from "../homePage/components/CTASection";
 import { useRef } from "react";
 import PhotoGallery from "../homePage/components/PhotoGallery";
 import FeatureMediaSection from "../homePage/components/FeatureMediaSection";
+import usePageMeta from "../../hooks/usePageMeta";
 
 function KitchenRenovation() {
+  usePageMeta(
+    "Kitchen Renovation Melbourne | Custom Kitchens",
+    "Kitchen renovation Melbourne with custom designs, modern layouts and quality finishes. Upgrade your kitchen with expert builders."
+  );
   const videoRef = useRef(null);
 
   const features = [

@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { blogPosts, categories } from "./blogData";
+import usePageMeta from "../../hooks/usePageMeta";
 
 const Blog = () => {
+  usePageMeta(
+    "Renovation Blog Melbourne | Tips, Costs & Ideas",
+    "Renovation blog Melbourne covering kitchen, bathroom, home renovation costs, design ideas, timelines and expert advice."
+  );
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);

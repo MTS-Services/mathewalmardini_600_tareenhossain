@@ -6,8 +6,13 @@ import CTASection from "../homePage/components/CTASection";
 import MasonryGallery from "../../components/MasonryGallery";
 import Lightbox from "../../components/Lightbox";
 import { getImagesByCategory } from "../../data/portfolioData";
+import usePageMeta from "../../hooks/usePageMeta";
 
 function BathroomPortfolio() {
+  usePageMeta(
+    "Bathroom Renovation Portfolio Melbourne",
+    "Bathroom renovation portfolio Melbourne showcasing modern bathrooms, tiling, layouts and completed renovation projects."
+  );
   const videoRef = useRef(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

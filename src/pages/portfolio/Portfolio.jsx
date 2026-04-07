@@ -150,6 +150,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
 import { getImagesByCategory } from "../../data/portfolioData";
+import usePageMeta from "../../hooks/usePageMeta";
 
 // Pick a cover image that uses a browser-friendly format.
 const pickCoverImage = (category) => {
@@ -159,6 +160,10 @@ const pickCoverImage = (category) => {
 };
 
 function Portfolio() {
+  usePageMeta(
+    "Renovation Portfolio Melbourne | B-Spoke Projects",
+    "View Melbourne renovation projects including kitchens, bathrooms and home transformations completed by B-Spoke builders."
+  );
   const portfolioCategories = [
     {
       id: 1,

@@ -1,8 +1,13 @@
 import { motion } from "motion/react";
 import ProcessSection from "../homePage/components/ProcessSection";
 import PhotoGallery from "../homePage/components/PhotoGallery";
+import usePageMeta from "../../hooks/usePageMeta";
 
 function About() {
+  usePageMeta(
+    "About B-Spoke | Melbourne Renovation Builders",
+    "B-Spoke is a Melbourne renovation company delivering kitchen, bathroom and full home renovations with expert craftsmanship and service."
+  );
   return (
     <div className="bg-white">
       {/* Hero Section */}

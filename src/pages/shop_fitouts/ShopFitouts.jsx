@@ -4,8 +4,13 @@ import { Phone, CheckCircle } from "lucide-react";
 import FeaturesGrid from "../homePage/components/FeaturesGrid";
 import CTASection from "../homePage/components/CTASection";
 import ProcessSection from "../homePage/components/ProcessSection";
+import usePageMeta from "../../hooks/usePageMeta";
 
 function ShopFitouts() {
+  usePageMeta(
+    "Shop Fitouts Melbourne | Commercial Fitouts",
+    "Shop fitouts Melbourne for retail and commercial spaces. Custom designs, professional builds and complete fitout solutions."
+  );
   const features = [
     {
       title: "Custom Joinery",

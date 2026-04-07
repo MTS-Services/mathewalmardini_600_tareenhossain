@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import usePageMeta from "../../hooks/usePageMeta";
 
 const initialState = {
   name: "",
@@ -69,6 +70,10 @@ function transformToAPI(data) {
 }
 
 export default function BookConsultation() {
+  usePageMeta(
+    "Book Renovation Consultation Melbourne | B-Spoke",
+    "Book a consultation with Melbourne renovation experts for kitchen, bathroom, laundry or home renovation planning and quotes."
+  );
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialState);
   const [submitStatus, setSubmitStatus] = useState({

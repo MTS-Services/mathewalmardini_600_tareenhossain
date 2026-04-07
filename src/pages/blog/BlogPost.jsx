@@ -3,6 +3,86 @@ import { motion } from "motion/react";
 import { blogPosts } from "./blogData";
 import { blogContent } from "./blogContent";
 import { useEffect } from "react";
+import usePageMeta from "../../hooks/usePageMeta";
+
+const blogMeta = {
+  "true-cost-renovating-melbourne": {
+    title: "Renovation Cost Melbourne | Full Price Guide",
+    description: "Renovation cost Melbourne guide covering kitchen, bathroom and full home renovation pricing, factors and budgeting tips.",
+  },
+  "plan-stress-free-renovation": {
+    title: "Plan Home Renovation Melbourne | Step Guide",
+    description: "Plan a home renovation in Melbourne with step-by-step guidance on budgeting, timelines and avoiding common renovation issues.",
+  },
+  "renovation-vs-rebuild": {
+    title: "Renovation vs Rebuild Melbourne | Cost Guide",
+    description: "Compare renovation vs rebuild in Melbourne including cost, timelines and benefits to choose the right option for your home.",
+  },
+  "commercial-fitouts-melbourne": {
+    title: "Commercial Fitouts Melbourne | Business Guide",
+    description: "Commercial fitouts Melbourne guide covering shop design, costs and build process for retail and business spaces.",
+  },
+  "modern-kitchen-design-trends": {
+    title: "Modern Kitchen Design Trends Melbourne",
+    description: "Modern kitchen design trends Melbourne including layouts, materials, colours and smart features for stylish kitchens.",
+  },
+  "bathroom-trends-add-value": {
+    title: "Bathroom Trends Melbourne | Add Home Value",
+    description: "Bathroom trends Melbourne that add value including modern designs, fixtures and renovation ideas for better resale results.",
+  },
+  "renovation-week-by-week-timeline": {
+    title: "Renovation Timeline Melbourne | Week Guide",
+    description: "Renovation timeline Melbourne showing week-by-week stages for kitchen, bathroom and full home renovation projects.",
+  },
+  "sustainable-building-practices": {
+    title: "Sustainable Renovation Melbourne | Eco Builds",
+    description: "Sustainable renovation Melbourne using eco-friendly materials, energy-efficient designs and green building practices.",
+  },
+  "hidden-costs-renovating": {
+    title: "Hidden Renovation Costs Melbourne Guide",
+    description: "Hidden renovation costs Melbourne homeowners should know including labour, materials and unexpected expenses.",
+  },
+  "prepare-home-for-renovation": {
+    title: "Prepare Home Renovation Melbourne Checklist",
+    description: "Prepare your home for renovation in Melbourne with a checklist covering planning, budget and pre-construction steps.",
+  },
+  "biggest-renovation-mistakes": {
+    title: "Renovation Mistakes Melbourne to Avoid",
+    description: "Common renovation mistakes Melbourne homeowners make and how to avoid delays, budget issues and poor design choices.",
+  },
+  "essendon-home-renovations": {
+    title: "Essendon Home Renovations | Local Guide",
+    description: "Essendon home renovations guide covering costs, ideas and renovation services for kitchens, bathrooms and homes.",
+  },
+  "keilor-renovation-guide": {
+    title: "Keilor Renovation Guide | Home Renovations",
+    description: "Keilor renovation guide with costs, ideas and expert tips for kitchen, bathroom and home renovations.",
+  },
+  "gisborne-renovations": {
+    title: "Gisborne Home Renovations | Local Experts",
+    description: "Gisborne home renovations covering kitchen, bathroom and full home upgrades with cost insights and design ideas.",
+  },
+  "sunbury-renovations": {
+    title: "Sunbury Home Renovations | Cost & Ideas",
+    description: "Sunbury home renovations with pricing, ideas and expert renovation services for kitchens, bathrooms and homes.",
+  },
+  "airport-west-renovations": {
+    title: "Airport West Renovations | Home Upgrades",
+    description: "Airport West renovations including kitchen, bathroom and home upgrades with cost estimates and design tips.",
+  },
+  "caroline-springs-renovations": {
+    title: "Caroline Springs Renovations | Home Guide",
+    description: "Caroline Springs renovations covering kitchen, bathroom and home renovation ideas, costs and expert solutions.",
+  },
+  "hillside-renovations": {
+    title: "Hillside Renovations Melbourne | Home Guide",
+    description: "Hillside renovations Melbourne with expert tips, pricing and renovation services for kitchens, bathrooms and homes.",
+  },
+  "point-cook-renovations": {
+    title: "Point Cook Renovations | Home Renovation",
+    description: "Point Cook renovations covering kitchen, bathroom and home upgrades with cost guides and expert renovation advice.",
+  },
+};
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -10,6 +90,12 @@ const BlogPost = () => {
 
   const post = blogPosts.find((p) => p.slug === slug);
   const content = blogContent[slug];
+  const meta = blogMeta[slug];
+
+  usePageMeta(
+    meta?.title || post?.title,
+    meta?.description || post?.excerpt
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
