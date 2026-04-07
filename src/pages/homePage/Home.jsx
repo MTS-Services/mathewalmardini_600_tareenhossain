@@ -66,6 +66,7 @@ function Home() {
 
   return (
     <>
+      <h1 className="sr-only">Kitchen, Bathroom &amp; Laundry Renovation Specialists Melbourne | B-Spoke</h1>
       {isDesktop ? (
         <>
           <Banner isDesktop={isDesktop} />
