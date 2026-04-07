@@ -115,6 +115,7 @@ function App() {
       rafId = requestAnimationFrame(raf);
     }
 
+    
     rafId = requestAnimationFrame(raf);
 
     return () => {
