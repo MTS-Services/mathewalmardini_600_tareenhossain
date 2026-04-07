@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://dc3v08iv2c2ou.cloudfront.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <!-- Preload hero video so browser starts fetching before React runs -->
+    <link rel="preload" as="video" href="https://dc3v08iv2c2ou.cloudfront.net/banner_video/charteris_MP4.mp4" type="video/mp4" fetchpriority="high" />
     <!-- Google Fonts: loaded via link instead of CSS @import to avoid render-blocking -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" /></noscript>

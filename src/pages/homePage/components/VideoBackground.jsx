@@ -136,7 +136,7 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               fetchpriority="high"
               className="w-full h-full object-cover"
               style={{ minHeight: "100vh" }}
@@ -179,7 +179,7 @@ const VideoBackground = ({ isDesktop = true, position = "fixed" }) => {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           fetchpriority="high"
           className="w-full h-full object-cover"
           style={{
