@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router";
 import { CheckCircle, Phone, Mail, Clock, ArrowLeft } from "lucide-react";
 
 function ThankYou() {
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "consultation_thank_you",
+    });
+  }, []);
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl w-full">

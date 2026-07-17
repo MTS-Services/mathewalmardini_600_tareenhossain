@@ -237,6 +237,11 @@ export default function BookConsultation() {
       // Success - Navigate to thank you page
       console.log("Success! Confirmation email sent to:", data.data.userEmail);
       console.log("Confirmation link:", data.data.confirmLink);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "consultation_form_submit",
+        form_name: "book_consultation",
+      });
       setFormData(initialState); // Reset form
       navigate("/thank-you");
     } catch (error) {
