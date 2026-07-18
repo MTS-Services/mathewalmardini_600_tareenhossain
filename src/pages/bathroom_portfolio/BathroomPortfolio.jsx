@@ -77,6 +77,29 @@ function BathroomPortfolio() {
             >
               Explore our collection of stunning bathroom transformations
             </motion.p>
+
+            {/* Mobile-only hero actions */}
+            <motion.div
+              className="mt-16 grid grid-cols-2 gap-4 md:hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              <motion.a
+                href="tel:+61432661176"
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg bg-[#2D6B7A] px-2 text-xs font-semibold text-white shadow-lg"
+              >
+                <Phone className="h-4 w-4 shrink-0" />
+                CALL US: 0432661176
+              </motion.a>
+              <Link
+                to="/book-consultation"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg border-2 border-white px-2 text-xs font-semibold text-white"
+              >
+                Book A Consultation
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -139,12 +162,14 @@ function BathroomPortfolio() {
         )}
       </AnimatePresence>
 
-      <CTASection
-        heading="Ready to Start Your Project?"
-        description="Let's bring your vision to life with our expert craftsmanship and personalized service."
-      />
+      <div className="hidden md:block">
+        <CTASection
+          heading="Ready to Start Your Project?"
+          description="Let's bring your vision to life with our expert craftsmanship and personalized service."
+        />
+      </div>
     </div>
-  );
+  );  
 }
 
 export default BathroomPortfolio;
