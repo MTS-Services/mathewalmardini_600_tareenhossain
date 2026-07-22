@@ -424,6 +424,8 @@ const PhotoGallery = () => {
                 <img
                   src={image.src}
                   alt="Gallery"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div style={{
                   position: "absolute",
@@ -462,6 +464,8 @@ const PhotoGallery = () => {
                 src={image.src}
                 alt={image.title}
                 className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
               {expandedId === image.id && (
                 <motion.div

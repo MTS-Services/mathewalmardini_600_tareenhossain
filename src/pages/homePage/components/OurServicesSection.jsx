@@ -1,21 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Link } from "react-router";
+import LazyVideo from "../../../components/LazyVideo";
 
 const OurServicesSection = () => {
   const containerRef = useRef(null);
   const stickyRef = useRef(null);
   const firstCardRef = useRef(null);
-
-  const getVideoPosterUrl = (url) => {
-    if (!url.includes("/video/upload/")) {
-      return url;
-    }
-
-    return url
-      .replace("/video/upload/", "/video/upload/so_0/")
-      .replace(/\.mp4($|\?)/, ".jpg$1");
-  };
 
   const services = [
     {
@@ -23,10 +14,10 @@ const OurServicesSection = () => {
       title: "Bathroom Renovation",
       description:
         "Transform your bathroom with creative design and functional planning. Our team delivers end-to-end construction services for a beautiful, practical space.",
-      // video:
-      //   "/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4",
       video:
         "https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4",
+      poster:
+        "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo3.JPG",
       type: "video",
       path: "/bathroom-renovation",
     },
@@ -35,8 +26,6 @@ const OurServicesSection = () => {
       title: "Laundry Renovation",
       description:
         "Expert laundry room renovation from planning and design to plumbing installation, ensuring everything is done correctly.",
-      // video:
-      // "/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.jpg",
       video:
         "https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.jpg",
       type: "image",
@@ -47,10 +36,10 @@ const OurServicesSection = () => {
       title: "Kitchen Renovation",
       description:
         "Complete kitchen renovation from design to construction with warranty on labor and materials. Highest quality, transparent process, and excellent results within your budget.",
-      // video:
-      // "/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4",
       video:
         "https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4",
+      poster:
+        "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo1.png",
       type: "video",
       path: "/kitchen-renovation",
     },
@@ -59,7 +48,6 @@ const OurServicesSection = () => {
       title: "Shop Fitouts",
       description:
         "We build retails spaces that are not only visually stunning but also functional and efficient.",
-      // video: "/Our_services/envato-labs-image-edit.png",
       video:
         "https://dc3v08iv2c2ou.cloudfront.net/Our_services/envato-labs-image-edit.png",
       type: "image",
@@ -184,23 +172,19 @@ const OurServicesSection = () => {
                       style={{ marginTop: "0px" }}
                     >
                       {service.type === "video" ? (
-                        <video
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          preload="none"
-                          poster={getVideoPosterUrl(service.video)}
+                        <LazyVideo
+                          src={service.video}
+                          poster={service.poster}
                           className="w-full h-full object-cover transition-transform duration-500"
-                        >
-                          <source src={service.video} type="video/mp4" />
-                        </video>
+                          rootMargin="200px"
+                        />
                       ) : (
                         <img
                           src={service.video}
                           alt={service.title}
                           className="w-full h-full object-cover transition-transform duration-500"
                           loading="lazy"
+                          decoding="async"
                         />
                       )}
 

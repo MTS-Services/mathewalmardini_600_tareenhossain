@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router";
 import { motion, useScroll, useTransform } from "motion/react";
+import LazyVideo from "../../../components/LazyVideo";
 
 const FeatureMediaSection = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const FeatureMediaSection = () => {
   const centerVideoUrl =
     "https://dc3v08iv2c2ou.cloudfront.net/Our_work/Video+_in_center.mp4";
   const centerVideoPoster =
-    "https://dc3v08iv2c2ou.cloudfront.net/Our_work/Video+_in_center.mp4";
+    "https://dc3v08iv2c2ou.cloudfront.net/Our_work/IMG_1517.JPG";
   //   const centerVideoUrl =
   //   "/Our_work/Video _in_center.mp4";
   // const centerVideoPoster =
@@ -112,18 +113,12 @@ const FeatureMediaSection = () => {
             onClick={handleNavigateToPortfolio}
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-175 xl:w-300 lg:h-137.5 xl:h-170 hover:shadow-3xl transition-shadow duration-300">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="none"
+              <LazyVideo
+                src={centerVideoUrl}
                 poster={centerVideoPoster}
                 className="w-full h-full object-cover"
-              >
-                <source src={centerVideoUrl} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+                rootMargin="150px"
+              />
               {/* Subtle overlay for depth */}
               <div className="absolute inset-0 bg-linear-to-t from-black/10 to-transparent pointer-events-none" />
             </div>
@@ -166,17 +161,12 @@ const FeatureMediaSection = () => {
               className="relative rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
               style={{ width: "100%", height: "360px" }}
             >
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="none"
+              <LazyVideo
+                src={centerVideoUrl}
                 poster={centerVideoPoster}
                 className="w-full h-full object-cover"
-              >
-                <source src={centerVideoUrl} type="video/mp4" />
-              </video>
+                rootMargin="150px"
+              />
             </div>
           </motion.div>
 

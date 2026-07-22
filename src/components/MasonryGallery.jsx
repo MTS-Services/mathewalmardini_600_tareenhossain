@@ -1,64 +1,67 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 
+const INITIAL_VISIBLE = 24;
+
 const MasonryGallery = ({ images, onImageClick }) => {
   const [loadedImages, setLoadedImages] = useState({});
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   const handleImageLoad = (id) => {
     setLoadedImages((prev) => ({ ...prev, [id]: true }));
   };
 
-  // Helper function to get column class based on number of images
-  const getColumnsClass = () => {
-    const count = images.length;
-    if (count <= 6) return "columns-2";
-    if (count <= 12) return "columns-3";
-    return "columns-4";
-  };
+  const visibleImages = images.slice(0, visibleCount);
+  const hasMore = visibleCount < images.length;
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
-      {/* Mobile Masonry (2 columns - fills gaps automatically) */}
       <style>{`
-        .mobile-masonry {
+        .portfolio-masonry {
           column-count: 2;
           column-gap: 12px;
         }
-        .mobile-masonry-item {
+        .portfolio-masonry-item {
           break-inside: avoid;
           margin-bottom: 12px;
         }
         @media (min-width: 768px) {
-          .mobile-masonry {
-            display: none;
+          .portfolio-masonry {
+            column-count: 3;
+            column-gap: 16px;
+          }
+          .portfolio-masonry-item {
+            margin-bottom: 16px;
+          }
+        }
+        @media (min-width: 1024px) {
+          .portfolio-masonry {
+            column-count: ${images.length <= 6 ? 2 : images.length <= 12 ? 3 : 4};
+            column-gap: 16px;
           }
         }
       `}</style>
-      
-      <div className="mobile-masonry lg:hidden">
-        {images.map((image, index) => (
+
+      <div className="portfolio-masonry">
+        {visibleImages.map((image, index) => (
           <motion.div
             key={image.id}
-            className="mobile-masonry-item cursor-pointer group"
+            className="portfolio-masonry-item cursor-pointer group"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: loadedImages[image.id] ? 1 : 0, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
+            animate={{ opacity: loadedImages[image.id] ? 1 : 0.3, y: 0 }}
+            transition={{ duration: 0.4, delay: Math.min(index, 12) * 0.03 }}
             onClick={() => onImageClick(index)}
           >
-            <div className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <div className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 bg-gray-100">
               <img
                 src={image.src}
                 alt={`Portfolio ${image.category} ${image.id}`}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  minHeight: index === images.length - 1 ? "400px" : "auto",
-                  display: "block",
-                  objectFit: "cover",
-                }}
-                className="transform group-hover:scale-105 transition-transform duration-500"
+                width={600}
+                height={800}
+                className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                 onLoad={() => handleImageLoad(image.id)}
-                loading="lazy"
+                loading={index < 6 ? "eager" : "lazy"}
+                decoding="async"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
             </div>
@@ -66,30 +69,21 @@ const MasonryGallery = ({ images, onImageClick }) => {
         ))}
       </div>
 
-      {/* Desktop Masonry */}
-      <div className={`hidden lg:block ${getColumnsClass()} gap-4 space-y-4`}>
-        {images.map((image, index) => (
-          <motion.div
-            key={image.id}
-            className="break-inside-avoid mb-4 cursor-pointer group"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: loadedImages[image.id] ? 1 : 0, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
-            onClick={() => onImageClick(index)}
+      {hasMore && (
+        <div className="mt-10 flex justify-center">
+          <button
+            type="button"
+            onClick={() =>
+              setVisibleCount((count) =>
+                Math.min(count + INITIAL_VISIBLE, images.length),
+              )
+            }
+            className="rounded-lg bg-[#2D6B7A] px-8 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#1e5562]"
           >
-            <div className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-              <img
-                src={image.src}
-                alt={`Portfolio ${image.category} ${image.id}`}
-                className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
-                onLoad={() => handleImageLoad(image.id)}
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
-            </div>
-          </motion.div>
-        ))}
-      </div>
+            Load more ({images.length - visibleCount} remaining)
+          </button>
+        </div>
+      )}
     </div>
   );
 };

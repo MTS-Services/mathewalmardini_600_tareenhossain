@@ -39,6 +39,7 @@ function BathroomPortfolio() {
             loop
             muted
             playsInline
+            preload="metadata"
             className="w-full h-full object-cover"
           >
             <source

@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import VideoBackground from "./VideoBackground";
 import HeroText from "./HeroText";
+import LazyVideo from "../../../components/LazyVideo";
 
 const Banner = ({ isDesktop = true }) => {
   const [isTablet, setIsTablet] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [loadMosaicVideos, setLoadMosaicVideos] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,15 +25,14 @@ const Banner = ({ isDesktop = true }) => {
   // White overlay fades out as video shrinks — hides images while video is large
   const whiteOverlayOpacity = useTransform(scrollY, [400, 750], [1, 0]);
 
-  const getVideoPosterUrl = (url) => {
-    if (!url.includes("/video/upload/")) {
-      return url;
-    }
-
-    return url
-      .replace("/video/upload/", "/video/upload/so_0/")
-      .replace(/\.mp4($|\?)/, ".jpg$1");
-  };
+  // Mosaic videos stay behind a white overlay until scroll — delay loading them
+  useEffect(() => {
+    return scrollY.on("change", (value) => {
+      if (value > 350) {
+        setLoadMosaicVideos(true);
+      }
+    });
+  }, [scrollY]);
 
   const portfolioImages = [
     // Top Row
@@ -47,6 +48,8 @@ const Banner = ({ isDesktop = true }) => {
       // url: "/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov",
       url: "https://dc3v08iv2c2ou.cloudfront.net/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov",
       type: "video",
+      poster:
+        "https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.jpg",
       position:
         "lg:top-30 xl:top-38 2xl:top-42 3xl:top-28 4xl:top-32 5xl:top-35 lg:left-28 xl:left-44 2xl:left-80 3xl:left-70 4xl:left-75 5xl:left-90",
       size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",
@@ -64,6 +67,8 @@ const Banner = ({ isDesktop = true }) => {
       // url: "/banner_video/beautiful-modern-bathroom-bathtub-washbasin-sa-2026-01-28-02-42-23-utc_(1).mp4",
       url: "https://dc3v08iv2c2ou.cloudfront.net/banner_video/beautiful-modern-bathroom-bathtub-washbasin-sa-2026-01-28-02-42-23-utc_(1).mp4",
       type: "video",
+      poster:
+        "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo3.JPG",
       position:
         "lg:top-30 xl:top-38 2xl:top-42 3xl:top-28 4xl:top-32 5xl:top-35 lg:right-28 xl:right-44 2xl:right-72 3xl:right-70 4xl:right-75 5xl:right-90",
       size: "lg:w-48 lg:h-32 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",
@@ -224,7 +229,7 @@ const Banner = ({ isDesktop = true }) => {
               >
                 {portfolioItem?.type === "video" ? (
                   <img
-                    src={getVideoPosterUrl(image.url)}
+                    src={portfolioItem.poster || image.url}
                     alt={`Portfolio ${image.id}`}
                     className="w-full h-full object-cover object-center"
                     loading="lazy"
@@ -288,22 +293,34 @@ const Banner = ({ isDesktop = true }) => {
               >
                 <div className="relative w-full h-full group cursor-pointer">
                   {image.type === "video" ? (
-                    <video
-                      src={image.url}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="none"
-                      poster={getVideoPosterUrl(image.url)}
-                      className={`w-full h-full object-cover object-center shadow-xl ${
-                        image.id === 1 || image.id === 6
-                          ? "rounded-r-lg"
-                          : image.id === 5 || image.id === 10
-                            ? "rounded-l-lg"
-                            : "rounded-lg"
-                      }`}
-                    />
+                    loadMosaicVideos ? (
+                      <LazyVideo
+                        src={image.url}
+                        poster={image.poster}
+                        className={`w-full h-full object-cover object-center shadow-xl ${
+                          image.id === 1 || image.id === 6
+                            ? "rounded-r-lg"
+                            : image.id === 5 || image.id === 10
+                              ? "rounded-l-lg"
+                              : "rounded-lg"
+                        }`}
+                        rootMargin="100px"
+                      />
+                    ) : (
+                      <img
+                        src={image.poster}
+                        alt={`Portfolio ${image.id}`}
+                        className={`w-full h-full object-cover object-center shadow-xl ${
+                          image.id === 1 || image.id === 6
+                            ? "rounded-r-lg"
+                            : image.id === 5 || image.id === 10
+                              ? "rounded-l-lg"
+                              : "rounded-lg"
+                        }`}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )
                   ) : (
                     <img
                       src={image.url}
