@@ -98,6 +98,12 @@ export default function BookConsultation() {
     setFormData((prev) => ({ ...prev, bathrooms: digits }));
   };
 
+  // Phone: allow only digits and limit to 10 characters
+  const handlePhoneChange = (e) => {
+    const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
+    setFormData((prev) => ({ ...prev, phone: digits }));
+  };
+
   const handleCheckbox = (service) => (e) => {
     setFormData((prev) => {
       const exists = prev.services.includes(service);
@@ -133,6 +139,17 @@ export default function BookConsultation() {
         loading: false,
         success: false,
         error: "Please enter your phone number",
+      });
+      return;
+    }
+    if (
+      formData.phone.trim().length !== 10 ||
+      !/^\d{10}$/.test(formData.phone.trim())
+    ) {
+      setSubmitStatus({
+        loading: false,
+        success: false,
+        error: "Phone number must be exactly 10 digits",
       });
       return;
     }
@@ -345,8 +362,9 @@ export default function BookConsultation() {
                 id="phone"
                 type="tel"
                 value={formData.phone}
-                onChange={handleChange("phone")}
+                onChange={handlePhoneChange}
                 placeholder="04xx xxx xxx"
+                maxLength="10"
                 required
               />
               <LabeledInput
