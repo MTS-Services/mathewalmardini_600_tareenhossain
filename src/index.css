@@ -1663,3 +1663,9 @@ body {
 .timeline-circle {
   left: 0rem;
 }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

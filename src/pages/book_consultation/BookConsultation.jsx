@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
 import usePageMeta from "../../hooks/usePageMeta";
 
@@ -58,7 +58,6 @@ function transformToAPI(data) {
     postcode: data.postcode || "",
     propertyType: data.propertyType || "",
     service: data.services.join(", "),
-    // Send both singular and plural keys for backend/template compatibility.
     bathroom,
     bathrooms: bathroom,
     message: data.details,
@@ -81,6 +80,81 @@ export default function BookConsultation() {
     success: false,
     error: null,
   });
+
+  const [addressSuggestions, setAddressSuggestions] = useState([]);
+  const [showAddressSuggestions, setShowAddressSuggestions] = useState(false);
+  const [addressLoading, setAddressLoading] = useState(false);
+  const debounceTimerRef = useRef(null);
+  const addressWrapperRef = useRef(null);
+
+  const fetchAddressSuggestions = async (input) => {
+    if (!input || input.trim().length < 3) {
+      setAddressSuggestions([]);
+      setShowAddressSuggestions(false);
+      return;
+    }
+
+    setAddressLoading(true);
+    try {
+      const apiUrl = import.meta.env.VITE_API_BASE_URL;
+      const response = await fetch(
+        `${apiUrl}/location-suggestions?input=${encodeURIComponent(input.trim())}`
+      );
+      const data = await response.json();
+
+      if (data.success && data.suggestions) {
+        setAddressSuggestions(data.suggestions);
+        setShowAddressSuggestions(true);
+      } else {
+        setAddressSuggestions([]);
+        setShowAddressSuggestions(false);
+      }
+    } catch (error) {
+      console.error("Failed to fetch address suggestions:", error);
+      setAddressSuggestions([]);
+      setShowAddressSuggestions(false);
+    } finally {
+      setAddressLoading(false);
+    }
+  };
+
+  const handleAddressChange = (e) => {
+    const value = e.target.value;
+    setFormData((prev) => ({ ...prev, address: value }));
+
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+
+    debounceTimerRef.current = setTimeout(() => {
+      fetchAddressSuggestions(value);
+    }, 300);
+  };
+
+  const handleAddressSelect = (suggestion) => {
+    setFormData((prev) => ({ ...prev, address: suggestion.description }));
+    setShowAddressSuggestions(false);
+    setAddressSuggestions([]);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        addressWrapperRef.current &&
+        !addressWrapperRef.current.contains(event.target)
+      ) {
+        setShowAddressSuggestions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleChange = (field) => (e) => {
     setFormData((prev) => ({ ...prev, [field]: e.target.value }));
@@ -212,14 +286,6 @@ export default function BookConsultation() {
       });
       return;
     }
-    if (!formData.contactTime) {
-      setSubmitStatus({
-        loading: false,
-        success: false,
-        error: "Please select a preferred contact time",
-      });
-      return;
-    }
     if (!formData.bathrooms.trim()) {
       setSubmitStatus({
         loading: false,
@@ -293,36 +359,113 @@ export default function BookConsultation() {
           </p>
         </div>
 
-        {/* Error Message */}
         {submitStatus.error && (
           <div
-            className="rounded-lg border border-red-200 bg-red-50 shadow-sm"
-            style={{ padding: "16px 20px", marginBottom: 24 }}
+            style={{
+              position: "fixed",
+              inset: 0,
+              backgroundColor: "rgba(0,0,0,0.5)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 100,
+              padding: 20,
+            }}
+            onClick={() =>
+              setSubmitStatus((prev) => ({ ...prev, error: null }))
+            }
           >
-            <div style={{ display: "flex", alignItems: "start", gap: 12 }}>
-              <svg
-                className="text-red-600"
-                style={{ width: 20, height: 20, flexShrink: 0, marginTop: 2 }}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <div
+              style={{
+                backgroundColor: "#fff",
+                borderRadius: 12,
+                padding: "24px 28px",
+                maxWidth: 420,
+                width: "100%",
+                boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  marginBottom: 12,
+                }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-              <div>
-                <h3
-                  className="text-sm font-semibold text-red-900"
-                  style={{ marginBottom: 4 }}
+                <div
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: "50%",
+                    backgroundColor: "#fee2e2",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
                 >
-                  Error sending request
+                  <svg
+                    style={{ width: 20, height: 20, color: "#dc2626" }}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
+                <h3
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 600,
+                    color: "#111827",
+                    margin: 0,
+                  }}
+                >
+                  Error
                 </h3>
-                <p className="text-sm text-red-700">{submitStatus.error}</p>
               </div>
+              <p
+                style={{
+                  fontSize: 14,
+                  color: "#4b5563",
+                  lineHeight: 1.5,
+                  margin: "0 0 20px 0",
+                }}
+              >
+                {submitStatus.error}
+              </p>
+              <button
+                onClick={() =>
+                  setSubmitStatus((prev) => ({ ...prev, error: null }))
+                }
+                style={{
+                  width: "100%",
+                  padding: "10px 16px",
+                  backgroundColor: "#2D6B7A",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 8,
+                  fontSize: 14,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  transition: "background-color 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#1e5562";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#2D6B7A";
+                }}
+              >
+                OK
+              </button>
             </div>
           </div>
         )}
@@ -367,14 +510,105 @@ export default function BookConsultation() {
                 maxLength="10"
                 required
               />
-              <LabeledInput
-                label="Address"
-                id="address"
-                value={formData.address}
-                onChange={handleChange("address")}
-                placeholder="Street, suburb"
-                required
-              />
+              <div ref={addressWrapperRef} style={{ position: "relative" }}>
+                <label
+                  htmlFor="address"
+                  className="block text-sm font-semibold text-gray-800"
+                  style={{ marginBottom: 8 }}
+                >
+                  Address
+                </label>
+                <input
+                  id="address"
+                  type="text"
+                  value={formData.address}
+                  onChange={handleAddressChange}
+                  placeholder="Street, suburb"
+                  className="w-full rounded-md border border-gray-200 bg-gray-50 focus:bg-white text-gray-900 placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2D6B7A] focus:border-[#2D6B7A]"
+                  style={{ padding: "12px 14px" }}
+                  required
+                  autoComplete="off"
+                />
+                {addressLoading && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      right: 12,
+                      top: 38,
+                      width: 16,
+                      height: 16,
+                      border: "2px solid #e5e7eb",
+                      borderTopColor: "#2D6B7A",
+                      borderRadius: "50%",
+                      animation: "spin 0.6s linear infinite",
+                    }}
+                  />
+                )}
+                {showAddressSuggestions && addressSuggestions.length > 0 && (
+                  <div
+                    onWheel={(e) => e.stopPropagation()}
+                    style={{
+                      position: "absolute",
+                      top: "100%",
+                      left: 0,
+                      right: 0,
+                      marginTop: 4,
+                      backgroundColor: "#fff",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: 8,
+                      boxShadow:
+                        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)",
+                      zIndex: 50,
+                      maxHeight: 240,
+                      overflowY: "auto",
+                      overscrollBehavior: "contain",
+                    }}
+                  >
+                    {addressSuggestions.map((suggestion, index) => (
+                      <div
+                        key={suggestion.placeId || index}
+                        onClick={() => handleAddressSelect(suggestion)}
+                        style={{
+                          padding: "10px 14px",
+                          cursor: "pointer",
+                          borderBottom:
+                            index < addressSuggestions.length - 1
+                              ? "1px solid #f3f4f6"
+                              : "none",
+                          transition: "background-color 0.15s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = "#f0f9ff";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "#fff";
+                        }}
+                      >
+                        <div
+                          style={{
+                            fontSize: 14,
+                            fontWeight: 500,
+                            color: "#111827",
+                          }}
+                        >
+                          {suggestion.mainText}
+                        </div>
+                        {suggestion.secondaryText && (
+                          <div
+                            style={{
+                              fontSize: 13,
+                              color: "#6b7280",
+                              marginTop: 2,
+                            }}
+                          >
+                            {suggestion.secondaryText}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
               <LabeledInput
                 label="Postcode"
                 id="postcode"
@@ -479,7 +713,7 @@ export default function BookConsultation() {
               </div>
             )}
 
-            <Divider title="Best time to contact" />
+            {/* <Divider title="Best time to contact" />
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {contactOptions.map((option) => (
                 <RadioInline
@@ -491,7 +725,7 @@ export default function BookConsultation() {
                   onChange={handleChange("contactTime")}
                 />
               ))}
-            </div>
+            </div> */}
 
             <div>
               <label
