@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
-import { Phone, Image } from "lucide-react";
+import { Phone } from "lucide-react";
 import ProcessSection from "../homePage/components/ProcessSection";
 import FeaturesGrid from "../homePage/components/FeaturesGrid";
 import CTASection from "../homePage/components/CTASection";
@@ -100,6 +100,29 @@ function KitchenRenovation() {
               The heart of your home deserves exceptional craftsmanship and
               thoughtful design
             </motion.p>
+
+            {/* Mobile-only hero actions */}
+            <motion.div
+              className="mt-16 grid grid-cols-2 gap-4 md:hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              <motion.a
+                href="tel:+61432661176"
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg bg-[#2D6B7A] px-2 text-xs font-semibold text-white shadow-lg"
+              >
+                <Phone className="h-4 w-4 shrink-0" />
+                CALL US: 0432661176
+              </motion.a>
+              <Link
+                to="/book-consultation"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg border-2 border-white px-2 text-xs font-semibold text-white"
+              >
+                Book A Consultation
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -240,6 +263,28 @@ function KitchenRenovation() {
 
       {/* Photo Gallery Section */}
       <PhotoGallery />
+
+      {/* Call Us Button */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.8, duration: 0.5 }}
+        className="mt-12 md:mt-16 flex justify-center px-4"
+      >
+        <motion.a
+          href="tel:+61432661176"
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0 20px 40px rgba(45, 107, 122, 0.3)",
+          }}
+          whileTap={{ scale: 0.95 }}
+          className="inline-flex items-center gap-3 bg-[#2D6B7A] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1e5562] transition-colors duration-300 shadow-lg"
+        >
+          <Phone className="w-5 h-5" />
+          CALL US: 0432661176
+        </motion.a>
+      </motion.div>
 
       {/* Design & Planning Section */}
       <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
