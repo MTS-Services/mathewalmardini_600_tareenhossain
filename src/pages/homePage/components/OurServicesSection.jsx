@@ -141,14 +141,22 @@ const OurServicesSection = () => {
       >
         {/* Sticky Wrapper - Stays in viewport while scrolling */}
         <div
-          className="sticky our-services-sticky flex items-center overflow-hidden"
+          className="sticky our-services-sticky flex items-center"
           ref={stickyRef}
           style={{
             justifyContent: "flex-start",
-            paddingLeft: "16px",
-            paddingRight: "16px",
           }}
         >
+          {/* Clip only horizontal overflow; vertical stays visible so radii aren't cut */}
+          <div
+            className="w-full overflow-x-clip"
+            style={{
+              paddingLeft: "16px",
+              paddingRight: "16px",
+              paddingTop: "24px",
+              paddingBottom: "24px",
+            }}
+          >
           {/* Horizontal Gallery - Moves based on scroll */}
           <motion.div
             className="flex will-change-transform"
@@ -165,30 +173,30 @@ const OurServicesSection = () => {
                 transition={{ duration: 0.5 }}
               >
                 <Link to={service.path} className="block h-full">
-                  <div className="relative  overflow-hidden flex flex-col h-full our-services-margin-top">
+                  <div className="relative flex flex-col h-full our-services-margin-top">
                     {/* Video/Image Container */}
                     <div
-                      className="relative bg-gray-900 h-62.5 sm:h-87.5 md:h-95 lg:h-105 xl:h-140 2xl:h-150 rounded-3xl overflow-hidden"
+                      className="relative bg-gray-900 h-62.5 sm:h-87.5 md:h-95 lg:h-105 xl:h-140 2xl:h-150 rounded-3xl overflow-hidden isolate"
                       style={{ marginTop: "0px" }}
                     >
                       {service.type === "video" ? (
                         <LazyVideo
                           src={service.video}
                           poster={service.poster}
-                          className="w-full h-full object-cover transition-transform duration-500"
+                          className="w-full h-full object-cover rounded-3xl transition-transform duration-500"
                           rootMargin="200px"
                         />
                       ) : (
                         <img
                           src={service.video}
                           alt={service.title}
-                          className="w-full h-full object-cover transition-transform duration-500"
+                          className="w-full h-full object-cover rounded-3xl transition-transform duration-500"
                           loading="lazy"
                           decoding="async"
                         />
                       )}
 
-                      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 rounded-3xl bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                     </div>
 
                     {/* Content */}
@@ -211,6 +219,7 @@ const OurServicesSection = () => {
               </motion.div>
             ))}
           </motion.div>
+          </div>
         </div>
       </div>
 

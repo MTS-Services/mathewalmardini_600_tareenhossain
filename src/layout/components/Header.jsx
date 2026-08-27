@@ -54,7 +54,7 @@ function Header({ isDesktop }) {
 
   return (
     <header
-      className={`fixed ${isDesktop ? "top-8" : "top-4"} left-1/2 -translate-x-1/2 z-500 w-[82%] 2xl:w-[90%] 3xl:w-[75%] 4xl:w-[65%] ${
+      className={`fixed ${isDesktop ? "top-8" : "top-4"} left-1/2 -translate-x-1/2 z-500 w-[92%] xl:w-[94%] 2xl:w-[90%] 3xl:w-[80%] 4xl:w-[70%] ${
         hidden ? "hidden" : "block"
       }`}
     >
@@ -62,8 +62,8 @@ function Header({ isDesktop }) {
         className="bg-white/95 backdrop-blur-lg border border-gray-200 shadow-lg rounded-2xl"
         style={{ padding: isDesktop ? "0px 20px" : "0px 12px" }}
       >
-        <div className="relative flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group">
+        <div className="relative flex items-center gap-3 xl:gap-4">
+          <Link to="/" className="flex items-center gap-2 group shrink-0 relative z-10">
             <img
               // src="/logo.png"
               src="https://dc3v08iv2c2ou.cloudfront.net/logo.png"
@@ -74,10 +74,10 @@ function Header({ isDesktop }) {
             />
           </Link>
 
-          <nav className="hidden xl:flex items-center gap-6 absolute left-1/2 -translate-x-1/2 z-20">
+          <nav className="hidden xl:flex flex-1 items-center justify-center gap-3 2xl:gap-5 min-w-0">
             <Link
               to="/"
-              className={`${isActive("/")} hover:text-gray-900 transition-colors font-medium text-base`}
+              className={`${isActive("/")} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
             >
               HOME
             </Link>
@@ -89,7 +89,7 @@ function Header({ isDesktop }) {
               onMouseLeave={() => setServicesOpen(false)}
             >
               <button
-                className={`flex items-center gap-1 ${["bathroom-renovation", "kitchen-renovation", "laundry-renovation", "shop-fitouts"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base`}
+                className={`flex items-center gap-1 ${["bathroom-renovation", "kitchen-renovation", "laundry-renovation", "shop-fitouts"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
               >
                 SERVICES
                 {servicesOpen ? (
@@ -153,7 +153,7 @@ function Header({ isDesktop }) {
             >
               <Link
                 to="/portfolio"
-                className={`flex items-center gap-1 ${["portfolio"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base`}
+                className={`flex items-center gap-1 ${["portfolio"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
               >
                 PORTFOLIO
                 {portfolioOpen ? (
@@ -204,13 +204,13 @@ function Header({ isDesktop }) {
 
             <Link
               to="/about"
-              className={`${isActive("/about")} hover:text-gray-900 transition-colors font-medium text-base`}
+              className={`${isActive("/about")} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
             >
               ABOUT
             </Link>
             <Link
               to="/faqs"
-              className={`${isActive("/faqs")} hover:text-gray-900 transition-colors font-medium text-base`}
+              className={`${isActive("/faqs")} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
             >
               FAQs
             </Link>
@@ -361,60 +361,60 @@ function Header({ isDesktop }) {
             */}
             <Link
               to="/blog"
-              className={`${isActive("/blog")} hover:text-gray-900 transition-colors font-medium text-base`}
+              className={`${isActive("/blog")} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
             >
               BLOGS
             </Link>
 
             <Link
               to="/contact"
-              className={`${isActive("/contact")} hover:text-gray-900 transition-colors font-medium text-base`}
+              className={`${isActive("/contact")} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
             >
               CONTACT US
             </Link>
           </nav>
 
-          {/* Actions */}
-          <div className="flex items-center gap-4">
-            {isDesktop ? (
-              <>
-                <p className="flex items-center gap-2">
-                  <Phone className="w-5 h-5" />
-                  <span className="text-gray-700 font-medium text-base whitespace-nowrap">
-                    0432661176
-                  </span>
-                </p>
-                <Link to="/book-consultation">
-                  <motion.button
-                    className="bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-semibold text-base"
-                    style={{ padding: "15px 20px" }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Book Consultation
-                  </motion.button>
-                </Link>
-              </>
-            ) : (
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="xl:hidden w-8 h-8 flex items-center justify-center"
-                aria-label="Open primary menu"
+          {/* Actions — reserved width so phone never sits under nav */}
+          <div className="flex items-center gap-2 2xl:gap-4 shrink-0 relative z-10 ml-auto">
+            <div className="hidden xl:flex items-center gap-2 2xl:gap-3">
+              <a
+                href="tel:+61432661176"
+                className="flex items-center gap-1.5 2xl:gap-2 text-gray-700 hover:text-primary transition-colors"
               >
-                {mobileMenuOpen ? (
-                  <X className="w-5 h-5 text-gray-900" />
-                ) : (
-                  <Menu className="w-5 h-5 text-gray-900" />
-                )}
-              </button>
-            )}
+                <Phone className="w-4 h-4 2xl:w-5 2xl:h-5 shrink-0" />
+                <span className="font-medium text-sm 2xl:text-base whitespace-nowrap">
+                  0432661176
+                </span>
+              </a>
+              <Link to="/book-consultation">
+                <motion.button
+                  className="bg-primary text-white rounded-lg hover:bg-gray-800 transition-colors font-semibold text-sm 2xl:text-base whitespace-nowrap"
+                  style={{ padding: "12px 16px" }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Book Consultation
+                </motion.button>
+              </Link>
+            </div>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="xl:hidden w-8 h-8 flex items-center justify-center"
+              aria-label="Open primary menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5 text-gray-900" />
+              ) : (
+                <Menu className="w-5 h-5 text-gray-900" />
+              )}
+            </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        {!isDesktop && mobileMenuOpen && (
+        {mobileMenuOpen && (
           <div
-            className="my-4 py-4 border-t border-gray-200"
+            className="xl:hidden my-4 py-4 border-t border-gray-200"
             style={{
               maxHeight: "70vh",
               overflowY: "auto",
