@@ -19,7 +19,7 @@
 //   };
 
 //   return (
-//     <div className="bg-white min-h-screen">
+//     <div className="bg-paper min-h-screen">
 //       {/* Hero Section */}
 //       <section className="relative bg-gradient-to-r from-[#2D6B7A] to-[#1e5562] h-[50vh] min-h-[600px] flex items-center justify-center overflow-hidden">
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,7 +83,7 @@
 //       </AnimatePresence>
 
 //       {/* CTA Section */}
-//       <section className="py-16 md:py-20 bg-gray-50">
+//       <section className="py-16 md:py-20 bg-paper-soft">
 //         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
 //           <motion.div
 //             initial={{ opacity: 0, y: 20 }}
@@ -192,7 +192,7 @@ function Portfolio() {
   ];
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-paper min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-linear-to-r from-[#2D6B7A] to-[#1e5562] h-[50vh] min-h-150 flex items-center justify-center overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -279,7 +279,7 @@ function Portfolio() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-paper-soft">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

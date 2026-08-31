@@ -8,7 +8,7 @@ const Contact = () => {
     "Contact B-Spoke for kitchen, bathroom, laundry or home renovations in Melbourne. Get a quote or speak with renovation specialists."
   );
   return (
-    <div className="bg-white">
+    <div className="bg-paper">
       {/* Banner Section */}
       <div className="relative h-[50vh] min-h-[600px] w-full overflow-hidden">
         <img

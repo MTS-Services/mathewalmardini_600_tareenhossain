@@ -98,7 +98,7 @@ const InfoSection = () => {
 
   return (
     <section
-      className="relative w-full bg-white info-section-padding"
+      className="relative w-full bg-paper info-section-padding"
       //   bg color : bg-[#e8f5ec]
     >
       <div
@@ -130,7 +130,7 @@ const InfoSection = () => {
             <motion.div
               key={feature.id}
               variants={itemVariants}
-              className="group rounded-2xl  overflow-hidden flex flex-col h-full info-section-border"
+              className="group rounded-2xl overflow-hidden flex flex-col h-full info-section-border"
             >
               <div className="relative flex items-center gap-4 info-section-icon-header-padding">
                 <div

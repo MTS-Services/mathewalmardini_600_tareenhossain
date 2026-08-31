@@ -9,7 +9,7 @@ function About() {
     "B-Spoke is a Melbourne renovation company delivering kitchen, bathroom and full home renovations with expert craftsmanship and service."
   );
   return (
-    <div className="bg-white">
+    <div className="bg-paper">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-[#2D6B7A] to-[#1e5562] h-[50vh] min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -144,7 +144,7 @@ function About() {
       </section>
 
       {/* Our Vision Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-paper-soft">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}
@@ -342,7 +342,7 @@ function About() {
       </section>
 
       {/* Our Values Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-paper-soft">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}

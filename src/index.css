@@ -969,6 +969,9 @@
 :root {
   --color-primary: #2d6b7a;
   --color-secondary: #1e1d24;
+  /* Warm plaster / limewash (CSS texture — no image) */
+  --color-paper: #eae3d7;
+  --color-paper-light: #f3efe6;
 }
 
 /* Small utility helpers for project colors */
@@ -1025,6 +1028,7 @@ html.lenis body {
 }
 /* Global styles */
 body {
+  position: relative;
   font-family:
     "Poppins",
     -apple-system,
@@ -1040,10 +1044,69 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Warm plaster base + balanced soft light (left & right even) */
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(
+      100% 80% at 12% 40%,
+      rgba(255, 255, 255, 0.72),
+      transparent 55%
+    ),
+    radial-gradient(
+      100% 80% at 88% 40%,
+      rgba(255, 255, 255, 0.72),
+      transparent 55%
+    ),
+    radial-gradient(
+      90% 70% at 50% 100%,
+      rgba(160, 140, 110, 0.12),
+      transparent 65%
+    );
+  background-attachment: fixed;
+}
+
+/* Fine sandy grain (baseFrequency ~0.9) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.38;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 260px 260px;
+}
+
+/* Cloudy limewash blotches (baseFrequency ~0.3) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.3' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 400px 400px;
 }
 
 #root {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
+  background: transparent;
+}
+
+/* Use on sections that should sit on the paper texture (not solid white) */
+.bg-paper {
+  background-color: transparent;
+}
+
+.bg-paper-soft {
+  background-color: rgba(234, 227, 215, 0.55);
 }
 /* our work  */
 .our-work-title-margin {

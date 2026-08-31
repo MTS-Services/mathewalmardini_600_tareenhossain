@@ -375,7 +375,7 @@ const PhotoGallery = () => {
 
   return (
     <div
-      className="bg-white"
+      className="bg-paper"
       style={{ paddingTop: "4rem", paddingBottom: "4rem" }}
     >
       {/* Section Title */}

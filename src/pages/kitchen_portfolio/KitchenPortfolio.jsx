@@ -28,7 +28,7 @@ function KitchenPortfolio() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-paper">
       {/* Hero Section with Video */}
       <section className="relative min-h-dvh md:h-screen flex items-center justify-center overflow-hidden">
         {/* Video Background */}
