@@ -319,7 +319,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-paper">
       {/* Banner Section */}
       <motion.div
         className="relative h-[50vh] min-h-[600px] w-full overflow-hidden"

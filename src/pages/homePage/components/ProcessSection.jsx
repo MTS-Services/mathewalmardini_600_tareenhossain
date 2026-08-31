@@ -637,7 +637,7 @@ const TimelineProcessSection = () => {
   });
 
   return (
-    <section className="bg-white py-20" ref={containerRef}>
+    <section className="bg-paper py-20" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <motion.div

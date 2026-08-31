@@ -49,7 +49,7 @@ function BathroomRenovation() {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-paper">
       {/* Hero Section with Video */}
       <section className="relative min-h-[100dvh] md:h-screen flex items-center justify-center overflow-hidden">
         {/* Video Background */}
@@ -127,7 +127,7 @@ function BathroomRenovation() {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-white">
+      <section className="py-16 md:py-24 lg:py-32 bg-paper">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             {/* Text Content */}
@@ -277,7 +277,7 @@ function BathroomRenovation() {
       </motion.div>
 
       {/* Bringing Your Project to Life Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
+      <section className="py-16 md:py-24 lg:py-32 bg-paper-soft">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -334,7 +334,7 @@ function BathroomRenovation() {
       </section>
 
       {/* New Bathroom Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-white">
+      <section className="py-16 md:py-24 lg:py-32 bg-paper">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}

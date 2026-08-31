@@ -115,7 +115,7 @@ const OurServicesSection = () => {
   const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
 
   return (
-    <div className="relative w-full bg-white our-services-padding-bottom">
+    <div className="relative w-full bg-paper our-services-padding-bottom">
       {/* Intro Section */}
       <section className="flex flex-col justify-end items-center text-center">
         <motion.div

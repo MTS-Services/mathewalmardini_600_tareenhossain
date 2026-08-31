@@ -277,9 +277,9 @@ const Banner = ({ isDesktop = true }) => {
         This will work the same way on all screen sizes
       */}
       <div className="sticky top-0 h-screen overflow-hidden">
-        {/* White overlay — hides background images while video is large */}
+        {/* Wall plaster overlay — hides mosaic while video is large; same texture as site */}
         <motion.div
-          className="absolute inset-0 bg-white z-15 pointer-events-none"
+          className="absolute inset-0 z-15 pointer-events-none bg-wall"
           style={{ opacity: whiteOverlayOpacity }}
         />
 

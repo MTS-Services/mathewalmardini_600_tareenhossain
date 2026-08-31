@@ -44,7 +44,7 @@ function ShopFitouts() {
     },
   ];
   return (
-    <div className="bg-white">
+    <div className="bg-paper">
       {/* Hero Section */}
       <section
         className="relative min-h-dvh md:h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
@@ -84,7 +84,7 @@ function ShopFitouts() {
       </section>
 
       {/* Introduction Section - split layout */}
-      <section className="py-16 md:py-24 lg:py-32 bg-white">
+      <section className="py-16 md:py-24 lg:py-32 bg-paper">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -173,7 +173,7 @@ function ShopFitouts() {
       {/* <ProcessSection /> */}
 
       {/* Video Showcase Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-white">
+      <section className="py-16 md:py-24 lg:py-32 bg-paper">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -193,7 +193,7 @@ function ShopFitouts() {
       </section>
 
       {/* Our Approach Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
+      <section className="py-16 md:py-24 lg:py-32 bg-paper-soft">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -279,7 +279,7 @@ function ShopFitouts() {
       </section>
 
       {/* Detailed Services Section */}
-      {/* <section className="py-16 md:py-24 lg:py-32 bg-white">
+      {/* <section className="py-16 md:py-24 lg:py-32 bg-paper">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -338,7 +338,7 @@ function ShopFitouts() {
       <FeaturesGrid features={features} title="What We Deliver" />
 
       {/* Image Section After What We Deliver */}
-      <section className="py-16 md:py-24 lg:py-32 bg-white">
+      <section className="py-16 md:py-24 lg:py-32 bg-paper">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -358,7 +358,7 @@ function ShopFitouts() {
       </section>
 
       {/* Mid CTA Buttons */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16 bg-paper">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -397,7 +397,7 @@ function ShopFitouts() {
       </section>
 
       {/* Industries We Serve Section */}
-      <section className="py-16 md:py-24 lg:py-32 bg-white">
+      <section className="py-16 md:py-24 lg:py-32 bg-paper">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -447,7 +447,7 @@ function ShopFitouts() {
       </section>
 
       {/* Image Section After Industries We Serve */}
-      {/* <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
+      {/* <section className="py-16 md:py-24 lg:py-32 bg-paper-soft">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -466,7 +466,7 @@ function ShopFitouts() {
       </section> */}
 
       {/* Final CTA Section */}
-      {/* <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
+      {/* <section className="py-16 md:py-24 lg:py-32 bg-paper-soft">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}

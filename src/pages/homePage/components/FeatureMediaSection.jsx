@@ -51,7 +51,7 @@ const FeatureMediaSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-white flex flex-col justify-center items-center overflow-hidden fm-container"
+      className="relative w-full bg-paper flex flex-col justify-center items-center overflow-hidden fm-container"
     >
       {/* Section Header - aligned to the same container as the media */}
       <motion.div

@@ -119,7 +119,7 @@ const BlogPost = () => {
     .slice(0, 3);
 
   return (
-    <div className="bg-white">
+    <div className="bg-paper">
       {/* Banner Image Section */}
       <section className="relative">
         <motion.div
@@ -257,7 +257,7 @@ const BlogPost = () => {
       </article>
 
       {/* Our Services Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-paper-soft">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -340,7 +340,7 @@ const BlogPost = () => {
 
       {/* Related Articles */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-paper-soft">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
