@@ -1,0 +1,1370 @@
+html.bsf-lock,
+html.bsf-lock body {
+  overflow: hidden !important;
+  height: 100dvh;
+  overscroll-behavior: none;
+}
+
+.bsf-spin {
+  animation: bsfSpin 0.6s linear infinite;
+}
+
+@keyframes bsfSpin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+.bsf-address-menu {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(45, 107, 122, 0.45) transparent;
+}
+
+.bsf-address-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bsf-address-menu::-webkit-scrollbar-thumb {
+  background: rgba(45, 107, 122, 0.4);
+  border-radius: 999px;
+}
+
+.bsf-address-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bsf-swal {
+  z-index: 10000 !important;
+  border-radius: 24px !important;
+  padding: 1.75rem 1.5rem 1.5rem !important;
+  box-shadow: 0 30px 80px rgba(30, 29, 36, 0.22) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  font-family: inherit !important;
+}
+
+.swal2-container {
+  z-index: 20000 !important;
+}
+
+.bsf-swal-title {
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  color: #1e1d24 !important;
+}
+
+.bsf-swal-btn {
+  border-radius: 999px !important;
+  padding: 0.7rem 1.75rem !important;
+  font-weight: 700 !important;
+}
+
+@keyframes bsfSwalIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.86) translateY(18px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.03) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes bsfSwalOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+}
+
+@keyframes bsfSwalBackdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.bsf-swal-in {
+  animation: bsfSwalIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.bsf-swal-out {
+  animation: bsfSwalOut 0.22s ease-in both;
+}
+
+.bsf-swal-backdrop-in {
+  animation: bsfSwalBackdropIn 0.3s ease both;
+}
+
+.bsf-swal-backdrop-out {
+  animation: bsfSwalOut 0.22s ease-in both;
+}
+
+/* Inverse-corner tab badges (like SALE / OUT OF STOCK) */
+.bsf-corner {
+  --bsf-corner-r: 10px;
+  --bsf-corner-bg: #1a3f4a;
+  position: absolute;
+  z-index: 15;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 22px;
+  padding: 4px 10px;
+  background: var(--bsf-corner-bg);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.bsf-corner--left {
+  left: 0;
+  border-bottom-right-radius: var(--bsf-corner-r);
+}
+
+.bsf-corner--right {
+  right: 0;
+  border-bottom-left-radius: var(--bsf-corner-r);
+}
+
+/* Concave scoops that match the badge into the card */
+.bsf-corner--left::before,
+.bsf-corner--left::after,
+.bsf-corner--right::before,
+.bsf-corner--right::after {
+  content: "";
+  position: absolute;
+  width: var(--bsf-corner-r);
+  height: var(--bsf-corner-r);
+  background: radial-gradient(
+    circle at var(--bsf-corner-pos),
+    transparent 70%,
+    var(--bsf-corner-bg) 71%
+  );
+}
+
+.bsf-corner--left::before {
+  left: 0;
+  bottom: calc(var(--bsf-corner-r) * -1);
+  --bsf-corner-pos: 100% 100%;
+}
+
+.bsf-corner--left::after {
+  top: 0;
+  right: calc(var(--bsf-corner-r) * -1);
+  --bsf-corner-pos: 100% 100%;
+}
+
+.bsf-corner--right::before {
+  right: 0;
+  bottom: calc(var(--bsf-corner-r) * -1);
+  --bsf-corner-pos: 0% 100%;
+}
+
+.bsf-corner--right::after {
+  top: 0;
+  left: calc(var(--bsf-corner-r) * -1);
+  --bsf-corner-pos: 0% 100%;
+}
+
+@media (min-width: 640px) {
+  .bsf-corner {
+    min-height: 24px;
+    padding: 5px 12px;
+    font-size: 10px;
+    --bsf-corner-r: 12px;
+  }
+}
+
+.bsf-stage--wide {
+  width: 100%;
+}
+
+.bsf-panel--wide {
+  min-height: 0;
+}
+
+/* Gap under logo only — modal (panel) height unchanged */
+.bsf-logo {
+  position: relative;
+  z-index: 30;
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important;
+  pointer-events: none;
+}
+
+.bsf-logo-img {
+  height: clamp(5.25rem, 13dvh, 9.5rem);
+  width: auto;
+  pointer-events: none;
+}
+
+.bsf-cat-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 0.875rem;
+}
+
+/* Laptop / desktop — clear space between category cards */
+@media (min-width: 768px) {
+  .bsf-cat-grid {
+    gap: 1rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bsf-cat-grid {
+    gap: 1.15rem !important;
+  }
+}
+
+.bsf-cat-card-title {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Mobile — cards stretch to fill panel (no empty gap) */
+@media (max-width: 639px) {
+  .bsf-cat-step {
+    padding: 0.45rem 0.5rem !important;
+  }
+
+  .bsf-cat-heading {
+    margin-bottom: 0.4rem !important;
+  }
+
+  .bsf-cat-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.4rem !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    align-content: stretch !important;
+  }
+
+  .bsf-cat-card {
+    aspect-ratio: auto !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    border-radius: 0.45rem !important;
+  }
+
+  .bsf-cat-card-title {
+    font-size: 0.72rem !important;
+    line-height: 1.15 !important;
+    padding-inline: 0.2rem !important;
+  }
+
+  .bsf-cat-footer {
+    margin-top: 0.45rem !important;
+  }
+
+  .bsf-cat-card .bsf-corner {
+    min-height: 18px !important;
+    padding: 3px 7px !important;
+    font-size: 8px !important;
+    --bsf-corner-r: 8px;
+  }
+}
+
+/* Invisible scrollbar — touch/wheel still works, no grey bar */
+.bsf-touch-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bsf-touch-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Question options — never overflow card on mobile */
+.bsf-q-choice,
+.bsf-q-choice-grid {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.bsf-q-opt {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Mobile question step — match reference: 2-col options, fit one screen */
+@media (max-width: 640px) {
+  .bsf-stage--wide:not(.bsf-stage--review) {
+    height: min(92dvh, 100%) !important;
+    max-height: 100% !important;
+  }
+
+  .bsf-panel--wide {
+    border-radius: 28px !important;
+  }
+
+  .bsf-q-step {
+    padding: 0.85rem 0.85rem 0.75rem !important;
+  }
+
+  .bsf-q-heading {
+    margin-bottom: 0.65rem !important;
+  }
+
+  .bsf-q-heading p {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .bsf-q-heading h2 {
+    font-size: 1.35rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .bsf-q-label {
+    margin-bottom: 0.85rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  .bsf-q-body {
+    overflow: hidden !important;
+    justify-content: center !important;
+  }
+
+  .bsf-q-choice-grid,
+  .bsf-q-single-grid,
+  .bsf-q-multi-grid {
+    gap: 0.55rem !important;
+  }
+
+  .bsf-q-opt {
+    padding-left: 0.55rem !important;
+    padding-right: 0.55rem !important;
+    font-size: 0.8125rem !important;
+    line-height: 1.25 !important;
+    border-radius: 0.85rem !important;
+  }
+
+  .bsf-q-single-grid .bsf-q-opt,
+  .bsf-q-multi-grid .bsf-q-opt {
+    min-height: 3.15rem !important;
+    height: auto !important;
+    padding-top: 0.55rem !important;
+    padding-bottom: 0.55rem !important;
+  }
+
+  .bsf-q-footer {
+    margin-top: 0.85rem !important;
+  }
+
+  .bsf-q-footer .bsf-primary-btn,
+  .bsf-q-footer button:last-child {
+    min-height: 2.85rem !important;
+    padding-left: 1.1rem !important;
+    padding-right: 1.1rem !important;
+    font-size: 0.9rem !important;
+    border-radius: 0.85rem !important;
+  }
+}
+
+/* Short phone — slightly tighter, still no scroll */
+@media (max-width: 640px) and (max-height: 680px) {
+  .bsf-q-step {
+    padding: 0.65rem 0.75rem 0.55rem !important;
+  }
+
+  .bsf-q-heading {
+    margin-bottom: 0.45rem !important;
+  }
+
+  .bsf-q-heading h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .bsf-q-label {
+    margin-bottom: 0.55rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .bsf-q-single-grid .bsf-q-opt,
+  .bsf-q-multi-grid .bsf-q-opt {
+    min-height: 2.65rem !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .bsf-q-choice-grid,
+  .bsf-q-single-grid,
+  .bsf-q-multi-grid {
+    gap: 0.4rem !important;
+  }
+
+  .bsf-q-footer {
+    margin-top: 0.55rem !important;
+  }
+}
+
+/* Section detail modal — same design; compact rows on short laptop, keep photo usable */
+@media (max-height: 820px) {
+  .bsf-detail-modal {
+    max-height: min(94dvh, 760px) !important;
+  }
+
+  .bsf-detail-head {
+    padding: 0.85rem 1.25rem !important;
+  }
+
+  .bsf-detail-head h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .bsf-detail-body {
+    padding: 0.85rem 1.25rem !important;
+  }
+
+  .bsf-detail-row {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .bsf-detail-photo {
+    max-height: min(220px, 28vh) !important;
+  }
+
+  .bsf-detail-foot {
+    padding: 0.75rem 1.15rem !important;
+  }
+
+  .bsf-detail-foot button {
+    min-height: 2.75rem !important;
+  }
+}
+
+@media (max-height: 700px) {
+  .bsf-detail-photo {
+    max-height: min(160px, 22vh) !important;
+  }
+
+  .bsf-detail-row:not(.bsf-detail-row--photo) {
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+  }
+}
+
+/* Final review — PC keeps full size; laptop only slightly compact */
+.bsf-review-step {
+  gap: 0;
+}
+
+.bsf-review-grid {
+  min-height: 0;
+}
+
+.bsf-review-project {
+  height: auto;
+}
+
+.bsf-review-sections-grid {
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.bsf-review-section-card {
+  max-width: 100%;
+}
+
+/* Mobile — compact review to fit all sections (up to 12 cards) */
+@media (max-width: 767px) {
+  .bsf-stage-wrap {
+    padding: 0.35rem !important;
+  }
+
+  .bsf-stage--wide:not(.bsf-stage--review) {
+    height: min(96dvh, 100%) !important;
+    max-height: 100% !important;
+  }
+
+  .bsf-stage--review {
+    height: auto !important;
+    max-height: min(97dvh, 100%) !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(4.5rem, 11dvh, 6rem) !important;
+  }
+
+  .bsf-logo {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .bsf-review-step {
+    padding: 0.4rem 0.5rem !important;
+  }
+
+  .bsf-review-heading {
+    margin-bottom: 0.3rem !important;
+  }
+
+  .bsf-review-heading h2 {
+    font-size: 0.9rem !important;
+  }
+
+  .bsf-review-grid {
+    gap: 0.4rem !important;
+  }
+
+  /* Project card — readable on mobile */
+  .bsf-review-project {
+    border-radius: 0.65rem !important;
+  }
+
+  .bsf-review-project-head {
+    padding: 0.4rem 0.65rem !important;
+  }
+
+  .bsf-review-project-head p:last-child {
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+  }
+
+  .bsf-review-edit-btn {
+    height: 2rem !important;
+    min-height: 2rem !important;
+    padding: 0 0.85rem !important;
+    border-radius: 999px !important;
+    font-size: 0.7rem !important;
+    line-height: 1 !important;
+    background: #2d6b7a !important;
+  }
+
+  .bsf-review-project-body {
+    gap: 0.35rem 0.5rem !important;
+    padding: 0.4rem 0.65rem !important;
+  }
+
+  .bsf-review-info-label {
+    font-size: 8px !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  .bsf-review-info-value {
+    font-size: 0.68rem !important;
+    line-height: 1.25 !important;
+    margin-top: 0 !important;
+  }
+
+  /* Sections — 4-column grid, smaller cards */
+  .bsf-review-sections-wrap {
+    max-height: none !important;
+  }
+
+  .bsf-review-sections-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0.35rem !important;
+  }
+
+  .bsf-review-section-card {
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 0.4rem !important;
+  }
+
+  .bsf-review-section-card .bsf-review-section-title {
+    font-size: 0.7rem !important;
+  }
+
+  /* Footer */
+  .bsf-review-footer {
+    margin-top: 0.4rem !important;
+    padding-top: 0.3rem !important;
+  }
+
+  .bsf-review-footer button {
+    min-height: 2.35rem !important;
+    font-size: 0.75rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  /* Corner badges — review cards only (category grid keeps larger DONE) */
+  .bsf-review-section-card .bsf-corner {
+    min-height: 14px;
+    padding: 2px 5px;
+    font-size: 6px;
+    --bsf-corner-r: 6px;
+  }
+}
+
+/* Laptop only — smaller modal (show bg), section gaps, space under review content */
+@media (min-width: 768px) and (max-height: 900px) {
+  .bsf-stage-wrap {
+    padding-top: 1rem !important;
+    padding-bottom: 1.4rem !important;
+  }
+
+  .bsf-stage--wide:not(.bsf-stage--review) {
+    height: min(90dvh, 880px) !important;
+    max-height: calc(100dvh - 2.75rem) !important;
+  }
+
+  .bsf-logo {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(4.75rem, 11dvh, 7rem) !important;
+  }
+
+  .bsf-review-step {
+    padding: 0.85rem 1.15rem 1.25rem !important;
+  }
+
+  .bsf-review-heading {
+    margin-bottom: 0.65rem !important;
+  }
+
+  .bsf-review-heading h2 {
+    font-size: 1.4rem !important;
+  }
+
+  .bsf-review-grid {
+    gap: 0.85rem !important;
+  }
+
+  .bsf-review-project {
+    align-self: start !important;
+  }
+
+  .bsf-review-sections-grid {
+    gap: 0.65rem !important;
+  }
+
+  .bsf-review-section-card {
+    max-width: none !important;
+  }
+
+  .bsf-review-section-card .bsf-review-section-title {
+    font-size: 0.7rem !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Gap under "Is everything correct?" content before Back / Submit */
+  .bsf-review-footer {
+    margin-top: 1.25rem !important;
+    padding-top: 0.35rem !important;
+  }
+}
+
+/* Tablet (768–1023) — balanced project width, readable text, smaller modal */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bsf-stage-wrap {
+    padding: 0.65rem 0.85rem !important;
+  }
+
+  .bsf-stage--review {
+    height: auto !important;
+    max-height: calc(100dvh - 2.75rem) !important;
+    max-width: min(42rem, 100%) !important;
+  }
+
+  .bsf-panel--review {
+    max-width: min(40rem, 100%) !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(4.5rem, 10dvh, 6rem) !important;
+  }
+
+  .bsf-review-step {
+    padding: 0.6rem 0.75rem 0.7rem !important;
+  }
+
+  .bsf-review-heading {
+    margin-bottom: 0.45rem !important;
+  }
+
+  .bsf-review-heading p {
+    font-size: 0.75rem !important;
+  }
+
+  .bsf-review-heading h2 {
+    font-size: 1.15rem !important;
+  }
+
+  .bsf-review-grid {
+    grid-template-columns: minmax(0, 14.5rem) minmax(0, 1fr) !important;
+    gap: 0.75rem !important;
+    overflow-x: hidden !important;
+  }
+
+  .bsf-review-project {
+    align-self: start !important;
+  }
+
+  .bsf-review-project-head {
+    padding: 0.55rem 0.7rem !important;
+  }
+
+  .bsf-review-project-head p:last-child {
+    font-size: 0.9rem !important;
+  }
+
+  .bsf-review-project-body {
+    gap: 0.45rem !important;
+    padding: 0.55rem 0.7rem !important;
+  }
+
+  .bsf-review-info-label {
+    font-size: 0.65rem !important;
+  }
+
+  .bsf-review-info-value {
+    font-size: 0.8rem !important;
+    margin-top: 0.1rem !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-break: break-word !important;
+  }
+
+  .bsf-review-project-foot {
+    padding: 0.5rem 0.7rem !important;
+  }
+
+  .bsf-review-project-foot button {
+    min-height: 2.25rem !important;
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0.65rem !important;
+  }
+
+  .bsf-review-sections-wrap {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  .bsf-review-sections-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.45rem !important;
+  }
+
+  .bsf-review-section-card {
+    max-width: none !important;
+    aspect-ratio: 5 / 4 !important;
+    border-radius: 0.6rem !important;
+  }
+
+  .bsf-review-section-card .bsf-review-section-title {
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .bsf-review-section-card .bsf-corner {
+    min-height: 20px !important;
+    padding: 4px 8px !important;
+    font-size: 9px !important;
+    --bsf-corner-r: 8px;
+  }
+
+  .bsf-review-footer {
+    margin-top: 0.65rem !important;
+    padding-top: 0.25rem !important;
+  }
+}
+
+/* Laptop / short screens — gentle project text shrink (not phone, not tablet) */
+@media (min-width: 1024px) and (max-height: 900px) {
+  .bsf-review-project-head {
+    padding: 0.75rem 1rem !important;
+  }
+
+  .bsf-review-project-head p:last-child {
+    font-size: 1.05rem !important;
+  }
+
+  .bsf-review-project-body {
+    gap: 0.7rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  .bsf-review-info-label {
+    font-size: 0.7rem !important;
+  }
+
+  .bsf-review-info-value {
+    font-size: 0.9rem !important;
+    margin-top: 0.2rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .bsf-review-project-foot {
+    padding: 0.75rem 1rem !important;
+  }
+
+  .bsf-review-project-foot button {
+    min-height: 2.5rem !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (max-height: 760px) {
+  .bsf-review-heading h2 {
+    font-size: 1.35rem !important;
+  }
+
+  .bsf-review-project-body {
+    gap: 0.55rem !important;
+    padding: 0.65rem 0.9rem !important;
+  }
+
+  .bsf-review-info-value {
+    font-size: 0.85rem !important;
+  }
+}
+
+@media (min-height: 901px) {
+  .bsf-stage--wide:not(.bsf-stage--review) {
+    height: min(92dvh, 900px) !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Outer modal gap (space under/around panel) — keep on laptop like PC.
+   Shrink content when height is tight so the gap never disappears.
+------------------------------------------------------------------- */
+.bsf-stage-wrap {
+  box-sizing: border-box;
+}
+
+.bsf-stage--compact {
+  width: 100%;
+}
+
+/* Short laptop: keep same design, smaller modal, preserve bottom gap */
+@media (max-height: 820px) {
+  .bsf-logo {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(4.75rem, 11.5dvh, 7.5rem) !important;
+  }
+
+  .bsf-type-step {
+    padding: 1rem 1.15rem !important;
+  }
+
+  .bsf-type-heading {
+    margin-bottom: 0.9rem !important;
+  }
+
+  .bsf-type-grid {
+    width: min(68%, 340px) !important;
+    max-width: 340px !important;
+    gap: 0.7rem !important;
+  }
+
+  .bsf-type-grid--other {
+    width: min(50%, 240px) !important;
+    max-width: 240px !important;
+  }
+
+  .bsf-type-footer {
+    margin-top: 0.9rem !important;
+  }
+
+  .bsf-type-other {
+    margin-top: 0.85rem !important;
+  }
+}
+
+@media (max-height: 720px) {
+  .bsf-shell {
+    padding: 0.75rem !important;
+  }
+
+  .bsf-hero {
+    border-radius: 22px !important;
+  }
+
+  .bsf-stage-wrap {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  .bsf-logo {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(4.75rem, 11dvh, 6.5rem) !important;
+  }
+
+  .bsf-panel--wide {
+    border-radius: 22px !important;
+  }
+
+  .bsf-type-step {
+    padding: 0.8rem 1rem !important;
+  }
+
+  .bsf-type-heading {
+    margin-bottom: 0.65rem !important;
+  }
+
+  .bsf-type-heading h2 {
+    font-size: 1.15rem !important;
+  }
+
+  .bsf-type-grid {
+    width: min(62%, 280px) !important;
+    max-width: 280px !important;
+    gap: 0.55rem !important;
+  }
+
+  .bsf-type-grid--other {
+    width: min(48%, 200px) !important;
+    max-width: 200px !important;
+  }
+
+  .bsf-type-footer {
+    margin-top: 0.65rem !important;
+  }
+
+  .bsf-cat-step {
+    padding: 0.7rem !important;
+  }
+
+  .bsf-cat-heading {
+    margin-bottom: 0.45rem !important;
+  }
+
+  .bsf-cat-footer {
+    margin-top: 0.45rem !important;
+  }
+
+  .bsf-corner {
+    min-height: 18px;
+    padding: 3px 7px;
+    font-size: 8px;
+    --bsf-corner-r: 8px;
+  }
+}
+
+/* Final Review — hug content on laptop so bg shows; gap under content */
+@media (min-width: 768px) {
+  .bsf-stage--review {
+    height: auto !important;
+    max-height: calc(100dvh - 3.5rem) !important;
+  }
+
+  .bsf-panel--review {
+    flex: none !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .bsf-panel--review > .bsf-panel-body {
+    flex: none !important;
+  }
+
+  .bsf-review-step {
+    height: auto !important;
+    padding-bottom: 1.35rem !important;
+  }
+
+  .bsf-review-grid {
+    flex: none !important;
+  }
+
+  .bsf-review-sections {
+    height: auto !important;
+  }
+
+  .bsf-review-footer {
+    margin-top: 1.35rem !important;
+    padding-top: 0.35rem !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 900px) {
+  .bsf-stage--review {
+    max-height: calc(100dvh - 3rem) !important;
+  }
+
+  .bsf-logo {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(5rem, 11dvh, 7rem) !important;
+  }
+
+  .bsf-review-step {
+    padding: 0.9rem 1.15rem 1.25rem !important;
+  }
+
+  .bsf-review-heading {
+    margin-bottom: 0.7rem !important;
+  }
+
+  .bsf-review-heading h2 {
+    font-size: 1.4rem !important;
+  }
+
+  .bsf-review-section-card {
+    max-width: 155px !important;
+  }
+
+  .bsf-review-sections-grid {
+    gap: 1rem !important;
+  }
+}
+
+/* Laptop short height — keep bg gap (wins over max-height:720 padding) */
+@media (min-width: 768px) and (max-height: 900px) {
+  .bsf-stage-wrap {
+    padding-top: 1rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .bsf-stage--wide:not(.bsf-stage--review) {
+    height: min(90dvh, 880px) !important;
+    max-height: calc(100dvh - 2.75rem) !important;
+  }
+
+  .bsf-stage--review {
+    height: auto !important;
+    max-height: calc(100dvh - 3.25rem) !important;
+  }
+
+  .bsf-logo {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(4.75rem, 11dvh, 6.5rem) !important;
+  }
+}
+
+/* Tablet / narrow: keep same layout, smaller modal footprint (~660) */
+@media (max-width: 900px) {
+  .bsf-stage--wide {
+    max-width: min(40rem, 100%) !important;
+  }
+
+  .bsf-panel--wide {
+    max-width: min(40rem, 100%) !important;
+  }
+
+  .bsf-logo {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(4.75rem, 11dvh, 6.75rem) !important;
+  }
+
+  .bsf-type-grid {
+    width: min(70%, 320px) !important;
+    max-width: 320px !important;
+  }
+}
+
+@media (max-width: 900px) and (min-height: 901px) {
+  .bsf-stage--wide:not(.bsf-stage--review) {
+    height: min(86dvh, 680px) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .bsf-shell {
+    padding: 0.55rem !important;
+  }
+
+  .bsf-stage-wrap {
+    padding: 0.55rem !important;
+  }
+
+  .bsf-stage--wide:not(.bsf-stage--review) {
+    max-width: min(100%, 660px) !important;
+    height: min(88dvh, 580px) !important;
+    max-height: 100% !important;
+  }
+
+  .bsf-stage--review {
+    max-width: min(100%, 660px) !important;
+    height: auto !important;
+    max-height: min(92dvh, 100%) !important;
+  }
+
+  .bsf-panel--wide {
+    max-width: min(100%, 660px) !important;
+    border-radius: 20px !important;
+  }
+
+  .bsf-type-step {
+    padding: 0.75rem !important;
+  }
+
+  .bsf-type-grid {
+    width: min(72%, 260px) !important;
+    max-width: 260px !important;
+    gap: 0.5rem !important;
+  }
+
+  .bsf-cat-step {
+    padding: 0.45rem 0.5rem !important;
+  }
+
+  .bsf-cat-card-title {
+    font-size: 0.72rem !important;
+    padding-inline: 0.2rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .bsf-cat-grid {
+    gap: 0.4rem !important;
+    grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+    height: 100% !important;
+  }
+
+  .bsf-cat-card {
+    aspect-ratio: auto !important;
+    height: 100% !important;
+    border-radius: 0.45rem !important;
+  }
+
+  .bsf-cat-card .bsf-corner {
+    min-height: 18px !important;
+    padding: 3px 7px !important;
+    font-size: 8px !important;
+    --bsf-corner-r: 8px;
+  }
+
+  .bsf-corner {
+    min-height: 16px;
+    padding: 2px 6px;
+    font-size: 7px;
+    --bsf-corner-r: 7px;
+  }
+}
+
+/* Phone only — smaller nav buttons (do not touch laptop/desktop) */
+@media (max-width: 640px) {
+  .bsf-cat-grid {
+    gap: 0.4rem !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+    height: 100% !important;
+    align-content: stretch !important;
+  }
+
+  .bsf-cat-card {
+    aspect-ratio: auto !important;
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+
+  .bsf-cat-card-title {
+    font-size: 0.72rem !important;
+  }
+
+  .bsf-cat-card .bsf-corner {
+    min-height: 18px !important;
+    padding: 3px 7px !important;
+    font-size: 8px !important;
+    gap: 3px !important;
+    --bsf-corner-r: 8px;
+  }
+
+  .bsf-cat-footer button,
+  .bsf-type-footer button {
+    min-height: 2.75rem !important;
+    padding: 0.65rem 0.9rem !important;
+    font-size: 0.8125rem !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Very small phone (under 380px) — 3-col sections, still readable */
+@media (max-width: 380px) {
+  .bsf-review-sections-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.3rem !important;
+  }
+
+  .bsf-review-section-card {
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .bsf-review-info-value {
+    font-size: 0.62rem !important;
+  }
+
+  .bsf-review-footer button {
+    min-height: 2.15rem !important;
+    font-size: 0.7rem !important;
+    padding: 0.45rem 0.6rem !important;
+  }
+}
+
+/* Combined tight viewport (e.g. 660×600): keep outer gap */
+@media (max-width: 720px) and (max-height: 640px) {
+  .bsf-stage--wide:not(.bsf-stage--review) {
+    height: min(86dvh, 520px) !important;
+  }
+
+  .bsf-stage--review {
+    height: auto !important;
+    max-height: min(90dvh, 100%) !important;
+  }
+
+  .bsf-logo {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(4.25rem, 10dvh, 5.5rem) !important;
+  }
+
+  .bsf-cat-heading p {
+    font-size: 0.8rem !important;
+  }
+
+  .bsf-type-grid {
+    width: min(68%, 220px) !important;
+    max-width: 220px !important;
+  }
+}
+
+/* Short phone (under 700px height) — sections scroll if needed */
+@media (max-width: 767px) and (max-height: 700px) {
+  .bsf-review-sections-wrap {
+    max-height: min(38vh, 200px) !important;
+    overflow-y: auto !important;
+  }
+
+  .bsf-logo {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(4.25rem, 10dvh, 5.5rem) !important;
+  }
+
+  .bsf-review-heading h2 {
+    font-size: 0.8rem !important;
+  }
+
+  .bsf-review-project-head {
+    padding: 0.35rem 0.55rem !important;
+  }
+
+  .bsf-review-project-body {
+    padding: 0.3rem 0.55rem !important;
+    gap: 0.25rem 0.4rem !important;
+  }
+}
+
+/* Final tablet review override — wins cascade */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bsf-stage-wrap {
+    padding: 0.6rem 0.9rem !important;
+  }
+
+  .bsf-stage--review {
+    height: auto !important;
+    max-height: calc(100dvh - 2.75rem) !important;
+    max-width: min(44rem, 94%) !important;
+  }
+
+  .bsf-panel--review {
+    max-width: 100% !important;
+  }
+
+  .bsf-logo {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .bsf-logo-img {
+    height: clamp(4.5rem, 10dvh, 6rem) !important;
+  }
+
+  .bsf-review-grid {
+    grid-template-columns: minmax(0, 14.5rem) minmax(0, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  .bsf-review-project-head p:last-child {
+    font-size: 0.9rem !important;
+  }
+
+  .bsf-review-info-label {
+    font-size: 0.65rem !important;
+  }
+
+  .bsf-review-info-value {
+    font-size: 0.8rem !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-break: break-word !important;
+    line-height: 1.25 !important;
+  }
+
+  .bsf-review-section-card {
+    max-width: none !important;
+    aspect-ratio: 5 / 4 !important;
+  }
+
+  .bsf-review-section-card .bsf-review-section-title {
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .bsf-review-section-card .bsf-corner {
+    min-height: 20px !important;
+    padding: 4px 8px !important;
+    font-size: 9px !important;
+    --bsf-corner-r: 8px;
+  }
+
+  .bsf-review-sections-wrap {
+    overflow: visible !important;
+  }
+}

@@ -32,6 +32,9 @@ const LaundryPortfolio = lazy(
   () => import("../pages/laundry_portfolio/LaundryPortfolio"),
 );
 const ThankYou = lazy(() => import("../pages/thank_you/ThankYou"));
+const BathroomSelectionForm = lazy(
+  () => import("../pages/bathroom_selection/BathroomSelectionForm"),
+);
 
 const AppRouter = () => {
   return (
@@ -39,6 +42,7 @@ const AppRouter = () => {
       <Routes>
         {/* Thank You page without header/footer */}
         <Route path="/thank-you" element={<ThankYou />} />
+        <Route path="/bathroom-selection" element={<BathroomSelectionForm />} />
 
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
