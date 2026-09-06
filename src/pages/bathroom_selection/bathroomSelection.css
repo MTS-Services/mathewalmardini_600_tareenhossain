@@ -191,6 +191,34 @@ html.bsf-lock body {
   }
 }
 
+/* Category grid DONE badge — large and clear */
+.bsf-cat-card .bsf-corner {
+  min-height: 28px;
+  padding: 6px 14px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  gap: 6px;
+  --bsf-corner-r: 12px;
+}
+
+@media (min-width: 640px) {
+  .bsf-cat-card .bsf-corner {
+    min-height: 34px;
+    padding: 8px 18px;
+    font-size: 14px;
+    --bsf-corner-r: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bsf-cat-card .bsf-corner {
+    min-height: 40px;
+    padding: 10px 22px;
+    font-size: 16px;
+    --bsf-corner-r: 16px;
+  }
+}
+
 .bsf-stage--wide {
   width: 100%;
 }
@@ -277,10 +305,11 @@ html.bsf-lock body {
   }
 
   .bsf-cat-card .bsf-corner {
-    min-height: 18px !important;
-    padding: 3px 7px !important;
-    font-size: 8px !important;
-    --bsf-corner-r: 8px;
+    min-height: 24px !important;
+    padding: 5px 11px !important;
+    font-size: 11px !important;
+    gap: 4px !important;
+    --bsf-corner-r: 10px;
   }
 }
 
@@ -1167,10 +1196,10 @@ html.bsf-lock body {
   }
 
   .bsf-cat-card .bsf-corner {
-    min-height: 18px !important;
-    padding: 3px 7px !important;
-    font-size: 8px !important;
-    --bsf-corner-r: 8px;
+    min-height: 24px !important;
+    padding: 5px 11px !important;
+    font-size: 11px !important;
+    --bsf-corner-r: 10px;
   }
 
   .bsf-corner {
@@ -1202,11 +1231,11 @@ html.bsf-lock body {
   }
 
   .bsf-cat-card .bsf-corner {
-    min-height: 18px !important;
-    padding: 3px 7px !important;
-    font-size: 8px !important;
-    gap: 3px !important;
-    --bsf-corner-r: 8px;
+    min-height: 24px !important;
+    padding: 5px 11px !important;
+    font-size: 11px !important;
+    gap: 4px !important;
+    --bsf-corner-r: 10px;
   }
 
   .bsf-cat-footer button,

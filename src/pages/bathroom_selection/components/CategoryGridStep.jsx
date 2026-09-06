@@ -105,14 +105,17 @@ export default function CategoryGridStep({
                 src={cat.image}
                 alt={cat.title}
                 draggable={false}
-                className="pointer-events-none absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-110 ${
+                  done ? "brightness-[0.55]" : "brightness-100"
+                }`}
               />
+              {/* Light gray layer when not done; dark shade only when DONE */}
               <span
                 aria-hidden
                 className={`absolute inset-0 transition duration-300 ${
                   done
-                    ? "bg-[#0f1c22]/75 group-hover:bg-[#0f1c22]/65"
-                    : "bg-[#0f1c22]/55 group-hover:bg-[#0f1c22]/40"
+                    ? "bg-[#0f1c22]/55 group-hover:bg-[#0f1c22]/45"
+                    : "bg-black/30 group-hover:bg-black/20"
                 }`}
               />
 
@@ -130,7 +133,7 @@ export default function CategoryGridStep({
                   </span>
                   <span className="bsf-corner bsf-corner--right z-20">
                     <Check
-                      className="h-2.5 w-2.5 sm:h-3 sm:w-3 lg:h-3.5 lg:w-3.5"
+                      className="bsf-cat-done-check h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6"
                       strokeWidth={3}
                     />
                   </span>
