@@ -13,7 +13,7 @@ import BathroomTypeStep from "./components/BathroomTypeStep";
 import CategoryGridStep from "./components/CategoryGridStep";
 import CategoryQuestionsStep from "./components/CategoryQuestionsStep";
 import ReviewStep from "./components/ReviewStep";
-import { showFormError } from "./showFormAlert";
+import { showFormError, showFormSuccess } from "./showFormAlert";
 
 const LOGO_URL = "https://dc3v08iv2c2ou.cloudfront.net/logo.png";
 const DRAFT_KEY = "bsf-form-draft-v1";
@@ -194,7 +194,7 @@ export default function BathroomSelectionForm() {
   }, [step]);
 
   const goTo = (next) => {
-    if (!next || next === step || transitioningRef.current) return;
+    if (!next || next === step) return;
 
     const fromIdx = STEP_ORDER.indexOf(step);
     const toIdx = STEP_ORDER.indexOf(next);
@@ -202,44 +202,58 @@ export default function BathroomSelectionForm() {
     navDirRef.current = dir;
 
     const el = contentRef.current;
+    const wasBusy = transitioningRef.current;
+    if (el) gsap.killTweensOf(el);
+
     if (!el) {
       setStep(next);
       return;
     }
 
     transitioningRef.current = true;
-    gsap.killTweensOf(el);
+    const isBack = dir < 0;
+    const outDur = isBack ? 0.4 : 0.32;
+    const inDur = isBack ? 0.7 : 0.5;
+
+    const playIn = () => {
+      setStep(next);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const nextEl = contentRef.current;
+          if (!nextEl) {
+            transitioningRef.current = false;
+            return;
+          }
+          gsap.fromTo(
+            nextEl,
+            { autoAlpha: 0, x: (isBack ? -28 : 28) },
+            {
+              autoAlpha: 1,
+              x: 0,
+              duration: inDur,
+              ease: "power2.out",
+              clearProps: "transform",
+              onComplete: () => {
+                transitioningRef.current = false;
+              },
+            },
+          );
+        });
+      });
+    };
+
+    if (wasBusy) {
+      gsap.set(el, { autoAlpha: 1, x: 0 });
+      playIn();
+      return;
+    }
+
     gsap.to(el, {
       autoAlpha: 0,
-      x: -20 * dir,
-      duration: 0.28,
-      ease: "power2.in",
-      onComplete: () => {
-        setStep(next);
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            const nextEl = contentRef.current;
-            if (!nextEl) {
-              transitioningRef.current = false;
-              return;
-            }
-            gsap.fromTo(
-              nextEl,
-              { autoAlpha: 0, x: 24 * dir },
-              {
-                autoAlpha: 1,
-                x: 0,
-                duration: 0.42,
-                ease: "power3.out",
-                clearProps: "transform",
-                onComplete: () => {
-                  transitioningRef.current = false;
-                },
-              },
-            );
-          });
-        });
-      },
+      x: -24 * dir,
+      duration: outDur,
+      ease: "power1.in",
+      onComplete: playIn,
     });
   };
 
@@ -457,7 +471,11 @@ export default function BathroomSelectionForm() {
       });
 
       clearDraft();
-      navigate("/thank-you");
+      setSubmitState({ loading: false, error: null });
+      await showFormSuccess(
+        "Your bathroom selection has been submitted. We'll be in touch soon.",
+      );
+      navigate("/");
     } catch (error) {
       setSubmitState({ loading: false, error: null });
       showFormError(error.message || "Submission failed. Please try again.");
@@ -678,6 +696,10 @@ export default function BathroomSelectionForm() {
                   completedIds={completedIds}
                   onSelect={(id) => {
                     setActiveCategoryId(id);
+                    setCategoryAnswers((prev) => ({
+                      ...prev,
+                      [id]: { ...(prev[id] || {}), required: "yes" },
+                    }));
                     goTo("category");
                   }}
                   onContinue={() => goTo("review")}
@@ -713,6 +735,10 @@ export default function BathroomSelectionForm() {
                   onEditCategory={(id) => {
                     setReturnToReview(true);
                     setActiveCategoryId(id);
+                    setCategoryAnswers((prev) => ({
+                      ...prev,
+                      [id]: { ...(prev[id] || {}), required: "yes" },
+                    }));
                     goTo("category");
                   }}
                   onEditProject={() => {

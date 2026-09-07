@@ -10,14 +10,14 @@ import {
   TITLE_CLASS,
 } from "../formStyles";
 
+const CDN = "https://dc3v08iv2c2ou.cloudfront.net/bathroom_gallery";
+
+/** Distinct photos matched to each bathroom-type keyword */
 const TYPE_IMAGES = {
-  main: "https://dc3v08iv2c2ou.cloudfront.net/bathroom_renovation/Bathroom_1.jpg",
-  ensuite:
-    "https://dc3v08iv2c2ou.cloudfront.net/bathroom_gallery/Bathroom+2.jpg",
-  powder:
-    "https://dc3v08iv2c2ou.cloudfront.net/bathroom_gallery/Bathroom+3.jpg",
-  other:
-    "https://dc3v08iv2c2ou.cloudfront.net/bathroom_gallery/Bathroom+4.jpg",
+  main: `${CDN}/Bath.jpg`, // full main bath with freestanding tub
+  ensuite: `${CDN}/Taylors+Hill+Bathroom+2.jpg`, // compact shower ensuite
+  powder: `${CDN}/IMG_1517.jpg`, // small vanity powder-room look
+  other: `${CDN}/Bathroom+Renovation.jpg`, // different styled vanity
 };
 
 export default function BathroomTypeStep({

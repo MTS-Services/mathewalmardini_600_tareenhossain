@@ -595,6 +595,23 @@ export default function QuestionRenderer({
     );
   }
 
+  if (question.type === "noteAck") {
+    return (
+      <div className="mx-auto flex w-full max-w-lg flex-col items-center gap-6 px-1 text-center sm:gap-8">
+        <p className="text-[0.95rem] font-medium leading-relaxed text-[#1e1d24] sm:text-lg">
+          {question.note}
+        </p>
+        <button
+          type="button"
+          onClick={() => onChange("noted")}
+          className={`${OPTION_BTN} ${OPTION_ACTIVE} min-h-[3.25rem] min-w-[10rem] px-10 sm:min-h-[3.75rem]`}
+        >
+          {question.confirmLabel || "Noted"}
+        </button>
+      </div>
+    );
+  }
+
   if (question.type === "single") {
     const hasCustom =
       question.options?.includes("Custom") && question.customField;

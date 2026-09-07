@@ -409,7 +409,9 @@ function CategoryDetailModal({ category, answers, onClose, onEdit }) {
     };
   }, [onClose]);
 
-  const visible = getVisibleQuestions(category, answers);
+  const visible = getVisibleQuestions(category, answers).filter(
+    (q) => !q.hideInReview,
+  );
   const answered = visible.filter((q) => {
     const v = answers[q.id];
     if (Array.isArray(v)) return v.length > 0;
