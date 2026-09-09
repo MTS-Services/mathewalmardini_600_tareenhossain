@@ -14,10 +14,10 @@ const CDN = "https://dc3v08iv2c2ou.cloudfront.net/bathroom_gallery";
 
 /** Distinct photos matched to each bathroom-type keyword */
 const TYPE_IMAGES = {
-  main: `${CDN}/Bath.jpg`, // full main bath with freestanding tub
-  ensuite: `${CDN}/Taylors+Hill+Bathroom+2.jpg`, // compact shower ensuite
-  powder: `${CDN}/IMG_1517.jpg`, // small vanity powder-room look
-  other: `${CDN}/Bathroom+Renovation.jpg`, // different styled vanity
+  main: `${CDN}/Bath.jpg`,
+  ensuite: `${CDN}/Taylors+Hill+Bathroom+2.jpg`,
+  powder: `${CDN}/IMG_1517.jpg`,
+  other: `${CDN}/Bathroom+Renovation.jpg`,
 };
 
 export default function BathroomTypeStep({
@@ -31,6 +31,7 @@ export default function BathroomTypeStep({
 }) {
   const gridRef = useRef(null);
   const otherFieldRef = useRef(null);
+  const autoContinueRef = useRef(null);
   const isOther = bathroomType === "other";
 
   useEffect(() => {
@@ -61,15 +62,44 @@ export default function BathroomTypeStep({
     );
   }, [isOther]);
 
+  useEffect(() => {
+    return () => {
+      if (autoContinueRef.current) clearTimeout(autoContinueRef.current);
+    };
+  }, []);
+
   const canContinue =
     bathroomType &&
     (bathroomType !== "other" || Boolean(bathroomTypeOther.trim()));
+
+  const handleSelectType = (value) => {
+    if (autoContinueRef.current) clearTimeout(autoContinueRef.current);
+    onChangeType(value);
+
+    // Auto-advance for Main / Ensuite / Powder — Other needs details + Continue
+    if (value !== "other") {
+      autoContinueRef.current = setTimeout(() => {
+        onContinue?.(value);
+      }, 280);
+    }
+  };
 
   return (
     <div className="bsf-type-step flex flex-col p-4 sm:p-5 lg:p-6">
       <div className="bsf-type-heading mb-4 text-center sm:mb-5 lg:mb-6">
         <p className={EYEBROW_CLASS}>Next step</p>
         <h2 className={TITLE_CLASS}>Which bathroom is this?</h2>
+        <div className="mx-auto mt-3 w-full max-w-xs">
+          <div className="h-1.5 overflow-hidden rounded-full bg-[#1a3f4a]/12">
+            <div
+              className="h-full rounded-full bg-[#2D6B7A] transition-all duration-500 ease-out"
+              style={{ width: bathroomType ? (isOther ? "70%" : "100%") : "15%" }}
+            />
+          </div>
+          <p className="mt-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[#1a3f4a]/65">
+            {isOther ? "Enter details to continue" : "Select bathroom type"}
+          </p>
+        </div>
       </div>
 
       <div
@@ -87,8 +117,8 @@ export default function BathroomTypeStep({
               key={type.value}
               type="button"
               data-type-card
-              onClick={() => onChangeType(type.value)}
-              className={`group relative isolate aspect-square w-full overflow-hidden rounded-xl bg-[#1e1d24] text-left transition duration-300 ${
+              onClick={() => handleSelectType(type.value)}
+              className={`group relative isolate aspect-square w-full cursor-pointer overflow-hidden rounded-xl bg-[#1e1d24] text-left transition duration-300 ${
                 selected
                   ? "ring-[3px] ring-[#2D6B7A] shadow-[0_8px_20px_rgba(45,107,122,0.25)]"
                   : "ring-1 ring-white/60 hover:ring-[#2D6B7A]/50"
@@ -98,7 +128,7 @@ export default function BathroomTypeStep({
                 src={TYPE_IMAGES[type.value]}
                 alt={type.label}
                 draggable={false}
-                className="pointer-events-none absolute inset-0 h-full w-full object-cover [filter:none] group-hover:scale-[1.03] transition duration-500"
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover [filter:none] transition duration-500 group-hover:scale-[1.03]"
               />
               <span
                 className={`absolute inset-x-0 bottom-0 bg-linear-to-t from-black/55 to-transparent ${
@@ -164,9 +194,13 @@ export default function BathroomTypeStep({
           <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
           Back
         </button>
+        {/* Continue stays for Other (and as fallback) */}
         <button
           type="button"
-          onClick={onContinue}
+          onClick={() => {
+            if (autoContinueRef.current) clearTimeout(autoContinueRef.current);
+            onContinue();
+          }}
           disabled={!canContinue}
           className={PRIMARY_BTN}
         >

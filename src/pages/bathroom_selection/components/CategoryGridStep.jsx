@@ -81,6 +81,21 @@ export default function CategoryGridStep({
         <p className="text-[clamp(0.85rem,1.6vw,1.125rem)] font-bold uppercase tracking-[0.06em] text-[#1a3f4a]">
           Bathroom Selection
         </p>
+        <div className="mx-auto mt-2 w-full max-w-xs sm:mt-2.5">
+          <div className="h-1.5 overflow-hidden rounded-full bg-[#1a3f4a]/12">
+            <div
+              className="h-full rounded-full bg-[#2D6B7A] transition-all duration-500 ease-out"
+              style={{
+                width: `${Math.round(
+                  (completedCount / Math.max(categories.length, 1)) * 100,
+                )}%`,
+              }}
+            />
+          </div>
+          <p className="mt-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[#1a3f4a]/65">
+            {completedCount} of {categories.length} sections done
+          </p>
+        </div>
       </div>
 
       <div

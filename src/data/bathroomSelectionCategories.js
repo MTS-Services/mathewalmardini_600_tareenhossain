@@ -232,6 +232,11 @@ export const BATHROOM_CATEGORIES = [
         type: "single",
         options: ["Single Basin", "Double Basin"],
       },
+      {
+        id: "handTowelRail",
+        label: "Would you like a hand towel rail?",
+        type: "yesNo",
+      },
     ],
   },
   {

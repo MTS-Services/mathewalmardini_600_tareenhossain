@@ -95,8 +95,8 @@ export default function CategoryQuestionsStep({
     const isBack = dir < 0;
     const outX = dir > 0 ? "-10%" : "10%";
     const inX = dir > 0 ? "12%" : "-12%";
-    const outDur = isBack ? 0.45 : 0.55;
-    const inDur = isBack ? 0.85 : 1.05;
+    const outDur = isBack ? 0.28 : 0.32;
+    const inDur = isBack ? 0.48 : 0.55;
 
     gsap.to(el, {
       x: outX,
@@ -160,7 +160,7 @@ export default function CategoryQuestionsStep({
       x: dir > 0 ? "-14%" : "14%",
       autoAlpha: 0,
       scale: 0.985,
-      duration: 0.7,
+      duration: 0.4,
       ease: "power1.inOut",
       onComplete: () => {
         transitioningRef.current = false;
@@ -227,7 +227,7 @@ export default function CategoryQuestionsStep({
     if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current);
     autoAdvanceRef.current = setTimeout(() => {
       advanceFrom(questionId, nextAnswers);
-    }, 450);
+    }, 220);
   };
 
   const setAnswer = (questionId, value) => {
@@ -359,6 +359,26 @@ export default function CategoryQuestionsStep({
         >
           {category.title}
         </h2>
+        {visibleQuestions.length > 0 && (
+          <div className="mx-auto mt-2.5 w-full max-w-xs sm:mt-3">
+            <div className="h-1.5 overflow-hidden rounded-full bg-[#1a3f4a]/12">
+              <div
+                className="h-full rounded-full bg-[#2D6B7A] transition-all duration-500 ease-out"
+                style={{
+                  width: `${Math.round(
+                    ((Math.min(stepIndex, visibleQuestions.length - 1) + 1) /
+                      visibleQuestions.length) *
+                      100,
+                  )}%`,
+                }}
+              />
+            </div>
+            <p className="mt-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[#1a3f4a]/65">
+              Question {Math.min(stepIndex, visibleQuestions.length - 1) + 1} of{" "}
+              {visibleQuestions.length}
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="bsf-q-slide-viewport relative min-h-0 min-w-0 flex-1 overflow-hidden">

@@ -377,9 +377,10 @@ export default function BathroomSelectionForm() {
     return null;
   };
 
-  const validateBathroomType = () => {
-    if (!project.bathroomType) return "Please select a bathroom type";
-    if (project.bathroomType === "other" && !project.bathroomTypeOther.trim())
+  const validateBathroomType = (typeOverride) => {
+    const type = typeOverride || project.bathroomType;
+    if (!type) return "Please select a bathroom type";
+    if (type === "other" && !project.bathroomTypeOther.trim())
       return "Please specify bathroom type";
     return null;
   };
@@ -395,8 +396,8 @@ export default function BathroomSelectionForm() {
     goTo("bathroom-type");
   };
 
-  const handleBathroomContinue = () => {
-    const err = validateBathroomType();
+  const handleBathroomContinue = (selectedType) => {
+    const err = validateBathroomType(selectedType);
     if (err) {
       showFormError(err);
       return;
