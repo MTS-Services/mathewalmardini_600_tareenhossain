@@ -97,10 +97,10 @@ export default function CategoryQuestionsStep({
     gsap.killTweensOf(el);
 
     const isBack = dir < 0;
-    const outX = dir > 0 ? "-10%" : "10%";
-    const inX = dir > 0 ? "12%" : "-12%";
-    const outDur = isBack ? 0.28 : 0.32;
-    const inDur = isBack ? 0.48 : 0.55;
+    const outX = dir > 0 ? "-6%" : "6%";
+    const inX = dir > 0 ? "8%" : "-8%";
+    const outDur = isBack ? 0.1 : 0.1;
+    const inDur = isBack ? 0.18 : 0.2;
 
     gsap.to(el, {
       x: outX,
@@ -161,10 +161,10 @@ export default function CategoryQuestionsStep({
     }
 
     gsap.to(el, {
-      x: dir > 0 ? "-14%" : "14%",
+      x: dir > 0 ? "-10%" : "10%",
       autoAlpha: 0,
       scale: 0.985,
-      duration: 0.4,
+      duration: 0.18,
       ease: "power1.inOut",
       onComplete: () => {
         transitioningRef.current = false;
@@ -190,7 +190,7 @@ export default function CategoryQuestionsStep({
         x: 0,
         autoAlpha: 1,
         scale: 1,
-        duration: 0.8,
+        duration: 0.28,
         ease: "power2.out",
         clearProps: "transform",
       },
@@ -237,7 +237,7 @@ export default function CategoryQuestionsStep({
       if (extrasOpenRef.current) return;
       if (isCustomOrOther(nextAnswers[questionId])) return;
       advanceFrom(questionId, nextAnswers);
-    }, 1600);
+    }, 90);
   };
 
   const setAnswer = (questionId, value) => {
@@ -266,7 +266,7 @@ export default function CategoryQuestionsStep({
     }
 
     onChange(category.id, next);
-    // Notes/photos should not auto-advance; only new question answers do
+    // Custom / Other stay on this question until they type and press Next
     if (changed && !isExtras) maybeAutoAdvance(questionId, next);
   };
 
@@ -295,19 +295,12 @@ export default function CategoryQuestionsStep({
       }
       return true;
     }
-    if (
-      currentQuestion.type === "single" &&
-      val === "Custom" &&
-      currentQuestion.customField
-    ) {
-      return Boolean(
-        String(categoryAnswers[currentQuestion.customField] || "").trim(),
-      );
-    }
-    if (
-      currentQuestion.type === "single" &&
-      val === "Other"
-    ) {
+    if (currentQuestion.type === "single" && isCustomOrOther(val)) {
+      if (String(val).toLowerCase() === "custom" && currentQuestion.customField) {
+        return Boolean(
+          String(categoryAnswers[currentQuestion.customField] || "").trim(),
+        );
+      }
       const otherField =
         currentQuestion.otherField || `${currentQuestion.id}Other`;
       return Boolean(String(categoryAnswers[otherField] || "").trim());
