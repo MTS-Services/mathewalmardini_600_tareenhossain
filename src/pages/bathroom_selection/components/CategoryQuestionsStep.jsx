@@ -8,6 +8,7 @@ import {
   PRIMARY_BTN,
 } from "../formStyles";
 import QuestionRenderer from "./QuestionRenderer";
+import QuestionExtrasDrawer from "./QuestionExtrasDrawer";
 
 /** Instant choices auto-advance; Custom / Other need typing + Next */
 function shouldAutoAdvance(question, value) {
@@ -43,6 +44,7 @@ export default function CategoryQuestionsStep({
   const stepIndexRef = useRef(0);
   const destIndexRef = useRef(0);
   const pendingRef = useRef(null);
+  const extrasOpenRef = useRef(false);
   const categoryAnswers = answers[category.id] || {};
 
   stepIndexRef.current = stepIndex;
@@ -226,13 +228,15 @@ export default function CategoryQuestionsStep({
 
     if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current);
     autoAdvanceRef.current = setTimeout(() => {
+      if (extrasOpenRef.current) return;
       advanceFrom(questionId, nextAnswers);
-    }, 220);
+    }, 1600);
   };
 
   const setAnswer = (questionId, value) => {
     const prev = categoryAnswers[questionId];
     const changed = !sameAnswer(prev, value);
+    const isExtras = String(questionId).includes("__");
 
     const next = { ...categoryAnswers, [questionId]: value, required: "yes" };
 
@@ -255,8 +259,8 @@ export default function CategoryQuestionsStep({
     }
 
     onChange(category.id, next);
-    // Only auto-advance on a NEW choice — not when reviewing already-filled answers
-    if (changed) maybeAutoAdvance(questionId, next);
+    // Notes/photos should not auto-advance; only new question answers do
+    if (changed && !isExtras) maybeAutoAdvance(questionId, next);
   };
 
   const patchAnswers = (patch) => {
@@ -380,6 +384,21 @@ export default function CategoryQuestionsStep({
           </div>
         )}
       </div>
+
+      {currentQuestion && currentQuestion.type !== "noteAck" && (
+        <QuestionExtrasDrawer
+          question={currentQuestion}
+          answers={categoryAnswers}
+          onSetAnswer={setAnswer}
+          onOpenChange={(isOpen) => {
+            extrasOpenRef.current = isOpen;
+            if (isOpen && autoAdvanceRef.current) {
+              clearTimeout(autoAdvanceRef.current);
+              autoAdvanceRef.current = null;
+            }
+          }}
+        />
+      )}
 
       <div className="bsf-q-slide-viewport relative min-h-0 min-w-0 flex-1 overflow-hidden">
         <div

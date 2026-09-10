@@ -5,6 +5,7 @@ import { ArrowLeft, Check } from "lucide-react";
 import {
   BATHROOM_CATEGORIES,
   formatAnswerValue,
+  getQuestionExtras,
   getVisibleQuestions,
 } from "../../../data/bathroomSelectionCategories";
 import {
@@ -445,6 +446,7 @@ function CategoryDetailModal({ category, answers, onClose, onEdit }) {
             <dl className="divide-y divide-[#1a3f4a]/10">
               {answered.map((q) => {
                 const value = answers[q.id];
+                const extras = getQuestionExtras(answers, q.id);
                 const isImage =
                   typeof value === "string" && /^https?:\/\//i.test(value);
                 return (
@@ -485,6 +487,37 @@ function CategoryDetailModal({ category, answers, onClose, onEdit }) {
                           </span>
                         </dd>
                       </>
+                    )}
+                    {extras.hasExtras && (
+                      <div className="col-span-full mt-2 rounded-xl bg-white/50 px-3 py-2">
+                        {extras.notes && (
+                          <p className="text-xs leading-relaxed text-[#1e1d24]/80">
+                            <span className="font-bold text-[#1a3f4a]">
+                              Notes:{" "}
+                            </span>
+                            {extras.notes}
+                          </p>
+                        )}
+                        {extras.photos.length > 0 && (
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {extras.photos.map((url) => (
+                              <a
+                                key={url}
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block overflow-hidden rounded-lg ring-1 ring-[#1a3f4a]/15"
+                              >
+                                <img
+                                  src={url}
+                                  alt="Question photo"
+                                  className="h-16 w-16 object-cover"
+                                />
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     )}
                   </div>
                 );

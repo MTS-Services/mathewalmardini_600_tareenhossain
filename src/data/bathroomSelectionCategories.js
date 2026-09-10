@@ -491,6 +491,26 @@ export const BATHROOM_CATEGORIES = [
   },
 ];
 
+export function extrasNoteKey(questionId) {
+  return `${questionId}__note`;
+}
+
+export function extrasPhotosKey(questionId) {
+  return `${questionId}__photos`;
+}
+
+export function isExtrasKey(key) {
+  return typeof key === "string" && (key.endsWith("__note") || key.endsWith("__photos"));
+}
+
+export function getQuestionExtras(answers = {}, questionId) {
+  const notes = String(answers[extrasNoteKey(questionId)] || "").trim();
+  const photos = Array.isArray(answers[extrasPhotosKey(questionId)])
+    ? answers[extrasPhotosKey(questionId)].filter(Boolean)
+    : [];
+  return { notes, photos, hasExtras: Boolean(notes || photos.length) };
+}
+
 export function getVisibleQuestions(category, answers = {}) {
   return category.questions.filter(
     (q) => !q.inline && (!q.showIf || q.showIf(answers)),

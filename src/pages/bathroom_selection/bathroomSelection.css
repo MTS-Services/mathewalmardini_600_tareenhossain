@@ -1397,3 +1397,114 @@ html.bsf-lock body {
     overflow: visible !important;
   }
 }
+
+/* Left notes/photos drawer — curtain / portha style */
+.bsf-q-step {
+  position: relative;
+}
+
+.bsf-q-slide-viewport {
+  padding-left: 1.35rem;
+}
+
+.bsf-extras-tab {
+  position: absolute;
+  left: 0;
+  top: 52%;
+  z-index: 28;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 2.15rem;
+  padding: 0.7rem 0.28rem 0.75rem;
+  border: 0;
+  border-radius: 0 14px 14px 0;
+  background: linear-gradient(180deg, #2d6b7a 0%, #1a3f4a 100%);
+  color: #fff;
+  box-shadow: 4px 8px 22px rgba(26, 63, 74, 0.28);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bsf-extras-tab:hover {
+  transform: translateY(-50%) translateX(3px);
+  box-shadow: 8px 10px 26px rgba(26, 63, 74, 0.34);
+}
+
+.bsf-extras-tab-grip {
+  width: 14px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.bsf-extras-tab-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.bsf-extras-tab-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #f3d27a;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.bsf-extras-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 34;
+  background: rgba(15, 28, 34, 0.38);
+  opacity: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.bsf-extras-sheet {
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.45rem;
+  z-index: 36;
+  max-height: calc(100% - 0.7rem);
+  overflow: auto;
+  padding: 1rem 1rem 1.1rem;
+  border-radius: 22px 22px 18px 18px;
+  background: #f4efe6;
+  box-shadow: 0 -18px 50px rgba(15, 28, 34, 0.28);
+  transform: translateY(108%);
+}
+
+.bsf-extras-sheet-handle {
+  width: 42px;
+  height: 5px;
+  margin: 0 auto 0.75rem;
+  border-radius: 999px;
+  background: rgba(26, 63, 74, 0.2);
+}
+
+@media (max-width: 640px) {
+  .bsf-extras-tab {
+    width: 1.85rem;
+    padding: 0.55rem 0.2rem 0.6rem;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .bsf-extras-tab-label {
+    font-size: 8px;
+  }
+
+  .bsf-extras-sheet {
+    left: 0.35rem;
+    right: 0.35rem;
+    padding: 0.85rem 0.85rem 1rem;
+    border-radius: 18px;
+  }
+}
