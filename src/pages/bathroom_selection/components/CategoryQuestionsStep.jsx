@@ -97,10 +97,10 @@ export default function CategoryQuestionsStep({
     gsap.killTweensOf(el);
 
     const isBack = dir < 0;
-    const outX = dir > 0 ? "-6%" : "6%";
-    const inX = dir > 0 ? "8%" : "-8%";
-    const outDur = isBack ? 0.1 : 0.1;
-    const inDur = isBack ? 0.18 : 0.2;
+    const outX = dir > 0 ? "-8%" : "8%";
+    const inX = dir > 0 ? "10%" : "-10%";
+    const outDur = isBack ? 0.14 : 0.16;
+    const inDur = isBack ? 0.24 : 0.28;
 
     gsap.to(el, {
       x: outX,
@@ -164,7 +164,7 @@ export default function CategoryQuestionsStep({
       x: dir > 0 ? "-10%" : "10%",
       autoAlpha: 0,
       scale: 0.985,
-      duration: 0.18,
+      duration: 0.22,
       ease: "power1.inOut",
       onComplete: () => {
         transitioningRef.current = false;
@@ -190,7 +190,7 @@ export default function CategoryQuestionsStep({
         x: 0,
         autoAlpha: 1,
         scale: 1,
-        duration: 0.28,
+        duration: 0.38,
         ease: "power2.out",
         clearProps: "transform",
       },
@@ -237,7 +237,7 @@ export default function CategoryQuestionsStep({
       if (extrasOpenRef.current) return;
       if (isCustomOrOther(nextAnswers[questionId])) return;
       advanceFrom(questionId, nextAnswers);
-    }, 90);
+    }, 240);
   };
 
   const setAnswer = (questionId, value) => {
