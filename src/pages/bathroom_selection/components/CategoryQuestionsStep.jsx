@@ -10,16 +10,18 @@ import {
 import QuestionRenderer from "./QuestionRenderer";
 import QuestionExtrasDrawer from "./QuestionExtrasDrawer";
 
+function isCustomOrOther(value) {
+  const v = String(value || "").trim().toLowerCase();
+  return v === "custom" || v === "other";
+}
+
 /** Instant choices auto-advance; Custom / Other need typing + Next */
 function shouldAutoAdvance(question, value) {
   if (!question || value == null || value === "") return false;
+  if (isCustomOrOther(value)) return false;
   if (question.type === "yesNo") return value === "yes" || value === "no";
   if (question.type === "noteAck") return value === "noted";
-  if (question.type === "single") {
-    if (value === "Custom" && question.customField) return false;
-    if (value === "Other") return false;
-    return true;
-  }
+  if (question.type === "single") return true;
   return false;
 }
 
@@ -221,14 +223,19 @@ export default function CategoryQuestionsStep({
   };
 
   const maybeAutoAdvance = (questionId, nextAnswers) => {
+    if (autoAdvanceRef.current) {
+      clearTimeout(autoAdvanceRef.current);
+      autoAdvanceRef.current = null;
+    }
+
     const question =
       visibleQuestions.find((q) => q.id === questionId) || currentQuestion;
     if (!question || question.id !== questionId) return;
     if (!shouldAutoAdvance(question, nextAnswers[questionId])) return;
 
-    if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current);
     autoAdvanceRef.current = setTimeout(() => {
       if (extrasOpenRef.current) return;
+      if (isCustomOrOther(nextAnswers[questionId])) return;
       advanceFrom(questionId, nextAnswers);
     }, 1600);
   };
