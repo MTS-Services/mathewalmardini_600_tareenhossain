@@ -57,7 +57,7 @@ const Banner = ({ isDesktop = true }) => {
     {
       id: 3,
       // url: "/banner_image/Photo4.JPG",
-      url: "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo4.JPG",
+      url: "https://dc3v08iv2c2ou.cloudfront.net/form_images/1789532950039-fd5449324b765c3a.webp",
       position:
         "lg:top-18 xl:top-34 2xl:top-35 3xl:top-20 4xl:top-24 left-1/2 -translate-x-1/2",
       size: "lg:w-64 lg:h-36 xl:w-80 xl:h-48 2xl:w-96 2xl:h-54 3xl:w-96 3xl:h-58 4xl:w-110 4xl:h-64 5xl:w-125 5xl:h-72",

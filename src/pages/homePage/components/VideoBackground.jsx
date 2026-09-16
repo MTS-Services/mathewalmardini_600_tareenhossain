@@ -5,7 +5,7 @@ import VideoControls from "./VideoControls";
 const HERO_VIDEO =
   "https://dc3v08iv2c2ou.cloudfront.net/banner_video/charteris_MP4.mp4";
 const HERO_POSTER =
-  "https://dc3v08iv2c2ou.cloudfront.net/about/banner_image/Photo4.JPG";
+  "https://dc3v08iv2c2ou.cloudfront.net/form_images/1789532950039-fd5449324b765c3a.webp";
 
 const VideoBackground = ({ isDesktop = true }) => {
   const { scrollY } = useScroll();
