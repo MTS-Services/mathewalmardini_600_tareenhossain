@@ -8,3 +8,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>,
 )
+
+/** Fallback: if React never mounts the hero (error/other route), clear the shell. */
+window.setTimeout(() => {
+  const el = document.getElementById('lcp-hero')
+  if (el) el.remove()
+}, 8000)

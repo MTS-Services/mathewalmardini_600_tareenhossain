@@ -7,6 +7,13 @@ const HERO_VIDEO =
 const HERO_POSTER =
   "https://dc3v08iv2c2ou.cloudfront.net/form_images/1789534057591-5a01b8d3f3acf766.webp";
 
+function dismissLcpHeroShell() {
+  const el = document.getElementById("lcp-hero");
+  if (!el) return;
+  el.classList.add("is-hidden");
+  window.setTimeout(() => el.remove(), 220);
+}
+
 const VideoBackground = ({ isDesktop = true }) => {
   const { scrollY } = useScroll();
   const videoRef = useRef(null);
@@ -16,6 +23,14 @@ const VideoBackground = ({ isDesktop = true }) => {
   const y = useTransform(scrollY, [0, 3000], [0, -80]);
   const opacity = useTransform(scrollY, [0, 3100, 3500], [1, 1, 0]);
   const borderRadius = useTransform(scrollY, [0, 800], [48, 48]);
+
+  // Hand off from the HTML LCP shell once this React poster is on screen
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      requestAnimationFrame(dismissLcpHeroShell);
+    });
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   // Defer heavy MP4 until after first paint so LCP can be the poster image
   useEffect(() => {

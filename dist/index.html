@@ -1,13 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NM53NVKS');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="description" content="B-Spoke - Kitchen and Bathroom Renovation Specialists in Australia. Explore our stunning portfolio of transformations." />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon-Doy60qw-.png" />
@@ -16,32 +9,92 @@
     <link rel="dns-prefetch" href="https://dc3v08iv2c2ou.cloudfront.net" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Preload a light hero poster for LCP instead of the full MP4 -->
+    <!-- LCP: discover the hero poster before any JS -->
     <link rel="preload" as="image" href="https://dc3v08iv2c2ou.cloudfront.net/form_images/1789534057591-5a01b8d3f3acf766.webp" fetchpriority="high" />
-    <!-- Google Fonts: loaded via link instead of CSS @import to avoid render-blocking -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" /></noscript>
     <title>Home Renovations Melbourne | B-Spoke Builders</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B36DLTKR9E"></script>
+    <style>
+      /* Critical hero shell — paints before React boots */
+      #lcp-hero {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        margin: 0;
+        padding: 8px;
+        box-sizing: border-box;
+        background: #f4efe6;
+        pointer-events: none;
+      }
+      #lcp-hero img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+      @media (min-width: 1025px) {
+        #lcp-hero {
+          padding: 20px;
+        }
+        #lcp-hero img {
+          border-radius: 48px;
+        }
+      }
+      #lcp-hero.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease;
+      }
+    </style>
+    <!-- Defer analytics so they don't compete with LCP -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-B36DLTKR9E');
+      window.addEventListener('load', function () {
+        var gtm = document.createElement('script');
+        gtm.async = true;
+        gtm.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-NM53NVKS';
+        document.head.appendChild(gtm);
+        var ga = document.createElement('script');
+        ga.async = true;
+        ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-B36DLTKR9E';
+        document.head.appendChild(ga);
+        gtag('js', new Date());
+        gtag('config', 'G-B36DLTKR9E');
+      });
     </script>
-    <script type="module" crossorigin src="/assets/index-LsqmB6qJ.js"></script>
+    <script type="module" crossorigin src="/assets/index-BHm6HFqQ.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/reactVendor-B1TV2w2s.js">
-    <link rel="modulepreload" crossorigin href="/assets/lenis-L8jc5Amd.js">
-    <link rel="modulepreload" crossorigin href="/assets/motionVendor-C1wAr0_x.js">
+    <link rel="modulepreload" crossorigin href="/assets/motionVendor-CSlIqBMB.js">
+    <link rel="modulepreload" crossorigin href="/assets/icons-D_X6AZMq.js">
     <link rel="stylesheet" crossorigin href="/assets/index-D4uxF9r9.css">
   </head>
-  <body class="">
-    <!-- Google Tag Manager (noscript) -->
+  <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NM53NVKS"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Real <img> in the HTML shell so LCP paints before React/JS -->
+    <div id="lcp-hero" aria-hidden="true">
+      <img
+        src="https://dc3v08iv2c2ou.cloudfront.net/form_images/1789534057591-5a01b8d3f3acf766.webp"
+        alt=""
+        width="1920"
+        height="1080"
+        fetchpriority="high"
+        decoding="sync"
+      />
+    </div>
+    <script>
+      (function () {
+        var path = location.pathname.replace(/\/$/, '') || '/';
+        if (path !== '/' && path !== '/index.html') {
+          var el = document.getElementById('lcp-hero');
+          if (el) el.remove();
+        }
+      })();
+    </script>
+
     <div id="root"></div>
   </body>
 </html>

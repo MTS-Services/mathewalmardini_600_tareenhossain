@@ -1,8 +1,10 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router";
 
-const Layout = lazy(() => import("../layout/Layout"));
-const Home = lazy(() => import("../pages/homePage/Home"));
+// Eager: homepage critical path (LCP). Everything else stays code-split.
+import Layout from "../layout/Layout";
+import Home from "../pages/homePage/Home";
+
 const About = lazy(() => import("../pages/about/About"));
 const FAQ = lazy(() => import("../pages/faq/FAQ"));
 const Contact = lazy(() => import("../pages/contact/Contact"));
