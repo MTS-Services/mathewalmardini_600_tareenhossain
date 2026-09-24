@@ -6,6 +6,8 @@ import CTASection from "../homePage/components/CTASection";
 import PhotoGallery from "../homePage/components/PhotoGallery";
 import { useRef } from "react";
 import FeatureMediaSection from "../homePage/components/FeatureMediaSection";
+import TestimonialSection from "../homePage/components/TestimonialSection";
+import CTAReviewSection from "../homePage/components/CTAReviewSection";
 import usePageMeta from "../../hooks/usePageMeta";
 
 function BathroomRenovation() {
@@ -377,6 +379,9 @@ function BathroomRenovation() {
         heading="Ready to Transform Your Bathroom?"
         description="Let's bring your vision to life with our expert craftsmanship and personalized service."
       />
+
+      <TestimonialSection />
+      <CTAReviewSection />
     </div>
   );
 }
