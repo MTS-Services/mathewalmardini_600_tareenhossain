@@ -7,6 +7,8 @@ import CTASection from "../homePage/components/CTASection";
 import { useRef } from "react";
 import PhotoGallery from "../homePage/components/PhotoGallery";
 import FeatureMediaSection from "../homePage/components/FeatureMediaSection";
+import TestimonialSection from "../homePage/components/TestimonialSection";
+import CTAReviewSection from "../homePage/components/CTAReviewSection";
 import usePageMeta from "../../hooks/usePageMeta";
 
 function KitchenRenovation() {
@@ -384,6 +386,9 @@ function KitchenRenovation() {
         heading="Ready to Transform Your Kitchen?"
         description="Let's bring your vision to life with our expert craftsmanship and personalized service."
       />
+
+      <TestimonialSection />
+      <CTAReviewSection />
     </div>
   );
 }

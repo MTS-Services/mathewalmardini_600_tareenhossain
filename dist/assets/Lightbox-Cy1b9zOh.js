@@ -1,4 +1,4 @@
-import{j as e,m as n,A as b}from"./index-BHm6HFqQ.js";import{r as l}from"./reactVendor-B1TV2w2s.js";import{X as w,g as f,h as y}from"./icons-D_X6AZMq.js";const u=24,N=({images:o,onImageClick:r})=>{const[c,a]=l.useState({}),[s,d]=l.useState(u),m=i=>{a(t=>({...t,[i]:!0}))},h=o.slice(0,s),p=s<o.length;return e.jsxs("div",{className:"w-full px-4 sm:px-6 lg:px-8 py-8",children:[e.jsx("style",{children:`
+import{j as e,m as n,A as b}from"./index-BqYgIdgP.js";import{r as l}from"./reactVendor-B1TV2w2s.js";import{X as w,g as f,h as y}from"./icons-D_X6AZMq.js";const u=24,N=({images:o,onImageClick:r})=>{const[c,a]=l.useState({}),[s,d]=l.useState(u),m=i=>{a(t=>({...t,[i]:!0}))},h=o.slice(0,s),p=s<o.length;return e.jsxs("div",{className:"w-full px-4 sm:px-6 lg:px-8 py-8",children:[e.jsx("style",{children:`
         .portfolio-masonry {
           column-count: 2;
           column-gap: 12px;
