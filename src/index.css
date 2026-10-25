@@ -1139,57 +1139,40 @@ body::after {
   }
 }
 
+/* On short (laptop-height) windows the pinned cards sit higher, so each service's
+   title and description stay on screen at full card size; the top of the image may
+   go above the window edge. Subtracted value = card text bottom measured from the
+   sticky top + 16px. Tall windows (PCs) keep the normal offset. */
 @media (min-width: 1024px) {
   .our-services-sticky {
-    top: 120px;
+    top: min(120px, calc(100vh - 662px));
   }
 }
 
 @media (min-width: 1280px) {
   .our-services-sticky {
-    top: 130px;
+    top: min(130px, calc(100vh - 755px));
   }
   .our-services-padding-bottom {
     padding-bottom: 64px;
   }
 }
 
+@media (min-width: 1536px) {
+  .our-services-sticky {
+    top: min(130px, calc(100vh - 732px));
+  }
+}
+
 @media (min-width: 1920px) {
   .our-services-sticky {
-    top: 140px;
+    top: min(140px, calc(100vh - 732px));
   }
 }
 
 @media (min-width: 2560px) {
   .our-services-sticky {
-    top: 150px;
-  }
-}
-
-/* Short (laptop-height) windows: shrink the card image so each service's title and
-   description fit below it. Cap = window height - sticky top - 24px padding - text
-   block - 8px; tall windows (PCs) keep the full image. */
-@media (min-width: 1024px) {
-  .our-services-media {
-    max-height: max(160px, calc(100vh - 354px));
-  }
-}
-
-@media (min-width: 1280px) {
-  .our-services-media {
-    max-height: max(160px, calc(100vh - 384px));
-  }
-}
-
-@media (min-width: 1920px) {
-  .our-services-media {
-    max-height: max(160px, calc(100vh - 394px));
-  }
-}
-
-@media (min-width: 2560px) {
-  .our-services-media {
-    max-height: max(160px, calc(100vh - 404px));
+    top: min(150px, calc(100vh - 732px));
   }
 }
 

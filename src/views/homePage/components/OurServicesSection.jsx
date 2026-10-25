@@ -175,7 +175,7 @@ const OurServicesSection = () => {
                   <div className="relative flex flex-col h-full our-services-margin-top">
                     {/* Video/Image Container */}
                     <div
-                      className="our-services-media relative bg-gray-900 h-62.5 sm:h-87.5 md:h-95 lg:h-105 xl:h-140 2xl:h-150 rounded-3xl overflow-hidden isolate"
+                      className="relative bg-gray-900 h-62.5 sm:h-87.5 md:h-95 lg:h-105 xl:h-140 2xl:h-150 rounded-3xl overflow-hidden isolate"
                       style={{ marginTop: "0px" }}
                     >
                       {service.type === "video" ? (
