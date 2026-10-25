@@ -1139,26 +1139,27 @@ body::after {
   }
 }
 
-/* On short (laptop-height) windows the pinned cards sit higher, so each service's
-   title and description stay on screen; the top of the image may go above the
-   window edge. The card image is also 15px shorter there (eased in over the last
-   15px of window height). Sticky subtracted value = card text bottom measured from
-   the sticky top + 16px. Tall windows (PCs) keep the normal offset and full image. */
+/* Short (laptop-height) windows: the pinned card keeps at least a 71px top gap (so
+   the image isn't cut off) and its image shrinks only as much as needed for the
+   service title and description to fit 16px above the bottom edge.
+   Image cap = 100vh - (71 + 24 padding + text below image + 16).
+   Sticky = card text bottom from the sticky top + 16, clamped to [71px, normal].
+   Tall windows (PCs) keep the full image and the normal offset. */
 @media (min-width: 1024px) {
   .our-services-sticky {
-    top: min(120px, calc(100vh - 647px));
+    top: clamp(71px, calc(100vh - 662px), 120px);
   }
   .our-services-media {
-    max-height: max(405px, calc(100vh - 362px));
+    max-height: max(240px, calc(100vh - 313px));
   }
 }
 
 @media (min-width: 1280px) {
   .our-services-sticky {
-    top: min(130px, calc(100vh - 740px));
+    top: clamp(71px, calc(100vh - 755px), 130px);
   }
   .our-services-media {
-    max-height: max(523px, calc(100vh - 347px));
+    max-height: max(240px, calc(100vh - 288px));
   }
   .our-services-padding-bottom {
     padding-bottom: 64px;
@@ -1167,28 +1168,22 @@ body::after {
 
 @media (min-width: 1536px) {
   .our-services-sticky {
-    top: min(130px, calc(100vh - 717px));
+    top: clamp(71px, calc(100vh - 732px), 130px);
   }
   .our-services-media {
-    max-height: max(532px, calc(100vh - 315px));
+    max-height: max(240px, calc(100vh - 256px));
   }
 }
 
 @media (min-width: 1920px) {
   .our-services-sticky {
-    top: min(140px, calc(100vh - 717px));
-  }
-  .our-services-media {
-    max-height: max(532px, calc(100vh - 325px));
+    top: clamp(71px, calc(100vh - 732px), 140px);
   }
 }
 
 @media (min-width: 2560px) {
   .our-services-sticky {
-    top: min(150px, calc(100vh - 717px));
-  }
-  .our-services-media {
-    max-height: max(532px, calc(100vh - 335px));
+    top: clamp(71px, calc(100vh - 732px), 150px);
   }
 }
 
