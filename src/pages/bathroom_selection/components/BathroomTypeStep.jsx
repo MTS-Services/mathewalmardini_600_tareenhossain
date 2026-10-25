@@ -10,14 +10,14 @@ import {
   TITLE_CLASS,
 } from "../formStyles";
 
-const CDN = "https://dc3v08iv2c2ou.cloudfront.net/bathroom_gallery";
+const CDN = "https://media.b-spoke.com.au/bathroom_gallery";
 
 /** Distinct photos matched to each bathroom-type keyword */
 const TYPE_IMAGES = {
-  main: `${CDN}/Bath.jpg`,
-  ensuite: `${CDN}/Taylors+Hill+Bathroom+2.jpg`,
-  powder: `${CDN}/IMG_1517.jpg`,
-  other: `${CDN}/Bathroom+Renovation.jpg`,
+  main: `${CDN}/Bath.webp`,
+  ensuite: `${CDN}/Taylors%2BHill%2BBathroom%2B2.webp`,
+  powder: `${CDN}/IMG_1517.webp`,
+  other: `${CDN}/Bathroom%2BRenovation.webp`,
 };
 
 export default function BathroomTypeStep({

@@ -1,4 +1,4 @@
-const CDN = "https://dc3v08iv2c2ou.cloudfront.net";
+const CDN = "https://media.b-spoke.com.au";
 
 export const BATHROOM_TYPES = [
   { value: "main", label: "Main Bathroom" },
@@ -24,7 +24,7 @@ export const BATHROOM_CATEGORIES = [
     id: "tiles",
     number: "01",
     title: "Tiles",
-    image: `${CDN}/bathroom_gallery/sunbury+2.jpg`,
+    image: `${CDN}/bathroom_gallery/sunbury%2B2.webp`,
     questions: [
       {
         id: "where",
@@ -79,7 +79,7 @@ export const BATHROOM_CATEGORIES = [
     id: "shower",
     number: "02",
     title: "Shower",
-    image: `${CDN}/bathroom_gallery/Shower+Sunbury.jpg`,
+    image: `${CDN}/bathroom_gallery/Shower%2BSunbury.webp`,
     questions: [
       {
         id: "screenRequired",
@@ -149,7 +149,7 @@ export const BATHROOM_CATEGORIES = [
     id: "bathtub",
     number: "03",
     title: "Bathtub",
-    image: `${CDN}/bathroom_gallery/Bath.jpg`,
+    image: `${CDN}/bathroom_gallery/Bath.webp`,
     questions: [
       {
         id: "type",
@@ -193,7 +193,7 @@ export const BATHROOM_CATEGORIES = [
     id: "vanity",
     number: "04",
     title: "Vanity",
-    image: `${CDN}/bathroom_gallery/IMG_4150.jpg`,
+    image: `${CDN}/bathroom_gallery/IMG_4150.webp`,
     questions: [
       {
         id: "type",
@@ -243,7 +243,7 @@ export const BATHROOM_CATEGORIES = [
     id: "basinMixer",
     number: "05",
     title: "Basin Mixer / Taps",
-    image: `${CDN}/bathroom_gallery/Craigieburn+3.jpg`,
+    image: `${CDN}/bathroom_gallery/Craigieburn%2B3.webp`,
     questions: [
       {
         id: "configuration",
@@ -263,7 +263,7 @@ export const BATHROOM_CATEGORIES = [
     id: "mirror",
     number: "06",
     title: "Mirror",
-    image: `${CDN}/bathroom_gallery/Bathroom+2.jpg`,
+    image: `${CDN}/bathroom_gallery/Bathroom%2B2.webp`,
     questions: [
       {
         id: "type",
@@ -293,7 +293,7 @@ export const BATHROOM_CATEGORIES = [
     id: "toilet",
     number: "07",
     title: "Toilet",
-    image: `${CDN}/bathroom_gallery/Bathroom+3.jpg`,
+    image: `${CDN}/bathroom_gallery/Bathroom%2B3.webp`,
     questions: [
       {
         id: "type",
@@ -312,7 +312,7 @@ export const BATHROOM_CATEGORIES = [
     id: "painting",
     number: "08",
     title: "Painting",
-    image: `${CDN}/bathroom_gallery/Before+and+after+1.jpg`,
+    image: `${CDN}/bathroom_gallery/Before%2Band%2Bafter%2B1.webp`,
     questions: [
       {
         id: "what",
@@ -337,7 +337,7 @@ export const BATHROOM_CATEGORIES = [
     id: "exhaustFan",
     number: "09",
     title: "Exhaust Fan",
-    image: `${CDN}/bathroom_gallery/Bathroom+1.jpg`,
+    image: `${CDN}/bathroom_gallery/Bathroom%2B1.webp`,
     questions: [
       {
         id: "fanType",
@@ -355,7 +355,7 @@ export const BATHROOM_CATEGORIES = [
     id: "lighting",
     number: "10",
     title: "Lighting",
-    image: `${CDN}/bathroom_gallery/Taylors+Hill+Bathroom+1.jpg`,
+    image: `${CDN}/bathroom_gallery/Taylors%2BHill%2BBathroom%2B1.webp`,
     questions: [
       {
         id: "downlights",
@@ -399,7 +399,7 @@ export const BATHROOM_CATEGORIES = [
     id: "electrical",
     number: "11",
     title: "Powerpoints / Electrical",
-    image: `${CDN}/bathroom_gallery/IMG_1517.jpg`,
+    image: `${CDN}/bathroom_gallery/IMG_1517.webp`,
     questions: [
       {
         id: "changes",
@@ -466,7 +466,7 @@ export const BATHROOM_CATEGORIES = [
     id: "other",
     number: "12",
     title: "Other Requirements",
-    image: `${CDN}/bathroom_gallery/IMG_4249.jpg`,
+    image: `${CDN}/bathroom_gallery/IMG_4249.webp`,
     questions: [
       {
         id: "extras",
