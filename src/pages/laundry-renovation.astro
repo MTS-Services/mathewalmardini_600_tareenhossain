@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LaundryRenovationPage from "../islands/LaundryRenovationPage";
+---
+
+<BaseLayout
+  path="/laundry-renovation"
+  title="Laundry Renovation Melbourne | Smart Laundry Design"
+  description="Laundry renovation Melbourne with space-saving layouts, cabinetry and modern finishes. Functional laundry upgrades by experts."
+>
+  <LaundryRenovationPage client:only="react" pathname="/laundry-renovation" />
+</BaseLayout>

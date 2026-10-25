@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ShopFitoutsPage from "../islands/ShopFitoutsPage";
+---
+
+<BaseLayout
+  path="/shop-fitouts"
+  title="Shop Fitouts Melbourne | Commercial Fitouts"
+  description="Shop fitouts Melbourne for retail and commercial spaces. Custom designs, professional builds and complete fitout solutions."
+>
+  <ShopFitoutsPage client:only="react" pathname="/shop-fitouts" />
+</BaseLayout>

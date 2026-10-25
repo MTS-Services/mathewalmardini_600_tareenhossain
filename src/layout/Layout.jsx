@@ -1,9 +1,8 @@
-import { Outlet } from "react-router";
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-const Layout = () => {
+const Layout = ({ pathname, children }) => {
   const [isDesktop, setIsDesktop] = useState(() => {
     if (typeof window === "undefined") {
       return true;
@@ -23,10 +22,8 @@ const Layout = () => {
 
   return (
     <>
-      <Header isDesktop={isDesktop} />
-      <main>
-        <Outlet />
-      </main>
+      <Header isDesktop={isDesktop} pathname={pathname} />
+      <main>{children}</main>
       <Footer />
     </>
   );

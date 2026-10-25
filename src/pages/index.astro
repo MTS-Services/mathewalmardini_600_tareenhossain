@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HomePage from "../islands/HomePage";
+---
+
+<BaseLayout
+  path="/"
+  title="Home Renovations Melbourne | B-Spoke Builders"
+  description="Melbourne home renovation experts for kitchens, bathrooms, laundry & shop fitouts. Quality craftsmanship and tailored building solutions."
+  lcpHero
+>
+  <HomePage client:only="react" pathname="/" />
+</BaseLayout>
