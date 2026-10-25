@@ -1,11 +1,12 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
+import islandModulePreload from "./integrations/island-modulepreload.mjs";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.b-spoke.com.au",
-  integrations: [react()],
+  integrations: [react(), islandModulePreload()],
   trailingSlash: "never",
   build: {
     // Emit about.html (served at /about) so URLs keep the no-trailing-slash form
