@@ -78,13 +78,13 @@ const FeatureMediaSection = () => {
                 Our Work
               </h2>
             </div>
-            <button
+            <a
+              href="/book-consultation"
               className="hidden lg:inline-flex items-center justify-center whitespace-nowrap rounded-full bg-primary px-6 py-2 text-sm font-semibold uppercase tracking-wide text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
               style={{ padding: "16px 24px" }}
-              type="button"
             >
               Book Consultation
-            </button>
+            </a>
           </div>
           {/* <p className="text-base md:text-lg lg:text-xl text-gray-800/80 max-w-2xl">
             See how we bring visions to life with precision and craftsmanship
