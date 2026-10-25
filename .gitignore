@@ -9,15 +9,14 @@ lerna-debug.log*
 
 
 node_modules
+
+# Astro generated types
+.astro
 *.local
-.env
-.env.*
 !.env.example
 !.env.production
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
@@ -29,3 +28,5 @@ node_modules
 branch_structure.json
 temp_auto_push.bat
 temp_interactive_push.bat
+config.bat
+.gitignore

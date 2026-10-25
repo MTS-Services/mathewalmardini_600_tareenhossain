@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import KitchenRenovationPage from "../islands/KitchenRenovationPage";
+---
+
+<BaseLayout
+  path="/kitchen-renovation"
+  title="Kitchen Renovation Melbourne | Custom Kitchens"
+  description="Kitchen renovation Melbourne with custom designs, modern layouts and quality finishes. Upgrade your kitchen with expert builders."
+>
+  <KitchenRenovationPage client:only="react" pathname="/kitchen-renovation" />
+</BaseLayout>

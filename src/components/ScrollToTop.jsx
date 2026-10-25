@@ -1,9 +1,6 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router";
 
 function ScrollToTop({ lenisInstance }) {
-  const { pathname } = useLocation();
-
   useEffect(() => {
     // Reset Lenis scroll position if it exists
     if (lenisInstance?.current) {
@@ -14,7 +11,7 @@ function ScrollToTop({ lenisInstance }) {
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-  }, [pathname, lenisInstance]);
+  }, [lenisInstance]);
 
   return null;
 }

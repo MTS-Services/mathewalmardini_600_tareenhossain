@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactPage from "../islands/ContactPage";
+---
+
+<BaseLayout
+  path="/contact"
+  title="Contact B-Spoke | Melbourne Renovation Experts"
+  description="Contact B-Spoke for kitchen, bathroom, laundry or home renovations in Melbourne. Get a quote or speak with renovation specialists."
+>
+  <ContactPage client:only="react" pathname="/contact" />
+</BaseLayout>

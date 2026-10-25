@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqPage from "../islands/FaqPage";
+---
+
+<BaseLayout
+  path="/faqs"
+  title="Renovation FAQs Melbourne | B-Spoke Builders"
+  description="Answers to common renovation questions on cost, timeline and process for kitchen, bathroom and home renovations in Melbourne."
+>
+  <FaqPage client:only="react" pathname="/faqs" />
+</BaseLayout>

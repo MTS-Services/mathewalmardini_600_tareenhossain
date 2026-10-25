@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BookConsultationPage from "../islands/BookConsultationPage";
+---
+
+<BaseLayout
+  path="/book-consultation"
+  title="Book Renovation Consultation Melbourne | B-Spoke"
+  description="Book a consultation with Melbourne renovation experts for kitchen, bathroom, laundry or home renovation planning and quotes."
+>
+  <BookConsultationPage client:only="react" pathname="/book-consultation" />
+</BaseLayout>

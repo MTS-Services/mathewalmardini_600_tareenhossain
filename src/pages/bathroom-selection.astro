@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BathroomSelectionPage from "../islands/BathroomSelectionPage";
+---
+
+<BaseLayout
+  path="/bathroom-selection"
+  title="Bathroom Selection Form | B-Spoke"
+  description="Complete your bathroom renovation selections — tiles, shower, vanity, lighting and more with B-Spoke Melbourne."
+>
+  <BathroomSelectionPage client:only="react" />
+</BaseLayout>
