@@ -3,9 +3,9 @@ import { motion, useScroll, useTransform } from "motion/react";
 import VideoControls from "./VideoControls";
 
 const HERO_VIDEO =
-  "https://dc3v08iv2c2ou.cloudfront.net/banner_video/charteris_MP4.mp4";
+  "https://media.b-spoke.com.au/banner_video/charteris_MP4.mp4";
 const HERO_POSTER =
-  "https://dc3v08iv2c2ou.cloudfront.net/form_images/1789534057591-5a01b8d3f3acf766.webp";
+  "https://media.b-spoke.com.au/form_images/1789534057591-5a01b8d3f3acf766.webp";
 
 function dismissLcpHeroShell() {
   const el = document.getElementById("lcp-hero");

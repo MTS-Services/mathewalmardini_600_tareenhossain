@@ -68,7 +68,7 @@ function KitchenRenovation() {
           >
             <source
               // src="/public/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
-              src="https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
+              src="https://media.b-spoke.com.au/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.
@@ -177,7 +177,7 @@ function KitchenRenovation() {
             >
               <img
                 // src="/public/protfollio/kitchen/Kitchen_Sunbury_2.jpg"
-                src="https://dc3v08iv2c2ou.cloudfront.net/kitchen_renovation/Kitchen_Sunbury_2.jpg"
+                src="https://media.b-spoke.com.au/kitchen_renovation/Kitchen_Sunbury_2.webp"
                 alt="Kitchen Design"
                 className="w-full h-full object-cover"
               />
@@ -219,7 +219,7 @@ function KitchenRenovation() {
             >
               <img
                 // src="/kitchen_renovation/image_2.JPG"
-                src="https://dc3v08iv2c2ou.cloudfront.net/kitchen_renovation/image_2.JPG"
+                src="https://media.b-spoke.com.au/kitchen_renovation/image_2.webp"
                 alt="Kitchen Example"
                 className="w-full h-full object-cover"
               />

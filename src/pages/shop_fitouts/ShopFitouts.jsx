@@ -50,7 +50,7 @@ function ShopFitouts() {
         className="relative min-h-dvh md:h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
         style={{
           backgroundImage:
-            "url('https://dc3v08iv2c2ou.cloudfront.net/Our_services/envato-labs-image-edit.png')",
+            "url('https://media.b-spoke.com.au/Our_services/envato-labs-image-edit.webp')",
         }}
         // style={{ backgroundImage: "url('/public/Our_services/envato-labs-image-edit.png')" }}
       >
@@ -158,7 +158,7 @@ function ShopFitouts() {
             >
               <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100">
                 <img
-                  src="https://dc3v08iv2c2ou.cloudfront.net/shop_fitouts/IMG_1541.JPG"
+                  src="https://media.b-spoke.com.au/shop_fitouts/IMG_1541.webp"
                   // src="/shop_fitouts/IMG_1541.JPG"
                   alt="Commercial fitout interior"
                   className="w-full h-full object-cover"
@@ -183,7 +183,7 @@ function ShopFitouts() {
             className="rounded-2xl overflow-hidden shadow-lg"
           >
             <video
-              src="https://dc3v08iv2c2ou.cloudfront.net/shop_fitouts/20251216_234734.MP4"
+              src="https://media.b-spoke.com.au/shop_fitouts/20251216_234734.mp4"
               // src="/shop_fitouts/20251216_234734.MP4"
               controls
               className="w-full h-auto"
@@ -205,7 +205,7 @@ function ShopFitouts() {
             >
               <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100 h-full">
                 <img
-                  src="https://dc3v08iv2c2ou.cloudfront.net/shop_fitouts/IMG_1542.JPG"
+                  src="https://media.b-spoke.com.au/shop_fitouts/IMG_1542.webp"
                   // src="/shop_fitouts/IMG_1542.JPG"
                   alt="Professional Shop Fitout Work"
                   className="w-full h-full object-cover"
@@ -348,7 +348,7 @@ function ShopFitouts() {
             className="rounded-2xl overflow-hidden shadow-lg h-[400px] md:h-[500px] lg:h-[600px]"
           >
             <img
-              src="https://dc3v08iv2c2ou.cloudfront.net/shop_fitouts/IMG_1543.JPG"
+              src="https://media.b-spoke.com.au/shop_fitouts/IMG_1543.webp"
               // src="/shop_fitouts/IMG_1543.JPG"
               alt="Quality Shop Fitout Installation"
               className="w-full h-full object-cover"

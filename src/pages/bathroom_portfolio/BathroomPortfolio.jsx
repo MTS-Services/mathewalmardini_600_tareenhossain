@@ -44,7 +44,7 @@ function BathroomPortfolio() {
           >
             <source
               // src="/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
-              src="https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
+              src="https://media.b-spoke.com.au/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4"
               // type="video/mp4"
             />
             <track kind="captions" srclang="en" label="English" />

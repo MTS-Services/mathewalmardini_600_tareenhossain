@@ -44,7 +44,7 @@ function KitchenPortfolio() {
           >
             <source
               // src="/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
-              src="https://dc3v08iv2c2ou.cloudfront.net/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
+              src="https://media.b-spoke.com.au/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4"
               type="video/mp4"
             />
             

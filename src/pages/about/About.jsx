@@ -105,7 +105,7 @@ function About() {
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img
                   // src="/about/20240508_165231.jpg"
-                  src="https://dc3v08iv2c2ou.cloudfront.net/about/20240508_165231.jpg"
+                  src="https://media.b-spoke.com.au/about/20240508_165231.webp"
                   alt="Quality craftsmanship"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
                 />
@@ -113,7 +113,7 @@ function About() {
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img
                   // src="/about/20240508_165327.jpg"
-                  src="https://dc3v08iv2c2ou.cloudfront.net/about/20240508_165327.jpg"
+                  src="https://media.b-spoke.com.au/about/20240508_165327.webp"
                   alt="Professional construction work"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
                 />
@@ -172,7 +172,7 @@ function About() {
             >
               <img
                 // src="/about/20240625_102239.jpg"
-                src="https://dc3v08iv2c2ou.cloudfront.net/about/20240625_102239.jpg"
+                src="https://media.b-spoke.com.au/about/20240625_102239.webp"
                 alt="Our vision for quality construction"
                 className="w-full h-96 object-cover"
               />
@@ -270,7 +270,7 @@ function About() {
               <div className="rounded-lg overflow-hidden shadow-lg w-full ">
                 <img
                   // src="/about/20240716_171144.jpg"
-                  src="https://dc3v08iv2c2ou.cloudfront.net/about/20240716_171144.jpg"
+                  src="https://media.b-spoke.com.au/about/20240716_171144.webp"
                   alt="Expert construction execution"
                   className="w-full h-96 object-cover hover:scale-105 transition-transform duration-500"
                 />
@@ -506,7 +506,7 @@ function About() {
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img
                   // src="/about/20240829_154458.jpg"
-                  src="https://dc3v08iv2c2ou.cloudfront.net/about/20240829_154458.jpg"
+                  src="https://media.b-spoke.com.au/about/20240829_154458.webp"
                   alt="Completed project showcase"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
                 />
@@ -514,7 +514,7 @@ function About() {
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img
                   // src="/about/20250917_171419.jpg"
-                  src="https://dc3v08iv2c2ou.cloudfront.net/about/20250917_171419.jpg"
+                  src="https://media.b-spoke.com.au/about/20250917_171419.webp"
                   alt="Professional renovation work"
                   className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
                 />
