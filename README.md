@@ -4,12 +4,11 @@ A modern React project built with cutting-edge technologies for building high-pe
 
 ## 🚀 Tech Stack
 
-- **React 18** - Latest React with concurrent rendering
+- **Astro 5** - File-based routing and static HTML per page (`npm run build` → `dist/`)
+- **React 18** - Page UI, mounted as Astro islands
 - **JavaScript (ES6+)** - Modern JavaScript
 - **Tailwind CSS 4** - Modern utility-first CSS framework
-- **React Router 7** - Client-side routing
 - **Motion** (Framer Motion) - Production-ready animation library
-- **Vite** - Lightning-fast build tool
 - **Express** - Backend server
 - **Nodemailer** - Email sending with Gmail
 
@@ -79,45 +78,72 @@ npm run preview
 
 ```
 src/
-├── pages/
-│   └── Home.jsx              # Home page
-├── App.jsx                   # Main app component with routing
-├── main.jsx                  # Entry point
+├── pages/                    # Astro routes: one .astro file per URL (title, description, canonical)
+├── layouts/BaseLayout.astro  # <html>/<head>: fonts, analytics, LCP hero shell
+├── islands/                  # One React root per route (App + Layout + view)
+├── views/                    # React page components and their sections
+├── layout/                   # Header, Footer and Layout (React)
+├── App.jsx                   # Lenis smooth scroll + scroll reset, wraps every page
 └── index.css                 # Global styles with Tailwind
 ```
 
 ## 🎯 Get Started
 
-1. **Add new pages** in `src/pages/`
-2. **Add routes** in `src/App.jsx`
-3. **Style with Tailwind** - Use utility classes
-4. **Add animations** with Motion when needed
+1. **Add the page component** in `src/views/`
+2. **Add its React root** in `src/islands/`
+3. **Add the route** in `src/pages/` (the file name is the URL)
+4. **Style with Tailwind** - Use utility classes
+5. **Add animations** with Motion when needed
 
 ### Example: Adding a New Page
 
-Create `src/pages/About.jsx`:
+Create `src/views/team/Team.jsx`:
 
 ```jsx
-function About() {
+function Team() {
   return (
     <div className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold text-white">About</h1>
+      <h1 className="text-4xl font-bold text-white">Team</h1>
       <p className="text-gray-300 mt-4">Your content here</p>
     </div>
   );
 }
 
-export default About;
+export default Team;
 ```
 
-Add route in `src/App.jsx`:
+Create `src/islands/TeamPage.jsx`:
 
 ```jsx
-import About from "./pages/About";
+import App from "../App";
+import Layout from "../layout/Layout";
+import Team from "../views/team/Team";
 
-// In Routes:
-<Route path="/about" element={<About />} />;
+export default function TeamPage({ pathname }) {
+  return (
+    <App>
+      <Layout pathname={pathname}>
+        <Team />
+      </Layout>
+    </App>
+  );
+}
 ```
+
+Create `src/pages/team.astro` (served at `/team`):
+
+```astro
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TeamPage from "../islands/TeamPage";
+---
+
+<BaseLayout path="/team" title="Our Team | B-Spoke" description="...">
+  <TeamPage client:only="react" pathname="/team" />
+</BaseLayout>
+```
+
+Links between pages are plain `<a href="/team">` tags.
 
 ### Example: Adding Animation
 
@@ -141,7 +167,7 @@ function MyComponent() {
 
 - [Motion Documentation](https://motion.dev)
 - [Tailwind CSS v4](https://tailwindcss.com)
-- [React Router v7](https://reactrouter.com)
+- [Astro](https://docs.astro.build)
 - [React 18](https://react.dev)
 
 ## 📝 License
