@@ -25,12 +25,48 @@ const VideoBackground = ({ isDesktop = true }) => {
   const opacity = useTransform(scrollY, [0, 3100, 3500], [1, 1, 0]);
   const borderRadius = useTransform(scrollY, [0, 800], [48, 48]);
 
-  // Hand off from the HTML LCP shell once this React poster is on screen
+  // Hand off from the HTML LCP shell once this React poster is on screen.
+  // Wait until the shell's image has actually painted (max 1.5s): hiding it earlier
+  // makes this later React copy the page's LCP. requestAnimationFrame isn't proof of
+  // a paint during startup, so use Element Timing where the browser supports it.
   useEffect(() => {
-    const id = requestAnimationFrame(() => {
-      requestAnimationFrame(dismissLcpHeroShell);
-    });
-    return () => cancelAnimationFrame(id);
+    const shellImg = document.querySelector("#lcp-hero img");
+    let rafId;
+    let observer;
+    let done = false;
+    const handOff = () => {
+      if (done) return;
+      done = true;
+      observer?.disconnect();
+      rafId = requestAnimationFrame(() => {
+        rafId = requestAnimationFrame(dismissLcpHeroShell);
+      });
+    };
+
+    if (!shellImg) {
+      handOff();
+    } else if (PerformanceObserver.supportedEntryTypes?.includes("element")) {
+      observer = new PerformanceObserver((list) => {
+        if (list.getEntries().some((entry) => entry.identifier === "lcp-hero")) {
+          handOff();
+        }
+      });
+      observer.observe({ type: "element", buffered: true });
+    } else if (shellImg.complete) {
+      handOff();
+    } else {
+      shellImg.addEventListener("load", handOff, { once: true });
+      shellImg.addEventListener("error", handOff, { once: true });
+    }
+    const timeoutId = window.setTimeout(handOff, 1500);
+
+    return () => {
+      observer?.disconnect();
+      shellImg?.removeEventListener("load", handOff);
+      shellImg?.removeEventListener("error", handOff);
+      window.clearTimeout(timeoutId);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const togglePlayback = () => {
