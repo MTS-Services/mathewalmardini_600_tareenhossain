@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BathroomPortfolioPage from "../islands/BathroomPortfolioPage";
+---
+
+<BaseLayout
+  path="/bathroom-portfolio"
+  title="Bathroom Renovation Portfolio Melbourne"
+  description="Bathroom renovation portfolio Melbourne showcasing modern bathrooms, tiling, layouts and completed renovation projects."
+>
+  <BathroomPortfolioPage client:only="react" pathname="/bathroom-portfolio" />
+</BaseLayout>

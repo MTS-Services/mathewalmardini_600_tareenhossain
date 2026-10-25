@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPage from "../islands/BlogPage";
+---
+
+<BaseLayout
+  path="/blog"
+  title="Renovation Blog Melbourne | Tips, Costs & Ideas"
+  description="Renovation blog Melbourne covering kitchen, bathroom, home renovation costs, design ideas, timelines and expert advice."
+>
+  <BlogPage client:only="react" pathname="/blog" />
+</BaseLayout>

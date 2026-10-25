@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AboutPage from "../islands/AboutPage";
+---
+
+<BaseLayout
+  path="/about"
+  title="About B-Spoke | Melbourne Renovation Builders"
+  description="B-Spoke is a Melbourne renovation company delivering kitchen, bathroom and full home renovations with expert craftsmanship and service."
+>
+  <AboutPage client:only="react" pathname="/about" />
+</BaseLayout>

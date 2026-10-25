@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPostPage from "../../islands/BlogPostPage";
+import { blogPosts, blogMeta } from "../../views/blog/blogData";
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { slug } = Astro.params;
+const { post } = Astro.props;
+const meta = blogMeta[slug];
+const path = `/blog/${slug}`;
+---
+
+<BaseLayout
+  path={path}
+  title={meta?.title || post.title}
+  description={meta?.description || post.excerpt}
+>
+  <BlogPostPage client:only="react" pathname={path} slug={slug} />
+</BaseLayout>

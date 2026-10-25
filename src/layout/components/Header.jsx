@@ -1,4 +1,3 @@
-import { Link, useLocation } from "react-router";
 import {
   motion,
   AnimatePresence,
@@ -8,9 +7,8 @@ import {
 import { Globe, Menu, X, ChevronDown, ChevronUp, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 
-function Header({ isDesktop }) {
+function Header({ isDesktop, pathname }) {
   const { scrollY } = useScroll();
-  const location = useLocation();
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,7 +20,7 @@ function Header({ isDesktop }) {
   const [mobileBlogsOpen, setMobileBlogsOpen] = useState(false);
 
   const isActive = (path) => {
-    return location.pathname === path
+    return pathname === path
       ? "text-primary font-bold"
       : "text-gray-700";
   };
@@ -63,7 +61,7 @@ function Header({ isDesktop }) {
         style={{ padding: isDesktop ? "0px 20px" : "0px 12px" }}
       >
         <div className="relative flex items-center gap-3 xl:gap-4">
-          <Link to="/" className="flex items-center gap-2 group shrink-0 relative z-10">
+          <a href="/" className="flex items-center gap-2 group shrink-0 relative z-10">
             <img
               // src="/logo.png"
               src="https://media.b-spoke.com.au/logo.webp?v=2"
@@ -72,15 +70,15 @@ function Header({ isDesktop }) {
               height="90"
               className={`${isDesktop ? "w-32" : "w-24"} h-auto`}
             />
-          </Link>
+          </a>
 
           <nav className="hidden xl:flex flex-1 items-center justify-center gap-3 2xl:gap-5 min-w-0">
-            <Link
-              to="/"
+            <a
+              href="/"
               className={`${isActive("/")} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
             >
               HOME
-            </Link>
+            </a>
 
             {/* Services Dropdown */}
             <div
@@ -89,7 +87,7 @@ function Header({ isDesktop }) {
               onMouseLeave={() => setServicesOpen(false)}
             >
               <button
-                className={`flex items-center gap-1 ${["bathroom-renovation", "kitchen-renovation", "laundry-renovation", "shop-fitouts"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
+                className={`flex items-center gap-1 ${["bathroom-renovation", "kitchen-renovation", "laundry-renovation", "shop-fitouts"].some((path) => pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
               >
                 SERVICES
                 {servicesOpen ? (
@@ -108,38 +106,38 @@ function Header({ isDesktop }) {
                     exit={{ opacity: 0, y: -6, scale: 0.98 }}
                     transition={{ duration: 0.18, ease: "easeOut" }}
                   >
-                    <Link
-                      to="/bathroom-renovation"
+                    <a
+                      href="/bathroom-renovation"
                       onClick={() => setServicesOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       BATHROOM RENOVATION
-                    </Link>
-                    <Link
-                      to="/kitchen-renovation"
+                    </a>
+                    <a
+                      href="/kitchen-renovation"
                       onClick={() => setServicesOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       KITCHEN RENOVATION
-                    </Link>
-                    <Link
-                      to="/laundry-renovation"
+                    </a>
+                    <a
+                      href="/laundry-renovation"
                       onClick={() => setServicesOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       LAUNDRY RENOVATION
-                    </Link>
-                    <Link
-                      to="/shop-fitouts"
+                    </a>
+                    <a
+                      href="/shop-fitouts"
                       onClick={() => setServicesOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       SHOP FITOUTS
-                    </Link>
+                    </a>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -151,9 +149,9 @@ function Header({ isDesktop }) {
               onMouseEnter={() => setPortfolioOpen(true)}
               onMouseLeave={() => setPortfolioOpen(false)}
             >
-              <Link
-                to="/portfolio"
-                className={`flex items-center gap-1 ${["portfolio"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
+              <a
+                href="/portfolio"
+                className={`flex items-center gap-1 ${["portfolio"].some((path) => pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
               >
                 PORTFOLIO
                 {portfolioOpen ? (
@@ -161,7 +159,7 @@ function Header({ isDesktop }) {
                 ) : (
                   <ChevronDown className="w-4 h-4" />
                 )}
-              </Link>
+              </a>
 
               <AnimatePresence>
                 {portfolioOpen && (
@@ -173,47 +171,47 @@ function Header({ isDesktop }) {
                     exit={{ opacity: 0, y: -6, scale: 0.98 }}
                     transition={{ duration: 0.18, ease: "easeOut" }}
                   >
-                    <Link
-                      to="/bathroom-portfolio"
+                    <a
+                      href="/bathroom-portfolio"
                       onClick={() => setPortfolioOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       BATHROOM PORTFOLIO
-                    </Link>
-                    <Link
-                      to="/kitchen-portfolio"
+                    </a>
+                    <a
+                      href="/kitchen-portfolio"
                       onClick={() => setPortfolioOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       KITCHEN PORTFOLIO
-                    </Link>
-                    <Link
-                      to="/laundry-portfolio"
+                    </a>
+                    <a
+                      href="/laundry-portfolio"
                       onClick={() => setPortfolioOpen(false)}
                       className="block text-gray-900 hover:bg-gray-100 transition-colors"
                       style={{ padding: "8px 16px", fontSize: "16px" }}
                     >
                       LAUNDRY PORTFOLIO
-                    </Link>
+                    </a>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
-            <Link
-              to="/about"
+            <a
+              href="/about"
               className={`${isActive("/about")} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
             >
               ABOUT
-            </Link>
-            <Link
-              to="/faqs"
+            </a>
+            <a
+              href="/faqs"
               className={`${isActive("/faqs")} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
             >
               FAQs
-            </Link>
+            </a>
 
             {/* Blogs dropdown removed — commented out below so it can be re-enabled if needed */}
             {/*
@@ -359,19 +357,19 @@ function Header({ isDesktop }) {
               )}
             </div>
             */}
-            <Link
-              to="/blog"
+            <a
+              href="/blog"
               className={`${isActive("/blog")} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
             >
               BLOGS
-            </Link>
+            </a>
 
-            <Link
-              to="/contact"
+            <a
+              href="/contact"
               className={`${isActive("/contact")} hover:text-gray-900 transition-colors font-medium text-sm 2xl:text-base whitespace-nowrap`}
             >
               CONTACT US
-            </Link>
+            </a>
           </nav>
 
           {/* Actions — reserved width so phone never sits under nav */}
@@ -386,7 +384,7 @@ function Header({ isDesktop }) {
                   0432661176
                 </span>
               </a>
-              <Link to="/book-consultation">
+              <a href="/book-consultation">
                 <motion.button
                   className="bg-primary text-white rounded-lg hover:bg-gray-800 transition-colors font-semibold text-sm 2xl:text-base whitespace-nowrap"
                   style={{ padding: "12px 16px" }}
@@ -395,7 +393,7 @@ function Header({ isDesktop }) {
                 >
                   Book Consultation
                 </motion.button>
-              </Link>
+              </a>
             </div>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -433,18 +431,18 @@ function Header({ isDesktop }) {
               `}
             </style>
             <nav className="flex flex-col gap-4">
-              <Link
-                to="/"
+              <a
+                href="/"
                 className={`${isActive("/")} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 HOME
-              </Link>
+              </a>
 
               {/* Mobile Services Dropdown */}
               <div>
                 <button
-                  className={`flex items-center justify-between w-full ${["bathroom-renovation", "kitchen-renovation", "laundry-renovation", "shop-fitouts"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base py-2`}
+                  className={`flex items-center justify-between w-full ${["bathroom-renovation", "kitchen-renovation", "laundry-renovation", "shop-fitouts"].some((path) => pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                 >
                   SERVICES
@@ -469,8 +467,8 @@ function Header({ isDesktop }) {
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.22, ease: "easeOut" }}
                     >
-                      <Link
-                        to="/bathroom-renovation"
+                      <a
+                        href="/bathroom-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => {
@@ -479,9 +477,9 @@ function Header({ isDesktop }) {
                         }}
                       >
                         BATHROOM RENOVATION
-                      </Link>
-                      <Link
-                        to="/kitchen-renovation"
+                      </a>
+                      <a
+                        href="/kitchen-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => {
@@ -490,9 +488,9 @@ function Header({ isDesktop }) {
                         }}
                       >
                         KITCHEN RENOVATION
-                      </Link>
-                      <Link
-                        to="/laundry-renovation"
+                      </a>
+                      <a
+                        href="/laundry-renovation"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => {
@@ -501,9 +499,9 @@ function Header({ isDesktop }) {
                         }}
                       >
                         LAUNDRY RENOVATION
-                      </Link>
-                      <Link
-                        to="/shop-fitouts"
+                      </a>
+                      <a
+                        href="/shop-fitouts"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => {
@@ -512,7 +510,7 @@ function Header({ isDesktop }) {
                         }}
                       >
                         SHOP FITOUTS
-                      </Link>
+                      </a>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -521,7 +519,7 @@ function Header({ isDesktop }) {
               {/* Mobile Portfolio Dropdown */}
               <div>
                 <button
-                  className={`flex items-center justify-between w-full ${["portfolio"].some((path) => location.pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base py-2`}
+                  className={`flex items-center justify-between w-full ${["portfolio"].some((path) => pathname.includes(path)) ? "text-primary font-bold" : "text-gray-700"} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                   onClick={() => setMobilePortfolioOpen(!mobilePortfolioOpen)}
                 >
                   PORTFOLIO
@@ -546,8 +544,8 @@ function Header({ isDesktop }) {
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.22, ease: "easeOut" }}
                     >
-                      <Link
-                        to="/portfolio"
+                      <a
+                        href="/portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors font-semibold"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => {
@@ -556,9 +554,9 @@ function Header({ isDesktop }) {
                         }}
                       >
                         VIEW ALL
-                      </Link>
-                      <Link
-                        to="/bathroom-portfolio"
+                      </a>
+                      <a
+                        href="/bathroom-portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => {
@@ -567,9 +565,9 @@ function Header({ isDesktop }) {
                         }}
                       >
                         BATHROOM PORTFOLIO
-                      </Link>
-                      <Link
-                        to="/kitchen-portfolio"
+                      </a>
+                      <a
+                        href="/kitchen-portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => {
@@ -578,9 +576,9 @@ function Header({ isDesktop }) {
                         }}
                       >
                         KITCHEN PORTFOLIO
-                      </Link>
-                      <Link
-                        to="/laundry-portfolio"
+                      </a>
+                      <a
+                        href="/laundry-portfolio"
                         className="text-gray-800 hover:text-gray-900 transition-colors"
                         style={{ fontSize: "14px", padding: "4px 0" }}
                         onClick={() => {
@@ -589,26 +587,26 @@ function Header({ isDesktop }) {
                         }}
                       >
                         LAUNDRY PORTFOLIO
-                      </Link>
+                      </a>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
-              <Link
-                to="/about"
+              <a
+                href="/about"
                 className={`${isActive("/about")} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 ABOUT
-              </Link>
-              <Link
-                to="/faqs"
+              </a>
+              <a
+                href="/faqs"
                 className={`${isActive("/faqs")} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 FAQs
-              </Link>
+              </a>
 
               {/* Mobile Blogs dropdown removed — commented out below so it can be re-enabled if needed */}
               {/*
@@ -762,21 +760,21 @@ function Header({ isDesktop }) {
                 )}
               </div>
               */}
-              <Link
-                to="/blog"
+              <a
+                href="/blog"
                 className={`${isActive("/blog")} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 BLOGS
-              </Link>
+              </a>
 
-              <Link
-                to="/contact"
+              <a
+                href="/contact"
                 className={`${isActive("/contact")} hover:text-gray-900 transition-colors font-medium text-base py-2`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 CONTACT US
-              </Link>
+              </a>
 
               <a
                 href="tel:+61432661176"
@@ -788,14 +786,14 @@ function Header({ isDesktop }) {
                 <span>0432 661 176</span>
               </a>
 
-              <Link
-                to="/book-consultation"
+              <a
+                href="/book-consultation"
                 className="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-base w-full mt-2 block text-center"
                 style={{ padding: "15px 20px" }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Book Consultation
-              </Link>
+              </a>
             </nav>
           </div>
         )}

@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LaundryPortfolioPage from "../islands/LaundryPortfolioPage";
+---
+
+<BaseLayout
+  path="/laundry-portfolio"
+  title="Laundry Renovation Portfolio Melbourne"
+  description="Laundry renovation portfolio Melbourne with smart layouts, storage solutions and completed laundry upgrade projects."
+>
+  <LaundryPortfolioPage client:only="react" pathname="/laundry-portfolio" />
+</BaseLayout>
