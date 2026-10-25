@@ -103,7 +103,7 @@ const FeatureMediaSection = () => {
             className="absolute left-0 z-30 cursor-pointer"
             onClick={handleNavigateToPortfolio}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
+            <div className="fm-work-side relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
                 // src="/Our_work/Photo4.JPG"
                 src="https://media.b-spoke.com.au/Our_work/Photo4.webp?v=2"
@@ -123,7 +123,7 @@ const FeatureMediaSection = () => {
             transition={{ duration: 0.8 }}
             onClick={handleNavigateToPortfolio}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-175 xl:w-300 lg:h-137.5 xl:h-170 hover:shadow-3xl transition-shadow duration-300">
+            <div className="fm-work-center relative rounded-2xl overflow-hidden shadow-2xl lg:w-175 xl:w-300 lg:h-137.5 xl:h-170 hover:shadow-3xl transition-shadow duration-300">
               <LazyVideo
                 src={centerVideoUrl}
                 poster={centerVideoPoster}
@@ -141,7 +141,7 @@ const FeatureMediaSection = () => {
             className="absolute right-0 z-30 cursor-pointer"
             onClick={handleNavigateToPortfolio}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
+            <div className="fm-work-side relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
                 // src="/Our_work/IMG_1517.JPG"
                 src="https://media.b-spoke.com.au/Our_work/IMG_1517.webp?v=2"

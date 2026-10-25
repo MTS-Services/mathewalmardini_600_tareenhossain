@@ -1498,6 +1498,17 @@ body::after {
   .mobile-feature-layout {
     display: none !important;
   }
+
+  /* Laptop-height windows: shorten the Our Work photos (widths unchanged) so the
+     heading and the centre video fit on one screen: heading-to-video-top is ~102px,
+     plus 24px above and below. Taller windows (PCs) keep 680px / 580px. */
+  .fm-work-center {
+    height: min(680px, max(400px, calc(100vh - 150px)));
+  }
+
+  .fm-work-side {
+    height: min(580px, max(341px, calc((100vh - 150px) * 0.853)));
+  }
 }
 
 /* Process Section styles */
