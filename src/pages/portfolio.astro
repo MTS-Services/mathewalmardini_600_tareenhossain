@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PortfolioPage from "../islands/PortfolioPage";
+---
+
+<BaseLayout
+  path="/portfolio"
+  title="Renovation Portfolio Melbourne | B-Spoke Projects"
+  description="View Melbourne renovation projects including kitchens, bathrooms and home transformations completed by B-Spoke builders."
+>
+  <PortfolioPage client:only="react" pathname="/portfolio" />
+</BaseLayout>

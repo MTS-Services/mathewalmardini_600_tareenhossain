@@ -503,7 +503,6 @@
 
 // export default Footer;
 
-import { Link } from "react-router";
 
 const quickLinks = [
   { label: "Home", to: "/" },
@@ -676,12 +675,12 @@ const Footer = () => {
             <ul className="flex flex-col" style={{ gap: "0.5rem" }}>
               {quickLinks.map((link) => (
                 <li key={link.to}>
-                  <Link
-                    to={link.to}
+                  <a
+                    href={link.to}
                     className="text-gray-200 hover:text-white transition-colors duration-300"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

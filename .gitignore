@@ -9,6 +9,9 @@ lerna-debug.log*
 
 
 node_modules
+
+# Astro generated types
+.astro
 *.local
 .env
 .env.*

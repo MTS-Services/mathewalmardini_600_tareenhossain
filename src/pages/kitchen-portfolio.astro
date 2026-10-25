@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import KitchenPortfolioPage from "../islands/KitchenPortfolioPage";
+---
+
+<BaseLayout
+  path="/kitchen-portfolio"
+  title="Kitchen Renovation Portfolio Melbourne"
+  description="Kitchen renovation portfolio Melbourne featuring custom kitchen designs, modern upgrades and completed projects by B-Spoke."
+>
+  <KitchenPortfolioPage client:only="react" pathname="/kitchen-portfolio" />
+</BaseLayout>
