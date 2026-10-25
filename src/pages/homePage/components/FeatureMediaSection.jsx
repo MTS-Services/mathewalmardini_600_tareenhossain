@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import LazyVideo from "../../../components/LazyVideo";
@@ -8,9 +8,9 @@ const FeatureMediaSection = () => {
   const sectionRef = useRef(null);
   const mobileImagesRef = useRef(null);
   const centerVideoUrl =
-    "https://media.b-spoke.com.au/Our_work/Video%2B_in_center.mp4";
+    "https://media.b-spoke.com.au/Our_work/Video%2B_in_center.mp4?v=2";
   const centerVideoPoster =
-    "https://media.b-spoke.com.au/Our_work/IMG_1517.webp";
+    "https://media.b-spoke.com.au/Our_work/IMG_1517.webp?v=2";
   //   const centerVideoUrl =
   //   "/Our_work/Video _in_center.mp4";
   // const centerVideoPoster =
@@ -19,6 +19,18 @@ const FeatureMediaSection = () => {
   const handleNavigateToPortfolio = () => {
     navigate("/portfolio");
   };
+  const [isWide, setIsWide] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(min-width: 1440px)").matches,
+  );
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1440px)");
+    const onChange = () => setIsWide(media.matches);
+    onChange();
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -85,6 +97,7 @@ const FeatureMediaSection = () => {
       {/* Media Layout Container */}
       <div className="relative w-full max-w-400 mx-auto px-4 md:px-6 lg:px-8">
         {/* Desktop Layout: Centered with positioned side elements */}
+        {isWide ? (
         <div className="desktop-feature-layout lg:flex lg:items-center lg:justify-center lg:relative">
           {/* Left Video - Positioned on left side */}
           <motion.div
@@ -95,7 +108,7 @@ const FeatureMediaSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
                 // src="/Our_work/Photo4.JPG"
-                src="https://media.b-spoke.com.au/Our_work/Photo4.webp"
+                src="https://media.b-spoke.com.au/Our_work/Photo4.webp?v=2"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -133,7 +146,7 @@ const FeatureMediaSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl lg:w-90 xl:w-75 lg:h-117 xl:h-145 hover:shadow-3xl transition-shadow duration-300">
               <img
                 // src="/Our_work/IMG_1517.JPG"
-                src="https://media.b-spoke.com.au/Our_work/IMG_1517.webp"
+                src="https://media.b-spoke.com.au/Our_work/IMG_1517.webp?v=2"
                 alt="Completed project showcase"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -141,8 +154,7 @@ const FeatureMediaSection = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* Mobile Layout: Main image on top, left and right images below */}
+        ) : (
         <div
           className="mobile-feature-layout flex flex-col"
           style={{ padding: "0 16px" }}
@@ -192,7 +204,7 @@ const FeatureMediaSection = () => {
               >
                 <img
                   // src="/Our_work/Photo4.JPG"
-                  src="https://media.b-spoke.com.au/Our_work/Photo4.webp"
+                  src="https://media.b-spoke.com.au/Our_work/Photo4.webp?v=2"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -216,7 +228,7 @@ const FeatureMediaSection = () => {
               >
                 <img
                   // src="/Our_work/IMG_1517.JPG"
-                  src="https://media.b-spoke.com.au/Our_work/IMG_1517.webp"
+                  src="https://media.b-spoke.com.au/Our_work/IMG_1517.webp?v=2"
                   alt="Completed project"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -225,6 +237,7 @@ const FeatureMediaSection = () => {
             </motion.div>
           </div>
         </div>
+        )}
       </div>
 
       {/* Optional decorative gradient overlay at bottom */}

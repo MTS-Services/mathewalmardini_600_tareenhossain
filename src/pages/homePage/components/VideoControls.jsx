@@ -1,19 +1,15 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { motion } from "motion/react";
-import { Pause, Play, Menu } from "lucide-react";
+import { Pause, Play } from "lucide-react";
 
-const VideoControls = ({ videoRef, className = "", isDesktop = true }) => {
-  const [isPlaying, setIsPlaying] = useState(true);
-
+const VideoControls = ({
+  className = "",
+  isDesktop = true,
+  isPlaying = false,
+  onToggle,
+}) => {
   const togglePlayPause = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
+    if (onToggle) onToggle();
   };
 
   return (

@@ -67,7 +67,7 @@ function LazyVideo({
           loop={loop}
           muted={muted}
           playsInline={playsInline}
-          preload="metadata"
+          preload="none"
           {...rest}
         />
       ) : poster ? (

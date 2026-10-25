@@ -15,7 +15,7 @@ import CategoryQuestionsStep from "./components/CategoryQuestionsStep";
 import ReviewStep from "./components/ReviewStep";
 import { showFormError, showFormSuccess } from "./showFormAlert";
 
-const LOGO_URL = "https://media.b-spoke.com.au/logo.webp";
+const LOGO_URL = "https://media.b-spoke.com.au/logo.webp?v=2";
 const DRAFT_KEY = "bsf-form-draft-v1";
 
 const STEP_ORDER = [

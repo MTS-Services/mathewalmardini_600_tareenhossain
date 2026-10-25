@@ -557,7 +557,7 @@ const processSteps = [
     description:
       "If you're reading this, then chances are you've already made a decision and have an idea about your renovation. Bespoke will turn that idea into a reality.",
     image:
-      "https://media.b-spoke.com.au/Our_process/1_Idea.webp",
+      "https://media.b-spoke.com.au/Our_process/1_Idea.webp?v=2",
       //   image:
       // "/Our_process/1_Idea.jpg",
   },
@@ -577,7 +577,7 @@ const processSteps = [
     description:
       "You may be thinking about your project. Cost, details, timeliness and accuracy are the keys to successful project. Bespoke takes estimates as serious as you do.",
     image:
-      "https://media.b-spoke.com.au/Our_process/3_Get_a_quote.webp",
+      "https://media.b-spoke.com.au/Our_process/3_Get_a_quote.webp?v=2",
       //   image:
       // "/Our_process/3_Get_a_quote.jpg",
   },
@@ -587,7 +587,7 @@ const processSteps = [
     description:
       "Once you give us the green light. Together, we'll help you plan and design your dream project, and set a timeline that you feel good about.",
     image:
-      "https://media.b-spoke.com.au/Our_process/4_Design.webp",
+      "https://media.b-spoke.com.au/Our_process/4_Design.webp?v=2",
       //   image:
       // "/Our_process/4_Design.jpg",
   },
@@ -597,7 +597,7 @@ const processSteps = [
     description:
       "Once the final game plan is in place, then it's time for the magic to begin. Relax and enjoy the process while we take care of all the work.",
     image:
-      "https://media.b-spoke.com.au/Our_process/5_The_fun_part.webp",
+      "https://media.b-spoke.com.au/Our_process/5_The_fun_part.webp?v=2",
       //   image:
       // "/Our_process/5_The_fun_part.png",
   },
@@ -617,7 +617,7 @@ const processSteps = [
     description:
       "It's the moment you've been waiting for: your project is complete! Invite your family and friends and get the stake on the barbecue.",
     image:
-      "https://media.b-spoke.com.au/Our_process/7_Celebrate.webp",
+      "https://media.b-spoke.com.au/Our_process/7_Celebrate.webp?v=2",
       //   image:
       // "/Our_process/7_Celebrate.png",
   },

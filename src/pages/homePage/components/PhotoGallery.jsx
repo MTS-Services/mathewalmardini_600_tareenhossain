@@ -326,13 +326,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const images = [
   {
     id: 1,
-    src: "https://media.b-spoke.com.au/PhotoGallery/20240604_153801_(1).webp",
+    src: "https://media.b-spoke.com.au/PhotoGallery/20240604_153801_(1).webp?v=2",
   },
-  { id: 2, src: "https://media.b-spoke.com.au/PhotoGallery/20250404_123149.webp" },
-  { id: 3, src: "https://media.b-spoke.com.au/PhotoGallery/Bath.webp" },
-  { id: 4, src: "https://media.b-spoke.com.au/PhotoGallery/Craigieburn%2B5.webp" },
-  { id: 5, src: "https://media.b-spoke.com.au/PhotoGallery/IMG_9819.webp" },
-  { id: 6, src: "https://media.b-spoke.com.au/PhotoGallery/WhatsApp%2BImage%2B2023-03-29%2Bat%2B1.22.25%2BPM%2B(1).webp" },
+  { id: 2, src: "https://media.b-spoke.com.au/PhotoGallery/20250404_123149.webp?v=2" },
+  { id: 3, src: "https://media.b-spoke.com.au/PhotoGallery/Bath.webp?v=2" },
+  { id: 4, src: "https://media.b-spoke.com.au/PhotoGallery/Craigieburn%2B5.webp?v=2" },
+  { id: 5, src: "https://media.b-spoke.com.au/PhotoGallery/IMG_9819.webp?v=2" },
+  { id: 6, src: "https://media.b-spoke.com.au/PhotoGallery/WhatsApp%2BImage%2B2023-03-29%2Bat%2B1.22.25%2BPM%2B(1).webp?v=2" },
 ];
 // const images = [
 //   {

@@ -14,10 +14,10 @@ const CDN = "https://media.b-spoke.com.au/bathroom_gallery";
 
 /** Distinct photos matched to each bathroom-type keyword */
 const TYPE_IMAGES = {
-  main: `${CDN}/Bath.webp`,
-  ensuite: `${CDN}/Taylors%2BHill%2BBathroom%2B2.webp`,
-  powder: `${CDN}/IMG_1517.webp`,
-  other: `${CDN}/Bathroom%2BRenovation.webp`,
+  main: `${CDN}/Bath.webp?v=2`,
+  ensuite: `${CDN}/Taylors%2BHill%2BBathroom%2B2.webp?v=2`,
+  powder: `${CDN}/IMG_1517.webp?v=2`,
+  other: `${CDN}/Bathroom%2BRenovation.webp?v=2`,
 };
 
 export default function BathroomTypeStep({

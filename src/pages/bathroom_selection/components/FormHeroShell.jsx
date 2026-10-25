@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "../bathroomSelection.css";
 
 const HERO_VIDEO =
-  "https://media.b-spoke.com.au/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4";
+  "https://media.b-spoke.com.au/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4?v=2";
 
 const LOOP_LEAD = 0.35;
 

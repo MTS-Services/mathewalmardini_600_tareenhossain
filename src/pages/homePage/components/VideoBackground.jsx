@@ -3,9 +3,9 @@ import { motion, useScroll, useTransform } from "motion/react";
 import VideoControls from "./VideoControls";
 
 const HERO_VIDEO =
-  "https://media.b-spoke.com.au/banner_video/charteris_MP4.mp4";
+  "https://media.b-spoke.com.au/banner_video/charteris_MP4.mp4?v=2";
 const HERO_POSTER =
-  "https://media.b-spoke.com.au/form_images/1789534057591-5a01b8d3f3acf766.webp";
+  "https://media.b-spoke.com.au/form_images/1789534057591-5a01b8d3f3acf766.webp?v=2";
 
 function dismissLcpHeroShell() {
   const el = document.getElementById("lcp-hero");
@@ -18,6 +18,7 @@ const VideoBackground = ({ isDesktop = true }) => {
   const { scrollY } = useScroll();
   const videoRef = useRef(null);
   const [videoReady, setVideoReady] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const scale = useTransform(scrollY, [0, 800], [1, 0.22]);
   const y = useTransform(scrollY, [0, 3000], [0, -80]);
@@ -32,49 +33,30 @@ const VideoBackground = ({ isDesktop = true }) => {
     return () => cancelAnimationFrame(id);
   }, []);
 
-  // Defer heavy MP4 until after first paint so LCP can be the poster image
-  useEffect(() => {
+  const togglePlayback = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    let cancelled = false;
-    let idleId;
-    let timeoutId;
-
-    const startVideo = () => {
-      if (cancelled || !video) return;
+    if (!video.getAttribute("src")) {
       video.src = HERO_VIDEO;
-      video.load();
-
-      const tryPlay = () => {
-        if (cancelled) return;
-        video
-          .play()
-          .then(() => setVideoReady(true))
-          .catch(() => setVideoReady(true));
-      };
-
-      if (video.readyState >= 2) {
-        tryPlay();
-      } else {
-        video.addEventListener("canplay", tryPlay, { once: true });
-      }
-    };
-
-    if ("requestIdleCallback" in window) {
-      idleId = requestIdleCallback(startVideo, { timeout: 1800 });
-    } else {
-      timeoutId = setTimeout(startVideo, 800);
+      video.preload = "auto";
+      video
+        .play()
+        .then(() => {
+          setVideoReady(true);
+          setIsPlaying(true);
+        })
+        .catch(() => setIsPlaying(false));
+      return;
     }
 
-    return () => {
-      cancelled = true;
-      if (idleId != null && "cancelIdleCallback" in window) {
-        cancelIdleCallback(idleId);
-      }
-      if (timeoutId != null) clearTimeout(timeoutId);
-    };
-  }, []);
+    if (video.paused) {
+      video.play().then(() => setIsPlaying(true)).catch(() => {});
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
 
   const mediaStyle = isDesktop
     ? {
@@ -119,7 +101,8 @@ const VideoBackground = ({ isDesktop = true }) => {
             {videoEl}
             <VideoControls
               className="absolute bottom-4 right-4 z-10"
-              videoRef={videoRef}
+              isPlaying={isPlaying}
+              onToggle={togglePlayback}
               isDesktop={isDesktop}
             />
           </div>
@@ -146,7 +129,8 @@ const VideoBackground = ({ isDesktop = true }) => {
         {videoEl}
         <VideoControls
           className="absolute bottom-12 right-12 z-10"
-          videoRef={videoRef}
+          isPlaying={isPlaying}
+          onToggle={togglePlayback}
           isDesktop={isDesktop}
         />
       </motion.div>

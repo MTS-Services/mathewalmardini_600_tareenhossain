@@ -66,7 +66,7 @@ function Header({ isDesktop }) {
           <Link to="/" className="flex items-center gap-2 group shrink-0 relative z-10">
             <img
               // src="/logo.png"
-              src="https://media.b-spoke.com.au/logo.webp"
+              src="https://media.b-spoke.com.au/logo.webp?v=2"
               alt="B Spoke Logo"
               width="128"
               height="90"

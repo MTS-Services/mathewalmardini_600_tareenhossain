@@ -67,7 +67,7 @@ function BathroomRenovation() {
           >
             <source
               // src="/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4.mp4"
-              src="https://media.b-spoke.com.au/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4"
+              src="https://media.b-spoke.com.au/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4?v=2"
               // type="video/mp4"
             />
             Your browser does not support the video tag.
@@ -179,7 +179,7 @@ function BathroomRenovation() {
             >
               <img
                 // src="/bathroom_renovation/Bathroom_1.jpg"
-                src="https://media.b-spoke.com.au/bathroom_renovation/Bathroom_1.webp"
+                src="https://media.b-spoke.com.au/bathroom_renovation/Bathroom_1.webp?v=2"
                 alt="Bathroom Design"
                 className="w-full h-full object-cover"
               />
@@ -199,7 +199,7 @@ function BathroomRenovation() {
             >
               <img
                 // src="/bathroom_renovation/Before_and_after 1.jpg"
-                src="https://media.b-spoke.com.au/bathroom_renovation/Before_and_after%2B1.webp"
+                src="https://media.b-spoke.com.au/bathroom_renovation/Before_and_after%2B1.webp?v=2"
                 alt="Before and After Bathroom Renovation"
                 className="w-full h-full object-cover"
               />

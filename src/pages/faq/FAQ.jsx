@@ -329,7 +329,7 @@ const FAQ = () => {
       >
         <motion.img
           // src="/faq/FAQ.jpg"
-          src="https://media.b-spoke.com.au/faq/FAQ.webp"
+          src="https://media.b-spoke.com.au/faq/FAQ.webp?v=2"
           alt="Frequently Asked Questions"
           className="absolute inset-0 w-full h-full object-cover"
           initial={{ scale: 1.1 }}

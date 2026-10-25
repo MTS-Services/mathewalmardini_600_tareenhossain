@@ -44,7 +44,7 @@ function LaundryPortfolio() {
           >
             <source
               // src="/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mov"
-              src="https://media.b-spoke.com.au/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mp4"
+              src="https://media.b-spoke.com.au/banner_video/3d-rendering-laundry-room-on-ground-floor-washing-2025-12-17-11-02-47-utc.mp4?v=2"
               type="video/mp4"
             />
             Your browser does not support the video tag.

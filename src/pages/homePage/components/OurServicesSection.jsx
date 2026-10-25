@@ -15,9 +15,9 @@ const OurServicesSection = () => {
       description:
         "Transform your bathroom with creative design and functional planning. Our team delivers end-to-end construction services for a beautiful, practical space.",
       video:
-        "https://media.b-spoke.com.au/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4",
+        "https://media.b-spoke.com.au/Our_services/modern-bathroom-interior-with-freestanding-tub-and-2025-12-17-15-15-24-utc.mp4?v=2",
       poster:
-        "https://media.b-spoke.com.au/about/banner_image/Photo3.webp",
+        "https://media.b-spoke.com.au/about/banner_image/Photo3.webp?v=2",
       type: "video",
       path: "/bathroom-renovation",
     },
@@ -27,7 +27,7 @@ const OurServicesSection = () => {
       description:
         "Expert laundry room renovation from planning and design to plumbing installation, ensuring everything is done correctly.",
       video:
-        "https://media.b-spoke.com.au/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.webp",
+        "https://media.b-spoke.com.au/Our_services/modern-washing-machine-in-a-laundry-room-against-a-2026-01-09-00-42-26-utc.webp?v=2",
       type: "image",
       path: "/laundry-renovation",
     },
@@ -37,9 +37,9 @@ const OurServicesSection = () => {
       description:
         "Complete kitchen renovation from design to construction with warranty on labor and materials. Highest quality, transparent process, and excellent results within your budget.",
       video:
-        "https://media.b-spoke.com.au/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4",
+        "https://media.b-spoke.com.au/Our_services/modern-and-spacious-wooden-kitchen-room-2025-12-17-06-34-17-utc.mp4?v=2",
       poster:
-        "https://media.b-spoke.com.au/about/banner_image/Photo1.webp",
+        "https://media.b-spoke.com.au/about/banner_image/Photo1.webp?v=2",
       type: "video",
       path: "/kitchen-renovation",
     },
@@ -49,7 +49,7 @@ const OurServicesSection = () => {
       description:
         "We build retails spaces that are not only visually stunning but also functional and efficient.",
       video:
-        "https://media.b-spoke.com.au/Our_services/envato-labs-image-edit.webp",
+        "https://media.b-spoke.com.au/Our_services/envato-labs-image-edit.webp?v=2",
       type: "image",
       path: "/shop-fitouts",
     },

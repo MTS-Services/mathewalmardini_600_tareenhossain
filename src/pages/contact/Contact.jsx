@@ -13,7 +13,7 @@ const Contact = () => {
       <div className="relative h-[50vh] min-h-[600px] w-full overflow-hidden">
         <img
           // src="/contact_us/Contact_us.jpg"
-          src="https://media.b-spoke.com.au/contact_us/Contact_us.webp"
+          src="https://media.b-spoke.com.au/contact_us/Contact_us.webp?v=2"
           alt="Contact Us"
           className="absolute inset-0 w-full h-full object-cover"
         />
