@@ -69,30 +69,65 @@ const VideoBackground = ({ isDesktop = true }) => {
     };
   }, []);
 
-  const togglePlayback = () => {
+  // Loads the video on first play; after that it just resumes
+  const playVideo = () => {
     const video = videoRef.current;
     if (!video) return;
 
     if (!video.getAttribute("src")) {
       video.src = HERO_VIDEO;
       video.preload = "auto";
-      video
-        .play()
-        .then(() => {
-          setVideoReady(true);
-          setIsPlaying(true);
-        })
-        .catch(() => setIsPlaying(false));
-      return;
     }
+    video
+      .play()
+      .then(() => {
+        setVideoReady(true);
+        setIsPlaying(true);
+      })
+      .catch(() => setIsPlaying(false));
+  };
+
+  const togglePlayback = () => {
+    const video = videoRef.current;
+    if (!video) return;
 
     if (video.paused) {
-      video.play().then(() => setIsPlaying(true)).catch(() => {});
+      playVideo();
     } else {
       video.pause();
       setIsPlaying(false);
     }
   };
+
+  // Autoplay once the page has loaded and the browser is idle, so the 1.8 MB video
+  // doesn't compete with the first render. Skipped for reduced-motion and Data Saver
+  // users; the play button still works for them.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (navigator.connection?.saveData) return;
+
+    let idleId;
+    let timeoutId;
+    const schedule = () => {
+      if ("requestIdleCallback" in window) {
+        idleId = requestIdleCallback(playVideo, { timeout: 2000 });
+      } else {
+        timeoutId = window.setTimeout(playVideo, 500);
+      }
+    };
+
+    if (document.readyState === "complete") {
+      schedule();
+    } else {
+      window.addEventListener("load", schedule, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener("load", schedule);
+      if (idleId != null) cancelIdleCallback(idleId);
+      window.clearTimeout(timeoutId);
+    };
+  }, []);
 
   const mediaStyle = isDesktop
     ? {
