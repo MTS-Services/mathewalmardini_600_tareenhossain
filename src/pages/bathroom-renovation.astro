@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BathroomRenovationPage from "../islands/BathroomRenovationPage";
+---
+
+<BaseLayout
+  path="/bathroom-renovation"
+  title="Bathroom Renovation Melbourne | Modern Bathrooms"
+  description="Bathroom renovation Melbourne with modern design, tiling, fixtures and complete upgrades. Trusted bathroom builders in Melbourne."
+>
+  <BathroomRenovationPage client:only="react" pathname="/bathroom-renovation" />
+</BaseLayout>

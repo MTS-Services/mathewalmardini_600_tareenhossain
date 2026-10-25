@@ -1,12 +1,9 @@
-import { BrowserRouter } from "react-router";
 import { useEffect, useRef } from "react";
 import { useMotionValue } from "motion/react";
-import AppRouter from "./routes/router";
 import ScrollToTop from "./components/ScrollToTop";
-import CanonicalTag from "./components/CanonicalTag";
 import { LenisContext } from "./context/LenisContext";
 
-function App() {
+function App({ children }) {
   const lenisRef = useRef(null);
 
   // Single shared scrollY motion value — driven by Lenis (or native scroll on mobile)
@@ -95,13 +92,8 @@ function App() {
 
   return (
     <LenisContext.Provider value={{ scrollY, lenisRef }}>
-      <BrowserRouter>
-        <CanonicalTag />
-        <ScrollToTop lenisInstance={lenisRef} />
-        <div className="min-h-screen">
-          <AppRouter />
-        </div>
-      </BrowserRouter>
+      <ScrollToTop lenisInstance={lenisRef} />
+      <div className="min-h-screen">{children}</div>
     </LenisContext.Provider>
   );
 }
