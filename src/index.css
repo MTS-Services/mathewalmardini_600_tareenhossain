@@ -1166,6 +1166,33 @@ body::after {
   }
 }
 
+/* Short (laptop-height) windows: shrink the card image so each service's title and
+   description fit below it. Cap = window height - sticky top - 24px padding - text
+   block - 8px; tall windows (PCs) keep the full image. */
+@media (min-width: 1024px) {
+  .our-services-media {
+    max-height: max(160px, calc(100vh - 354px));
+  }
+}
+
+@media (min-width: 1280px) {
+  .our-services-media {
+    max-height: max(160px, calc(100vh - 384px));
+  }
+}
+
+@media (min-width: 1920px) {
+  .our-services-media {
+    max-height: max(160px, calc(100vh - 394px));
+  }
+}
+
+@media (min-width: 2560px) {
+  .our-services-media {
+    max-height: max(160px, calc(100vh - 404px));
+  }
+}
+
 /* Info Section responsive spacing */
 .info-section-padding {
   padding-left: 16px;
