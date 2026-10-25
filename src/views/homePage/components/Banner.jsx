@@ -3,6 +3,19 @@ import { motion, useScroll, useTransform } from "motion/react";
 import VideoBackground from "./VideoBackground";
 import HeroText from "./HeroText";
 import LazyVideo from "../../../components/LazyVideo";
+import photo2Small from "../../../assets/banner/Photo2-800w.webp";
+import photo3Small from "../../../assets/banner/Photo3-800w.webp";
+import photo5Small from "../../../assets/banner/Photo5-800w.webp";
+import photo6Small from "../../../assets/banner/Photo6-800w.webp";
+
+// Mobile/tablet tiles are at most ~320px wide, so serve 800px copies there
+const SMALL_TILE_SRC = {
+  "https://media.b-spoke.com.au/about/banner_image/Photo2.webp?v=2": photo2Small.src,
+  "https://media.b-spoke.com.au/about/banner_image/Photo3.webp?v=2": photo3Small.src,
+  "https://media.b-spoke.com.au/about/banner_image/Photo5.webp?v=2": photo5Small.src,
+  "https://media.b-spoke.com.au/about/banner_image/Photo6.webp?v=2": photo6Small.src,
+};
+const smallTileSrc = (url) => SMALL_TILE_SRC[url] || url;
 
 const Banner = ({ isDesktop = true }) => {
   const [isTablet, setIsTablet] = useState(false);
@@ -229,7 +242,7 @@ const Banner = ({ isDesktop = true }) => {
               >
                 {portfolioItem?.type === "video" ? (
                   <img
-                    src={portfolioItem.poster || image.url}
+                    src={smallTileSrc(portfolioItem.poster || image.url)}
                     alt={`Portfolio ${image.id}`}
                     className="w-full h-full object-cover object-center"
                     loading="lazy"
@@ -237,7 +250,7 @@ const Banner = ({ isDesktop = true }) => {
                   />
                 ) : (
                   <img
-                    src={image.url}
+                    src={smallTileSrc(image.url)}
                     alt={`Portfolio ${image.id}`}
                     className="w-full h-full object-cover object-center"
                     loading="lazy"
