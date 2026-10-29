@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Phone } from "lucide-react";
 import ProcessSection from "../homePage/components/ProcessSection";
-import FeaturesGrid from "../homePage/components/FeaturesGrid";
+// import FeaturesGrid from "../homePage/components/FeaturesGrid";
 import CTASection from "../homePage/components/CTASection";
 import { useRef } from "react";
 import PhotoGallery from "../homePage/components/PhotoGallery";
@@ -310,8 +310,10 @@ function KitchenRenovation() {
         </div>
       </section>
 
-      {/* Why Bespoke Section */}
-      <FeaturesGrid features={features} />
+      {/* Why Bespoke Section - hidden for now */}
+      {/* <FeaturesGrid features={features} /> */}
+
+      <TestimonialSection showMoreButton />
 
       {/* Final Message Section */}
       <section className="py-16 md:py-24 lg:py-32 bg-paper">
@@ -381,7 +383,6 @@ function KitchenRenovation() {
         description="Let's bring your vision to life with our expert craftsmanship and personalized service."
       />
 
-      <TestimonialSection />
       <CTAReviewSection />
     </div>
   );

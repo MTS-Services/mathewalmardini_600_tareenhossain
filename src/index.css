@@ -1026,6 +1026,11 @@ html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* Otherwise every gallery image that slides under a still cursor zooms in and out mid-scroll */
+.lenis.lenis-scrolling .portfolio-gallery {
+  pointer-events: none;
+}
 /* Global styles */
 body {
   position: relative;

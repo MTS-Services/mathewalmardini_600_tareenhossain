@@ -5,12 +5,13 @@ import {
   useMotionValueEvent,
 } from "motion/react";
 import { Globe, Menu, X, ChevronDown, ChevronUp, Phone } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function Header({ isDesktop, pathname }) {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  // A ref, not state, so scrolling doesn't re-render the header every frame
+  const lastScrollY = useRef(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
@@ -32,7 +33,7 @@ function Header({ isDesktop, pathname }) {
   }, [isDesktop]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = lastScrollY;
+    const previous = lastScrollY.current;
 
     // If scroll position is less than 50px, always show header
     if (latest < 50) {
@@ -47,7 +48,7 @@ function Header({ isDesktop, pathname }) {
       setHidden(false);
     }
 
-    setLastScrollY(latest);
+    lastScrollY.current = latest;
   });
 
   return (

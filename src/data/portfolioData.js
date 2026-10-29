@@ -1,3 +1,5 @@
+import { portfolioImageSizes } from "./portfolioImageSizes.js";
+
 // Portfolio image data structure
 // All paths are relative to the public folder
 
@@ -499,11 +501,17 @@ const laundryPortfolio = [
   category: "laundry",
 }));
 
+// Pixel sizes let the gallery reserve space before each image loads
+const withSize = (image) => {
+  const [width, height] = portfolioImageSizes[image.src] ?? [];
+  return { ...image, width, height };
+};
+
 export const portfolioData = [
   ...bathroomPortfolio,
   ...kitchenPortfolio,
   ...laundryPortfolio,
-];
+].map(withSize);
 
 // Helper function to get images by category
 export const getImagesByCategory = (category) => {

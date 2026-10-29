@@ -1,14 +1,57 @@
 import { motion, AnimatePresence } from "motion/react";
-import { useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { LenisContext } from "../context/LenisContext";
+
+const EASE = [0.22, 1, 0.36, 1];
+
+// Images stay decoded across lightbox opens, so revisits show instantly
+const decodedSrcs = new Set();
+
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction * 60,
+    opacity: 0,
+    scale: 0.97,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, ease: EASE },
+  },
+  exit: (direction) => ({
+    x: direction * -60,
+    opacity: 0,
+    scale: 0.97,
+    transition: { duration: 0.35, ease: EASE },
+  }),
+};
 
 const Lightbox = ({ images, currentIndex, onClose }) => {
   const [activeIndex, setActiveIndex] = useState(currentIndex);
   const [direction, setDirection] = useState(0);
+  const [readySrcs, setReadySrcs] = useState(() => new Set(decodedSrcs));
+  const lenisContext = useContext(LenisContext);
+
+  const markReady = useCallback((src) => {
+    decodedSrcs.add(src);
+    setReadySrcs((prev) => (prev.has(src) ? prev : new Set(prev).add(src)));
+  }, []);
 
   useEffect(() => {
     setActiveIndex(currentIndex);
   }, [currentIndex]);
+
+  const handleNext = useCallback(() => {
+    setDirection(1);
+    setActiveIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const handlePrevious = useCallback(() => {
+    setDirection(-1);
+    setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -24,46 +67,54 @@ const Lightbox = ({ images, currentIndex, onClose }) => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeIndex]);
+  }, [onClose, handleNext, handlePrevious]);
 
-  // Prevent body scroll when lightbox is open
+  // Lock page scroll without the page shifting when the scrollbar disappears
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    const lenis = lenisContext?.lenisRef.current;
+    const { body } = document;
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    const previousOverflow = body.style.overflow;
+    const previousPaddingRight = body.style.paddingRight;
+
+    lenis?.stop();
+    body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
     return () => {
-      document.body.style.overflow = "";
+      body.style.overflow = previousOverflow;
+      body.style.paddingRight = previousPaddingRight;
+      lenis?.start();
     };
-  }, []);
+  }, [lenisContext]);
 
-  const handleNext = () => {
-    setDirection(1);
-    setActiveIndex((prev) => (prev + 1) % images.length);
-  };
+  // Decode the current and neighbouring images before they are shown
+  useEffect(() => {
+    const total = images.length;
+    [activeIndex, activeIndex + 1, activeIndex - 1].forEach((i) => {
+      const { src } = images[(i + total) % total];
+      if (decodedSrcs.has(src)) return;
+      const img = new Image();
+      img.src = src;
+      img
+        .decode()
+        .catch(() => {})
+        .then(() => markReady(src));
+    });
+  }, [activeIndex, images, markReady]);
 
-  const handlePrevious = () => {
-    setDirection(-1);
-    setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  const slideVariants = {
-    enter: (direction) => ({
-      x: direction > 0 ? "100%" : "-100%",
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction) => ({
-      x: direction > 0 ? "-100%" : "100%",
-      opacity: 0,
-    }),
-  };
+  const activeImage = images[activeIndex];
+  const isReady = readySrcs.has(activeImage.src);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className="fixed inset-0 z-[9999] bg-black/70 flex items-center justify-center"
       onClick={onClose}
     >
@@ -81,7 +132,7 @@ const Lightbox = ({ images, currentIndex, onClose }) => {
       </motion.button>
 
       {/* Image Counter */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[10001] bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm md:text-base">
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[10001] bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm md:text-base tabular-nums">
         {activeIndex + 1} / {images.length}
       </div>
 
@@ -126,25 +177,35 @@ const Lightbox = ({ images, currentIndex, onClose }) => {
         className="relative w-[95vw] md:w-[85vw] lg:w-[70vw] h-[80vh] flex items-center justify-center overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <AnimatePresence initial={false} custom={direction} mode="wait">
+        {/* Spinner only appears if an image is genuinely slow, so cached images never flash it */}
+        {!isReady && (
           <motion.div
-            key={activeIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.3 }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+          </motion.div>
+        )}
+
+        {/* Outgoing and incoming images overlap and cross-fade, so there is never an empty frame */}
+        <AnimatePresence custom={direction}>
+          <motion.div
+            key={activeImage.src}
             custom={direction}
             variants={slideVariants}
             initial="enter"
-            animate="center"
+            animate={isReady ? "center" : "enter"}
             exit="exit"
-            transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.2 },
-            }}
-            className="absolute inset-0 flex items-center justify-center"
+            className="absolute inset-0 flex items-center justify-center will-change-transform"
           >
             <img
-              src={images[activeIndex].src}
-              alt={`Portfolio ${images[activeIndex].category} ${images[activeIndex].id}`}
+              src={activeImage.src}
+              alt={`Portfolio ${activeImage.category} ${activeImage.id}`}
               className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
               draggable={false}
+              onLoad={() => markReady(activeImage.src)}
             />
           </motion.div>
         </AnimatePresence>
@@ -152,7 +213,7 @@ const Lightbox = ({ images, currentIndex, onClose }) => {
 
       {/* Image Info */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[10001] bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs md:text-sm capitalize">
-        {images[activeIndex].category}
+        {activeImage.category}
       </div>
     </motion.div>
   );

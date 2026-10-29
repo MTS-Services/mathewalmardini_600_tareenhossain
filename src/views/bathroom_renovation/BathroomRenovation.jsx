@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Phone } from "lucide-react";
-import FeaturesGrid from "../homePage/components/FeaturesGrid";
+// import FeaturesGrid from "../homePage/components/FeaturesGrid";
 import CTASection from "../homePage/components/CTASection";
 import PhotoGallery from "../homePage/components/PhotoGallery";
 import { useRef } from "react";
@@ -364,7 +364,10 @@ function BathroomRenovation() {
         </div>
       </section>
 
-      <FeaturesGrid features={features} />
+      {/* Why Bespoke Designs and Construction - hidden for now */}
+      {/* <FeaturesGrid features={features} /> */}
+
+      <TestimonialSection showMoreButton />
 
       {/* add Featured Media Section */}
       <FeatureMediaSection />
@@ -374,7 +377,6 @@ function BathroomRenovation() {
         description="Let's bring your vision to life with our expert craftsmanship and personalized service."
       />
 
-      <TestimonialSection />
       <CTAReviewSection />
     </div>
   );

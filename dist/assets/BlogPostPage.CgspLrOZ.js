@@ -1,0 +1,1 @@
+import{j as o,A as s}from"./App.Bh9BBF3v.js";import{L as i}from"./Layout.DoEs5htO.js";import{B as m}from"./BlogPost.CYbGddhi.js";import"./icons.CG1IOl38.js";import"./proxy.nR20GIlQ.js";import"./blogData.BhDLcd48.js";function j({pathname:r,slug:t}){return o.jsx(s,{children:o.jsx(i,{pathname:r,children:o.jsx(m,{slug:t})})})}export{j as default};
