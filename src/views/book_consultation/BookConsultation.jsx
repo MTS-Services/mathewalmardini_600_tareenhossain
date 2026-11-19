@@ -15,8 +15,10 @@ const initialState = {
   details: "",
 };
 
+const BATHROOM_SERVICE = "Bathroom Renovation";
+
 const serviceOptions = [
-  "Bathroom Renovation",
+  BATHROOM_SERVICE,
   "Kitchen Renovation",
   "Laundry Renovation",
   "Shop Fit-out",
@@ -177,9 +179,13 @@ export default function BookConsultation() {
       const services = exists
         ? prev.services.filter((item) => item !== service)
         : [...prev.services, service];
-      return { ...prev, services };
+      // Clear bathrooms count when Bathroom Renovation is unchecked
+      const bathrooms = services.includes(BATHROOM_SERVICE) ? prev.bathrooms : "";
+      return { ...prev, services, bathrooms };
     });
   };
+
+  const needsBathroomCount = formData.services.includes(BATHROOM_SERVICE);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -279,7 +285,7 @@ export default function BookConsultation() {
       });
       return;
     }
-    if (!formData.bathrooms.trim()) {
+    if (needsBathroomCount && !formData.bathrooms.trim()) {
       setSubmitStatus({
         loading: false,
         success: false,
@@ -657,17 +663,18 @@ export default function BookConsultation() {
               ))}
             </div>
 
-            
-            <LabeledInput
-              label="Number of bathrooms"
-              id="bathrooms"
-              type="text"
-              inputMode="numeric"
-              value={formData.bathrooms}
-              onChange={handleBathroomsChange}
-              placeholder="e.g. 1, 2, 3"
-              required
-            />
+            {needsBathroomCount && (
+              <LabeledInput
+                label="Number of bathrooms"
+                id="bathrooms"
+                type="text"
+                inputMode="numeric"
+                value={formData.bathrooms}
+                onChange={handleBathroomsChange}
+                placeholder="e.g. 1, 2, 3"
+                required
+              />
+            )}
 
             <Divider title="I am" />
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
