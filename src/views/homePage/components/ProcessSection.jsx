@@ -751,6 +751,8 @@ const TimelineProcessSection = () => {
                         src={step.image}
                         alt={step.title}
                         className="w-full h-64 md:h-80 object-cover"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </motion.div>
 
